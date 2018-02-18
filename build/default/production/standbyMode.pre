@@ -4665,41 +4665,7 @@ while(PORTBbits.RB1 == 1){ continue; }
 
 if (keypress == 14){
 
-lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-printf("Great!");
-_delay((unsigned long)((1000)*(40000000/4000.0)));
-
-lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-printf("Here are the");
-lcdInst(0xC0);;
-printf("instructions for");
-_delay((unsigned long)((2000)*(40000000/4000.0)));
-lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-printf("drawer inputs...");
-_delay((unsigned long)((2000)*(40000000/4000.0)));
-
-lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-printf("Press A on the");
-lcdInst(0xC0);;
-printf("keypad for R,");
-_delay((unsigned long)((3000)*(40000000/4000.0)));
-lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-printf("B is for F,");
-lcdInst(0xC0);;
-printf("and C is for L.");
-_delay((unsigned long)((3000)*(40000000/4000.0)));
-
-lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-printf("Press # to");
-lcdInst(0xC0);;
-printf("submit the input");
-_delay((unsigned long)((3000)*(40000000/4000.0)));
-lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-printf("and advance the");
-lcdInst(0xC0);;
-printf("next screen.");
-_delay((unsigned long)((3000)*(40000000/4000.0)));
-
+# 878
 unsigned int drawerCount = 0;
 unsigned int i = 0;
 unsigned int validDrawer = 0;
@@ -4707,6 +4673,9 @@ unsigned int zero = 0;
 unsigned int firstIteration = 0;
 
 while (1){
+if (firstIteration == 1){
+while (1){
+
 if(drawerCount >= 8){
 lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
@@ -4716,10 +4685,6 @@ printf("drawers reached!");
 _delay((unsigned long)((2000)*(40000000/4000.0)));
 break;
 }
-else{
-
-if (firstIteration == 1){
-while (1){
 
 lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
@@ -4766,6 +4731,9 @@ unsigned int diet = diet_press(drawer);
 food_press(diet, drawer);
 drawerInformation[drawerCount] = drawer;
 drawerCount += 1;
+lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+printf("%i", drawerCount);
+_delay((unsigned long)((1000)*(40000000/4000.0)));
 }
 }
 else if (keypress1 == 15){
@@ -4811,11 +4779,12 @@ unsigned int diet = diet_press(drawer);
 food_press(diet, drawer);
 drawerInformation[drawerCount] = drawer;
 drawerCount += 1;
+lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+printf("%i", drawerCount);
+_delay((unsigned long)((1000)*(40000000/4000.0)));
 }
 }
 }
-}
-
 }
 else if (keypress == 15){
 while (1){

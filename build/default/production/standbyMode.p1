@@ -5287,106 +5287,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 "841
 [e $ ! == -> _keypress `i -> 14 `i 516  ]
 {
-[; ;standbyMode.c: 843: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"843
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 844: printf("Great!");
-"844
-[e ( _printf :s 38C ]
-[; ;standbyMode.c: 845: _delay((unsigned long)((1000)*(40000000/4000.0)));
-"845
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 847: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"847
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 848: printf("Here are the");
-"848
-[e ( _printf :s 39C ]
-[; ;standbyMode.c: 849: lcdInst(0xC0);;
-"849
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 850: printf("instructions for");
-"850
-[e ( _printf :s 40C ]
-[; ;standbyMode.c: 851: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"851
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 852: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"852
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 853: printf("drawer inputs...");
-"853
-[e ( _printf :s 41C ]
-[; ;standbyMode.c: 854: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"854
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 856: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"856
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 857: printf("Press A on the");
-"857
-[e ( _printf :s 42C ]
-[; ;standbyMode.c: 858: lcdInst(0xC0);;
-"858
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 859: printf("keypad for R,");
-"859
-[e ( _printf :s 43C ]
-[; ;standbyMode.c: 860: _delay((unsigned long)((3000)*(40000000/4000.0)));
-"860
-[e ( __delay (1 -> * -> -> 3000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 861: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"861
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 862: printf("B is for F,");
-"862
-[e ( _printf :s 44C ]
-[; ;standbyMode.c: 863: lcdInst(0xC0);;
-"863
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 864: printf("and C is for L.");
-"864
-[e ( _printf :s 45C ]
-[; ;standbyMode.c: 865: _delay((unsigned long)((3000)*(40000000/4000.0)));
-"865
-[e ( __delay (1 -> * -> -> 3000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 867: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"867
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 868: printf("Press # to");
-"868
-[e ( _printf :s 46C ]
-[; ;standbyMode.c: 869: lcdInst(0xC0);;
-"869
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 870: printf("submit the input");
-"870
-[e ( _printf :s 47C ]
-[; ;standbyMode.c: 871: _delay((unsigned long)((3000)*(40000000/4000.0)));
-"871
-[e ( __delay (1 -> * -> -> 3000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 872: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"872
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 873: printf("and advance the");
-"873
-[e ( _printf :s 48C ]
-[; ;standbyMode.c: 874: lcdInst(0xC0);;
-"874
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 875: printf("next screen.");
-"875
-[e ( _printf :s 49C ]
-[; ;standbyMode.c: 876: _delay((unsigned long)((3000)*(40000000/4000.0)));
-"876
-[e ( __delay (1 -> * -> -> 3000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
 "878
 [v _drawerCount `ui ~T0 @X0 1 a ]
 [; ;standbyMode.c: 878: unsigned int drawerCount = 0;
@@ -5411,561 +5311,569 @@ Version 3.2 HI-TECH Software Intermediate Code
 "884
 [e :U 518 ]
 {
-[; ;standbyMode.c: 885: if(drawerCount >= 8){
+[; ;standbyMode.c: 885: if (firstIteration == 1){
 "885
-[e $ ! >= _drawerCount -> -> 8 `i `ui 520  ]
+[e $ ! == _firstIteration -> -> 1 `i `ui 520  ]
 {
-[; ;standbyMode.c: 886: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+[; ;standbyMode.c: 886: while (1){
 "886
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 887: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
-"887
-[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;standbyMode.c: 888: printf("Maximum of 8");
+[e :U 522 ]
+{
+[; ;standbyMode.c: 888: if(drawerCount >= 8){
 "888
-[e ( _printf :s 50C ]
-[; ;standbyMode.c: 889: lcdInst(0xC0);;
+[e $ ! >= _drawerCount -> -> 8 `i `ui 524  ]
+{
+[; ;standbyMode.c: 889: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 "889
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 890: printf("drawers reached!");
-"890
-[e ( _printf :s 51C ]
-[; ;standbyMode.c: 891: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"891
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 892: break;
-"892
-[e $U 519  ]
-"893
-}
-[; ;standbyMode.c: 893: }
-[e $U 521  ]
-"894
-[e :U 520 ]
-[; ;standbyMode.c: 894: else{
-{
-[; ;standbyMode.c: 896: if (firstIteration == 1){
-"896
-[e $ ! == _firstIteration -> -> 1 `i `ui 522  ]
-{
-[; ;standbyMode.c: 897: while (1){
-"897
-[e :U 524 ]
-{
-[; ;standbyMode.c: 899: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"899
 [e ( _lcdInst (1 -> -> 1 `i `uc ]
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 900: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
-"900
+[; ;standbyMode.c: 890: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
+"890
 [e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;standbyMode.c: 901: printf("Another drawer?");
-"901
-[e ( _printf :s 52C ]
-[; ;standbyMode.c: 902: lcdInst(0xC0);;
-"902
+[; ;standbyMode.c: 891: printf("Maximum of 8");
+"891
+[e ( _printf :s 38C ]
+[; ;standbyMode.c: 892: lcdInst(0xC0);;
+"892
 [e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 903: printf("# = Yes, D = No");
-"903
-[e ( _printf :s 53C ]
-[; ;standbyMode.c: 905: while(PORTBbits.RB1 == 0){ continue; }
-"905
-[e $U 526  ]
-[e :U 527 ]
-{
-[e $U 526  ]
+[; ;standbyMode.c: 893: printf("drawers reached!");
+"893
+[e ( _printf :s 39C ]
+[; ;standbyMode.c: 894: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"894
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 895: break;
+"895
+[e $U 523  ]
+"896
 }
+[e :U 524 ]
+[; ;standbyMode.c: 896: }
+[; ;standbyMode.c: 898: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"898
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 899: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
+"899
+[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
+[; ;standbyMode.c: 900: printf("Another drawer?");
+"900
+[e ( _printf :s 40C ]
+[; ;standbyMode.c: 901: lcdInst(0xC0);;
+"901
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 902: printf("# = Yes, D = No");
+"902
+[e ( _printf :s 41C ]
+[; ;standbyMode.c: 904: while(PORTBbits.RB1 == 0){ continue; }
+"904
+[e $U 525  ]
 [e :U 526 ]
-[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 527  ]
-[e :U 528 ]
-"906
-[v _keypress1 `uc ~T0 @X0 1 a ]
-[; ;standbyMode.c: 906: unsigned char keypress1 = (PORTB & 0xF0) >> 4;
-[e = _keypress1 -> >> & -> _PORTB `i -> 240 `i -> 4 `i `uc ]
-[; ;standbyMode.c: 907: while(PORTBbits.RB1 == 1){ continue; }
-"907
-[e $U 529  ]
-[e :U 530 ]
 {
-[e $U 529  ]
+[e $U 525  ]
 }
+[e :U 525 ]
+[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 526  ]
+[e :U 527 ]
+"905
+[v _keypress1 `uc ~T0 @X0 1 a ]
+[; ;standbyMode.c: 905: unsigned char keypress1 = (PORTB & 0xF0) >> 4;
+[e = _keypress1 -> >> & -> _PORTB `i -> 240 `i -> 4 `i `uc ]
+[; ;standbyMode.c: 906: while(PORTBbits.RB1 == 1){ continue; }
+"906
+[e $U 528  ]
 [e :U 529 ]
-[e $ == -> . . _PORTBbits 0 1 `i -> 1 `i 530  ]
-[e :U 531 ]
-[; ;standbyMode.c: 909: if (keypress1 == 14){
-"909
-[e $ ! == -> _keypress1 `i -> 14 `i 532  ]
 {
-"910
+[e $U 528  ]
+}
+[e :U 528 ]
+[e $ == -> . . _PORTBbits 0 1 `i -> 1 `i 529  ]
+[e :U 530 ]
+[; ;standbyMode.c: 908: if (keypress1 == 14){
+"908
+[e $ ! == -> _keypress1 `i -> 14 `i 531  ]
+{
+"909
 [v _drawer `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 910: unsigned int drawer = which_drawer();
+[; ;standbyMode.c: 909: unsigned int drawer = which_drawer();
 [e = _drawer ( _which_drawer ..  ]
-[; ;standbyMode.c: 911: for (i=0; i<8; i++){
-"911
+[; ;standbyMode.c: 910: for (i=0; i<8; i++){
+"910
 {
 [e = _i -> -> 0 `i `ui ]
-[e $ < _i -> -> 8 `i `ui 533  ]
-[e $U 534  ]
-[e :U 533 ]
+[e $ < _i -> -> 8 `i `ui 532  ]
+[e $U 533  ]
+[e :U 532 ]
 {
-[; ;standbyMode.c: 912: if (drawerInformation[i] == drawer){
+[; ;standbyMode.c: 911: if (drawerInformation[i] == drawer){
+"911
+[e $ ! == *U + &U _drawerInformation * -> _i `ux -> -> # *U &U _drawerInformation `ui `ux _drawer 535  ]
+{
+[; ;standbyMode.c: 912: validDrawer = 1;
 "912
-[e $ ! == *U + &U _drawerInformation * -> _i `ux -> -> # *U &U _drawerInformation `ui `ux _drawer 536  ]
-{
-[; ;standbyMode.c: 913: validDrawer = 1;
-"913
 [e = _validDrawer -> -> 1 `i `ui ]
-[; ;standbyMode.c: 914: if (drawerInformation[i] == 0){
-"914
-[e $ ! == *U + &U _drawerInformation * -> _i `ux -> -> # *U &U _drawerInformation `ui `ux -> -> 0 `i `ui 537  ]
+[; ;standbyMode.c: 913: if (drawerInformation[i] == 0){
+"913
+[e $ ! == *U + &U _drawerInformation * -> _i `ux -> -> # *U &U _drawerInformation `ui `ux -> -> 0 `i `ui 536  ]
 {
-[; ;standbyMode.c: 915: zero = 1;
-"915
+[; ;standbyMode.c: 914: zero = 1;
+"914
 [e = _zero -> -> 1 `i `ui ]
-"916
-}
-[e :U 537 ]
-"917
+"915
 }
 [e :U 536 ]
-"918
+"916
 }
-"911
+[e :U 535 ]
+"917
+}
+"910
 [e ++ _i -> -> 1 `i `ui ]
-[e $ < _i -> -> 8 `i `ui 533  ]
-[e :U 534 ]
-"918
+[e $ < _i -> -> 8 `i `ui 532  ]
+[e :U 533 ]
+"917
 }
+[; ;standbyMode.c: 915: }
 [; ;standbyMode.c: 916: }
 [; ;standbyMode.c: 917: }
-[; ;standbyMode.c: 918: }
-[; ;standbyMode.c: 919: if (validDrawer == 1){
+[; ;standbyMode.c: 918: if (validDrawer == 1){
+"918
+[e $ ! == _validDrawer -> -> 1 `i `ui 537  ]
+{
+[; ;standbyMode.c: 919: if (zero == 1){
 "919
-[e $ ! == _validDrawer -> -> 1 `i `ui 538  ]
+[e $ ! == _zero -> -> 1 `i `ui 538  ]
 {
-[; ;standbyMode.c: 920: if (zero == 1){
+[; ;standbyMode.c: 920: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 "920
-[e $ ! == _zero -> -> 1 `i `ui 539  ]
-{
-[; ;standbyMode.c: 921: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 921: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
 "921
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 922: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
+[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
+[; ;standbyMode.c: 922: printf("No drawer");
 "922
-[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;standbyMode.c: 923: printf("No drawer");
+[e ( _printf :s 42C ]
+[; ;standbyMode.c: 923: lcdInst(0xC0);;
 "923
-[e ( _printf :s 54C ]
-[; ;standbyMode.c: 924: lcdInst(0xC0);;
-"924
 [e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 925: printf("number pressed.");
+[; ;standbyMode.c: 924: printf("number pressed.");
+"924
+[e ( _printf :s 43C ]
+[; ;standbyMode.c: 925: _delay((unsigned long)((2000)*(40000000/4000.0)));
 "925
-[e ( _printf :s 55C ]
-[; ;standbyMode.c: 926: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"926
 [e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-"927
+"926
 }
-[; ;standbyMode.c: 927: }
-[e $U 540  ]
-"928
-[e :U 539 ]
-[; ;standbyMode.c: 928: else{
+[; ;standbyMode.c: 926: }
+[e $U 539  ]
+"927
+[e :U 538 ]
+[; ;standbyMode.c: 927: else{
 {
-[; ;standbyMode.c: 929: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"929
+[; ;standbyMode.c: 928: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"928
 [e ( _lcdInst (1 -> -> 1 `i `uc ]
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 930: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
-"930
+[; ;standbyMode.c: 929: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
+"929
 [e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;standbyMode.c: 931: printf("Drawer already");
+[; ;standbyMode.c: 930: printf("Drawer already");
+"930
+[e ( _printf :s 44C ]
+[; ;standbyMode.c: 931: lcdInst(0xC0);;
 "931
-[e ( _printf :s 56C ]
-[; ;standbyMode.c: 932: lcdInst(0xC0);;
-"932
 [e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 933: printf("in use!");
+[; ;standbyMode.c: 932: printf("in use!");
+"932
+[e ( _printf :s 45C ]
+[; ;standbyMode.c: 933: _delay((unsigned long)((2000)*(40000000/4000.0)));
 "933
-[e ( _printf :s 57C ]
-[; ;standbyMode.c: 934: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"934
 [e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+"934
+}
+[e :U 539 ]
+[; ;standbyMode.c: 934: }
+[; ;standbyMode.c: 935: validDrawer = 0;
 "935
+[e = _validDrawer -> -> 0 `i `ui ]
+[; ;standbyMode.c: 936: continue;
+"936
+[e $U 521  ]
+"937
+}
+[; ;standbyMode.c: 937: }
+[e $U 540  ]
+"938
+[e :U 537 ]
+[; ;standbyMode.c: 938: else{
+{
+"939
+[v _diet `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 939: unsigned int diet = diet_press(drawer);
+[e = _diet ( _diet_press (1 _drawer ]
+[; ;standbyMode.c: 940: food_press(diet, drawer);
+"940
+[e ( _food_press (2 , _diet _drawer ]
+[; ;standbyMode.c: 941: drawerInformation[drawerCount] = drawer;
+"941
+[e = *U + &U _drawerInformation * -> _drawerCount `ux -> -> # *U &U _drawerInformation `ui `ux _drawer ]
+[; ;standbyMode.c: 942: drawerCount += 1;
+"942
+[e =+ _drawerCount -> -> 1 `i `ui ]
+[; ;standbyMode.c: 943: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"943
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 944: printf("%i", drawerCount);
+"944
+[e ( _printf , (. :s 46C _drawerCount ]
+[; ;standbyMode.c: 945: _delay((unsigned long)((1000)*(40000000/4000.0)));
+"945
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+"946
 }
 [e :U 540 ]
-[; ;standbyMode.c: 935: }
-[; ;standbyMode.c: 936: validDrawer = 0;
-"936
-[e = _validDrawer -> -> 0 `i `ui ]
-[; ;standbyMode.c: 937: continue;
-"937
-[e $U 523  ]
-"938
-}
-[; ;standbyMode.c: 938: }
-[e $U 541  ]
-"939
-[e :U 538 ]
-[; ;standbyMode.c: 939: else{
-{
-"940
-[v _diet `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 940: unsigned int diet = diet_press(drawer);
-[e = _diet ( _diet_press (1 _drawer ]
-[; ;standbyMode.c: 941: food_press(diet, drawer);
-"941
-[e ( _food_press (2 , _diet _drawer ]
-[; ;standbyMode.c: 942: drawerInformation[drawerCount] = drawer;
-"942
-[e = *U + &U _drawerInformation * -> _drawerCount `ux -> -> # *U &U _drawerInformation `ui `ux _drawer ]
-[; ;standbyMode.c: 943: drawerCount += 1;
-"943
-[e =+ _drawerCount -> -> 1 `i `ui ]
-"944
-}
-[e :U 541 ]
-"945
-}
-[; ;standbyMode.c: 944: }
-[; ;standbyMode.c: 945: }
-[e $U 542  ]
-"946
-[e :U 532 ]
-[; ;standbyMode.c: 946: else if (keypress1 == 15){
-[e $ ! == -> _keypress1 `i -> 15 `i 543  ]
-{
-[; ;standbyMode.c: 947: break;
 "947
-[e $U 525  ]
-"948
 }
-[e :U 543 ]
+[; ;standbyMode.c: 946: }
+[; ;standbyMode.c: 947: }
+[e $U 541  ]
+"948
+[e :U 531 ]
+[; ;standbyMode.c: 948: else if (keypress1 == 15){
+[e $ ! == -> _keypress1 `i -> 15 `i 542  ]
+{
+[; ;standbyMode.c: 949: break;
 "949
-[e :U 542 ]
-[; ;standbyMode.c: 948: }
-[; ;standbyMode.c: 949: keypress1 = 0;
-[e = _keypress1 -> -> 0 `i `uc ]
+[e $U 523  ]
 "950
 }
-[e :U 523 ]
-"897
-[e $U 524  ]
-[e :U 525 ]
-[; ;standbyMode.c: 950: }
-[; ;standbyMode.c: 951: break;
+[e :U 542 ]
 "951
-[e $U 519  ]
+[e :U 541 ]
+[; ;standbyMode.c: 950: }
+[; ;standbyMode.c: 951: keypress1 = 0;
+[e = _keypress1 -> -> 0 `i `uc ]
 "952
 }
+[e :U 521 ]
+"886
+[e $U 522  ]
+[e :U 523 ]
 [; ;standbyMode.c: 952: }
-[e $U 544  ]
+[; ;standbyMode.c: 953: break;
 "953
-[e :U 522 ]
-[; ;standbyMode.c: 953: else{
-{
+[e $U 519  ]
 "954
-[v _drawer `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 954: unsigned int drawer = which_drawer();
-[e = _drawer ( _which_drawer ..  ]
-[; ;standbyMode.c: 955: firstIteration = 1;
+}
+[; ;standbyMode.c: 954: }
+[e $U 543  ]
 "955
-[e = _firstIteration -> -> 1 `i `ui ]
-[; ;standbyMode.c: 956: for (i=0; i<8; i++){
+[e :U 520 ]
+[; ;standbyMode.c: 955: else{
+{
 "956
+[v _drawer `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 956: unsigned int drawer = which_drawer();
+[e = _drawer ( _which_drawer ..  ]
+[; ;standbyMode.c: 957: firstIteration = 1;
+"957
+[e = _firstIteration -> -> 1 `i `ui ]
+[; ;standbyMode.c: 958: for (i=0; i<8; i++){
+"958
 {
 [e = _i -> -> 0 `i `ui ]
-[e $ < _i -> -> 8 `i `ui 545  ]
-[e $U 546  ]
-[e :U 545 ]
+[e $ < _i -> -> 8 `i `ui 544  ]
+[e $U 545  ]
+[e :U 544 ]
 {
-[; ;standbyMode.c: 957: if (drawerInformation[i] == drawer){
-"957
-[e $ ! == *U + &U _drawerInformation * -> _i `ux -> -> # *U &U _drawerInformation `ui `ux _drawer 548  ]
-{
-[; ;standbyMode.c: 958: validDrawer = 1;
-"958
-[e = _validDrawer -> -> 1 `i `ui ]
-[; ;standbyMode.c: 959: if (drawerInformation[i] == 0){
+[; ;standbyMode.c: 959: if (drawerInformation[i] == drawer){
 "959
-[e $ ! == *U + &U _drawerInformation * -> _i `ux -> -> # *U &U _drawerInformation `ui `ux -> -> 0 `i `ui 549  ]
+[e $ ! == *U + &U _drawerInformation * -> _i `ux -> -> # *U &U _drawerInformation `ui `ux _drawer 547  ]
 {
-[; ;standbyMode.c: 960: zero = 1;
+[; ;standbyMode.c: 960: validDrawer = 1;
 "960
-[e = _zero -> -> 1 `i `ui ]
+[e = _validDrawer -> -> 1 `i `ui ]
+[; ;standbyMode.c: 961: if (drawerInformation[i] == 0){
 "961
-}
-[e :U 549 ]
+[e $ ! == *U + &U _drawerInformation * -> _i `ux -> -> # *U &U _drawerInformation `ui `ux -> -> 0 `i `ui 548  ]
+{
+[; ;standbyMode.c: 962: zero = 1;
 "962
+[e = _zero -> -> 1 `i `ui ]
+"963
 }
 [e :U 548 ]
-"963
-}
-"956
-[e ++ _i -> -> 1 `i `ui ]
-[e $ < _i -> -> 8 `i `ui 545  ]
-[e :U 546 ]
-"963
-}
-[; ;standbyMode.c: 961: }
-[; ;standbyMode.c: 962: }
-[; ;standbyMode.c: 963: }
-[; ;standbyMode.c: 964: if (validDrawer == 1){
 "964
-[e $ ! == _validDrawer -> -> 1 `i `ui 550  ]
-{
-[; ;standbyMode.c: 965: if (zero == 1){
-"965
-[e $ ! == _zero -> -> 1 `i `ui 551  ]
-{
-[; ;standbyMode.c: 966: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"966
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 967: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
-"967
-[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;standbyMode.c: 968: printf("No drawer");
-"968
-[e ( _printf :s 58C ]
-[; ;standbyMode.c: 969: lcdInst(0xC0);;
-"969
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 970: printf("number pressed.");
-"970
-[e ( _printf :s 59C ]
-[; ;standbyMode.c: 971: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"971
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-"972
 }
-[; ;standbyMode.c: 972: }
-[e $U 552  ]
-"973
-[e :U 551 ]
-[; ;standbyMode.c: 973: else{
+[e :U 547 ]
+"965
+}
+"958
+[e ++ _i -> -> 1 `i `ui ]
+[e $ < _i -> -> 8 `i `ui 544  ]
+[e :U 545 ]
+"965
+}
+[; ;standbyMode.c: 963: }
+[; ;standbyMode.c: 964: }
+[; ;standbyMode.c: 965: }
+[; ;standbyMode.c: 966: if (validDrawer == 1){
+"966
+[e $ ! == _validDrawer -> -> 1 `i `ui 549  ]
 {
-[; ;standbyMode.c: 974: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"974
+[; ;standbyMode.c: 967: if (zero == 1){
+"967
+[e $ ! == _zero -> -> 1 `i `ui 550  ]
+{
+[; ;standbyMode.c: 968: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"968
 [e ( _lcdInst (1 -> -> 1 `i `uc ]
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 975: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
-"975
+[; ;standbyMode.c: 969: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
+"969
 [e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;standbyMode.c: 976: printf("Drawer already");
-"976
-[e ( _printf :s 60C ]
-[; ;standbyMode.c: 977: lcdInst(0xC0);;
-"977
+[; ;standbyMode.c: 970: printf("No drawer");
+"970
+[e ( _printf :s 47C ]
+[; ;standbyMode.c: 971: lcdInst(0xC0);;
+"971
 [e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 978: printf("in use!");
-"978
-[e ( _printf :s 61C ]
-[; ;standbyMode.c: 979: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"979
+[; ;standbyMode.c: 972: printf("number pressed.");
+"972
+[e ( _printf :s 48C ]
+[; ;standbyMode.c: 973: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"973
 [e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+"974
+}
+[; ;standbyMode.c: 974: }
+[e $U 551  ]
+"975
+[e :U 550 ]
+[; ;standbyMode.c: 975: else{
+{
+[; ;standbyMode.c: 976: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"976
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 977: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
+"977
+[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
+[; ;standbyMode.c: 978: printf("Drawer already");
+"978
+[e ( _printf :s 49C ]
+[; ;standbyMode.c: 979: lcdInst(0xC0);;
+"979
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 980: printf("in use!");
 "980
+[e ( _printf :s 50C ]
+[; ;standbyMode.c: 981: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"981
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+"982
+}
+[e :U 551 ]
+[; ;standbyMode.c: 982: }
+[; ;standbyMode.c: 983: validDrawer = 0;
+"983
+[e = _validDrawer -> -> 0 `i `ui ]
+[; ;standbyMode.c: 984: continue;
+"984
+[e $U 517  ]
+"985
+}
+[; ;standbyMode.c: 985: }
+[e $U 552  ]
+"986
+[e :U 549 ]
+[; ;standbyMode.c: 986: else{
+{
+"987
+[v _diet `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 987: unsigned int diet = diet_press(drawer);
+[e = _diet ( _diet_press (1 _drawer ]
+[; ;standbyMode.c: 988: food_press(diet, drawer);
+"988
+[e ( _food_press (2 , _diet _drawer ]
+[; ;standbyMode.c: 989: drawerInformation[drawerCount] = drawer;
+"989
+[e = *U + &U _drawerInformation * -> _drawerCount `ux -> -> # *U &U _drawerInformation `ui `ux _drawer ]
+[; ;standbyMode.c: 990: drawerCount += 1;
+"990
+[e =+ _drawerCount -> -> 1 `i `ui ]
+[; ;standbyMode.c: 991: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"991
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 992: printf("%i", drawerCount);
+"992
+[e ( _printf , (. :s 51C _drawerCount ]
+[; ;standbyMode.c: 993: _delay((unsigned long)((1000)*(40000000/4000.0)));
+"993
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+"994
 }
 [e :U 552 ]
-[; ;standbyMode.c: 980: }
-[; ;standbyMode.c: 981: validDrawer = 0;
-"981
-[e = _validDrawer -> -> 0 `i `ui ]
-[; ;standbyMode.c: 982: continue;
-"982
-[e $U 517  ]
-"983
+"995
 }
-[; ;standbyMode.c: 983: }
-[e $U 553  ]
-"984
-[e :U 550 ]
-[; ;standbyMode.c: 984: else{
-{
-"985
-[v _diet `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 985: unsigned int diet = diet_press(drawer);
-[e = _diet ( _diet_press (1 _drawer ]
-[; ;standbyMode.c: 986: food_press(diet, drawer);
-"986
-[e ( _food_press (2 , _diet _drawer ]
-[; ;standbyMode.c: 987: drawerInformation[drawerCount] = drawer;
-"987
-[e = *U + &U _drawerInformation * -> _drawerCount `ux -> -> # *U &U _drawerInformation `ui `ux _drawer ]
-[; ;standbyMode.c: 988: drawerCount += 1;
-"988
-[e =+ _drawerCount -> -> 1 `i `ui ]
-"989
-}
-[e :U 553 ]
-"990
-}
-[e :U 544 ]
-"991
-}
-[e :U 521 ]
-"992
+[e :U 543 ]
+"996
 }
 [e :U 517 ]
 "884
 [e $U 518  ]
 [e :U 519 ]
-"994
-}
-[; ;standbyMode.c: 989: }
-[; ;standbyMode.c: 990: }
-[; ;standbyMode.c: 991: }
-[; ;standbyMode.c: 992: }
-[; ;standbyMode.c: 994: }
-[e $U 554  ]
-"995
-[e :U 516 ]
-[; ;standbyMode.c: 995: else if (keypress == 15){
-[e $ ! == -> _keypress `i -> 15 `i 555  ]
-{
-[; ;standbyMode.c: 996: while (1){
-"996
-[e :U 557 ]
-{
 "997
-[v _whichKey `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 997: unsigned int whichKey = viewLogs();
-[e = _whichKey ( _viewLogs ..  ]
-[; ;standbyMode.c: 998: if (whichKey == 14){
+}
+[; ;standbyMode.c: 994: }
+[; ;standbyMode.c: 995: }
+[; ;standbyMode.c: 996: }
+[; ;standbyMode.c: 997: }
+[e $U 553  ]
 "998
-[e $ ! == _whichKey -> -> 14 `i `ui 559  ]
+[e :U 516 ]
+[; ;standbyMode.c: 998: else if (keypress == 15){
+[e $ ! == -> _keypress `i -> 15 `i 554  ]
 {
-[; ;standbyMode.c: 999: continue;
+[; ;standbyMode.c: 999: while (1){
 "999
-[e $U 556  ]
-"1000
-}
-[; ;standbyMode.c: 1000: }
-[e $U 560  ]
-"1001
-[e :U 559 ]
-[; ;standbyMode.c: 1001: else if (whichKey == 15){
-[e $ ! == _whichKey -> -> 15 `i `ui 561  ]
-{
-[; ;standbyMode.c: 1002: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"1002
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 1003: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
-"1003
-[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;standbyMode.c: 1004: printf("Rebooting.");
-"1004
-[e ( _printf :s 62C ]
-[; ;standbyMode.c: 1005: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"1005
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 1006: break;
-"1006
-[e $U 558  ]
-"1007
-}
-[; ;standbyMode.c: 1007: }
-[e $U 562  ]
-"1008
-[e :U 561 ]
-[; ;standbyMode.c: 1008: else{
-{
-[; ;standbyMode.c: 1009: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"1009
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 1010: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
-"1010
-[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;standbyMode.c: 1011: printf("Invalid key!");
-"1011
-[e ( _printf :s 63C ]
-[; ;standbyMode.c: 1012: lcdInst(0xC0);;
-"1012
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 1013: printf("Rebooting.");
-"1013
-[e ( _printf :s 64C ]
-[; ;standbyMode.c: 1014: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"1014
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 1015: break;
-"1015
-[e $U 558  ]
-"1016
-}
-[e :U 562 ]
-[e :U 560 ]
-"1017
-}
 [e :U 556 ]
-"996
-[e $U 557  ]
+{
+"1000
+[v _whichKey `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 1000: unsigned int whichKey = viewLogs();
+[e = _whichKey ( _viewLogs ..  ]
+[; ;standbyMode.c: 1001: if (whichKey == 14){
+"1001
+[e $ ! == _whichKey -> -> 14 `i `ui 558  ]
+{
+[; ;standbyMode.c: 1002: continue;
+"1002
+[e $U 555  ]
+"1003
+}
+[; ;standbyMode.c: 1003: }
+[e $U 559  ]
+"1004
 [e :U 558 ]
+[; ;standbyMode.c: 1004: else if (whichKey == 15){
+[e $ ! == _whichKey -> -> 15 `i `ui 560  ]
+{
+[; ;standbyMode.c: 1005: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"1005
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1006: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
+"1006
+[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
+[; ;standbyMode.c: 1007: printf("Rebooting.");
+"1007
+[e ( _printf :s 52C ]
+[; ;standbyMode.c: 1008: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"1008
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1009: break;
+"1009
+[e $U 557  ]
+"1010
+}
+[; ;standbyMode.c: 1010: }
+[e $U 561  ]
+"1011
+[e :U 560 ]
+[; ;standbyMode.c: 1011: else{
+{
+[; ;standbyMode.c: 1012: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"1012
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1013: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
+"1013
+[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
+[; ;standbyMode.c: 1014: printf("Invalid key!");
+"1014
+[e ( _printf :s 53C ]
+[; ;standbyMode.c: 1015: lcdInst(0xC0);;
+"1015
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 1016: printf("Rebooting.");
+"1016
+[e ( _printf :s 54C ]
+[; ;standbyMode.c: 1017: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"1017
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1018: break;
+"1018
+[e $U 557  ]
 "1019
 }
-[; ;standbyMode.c: 1016: }
-[; ;standbyMode.c: 1017: }
-[; ;standbyMode.c: 1019: }
-[e $U 563  ]
-"1021
+[e :U 561 ]
+[e :U 559 ]
+"1020
+}
 [e :U 555 ]
-[; ;standbyMode.c: 1021: else {
-{
-[; ;standbyMode.c: 1022: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"999
+[e $U 556  ]
+[e :U 557 ]
 "1022
+}
+[; ;standbyMode.c: 1019: }
+[; ;standbyMode.c: 1020: }
+[; ;standbyMode.c: 1022: }
+[e $U 562  ]
+"1024
+[e :U 554 ]
+[; ;standbyMode.c: 1024: else {
+{
+[; ;standbyMode.c: 1025: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"1025
 [e ( _lcdInst (1 -> -> 1 `i `uc ]
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 1023: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
-"1023
-[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;standbyMode.c: 1024: printf("Invalid key!");
-"1024
-[e ( _printf :s 65C ]
-[; ;standbyMode.c: 1025: lcdInst(0xC0);;
-"1025
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 1026: printf("Rebooting.");
+[; ;standbyMode.c: 1026: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
 "1026
-[e ( _printf :s 66C ]
-[; ;standbyMode.c: 1027: _delay((unsigned long)((2000)*(40000000/4000.0)));
+[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
+[; ;standbyMode.c: 1027: printf("Invalid key!");
 "1027
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[e ( _printf :s 55C ]
+[; ;standbyMode.c: 1028: lcdInst(0xC0);;
 "1028
-}
-[e :U 563 ]
-[e :U 554 ]
-[; ;standbyMode.c: 1028: }
-[; ;standbyMode.c: 1029: }
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 1029: printf("Rebooting.");
 "1029
+[e ( _printf :s 56C ]
+[; ;standbyMode.c: 1030: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"1030
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+"1031
+}
+[e :U 562 ]
+[e :U 553 ]
+[; ;standbyMode.c: 1031: }
+[; ;standbyMode.c: 1032: }
+"1032
 [e :UE 506 ]
 }
 [p f _printf 8388736 ]
-[a 56C 68 114 97 119 101 114 32 97 108 114 101 97 100 121 0 ]
-[a 60C 68 114 97 119 101 114 32 97 108 114 101 97 100 121 0 ]
+[a 44C 68 114 97 119 101 114 32 97 108 114 101 97 100 121 0 ]
+[a 49C 68 114 97 119 101 114 32 97 108 114 101 97 100 121 0 ]
 [a 29C 83 116 97 110 100 98 121 0 ]
-[a 47C 115 117 98 109 105 116 32 116 104 101 32 105 110 112 117 116 0 ]
 [a 1C 53 32 112 114 101 118 105 111 117 115 32 108 111 103 115 0 ]
 [a 32C 87 101 108 99 111 109 101 32 116 111 32 121 111 117 114 0 ]
-[a 40C 105 110 115 116 114 117 99 116 105 111 110 115 32 102 111 114 0 ]
-[a 54C 78 111 32 100 114 97 119 101 114 0 ]
-[a 58C 78 111 32 100 114 97 119 101 114 0 ]
+[a 42C 78 111 32 100 114 97 119 101 114 0 ]
+[a 47C 78 111 32 100 114 97 119 101 114 0 ]
 [a 6C 80 114 101 115 115 32 97 110 121 32 107 101 121 32 116 111 0 ]
 [a 30C 80 114 101 115 115 32 97 110 121 32 107 101 121 32 116 111 0 ]
 [a 34C 80 114 101 115 115 32 68 32 116 111 0 ]
 [a 36C 111 114 32 112 114 101 115 115 32 35 32 116 111 0 ]
-[a 46C 80 114 101 115 115 32 35 32 116 111 0 ]
 [a 18C 35 32 61 32 89 101 115 44 32 68 32 61 32 78 111 0 ]
-[a 53C 35 32 61 32 89 101 115 44 32 68 32 61 32 78 111 0 ]
+[a 41C 35 32 61 32 89 101 115 44 32 68 32 61 32 78 111 0 ]
+[a 46C 37 105 0 ]
+[a 51C 37 105 0 ]
 [a 3C 80 108 101 97 115 101 32 105 110 112 117 116 32 108 111 103 0 ]
-[a 42C 80 114 101 115 115 32 65 32 111 110 32 116 104 101 0 ]
-[a 39C 72 101 114 101 32 97 114 101 32 116 104 101 0 ]
-[a 48C 97 110 100 32 97 100 118 97 110 99 101 32 116 104 101 0 ]
-[a 52C 65 110 111 116 104 101 114 32 100 114 97 119 101 114 63 0 ]
+[a 40C 65 110 111 116 104 101 114 32 100 114 97 119 101 114 63 0 ]
 [a 17C 65 110 111 116 104 101 114 32 108 111 103 63 0 ]
 [a 14C 68 114 97 119 101 114 32 83 117 109 109 97 114 121 58 0 ]
 [a 23C 68 114 97 119 101 114 32 37 105 32 100 105 101 116 58 0 ]
@@ -5978,7 +5886,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [a 19C 68 114 97 119 101 114 32 37 105 32 102 111 111 100 58 0 ]
 [a 20C 68 114 97 119 101 114 32 37 105 32 102 111 111 100 58 0 ]
 [a 9C 50 58 51 57 0 ]
-[a 50C 77 97 120 105 109 117 109 32 111 102 32 56 0 ]
+[a 38C 77 97 120 105 109 117 109 32 111 102 32 56 0 ]
 [a 11C 49 44 32 49 51 0 ]
 [a 15C 68 114 97 119 101 114 32 49 58 32 82 70 49 50 0 ]
 [a 16C 68 114 97 119 101 114 32 50 58 32 76 49 0 ]
@@ -5988,26 +5896,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [a 7C 109 111 118 101 32 111 110 46 0 ]
 [a 22C 84 114 121 32 97 103 97 105 110 46 0 ]
 [a 26C 84 114 121 32 97 103 97 105 110 46 0 ]
-[a 49C 110 101 120 116 32 115 99 114 101 101 110 46 0 ]
-[a 62C 82 101 98 111 111 116 105 110 103 46 0 ]
-[a 64C 82 101 98 111 111 116 105 110 103 46 0 ]
-[a 66C 82 101 98 111 111 116 105 110 103 46 0 ]
+[a 52C 82 101 98 111 111 116 105 110 103 46 0 ]
+[a 54C 82 101 98 111 111 116 105 110 103 46 0 ]
+[a 56C 82 101 98 111 111 116 105 110 103 46 0 ]
 [a 2C 97 118 97 105 108 97 98 108 101 46 0 ]
-[a 55C 110 117 109 98 101 114 32 112 114 101 115 115 101 100 46 0 ]
-[a 59C 110 117 109 98 101 114 32 112 114 101 115 115 101 100 46 0 ]
-[a 45C 97 110 100 32 67 32 105 115 32 102 111 114 32 76 46 0 ]
-[a 41C 100 114 97 119 101 114 32 105 110 112 117 116 115 46 46 46 0 ]
+[a 43C 110 117 109 98 101 114 32 112 114 101 115 115 101 100 46 0 ]
+[a 48C 110 117 109 98 101 114 32 112 114 101 115 115 101 100 46 0 ]
 [a 35C 118 105 101 119 32 108 111 103 115 44 0 ]
-[a 43C 107 101 121 112 97 100 32 102 111 114 32 82 44 0 ]
-[a 44C 66 32 105 115 32 102 111 114 32 70 44 0 ]
-[a 63C 73 110 118 97 108 105 100 32 107 101 121 33 0 ]
-[a 65C 73 110 118 97 108 105 100 32 107 101 121 33 0 ]
+[a 53C 73 110 118 97 108 105 100 32 107 101 121 33 0 ]
+[a 55C 73 110 118 97 108 105 100 32 107 101 121 33 0 ]
 [a 25C 73 110 118 97 108 105 100 32 100 105 101 116 33 0 ]
 [a 5C 71 114 101 97 116 33 0 ]
-[a 38C 71 114 101 97 116 33 0 ]
 [a 33C 99 97 98 105 110 101 116 32 115 111 114 116 101 114 33 0 ]
-[a 57C 105 110 32 117 115 101 33 0 ]
-[a 61C 105 110 32 117 115 101 33 0 ]
+[a 45C 105 110 32 117 115 101 33 0 ]
+[a 50C 105 110 32 117 115 101 33 0 ]
 [a 21C 73 110 118 97 108 105 100 32 102 111 111 100 33 0 ]
-[a 51C 100 114 97 119 101 114 115 32 114 101 97 99 104 101 100 33 0 ]
+[a 39C 100 114 97 119 101 114 115 32 114 101 97 99 104 101 100 33 0 ]
 [a 4C 110 117 109 98 101 114 58 32 0 ]

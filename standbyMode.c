@@ -840,7 +840,7 @@ void standbyMode(void){
     
     if (keypress == 14){
     
-    __lcd_clear();
+    /*__lcd_clear();
     printf("Great!");
     __delay_ms(1000);
     
@@ -870,10 +870,10 @@ void standbyMode(void){
     printf("submit the input");
     __delay_ms(3000);
     __lcd_clear();
-    printf("and advance the");
+    printf("and * to clear");
     __lcd_newline();
-    printf("next screen.");
-    __delay_ms(3000);
+    printf("your input.");
+    __delay_ms(3000);*/
     
     unsigned int drawerCount = 0;
     unsigned int i = 0;
@@ -882,19 +882,18 @@ void standbyMode(void){
     unsigned int firstIteration = 0;
     
     while (1){
-        if(drawerCount >= 8){
-            __lcd_clear();
-            __lcd_display_control(1, 0, 0);
-            printf("Maximum of 8");
-            __lcd_newline();
-            printf("drawers reached!");
-            __delay_ms(2000);
-            break;
-        }
-        else{
-            
-            if (firstIteration == 1){
+        if (firstIteration == 1){
             while (1){
+                
+            if(drawerCount >= 8){
+                __lcd_clear();
+                __lcd_display_control(1, 0, 0);
+                printf("Maximum of 8");
+                __lcd_newline();
+                printf("drawers reached!");
+                __delay_ms(2000);
+                break;
+            }
                 
             __lcd_clear();
             __lcd_display_control(1, 0, 0);
@@ -945,7 +944,7 @@ void standbyMode(void){
             }
             else if (keypress1 == 15){
                 break;
-            }
+                }
             keypress1 = 0;
             }
             break;
@@ -989,8 +988,6 @@ void standbyMode(void){
                 }
             }
     }
-    }
-    
 }
     else if (keypress == 15){
         while (1){

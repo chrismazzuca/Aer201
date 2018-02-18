@@ -178,22 +178,22 @@
 "804 /Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
 [v _standbyMode standbyMode `(v  1 e 1 0 ]
 {
-"940
+"939
 [v standbyMode@diet diet `ui  1 a 2 47 ]
-"910
-[v standbyMode@drawer drawer `ui  1 a 2 63 ]
-"985
-[v standbyMode@diet_407 diet `ui  1 a 2 49 ]
-"906
+"909
+[v standbyMode@drawer drawer `ui  1 a 2 61 ]
+"987
+[v standbyMode@diet_396 diet `ui  1 a 2 49 ]
+"905
 [v standbyMode@keypress1 keypress1 `uc  1 a 1 58 ]
-"954
-[v standbyMode@drawer_402 drawer `ui  1 a 2 65 ]
-"997
+"956
+[v standbyMode@drawer_391 drawer `ui  1 a 2 63 ]
+"1000
 [v standbyMode@whichKey whichKey `ui  1 a 2 53 ]
 "879
 [v standbyMode@i i `ui  1 a 2 67 ]
 "878
-[v standbyMode@drawerCount drawerCount `ui  1 a 2 61 ]
+[v standbyMode@drawerCount drawerCount `ui  1 a 2 65 ]
 "880
 [v standbyMode@validDrawer validDrawer `ui  1 a 2 59 ]
 "881
@@ -202,7 +202,7 @@
 [v standbyMode@firstIteration firstIteration `ui  1 a 2 51 ]
 "838
 [v standbyMode@keypress keypress `uc  1 a 1 55 ]
-"1029
+"1032
 } 0
 "749
 [v _which_drawer which_drawer `(ui  1 e 2 0 ]
