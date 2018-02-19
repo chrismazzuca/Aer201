@@ -882,7 +882,7 @@ void standbyMode(void){
     unsigned int firstIteration = 0;
     
     while (1){
-        if (firstIteration == 1){
+            if (firstIteration == 1){
             while (1){
                 
             if(drawerCount >= 8){
