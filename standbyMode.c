@@ -484,10 +484,10 @@ unsigned int food_press(unsigned int dietSum, unsigned int drawer){
         unsigned char keypress = (PORTB & 0xF0) >> 4;
         while(PORTBbits.RB1 == 1){  continue;   }
         
-        if(keypress == 14){
+        if(keypress == 15){
             break;
         }
-        else if (keypress == 15){
+        else if (keypress == 14){
             backCheck = 1;
             break;
         }
@@ -551,10 +551,10 @@ unsigned int diet_press(unsigned int drawer){
         unsigned char keypress = (PORTB & 0xF0) >> 4;
         while(PORTBbits.RB1 == 1){  continue;   }
         
-        if(keypress == 14){
+        if(keypress == 15){
             break;
         }
-        else if (keypress == 15){
+        else if (keypress == 14){
             backCheck = 1;
             break;
         }
@@ -784,7 +784,11 @@ unsigned int which_drawer(void){
         unsigned char keypress = (PORTB & 0xF0) >> 4;
         while(PORTBbits.RB1 == 1){  continue;   }
         
-        if(keypress == 14){
+        if(keypress == 15){
+            break;
+        }
+        else if (keypress == 14){
+            backCheck = 100;
             break;
         }
         else if(keypress == 0 || keypress == 1 || keypress == 2 || keypress == 4 || keypress == 5 || keypress == 6 || keypress == 8 || keypress == 9 || keypress == 10 || keypress == 13){
@@ -819,10 +823,6 @@ unsigned int which_drawer(void){
             __lcd_newline();
             count = 0;
             sum = 0;
-        }
-        else if (keypress == 15){
-            backCheck = 100;
-            break;
         }
     }
     
@@ -859,12 +859,12 @@ void standbyMode(void){
     
     /*View logs, or begin operation*/
     __lcd_clear();
-    printf("Press D to");
+    printf("Press # to");
     __lcd_newline();
     printf("view logs,");
     __delay_ms(2000);
     __lcd_clear();
-    printf("or press # to");
+    printf("or press D to");
     __lcd_newline();
     printf("begin operation.");
     
@@ -872,7 +872,7 @@ void standbyMode(void){
     unsigned char keypress = (PORTB & 0xF0) >> 4;
     while(PORTBbits.RB1 == 1){  continue;   }
     
-    if (keypress == 14){
+    if (keypress == 15){
     
     /*__lcd_clear();
     printf("Great!");
@@ -899,14 +899,19 @@ void standbyMode(void){
     __delay_ms(3000);
     
     __lcd_clear();
-    printf("Press # to");
+    printf("Press D to");
     __lcd_newline();
-    printf("submit the input");
+    printf("submit the input,");
     __delay_ms(3000);
     __lcd_clear();
-    printf("and * to clear");
+    printf("press * to clear");
     __lcd_newline();
-    printf("your input.");
+    printf("your input,");
+    __delay_ms(3000);
+    __lcd_clear();
+    printf("and press # to");
+    __lcd_newline();
+    printf("go back.");
     __delay_ms(3000);*/
     
     unsigned int drawerCount = 0;      /*Keeps track of the number of drawers inputted*/
@@ -936,13 +941,13 @@ void standbyMode(void){
             __lcd_display_control(1, 0, 0);
             printf("Another drawer?");
             __lcd_newline();
-            printf("# = Yes, D = No");
+            printf("# = No, D = Yes");
             
             while(PORTBbits.RB1 == 0){  continue;   }
             unsigned char keypress1 = (PORTB & 0xF0) >> 4;
             while(PORTBbits.RB1 == 1){  continue;   }
             
-            if (keypress1 == 14){
+            if (keypress1 == 15){
                 DIET_BACK1: __lcd_clear();
                 drawer = which_drawer();
                 /*Check if pressed back for drawer*/
@@ -998,9 +1003,9 @@ void standbyMode(void){
                     drawerCount += 1;
                 }
             }
-            else if (keypress1 == 15){
+            else if (keypress1 == 14){
                 break;
-                }
+            }
             keypress1 = 0;
             }
             break;
@@ -1065,7 +1070,7 @@ void standbyMode(void){
             }
     }
 }
-    else if (keypress == 15){
+    else if (keypress == 14){
         while (1){
             unsigned int whichKey = viewLogs();
             if (whichKey == 14){
