@@ -1001,15 +1001,6 @@ void standbyMode(void){
                     }
                     drawerInformation[drawerCount] = drawer;
                     drawerCount += 1;
-                    __lcd_clear();
-                    printf("Drawer: %i", drawer);
-                    __delay_ms(1000);
-                    __lcd_clear();
-                    printf("Diet: %i", diet);
-                    __delay_ms(1000);
-                    __lcd_clear();
-                    printf("Food: %i", food);
-                    __delay_ms(1000);
                 }
             }
             else if (keypress1 == 14){
@@ -1075,15 +1066,6 @@ void standbyMode(void){
                     }
                     drawerInformation[drawerCount] = drawer;
                     drawerCount += 1;
-                    __lcd_clear();
-                    printf("Drawer: %i", drawer);
-                    __delay_ms(1000);
-                    __lcd_clear();
-                    printf("Diet: %i", diet);
-                    __delay_ms(1000);
-                    __lcd_clear();
-                    printf("Food: %i", food);
-                    __delay_ms(1000);
                 }
             }
     }
