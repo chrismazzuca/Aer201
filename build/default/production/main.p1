@@ -2853,7 +2853,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;standbyMode.h: 75: unsigned int check_food(unsigned int sum, unsigned int foodInput[4]);
 [; ;standbyMode.h: 76: unsigned int viewLogs(void);
 [; ;standbyMode.h: 77: unsigned int get_digits(unsigned int sum);
-[; ;standbyMode.h: 78: void food_press(unsigned int dietSum, unsigned int drawer);
+[; ;standbyMode.h: 78: unsigned int food_press(unsigned int dietSum, unsigned int drawer);
 [; ;standbyMode.h: 79: unsigned int diet_press(unsigned int drawer);
 [; ;standbyMode.h: 80: unsigned int decode_drawer(unsigned int drawer);
 [; ;standbyMode.h: 81: unsigned int which_drawer(void);

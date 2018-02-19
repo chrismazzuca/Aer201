@@ -46,14 +46,14 @@
 "364
 [v _get_digits get_digits `(ui  1 e 2 0 ]
 "469
-[v _food_press food_press `(v  1 e 1 0 ]
-"521
+[v _food_press food_press `(ui  1 e 2 0 ]
+"535
 [v _diet_press diet_press `(ui  1 e 2 0 ]
-"671
+"694
 [v _decode_drawer decode_drawer `(ui  1 e 2 0 ]
-"749
+"772
 [v _which_drawer which_drawer `(ui  1 e 2 0 ]
-"804
+"838
 [v _standbyMode standbyMode `(v  1 e 1 0 ]
 "187 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
 [v _PORTB PORTB `VEuc  1 e 1 @3969 ]
@@ -175,56 +175,56 @@
 {
 "58
 } 0
-"804 /Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+"838 /Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
 [v _standbyMode standbyMode `(v  1 e 1 0 ]
 {
-"939
-[v standbyMode@diet diet `ui  1 a 2 47 ]
-"909
-[v standbyMode@drawer drawer `ui  1 a 2 61 ]
-"987
-[v standbyMode@diet_396 diet `ui  1 a 2 49 ]
-"905
-[v standbyMode@keypress1 keypress1 `uc  1 a 1 58 ]
-"956
-[v standbyMode@drawer_391 drawer `ui  1 a 2 63 ]
-"1000
-[v standbyMode@whichKey whichKey `ui  1 a 2 53 ]
-"879
-[v standbyMode@i i `ui  1 a 2 67 ]
-"878
-[v standbyMode@drawerCount drawerCount `ui  1 a 2 65 ]
-"880
-[v standbyMode@validDrawer validDrawer `ui  1 a 2 59 ]
-"881
-[v standbyMode@zero zero `ui  1 a 2 56 ]
-"882
-[v standbyMode@firstIteration firstIteration `ui  1 a 2 51 ]
-"838
-[v standbyMode@keypress keypress `uc  1 a 1 55 ]
-"1032
+"942
+[v standbyMode@keypress1 keypress1 `uc  1 a 1 54 ]
+"1070
+[v standbyMode@whichKey whichKey `ui  1 a 2 51 ]
+"917
+[v standbyMode@drawer drawer `ui  1 a 2 67 ]
+"913
+[v standbyMode@i i `ui  1 a 2 65 ]
+"918
+[v standbyMode@diet diet `ui  1 a 2 63 ]
+"912
+[v standbyMode@drawerCount drawerCount `ui  1 a 2 61 ]
+"919
+[v standbyMode@food food `ui  1 a 2 59 ]
+"915
+[v standbyMode@zero zero `ui  1 a 2 57 ]
+"914
+[v standbyMode@validDrawer validDrawer `ui  1 a 2 55 ]
+"916
+[v standbyMode@firstIteration firstIteration `ui  1 a 2 49 ]
+"872
+[v standbyMode@keypress keypress `uc  1 a 1 53 ]
+"1102
 } 0
-"749
+"772
 [v _which_drawer which_drawer `(ui  1 e 2 0 ]
 {
-"760
-[v which_drawer@keypress keypress `uc  1 a 1 33 ]
-"755
-[v which_drawer@count count `ui  1 a 2 31 ]
-"756
-[v which_drawer@sum sum `ui  1 a 2 29 ]
-"800
+"833
 [v which_drawer@rand rand `ui  1 a 2 27 ]
-"802
+"784
+[v which_drawer@keypress keypress `uc  1 a 1 35 ]
+"778
+[v which_drawer@count count `ui  1 a 2 33 ]
+"780
+[v which_drawer@backCheck backCheck `ui  1 a 2 31 ]
+"779
+[v which_drawer@sum sum `ui  1 a 2 29 ]
+"836
 } 0
-"671
+"694
 [v _decode_drawer decode_drawer `(ui  1 e 2 0 ]
 {
-"672
+"695
 [v decode_drawer@returnValue returnValue `ui  1 a 2 4 ]
-"671
+"694
 [v decode_drawer@drawer drawer `ui  1 p 2 0 ]
-"745
+"768
 } 0
 "271
 [v _viewLogs viewLogs `(ui  1 e 2 0 ]
@@ -236,16 +236,18 @@
 "360
 } 0
 "469
-[v _food_press food_press `(v  1 e 1 0 ]
+[v _food_press food_press `(ui  1 e 2 0 ]
 {
-"483
-[v food_press@keypress keypress `uc  1 a 1 44 ]
+"484
+[v food_press@keypress keypress `uc  1 a 1 46 ]
 "477
-[v food_press@foodTable foodTable `[4]ui  1 a 8 36 ]
+[v food_press@foodTable foodTable `[4]ui  1 a 8 38 ]
 "476
-[v food_press@count count `ui  1 a 2 34 ]
+[v food_press@count count `ui  1 a 2 36 ]
 "478
-[v food_press@isValid isValid `ui  1 a 2 32 ]
+[v food_press@isValid isValid `ui  1 a 2 34 ]
+"479
+[v food_press@backCheck backCheck `ui  1 a 2 32 ]
 "475
 [v food_press@tally tally `ui  1 a 2 30 ]
 "469
@@ -253,7 +255,7 @@
 [v food_press@drawer drawer `ui  1 p 2 26 ]
 "476
 [v food_press@F3040 F3040 `[4]ui  1 s 8 F3040 ]
-"517
+"531
 } 0
 "364
 [v _get_digits get_digits `(ui  1 e 2 0 ]
@@ -274,26 +276,28 @@
 [v check_food@foodInput foodInput `*.39ui  1 p 2 2 ]
 "268
 } 0
-"521
+"535
 [v _diet_press diet_press `(ui  1 e 2 0 ]
 {
-"536
-[v diet_press@keypress keypress `uc  1 a 1 36 ]
-"532
-[v diet_press@dietTable dietTable `[4]ui  1 a 8 37 ]
-"530
-[v diet_press@sum sum `ui  1 a 2 34 ]
-"528
-[v diet_press@count count `ui  1 a 2 32 ]
-"531
+"551
+[v diet_press@keypress keypress `uc  1 a 1 38 ]
+"546
+[v diet_press@dietTable dietTable `[4]ui  1 a 8 39 ]
+"544
+[v diet_press@sum sum `ui  1 a 2 36 ]
+"542
+[v diet_press@count count `ui  1 a 2 34 ]
+"547
+[v diet_press@backCheck backCheck `ui  1 a 2 32 ]
+"545
 [v diet_press@i i `ui  1 a 2 30 ]
-"529
+"543
 [v diet_press@previous previous `ui  1 a 2 28 ]
-"521
+"535
 [v diet_press@drawer drawer `ui  1 p 2 24 ]
-"531
-[v diet_press@F3054 F3054 `[4]ui  1 s 8 F3054 ]
-"667
+"545
+[v diet_press@F3055 F3055 `[4]ui  1 s 8 F3055 ]
+"690
 } 0
 "464 /Applications/microchip/xc8/v1.45/sources/common/doprnt.c
 [v _printf printf `(i  1 e 2 0 ]

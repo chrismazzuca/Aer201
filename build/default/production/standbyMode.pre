@@ -3845,7 +3845,7 @@ void lcdInst(char data);
 unsigned int check_food(unsigned int sum, unsigned int foodInput[4]);
 unsigned int viewLogs(void);
 unsigned int get_digits(unsigned int sum);
-void food_press(unsigned int dietSum, unsigned int drawer);
+unsigned int food_press(unsigned int dietSum, unsigned int drawer);
 unsigned int diet_press(unsigned int drawer);
 unsigned int decode_drawer(unsigned int drawer);
 unsigned int which_drawer(void);
@@ -3924,21 +3924,21 @@ break;
 
 case 7:
 if (foodInput[0] == 1 || foodInput[0] == 2){
-returnValue = 1;
+returnValue = 2;
 }
 break;
 
 
 case 12:
 if (foodInput[0] == 1 || foodInput[0] == 2 || foodInput[0] == 3){
-returnValue = 1;
+returnValue = 3;
 }
 break;
 
 
 case 10:
 if (foodInput[0] != 3 && foodInput[1] != 3 && foodInput[0] != 0 && foodInput[1] != 0){
-returnValue = 1;
+returnValue = 4;
 }
 break;
 
@@ -3946,11 +3946,11 @@ break;
 case 15:
 if (foodInput[1] == 3){
 if (foodInput[0] == 1){
-returnValue = 1;
+returnValue = 5;
 }
 }
 else if (foodInput[0] != 3 && foodInput[0] != 0){
-returnValue = 1;
+returnValue = 5;
 }
 break;
 
@@ -3958,11 +3958,11 @@ break;
 case 19:
 if (foodInput[1] == 3){
 if (foodInput[0] == 1){
-returnValue = 1;
+returnValue = 6;
 }
 }
 else if (foodInput[0] != 3 && foodInput[0] != 0){
-returnValue = 1;
+returnValue = 6;
 }
 break;
 
@@ -3970,7 +3970,7 @@ break;
 case 13:
 if (foodInput[0] == 1 && foodInput[1] == 1){
 if (foodInput[2] == 1 || foodInput[2] == 2){
-returnValue = 1;
+returnValue = 7;
 }
 }
 break;
@@ -3979,7 +3979,7 @@ break;
 case 18:
 if (foodInput[0] == 1 && foodInput[1] == 1){
 if (foodInput[2] == 1 || foodInput[2] == 2){
-returnValue = 1;
+returnValue = 8;
 }
 }
 break;
@@ -3988,7 +3988,7 @@ break;
 case 17:
 if (foodInput[1] == 1 && foodInput[2] == 1){
 if (foodInput[0] == 1 || foodInput[0] == 2){
-returnValue = 1;
+returnValue = 9;
 }
 }
 break;
@@ -3996,32 +3996,32 @@ break;
 
 case 27:
 if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 1){
-returnValue = 1;
+returnValue = 10;
 }
 else if (foodInput[0] == 2 && foodInput[1] == 1 && foodInput[2] == 1){
-returnValue = 1;
+returnValue = 10;
 }
 else if (foodInput[0] == 1 && foodInput[1] == 2 && foodInput[2] == 1){
-returnValue = 1;
+returnValue = 10;
 }
 else if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 2){
-returnValue = 1;
+returnValue = 10;
 }
 break;
 
 
 case 22:
 if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 1){
-returnValue = 1;
+returnValue = 11;
 }
 else if (foodInput[0] == 2 && foodInput[1] == 1 && foodInput[2] == 1){
-returnValue = 1;
+returnValue = 11;
 }
 else if (foodInput[0] == 1 && foodInput[1] == 2 && foodInput[2] == 1){
-returnValue = 1;
+returnValue = 11;
 }
 else if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 2){
-returnValue = 1;
+returnValue = 11;
 }
 break;
 
@@ -4029,7 +4029,7 @@ break;
 case 26:
 if (foodInput[0] == 1 && foodInput[1] == 1){
 if (foodInput[2] == 1 || foodInput[2] == 2){
-returnValue = 1;
+returnValue = 12;
 }
 }
 break;
@@ -4037,51 +4037,51 @@ break;
 
 case 31:
 if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 1){
-returnValue = 1;
+returnValue = 13;
 }
 else if (foodInput[0] == 2 && foodInput[1] == 1 && foodInput[2] == 1){
-returnValue = 1;
+returnValue = 13;
 }
 else if (foodInput[0] == 1 && foodInput[1] == 2 && foodInput[2] == 1){
-returnValue = 1;
+returnValue = 13;
 }
 else if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 2){
-returnValue = 1;
+returnValue = 13;
 }
 break;
 
 
 case 25:
 if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 1 && foodInput[3] == 1){
-returnValue = 1;
+returnValue = 14;
 }
 break;
 
 
 case 29:
 if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 1 && foodInput[3] == 1){
-returnValue = 1;
+returnValue = 15;
 }
 break;
 
 
 case 34:
 if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 1 && foodInput[3] == 1){
-returnValue = 1;
+returnValue = 16;
 }
 break;
 
 
 case 39:
 if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 1 && foodInput[3] == 1){
-returnValue = 1;
+returnValue = 17;
 }
 break;
 
 
 case 43:
 if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 1 && foodInput[3] == 1){
-returnValue = 1;
+returnValue = 18;
 }
 break;
 
@@ -4291,7 +4291,7 @@ return count;
 
 
 
-void food_press(unsigned int dietSum, unsigned int drawer){
+unsigned int food_press(unsigned int dietSum, unsigned int drawer){
 
 START: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 printf("Drawer %i food:", drawer);
@@ -4301,6 +4301,7 @@ unsigned int tally = 0;
 unsigned int count = 0;
 unsigned int foodTable[4] = {0, 0, 0, 0};
 unsigned int isValid = 0;
+unsigned int backCheck = 0;
 tally = get_digits(dietSum);
 
 while(1){
@@ -4309,6 +4310,10 @@ unsigned char keypress = (PORTB & 0xF0) >> 4;
 while(PORTBbits.RB1 == 1){ continue; }
 
 if(keypress == 14){
+break;
+}
+else if (keypress == 15){
+backCheck = 1;
 break;
 }
 else if (keypress == 0 || keypress == 1 || keypress == 2){
@@ -4329,6 +4334,11 @@ foodTable[2] = 0;
 foodTable[3] = 0;
 }
 }
+
+if (backCheck == 1){
+return 100;
+}
+else {
 isValid = check_food(dietSum, foodTable);
 
 if (isValid == 0){
@@ -4338,6 +4348,10 @@ lcdInst(0xC0);;
 printf("Try again.");
 _delay((unsigned long)((1000)*(40000000/4000.0)));
 goto START;
+}
+else {
+return isValid;
+}
 }
 }
 
@@ -4355,6 +4369,7 @@ unsigned int previous = 0;
 unsigned int sum = 0;
 unsigned int i = 0;
 unsigned int dietTable[4] = {0, 0, 0, 0};
+unsigned int backCheck = 0;
 
 while(1){
 while(PORTBbits.RB1 == 0){ continue; }
@@ -4362,6 +4377,10 @@ unsigned char keypress = (PORTB & 0xF0) >> 4;
 while(PORTBbits.RB1 == 1){ continue; }
 
 if(keypress == 14){
+break;
+}
+else if (keypress == 15){
+backCheck = 1;
 break;
 }
 else if (keypress == 12){
@@ -4388,8 +4407,12 @@ count += 1;
 }
 }
 
+if (backCheck == 1){
+sum = 100;
+}
 
-if (dietTable[0] == 12 && dietTable[1] == 0 && dietTable[2] == 0 && dietTable[3] == 0){
+
+else if (dietTable[0] == 12 && dietTable[1] == 0 && dietTable[2] == 0 && dietTable[3] == 0){
 sum = 12;
 }
 
@@ -4579,6 +4602,7 @@ lcdInst(0xC0);;
 
 unsigned int count = 0;
 unsigned int sum = 0;
+unsigned int backCheck = 0;
 
 while(1){
 while(PORTBbits.RB1 == 0){ continue; }
@@ -4621,9 +4645,19 @@ lcdInst(0xC0);;
 count = 0;
 sum = 0;
 }
+else if (keypress == 15){
+backCheck = 100;
+break;
 }
+}
+
+if (backCheck == 100){
+return backCheck;
+}
+else{
 unsigned int rand = decode_drawer(sum);
 return rand;
+}
 }
 
 void standbyMode(void){
@@ -4665,12 +4699,15 @@ while(PORTBbits.RB1 == 1){ continue; }
 
 if (keypress == 14){
 
-# 878
+# 912
 unsigned int drawerCount = 0;
 unsigned int i = 0;
 unsigned int validDrawer = 0;
 unsigned int zero = 0;
 unsigned int firstIteration = 0;
+unsigned int drawer = 0;
+unsigned int diet = 0;
+unsigned int food = 0;
 
 while (1){
 if (firstIteration == 1){
@@ -4686,7 +4723,7 @@ _delay((unsigned long)((2000)*(40000000/4000.0)));
 break;
 }
 
-lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+DRAWER_BACK: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
 printf("Another drawer?");
 lcdInst(0xC0);;
@@ -4697,7 +4734,14 @@ unsigned char keypress1 = (PORTB & 0xF0) >> 4;
 while(PORTBbits.RB1 == 1){ continue; }
 
 if (keypress1 == 14){
-unsigned int drawer = which_drawer();
+DIET_BACK1: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+drawer = which_drawer();
+
+if (drawer == 100){
+drawer = 0;
+goto DRAWER_BACK;
+}
+
 for (i=0; i<8; i++){
 if (drawerInformation[i] == drawer){
 validDrawer = 1;
@@ -4714,6 +4758,7 @@ printf("No drawer");
 lcdInst(0xC0);;
 printf("number pressed.");
 _delay((unsigned long)((2000)*(40000000/4000.0)));
+zero = 0;
 }
 else{
 lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
@@ -4727,13 +4772,21 @@ validDrawer = 0;
 continue;
 }
 else{
-unsigned int diet = diet_press(drawer);
-food_press(diet, drawer);
+FOOD_BACK1: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+diet = diet_press(drawer);
+if (diet == 100){
+diet = 0;
+goto DIET_BACK1;
+}
+
+food = food_press(diet, drawer);
+if (food == 100){
+diet = 0;
+food = 0;
+goto FOOD_BACK1;
+}
 drawerInformation[drawerCount] = drawer;
 drawerCount += 1;
-lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-printf("%i", drawerCount);
-_delay((unsigned long)((1000)*(40000000/4000.0)));
 }
 }
 else if (keypress1 == 15){
@@ -4744,7 +4797,15 @@ keypress1 = 0;
 break;
 }
 else{
-unsigned int drawer = which_drawer();
+DIET_BACK2: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+drawer = which_drawer();
+
+if (drawer == 100){
+drawer = 0;
+firstIteration = 1;
+goto DRAWER_BACK;
+}
+
 firstIteration = 1;
 for (i=0; i<8; i++){
 if (drawerInformation[i] == drawer){
@@ -4762,6 +4823,7 @@ printf("No drawer");
 lcdInst(0xC0);;
 printf("number pressed.");
 _delay((unsigned long)((2000)*(40000000/4000.0)));
+zero = 0;
 }
 else{
 lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
@@ -4775,13 +4837,21 @@ validDrawer = 0;
 continue;
 }
 else{
-unsigned int diet = diet_press(drawer);
-food_press(diet, drawer);
+FOOD_BACK2: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+diet = diet_press(drawer);
+if (diet == 100){
+diet = 0;
+goto DIET_BACK2;
+}
+
+food = food_press(diet, drawer);
+if (food == 100){
+diet = 0;
+food = 0;
+goto FOOD_BACK2;
+}
 drawerInformation[drawerCount] = drawer;
 drawerCount += 1;
-lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-printf("%i", drawerCount);
-_delay((unsigned long)((1000)*(40000000/4000.0)));
 }
 }
 }

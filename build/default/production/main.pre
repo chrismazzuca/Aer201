@@ -3845,7 +3845,7 @@ void lcdInst(char data);
 unsigned int check_food(unsigned int sum, unsigned int foodInput[4]);
 unsigned int viewLogs(void);
 unsigned int get_digits(unsigned int sum);
-void food_press(unsigned int dietSum, unsigned int drawer);
+unsigned int food_press(unsigned int dietSum, unsigned int drawer);
 unsigned int diet_press(unsigned int drawer);
 unsigned int decode_drawer(unsigned int drawer);
 unsigned int which_drawer(void);
