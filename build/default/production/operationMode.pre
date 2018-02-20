@@ -3836,18 +3836,7 @@ unsigned int checkCount(unsigned int pieceType);
 unsigned int trapDoor(unsigned int type, unsigned int direction);
 void mainOperation(void);
 
-# 11 "operationMode.c"
-void updateEEPROM(unsigned int data){
-
-}
-
-
-unsigned int readEEPROM(void){
-
-return 1;
-}
-
-
+# 12 "operationMode.c"
 void configTimer(unsigned int configure){
 
 }
@@ -3902,5 +3891,5 @@ return 1;
 
 void mainOperation(void){
 
-# 98
+# 88
 }

@@ -2789,153 +2789,128 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;operationMode.h: 27: unsigned int checkCount(unsigned int pieceType);
 [; ;operationMode.h: 28: unsigned int trapDoor(unsigned int type, unsigned int direction);
 [; ;operationMode.h: 29: void mainOperation(void);
-"11 operationMode.c
-[v _updateEEPROM `(v ~T0 @X0 1 ef1`ui ]
-{
-[; ;operationMode.c: 11: void updateEEPROM(unsigned int data){
-[e :U _updateEEPROM ]
-[v _data `ui ~T0 @X0 1 r1 ]
-[f ]
-[; ;operationMode.c: 13: }
-"13
-[e :UE 266 ]
-}
-"16
-[v _readEEPROM `(ui ~T0 @X0 1 ef ]
-{
-[; ;operationMode.c: 16: unsigned int readEEPROM(void){
-[e :U _readEEPROM ]
-[f ]
-[; ;operationMode.c: 18: return 1;
-"18
-[e ) -> -> 1 `i `ui ]
-[e $UE 267  ]
-[; ;operationMode.c: 19: }
-"19
-[e :UE 267 ]
-}
-"22
+"12 operationMode.c
 [v _configTimer `(v ~T0 @X0 1 ef1`ui ]
 {
-[; ;operationMode.c: 22: void configTimer(unsigned int configure){
+[; ;operationMode.c: 12: void configTimer(unsigned int configure){
 [e :U _configTimer ]
 [v _configure `ui ~T0 @X0 1 r1 ]
 [f ]
-[; ;operationMode.c: 24: }
-"24
-[e :UE 268 ]
+[; ;operationMode.c: 14: }
+"14
+[e :UE 266 ]
 }
-"27
+"17
 [v _verticalStepper `(v ~T0 @X0 1 ef2`ui`ui ]
 {
-[; ;operationMode.c: 27: void verticalStepper(unsigned int rotations, unsigned int direction){
+[; ;operationMode.c: 17: void verticalStepper(unsigned int rotations, unsigned int direction){
 [e :U _verticalStepper ]
 [v _rotations `ui ~T0 @X0 1 r1 ]
 [v _direction `ui ~T0 @X0 1 r2 ]
 [f ]
-[; ;operationMode.c: 30: }
-"30
-[e :UE 269 ]
+[; ;operationMode.c: 20: }
+"20
+[e :UE 267 ]
 }
-"33
+"23
 [v _horizontalStepper `(ui ~T0 @X0 1 ef2`ui`ui ]
 {
-[; ;operationMode.c: 33: unsigned int horizontalStepper(unsigned int rotations, unsigned int direction){
+[; ;operationMode.c: 23: unsigned int horizontalStepper(unsigned int rotations, unsigned int direction){
 [e :U _horizontalStepper ]
 [v _rotations `ui ~T0 @X0 1 r1 ]
 [v _direction `ui ~T0 @X0 1 r2 ]
 [f ]
-[; ;operationMode.c: 36: return 1;
-"36
+[; ;operationMode.c: 26: return 1;
+"26
 [e ) -> -> 1 `i `ui ]
-[e $UE 270  ]
-[; ;operationMode.c: 37: }
-"37
-[e :UE 270 ]
+[e $UE 268  ]
+[; ;operationMode.c: 27: }
+"27
+[e :UE 268 ]
 }
-"40
+"30
 [v _detectTape `(ui ~T0 @X0 1 ef ]
 {
-[; ;operationMode.c: 40: unsigned int detectTape(void){
+[; ;operationMode.c: 30: unsigned int detectTape(void){
 [e :U _detectTape ]
 [f ]
-[; ;operationMode.c: 42: return 1;
-"42
+[; ;operationMode.c: 32: return 1;
+"32
 [e ) -> -> 1 `i `ui ]
-[e $UE 271  ]
-[; ;operationMode.c: 43: }
-"43
-[e :UE 271 ]
+[e $UE 269  ]
+[; ;operationMode.c: 33: }
+"33
+[e :UE 269 ]
 }
-"46
+"36
 [v _configDrawer `(ui ~T0 @X0 1 ef1`ui ]
 {
-[; ;operationMode.c: 46: unsigned int configDrawer(unsigned int direction){
+[; ;operationMode.c: 36: unsigned int configDrawer(unsigned int direction){
 [e :U _configDrawer ]
 [v _direction `ui ~T0 @X0 1 r1 ]
 [f ]
-[; ;operationMode.c: 49: return 1;
-"49
+[; ;operationMode.c: 39: return 1;
+"39
 [e ) -> -> 1 `i `ui ]
-[e $UE 272  ]
-[; ;operationMode.c: 50: }
-"50
-[e :UE 272 ]
+[e $UE 270  ]
+[; ;operationMode.c: 40: }
+"40
+[e :UE 270 ]
 }
-"53
+"43
 [v _distributePieces `(ui ~T0 @X0 1 ef2`ui`ui ]
 {
-[; ;operationMode.c: 53: unsigned int distributePieces(unsigned int count, unsigned int pieceType){
+[; ;operationMode.c: 43: unsigned int distributePieces(unsigned int count, unsigned int pieceType){
 [e :U _distributePieces ]
 [v _count `ui ~T0 @X0 1 r1 ]
 [v _pieceType `ui ~T0 @X0 1 r2 ]
 [f ]
-[; ;operationMode.c: 56: return count;
-"56
+[; ;operationMode.c: 46: return count;
+"46
 [e ) _count ]
-[e $UE 273  ]
-[; ;operationMode.c: 57: }
-"57
-[e :UE 273 ]
+[e $UE 271  ]
+[; ;operationMode.c: 47: }
+"47
+[e :UE 271 ]
 }
-"60
+"50
 [v _checkCount `(ui ~T0 @X0 1 ef1`ui ]
 {
-[; ;operationMode.c: 60: unsigned int checkCount(unsigned int pieceType){
+[; ;operationMode.c: 50: unsigned int checkCount(unsigned int pieceType){
 [e :U _checkCount ]
 [v _pieceType `ui ~T0 @X0 1 r1 ]
 [f ]
-[; ;operationMode.c: 62: return 1;
-"62
+[; ;operationMode.c: 52: return 1;
+"52
 [e ) -> -> 1 `i `ui ]
-[e $UE 274  ]
-[; ;operationMode.c: 63: }
-"63
-[e :UE 274 ]
+[e $UE 272  ]
+[; ;operationMode.c: 53: }
+"53
+[e :UE 272 ]
 }
-"66
+"56
 [v _trapDoor `(ui ~T0 @X0 1 ef2`ui`ui ]
 {
-[; ;operationMode.c: 66: unsigned int trapDoor(unsigned int type, unsigned int direction){
+[; ;operationMode.c: 56: unsigned int trapDoor(unsigned int type, unsigned int direction){
 [e :U _trapDoor ]
 [v _type `ui ~T0 @X0 1 r1 ]
 [v _direction `ui ~T0 @X0 1 r2 ]
 [f ]
-[; ;operationMode.c: 70: return 1;
-"70
+[; ;operationMode.c: 60: return 1;
+"60
 [e ) -> -> 1 `i `ui ]
-[e $UE 275  ]
-[; ;operationMode.c: 71: }
-"71
-[e :UE 275 ]
+[e $UE 273  ]
+[; ;operationMode.c: 61: }
+"61
+[e :UE 273 ]
 }
-"74
+"64
 [v _mainOperation `(v ~T0 @X0 1 ef ]
 {
-[; ;operationMode.c: 74: void mainOperation(void){
+[; ;operationMode.c: 64: void mainOperation(void){
 [e :U _mainOperation ]
 [f ]
-[; ;operationMode.c: 98: }
-"98
-[e :UE 276 ]
+[; ;operationMode.c: 88: }
+"88
+[e :UE 274 ]
 }
