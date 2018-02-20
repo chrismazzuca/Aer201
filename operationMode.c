@@ -6,17 +6,7 @@
  */
 
 #include "operationMode.h"
-
-/*Function to update EEPROM*/
-void updateEEPROM(unsigned int data){
-    /*Function takes in an integer "data" and stores it in EEPROM*/
-}
-
-/*Function to read EEPROM*/
-unsigned int readEEPROM(void){
-    /*Function returns data previously stored in EEPROM*/
-    return 1;
-}
+//#include "EEPROMstorage.h"
 
 /*Function will start/stop the timer whenever required*/
 void configTimer(unsigned int configure){
@@ -72,7 +62,7 @@ unsigned int trapDoor(unsigned int type, unsigned int direction){
 
 /*This function will be called in main.c, and holds the code for the entire operation*/
 void mainOperation(void){
-    /* updateEEPROM(data);                        Loop through and store data from the inputs, date and time
+    /* writeEEPROM(address, data);               Loop through and store data from the inputs, date and time
      * configTimer(1);                            Start the timer
      * 
      * 
@@ -92,7 +82,7 @@ void mainOperation(void){
      * 
      * Continue this loop until the drawers are properly filled:
      * configTimer(0);                            Stop the timer
-     * updateEEPROM(data);                        Store duration and remaining pieces in EEPROM
+     * writeEEPROM(address, data);               Store duration and remaining pieces in EEPROM
      * trapDoor(type, direction);                 Release all pieces to the reservoirs
      */
 }

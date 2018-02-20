@@ -6,6 +6,7 @@
  */
 
 #include "standbyMode.h"
+#include "EEPROMstorage.h"
 
 const char input[] = "123R456F789L*0#D";
 const char keys[] = "123A456B789C*0#D";
@@ -848,6 +849,20 @@ void standbyMode(void){
     while(PORTBbits.RB1 == 0){  
         continue;   
     }
+    
+    writeEEPROM(0x0, 0x1);
+    unsigned char display = readEEPROM(0x0);
+    __lcd_clear();
+    printf("Stored value: ");
+    putch(input[display]);
+    __delay_ms(2000);
+    
+    writeEEPROM(0x0, 0x3);
+    unsigned char display = readEEPROM(0x0);
+    __lcd_clear();
+    printf("Stored value: ");
+    putch(input[display]);
+    __delay_ms(2000);
     
     /* Welcome message */
     __lcd_clear();
