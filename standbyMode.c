@@ -269,47 +269,127 @@ unsigned int check_food(unsigned int sum, unsigned int foodInput[4]){
 }
 
 
+/*Sub function used to verify keypress in viewLogs()*/
+unsigned int verifyKeypress(unsigned char logNumber, unsigned int keypress){
+    unsigned int i = 0;
+    unsigned int returnVal = 0;
+    
+    for (i=0; i<logNumber; i++){
+        if (keypress == i){
+            returnVal = 1;
+        }
+    }
+    return returnVal;
+}
+
+
+/*Main function called to view logs*/
 unsigned int viewLogs(void){
-    __lcd_clear();
-    printf("5 previous logs");
+    
+    unsigned char logNumber = readEEPROM(250);
+    unsigned int logView = 0;
+    unsigned int checkLog = 0;
+    unsigned int returnVal = 0;
+    
+    if (logNumber == 0){
+        __lcd_clear();
+        printf("No logs");
         __lcd_newline();
         printf("available.");
         __delay_ms(2000);
-        __lcd_clear();
-        printf("Please input log");
-        __lcd_newline();
-        printf("number: ");
-        
-        while (1){
-            while(PORTBbits.RB1 == 0){  continue;   }
-            unsigned char keypress2 = (PORTB & 0xF0) >> 4;
-            while(PORTBbits.RB1 == 1){  continue;   }
+        return 14;
+    }
+    else {
+        if (logNumber == 1){
+            logView = 1;
             
-            if (keypress2 == 0 || keypress2 == 1 || keypress2 == 2 || keypress2 == 4 || keypress2 == 5){
-                putch(keys[keypress2]);
-                __delay_ms(1000);
-                break;
+            __lcd_clear();
+            printf("1 previous log");
+            __lcd_newline();
+            printf("available.");
+            __delay_ms(2000);
+
+            __lcd_clear();
+            printf("Press any key to");
+            __lcd_newline();
+            printf("move forward.");
+            __delay_ms(500);
+            
+            while(PORTBbits.RB1 == 0){  
+                continue;   
             }
         }
+        else {
+            __lcd_clear();
+            printf("%i previous logs", logNumber);
+            __lcd_newline();
+            printf("available.");
+            __delay_ms(2000);
+            __lcd_clear();
+            printf("Please input log");
+            __lcd_newline();
+            printf("number: ");
         
-        __lcd_clear();
-        printf("Great!");
-        __delay_ms(1000);
-        __lcd_clear();
-        printf("Press any key to");
-        __lcd_newline();
-        printf("move on.");
-        __delay_ms(500);
+            while (1){
+                while(PORTBbits.RB1 == 0){  continue;   }
+                unsigned char keypress2 = (PORTB & 0xF0) >> 4;
+                while(PORTBbits.RB1 == 1){  continue;   }
+            
+                if (keypress2 == 0 || keypress2 == 1 || keypress2 == 2 || keypress2 == 4){
+                    checkLog = verifyKeypress(logNumber, keypress2);
+                    if (checkLog == 1){
+                        putch(keys[keypress2]);
+                        logView = keypress2;
+                        __delay_ms(1000);
+                        break;
+                    }
+                }
+            }
         
-        while(PORTBbits.RB1 == 0){  
-            continue;   
+            __lcd_clear();
+            printf("Great!");
+            __delay_ms(1000);
+            __lcd_clear();
+            printf("Press any key to");
+            __lcd_newline();
+            printf("move forward.");
+            __delay_ms(500);
+            
+            while(PORTBbits.RB1 == 0){  
+                continue;   
+            }
         }
+        returnVal = displayLogs(logNumber);
+        return returnVal;
+    }
+}
+
+
+/*Takes in the log number, and displays information gathered from EEPROM*/
+unsigned int displayLogs(unsigned int logNumber){
+    unsigned int n = (logNumber - 1)* 54;
+    unsigned int operationTime = readEEPROM(3+n);
+    unsigned int roundPieces = readEEPROM(4+n);
+    unsigned int flatPieces = readEEPROM(5+n);
+    unsigned int longPieces = readEEPROM(6+n);
+    unsigned int markedDrawer1 = readEEPROM(7+n);
+    unsigned int markedDrawer2 = readEEPROM(8+n);
+    unsigned int markedDrawer3 = readEEPROM(9+n);
+    unsigned int markedDrawer4 = readEEPROM(10+n);
         
+        unsigned int minutes = operationTime/60;
+        unsigned int seconds = operationTime%60;
         __lcd_clear();
         printf("Operation time:");
         __lcd_newline();
-        printf("2:39");
-        __delay_ms(500);
+        if (seconds == 0){
+            printf("%i:%i0", minutes, seconds);
+            __delay_ms(500);
+        }
+        else{
+            printf("%i:%i", minutes, seconds);
+            __delay_ms(500);
+        }
         
         while(PORTBbits.RB1 == 0){  
             continue;   
@@ -318,8 +398,26 @@ unsigned int viewLogs(void){
         __lcd_clear();
         printf("Marked drawers:");
         __lcd_newline();
-        printf("1, 13");
-        __delay_ms(500);
+        
+        if (markedDrawer4 == 0 && markedDrawer3 == 0 && markedDrawer2 == 0){
+            printf("%i", markedDrawer1);
+            __delay_ms(500);
+        }
+        
+        else if (markedDrawer4 == 0 && markedDrawer3 == 0){
+            printf("%i, %i", markedDrawer1, markedDrawer2);
+            __delay_ms(500);
+        }
+        
+        else if (markedDrawer4 == 0){
+            printf("%i, %i, %i", markedDrawer1, markedDrawer2, markedDrawer3);
+            __delay_ms(500);
+        }
+        
+        else {
+            printf("%i, %i, %i, %i", markedDrawer1, markedDrawer2, markedDrawer3, markedDrawer4);
+            __delay_ms(500);
+        }
         
         while(PORTBbits.RB1 == 0){  
             continue;   
@@ -328,7 +426,7 @@ unsigned int viewLogs(void){
         __lcd_clear();
         printf("Remaining pieces:");
         __lcd_newline();
-        printf("R:3  F:12  L:10");
+        printf("R:%i  F:%i  L:%i", roundPieces, flatPieces, longPieces);
         __delay_ms(500);
         
         while(PORTBbits.RB1 == 0){  
@@ -336,7 +434,7 @@ unsigned int viewLogs(void){
         }
         
         __lcd_clear();
-        printf("Drawer Summary:");
+        printf("Input Summary:");
         __delay_ms(500);
         
         while(PORTBbits.RB1 == 0){  
@@ -352,7 +450,7 @@ unsigned int viewLogs(void){
         __lcd_clear();
         printf("Another log?");
         __lcd_newline();
-        printf("# = Yes, D = No");
+        printf("# = No, D = Yes");
             
         while(PORTBbits.RB1 == 0){  continue;   }
         unsigned char keypress3 = (PORTB & 0xF0) >> 4;
@@ -850,6 +948,15 @@ void standbyMode(void){
         continue;   
     }
     
+    writeEEPROM(250, 1);
+    writeEEPROM(3, 91);
+    writeEEPROM(4, 3);
+    writeEEPROM(5, 15);
+    writeEEPROM(6, 8);
+    writeEEPROM(7, 12);
+    writeEEPROM(8, 1);
+    writeEEPROM(9, 13);
+    writeEEPROM(10, 0);
     writeEEPROM(0x0, 0x1);
     unsigned char display = readEEPROM(0x0);
     __lcd_clear();
@@ -1088,10 +1195,10 @@ void standbyMode(void){
     else if (keypress == 14){
         while (1){
             unsigned int whichKey = viewLogs();
-            if (whichKey == 14){
+            if (whichKey == 15){
                 continue;
             }
-            else if (whichKey == 15){
+            else if (whichKey == 14){
                 __lcd_clear();
                 __lcd_display_control(1, 0, 0);
                 printf("Rebooting.");
@@ -1108,7 +1215,6 @@ void standbyMode(void){
                 break;
             }
         }
-        
     }
     
     else {
