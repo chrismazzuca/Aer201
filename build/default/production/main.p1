@@ -26,7 +26,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ADCON1 `Vuc ~T0 @X0 0 e@4033 ]
 "71 standbyMode.h
 [v _initLCD `(v ~T0 @X0 0 ef ]
-"82
+"84
 [v _standbyMode `(v ~T0 @X0 0 ef ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
@@ -2851,13 +2851,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;standbyMode.h: 73: void lcdNibble(char data);
 [; ;standbyMode.h: 74: void lcdInst(char data);
 [; ;standbyMode.h: 75: unsigned int check_food(unsigned int sum, unsigned int foodInput[4]);
-[; ;standbyMode.h: 76: unsigned int viewLogs(void);
-[; ;standbyMode.h: 77: unsigned int get_digits(unsigned int sum);
-[; ;standbyMode.h: 78: unsigned int food_press(unsigned int dietSum, unsigned int drawer);
-[; ;standbyMode.h: 79: unsigned int diet_press(unsigned int drawer);
-[; ;standbyMode.h: 80: unsigned int decode_drawer(unsigned int drawer);
-[; ;standbyMode.h: 81: unsigned int which_drawer(void);
-[; ;standbyMode.h: 82: void standbyMode(void);
+[; ;standbyMode.h: 76: unsigned int verifyKeypress(unsigned char logNumber, unsigned int keypress);
+[; ;standbyMode.h: 77: unsigned int displayLogs(unsigned int logNumber);
+[; ;standbyMode.h: 78: unsigned int viewLogs(void);
+[; ;standbyMode.h: 79: unsigned int get_digits(unsigned int sum);
+[; ;standbyMode.h: 80: unsigned int food_press(unsigned int dietSum, unsigned int drawer);
+[; ;standbyMode.h: 81: unsigned int diet_press(unsigned int drawer);
+[; ;standbyMode.h: 82: unsigned int decode_drawer(unsigned int drawer);
+[; ;standbyMode.h: 83: unsigned int which_drawer(void);
+[; ;standbyMode.h: 84: void standbyMode(void);
 [v $root$_main `(v ~T0 @X0 0 e ]
 "13 main.c
 [v _main `(v ~T0 @X0 1 ef ]

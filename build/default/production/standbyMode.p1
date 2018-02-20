@@ -32,6 +32,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S257 . . . . ]
 "6404
 [v _INTCONbits `VS257 ~T0 @X0 0 e@4082 ]
+"15 EEPROMstorage.h
+[v _readEEPROM `(uc ~T0 @X0 0 ef1`uc ]
 "195 /Applications/microchip/xc8/v1.45/include/stdio.h
 [v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 "193 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
@@ -53,10 +55,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _PORTBbits `VS10 ~T0 @X0 0 e@3969 ]
 "187
 [v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
+"77 standbyMode.h
+[v _displayLogs `(ui ~T0 @X0 0 ef1`ui ]
 "14 EEPROMstorage.h
 [v _writeEEPROM `(v ~T0 @X0 0 ef2`uc`uc ]
-"15
-[v _readEEPROM `(uc ~T0 @X0 0 ef1`uc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -2880,13 +2882,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;standbyMode.h: 73: void lcdNibble(char data);
 [; ;standbyMode.h: 74: void lcdInst(char data);
 [; ;standbyMode.h: 75: unsigned int check_food(unsigned int sum, unsigned int foodInput[4]);
-[; ;standbyMode.h: 76: unsigned int viewLogs(void);
-[; ;standbyMode.h: 77: unsigned int get_digits(unsigned int sum);
-[; ;standbyMode.h: 78: unsigned int food_press(unsigned int dietSum, unsigned int drawer);
-[; ;standbyMode.h: 79: unsigned int diet_press(unsigned int drawer);
-[; ;standbyMode.h: 80: unsigned int decode_drawer(unsigned int drawer);
-[; ;standbyMode.h: 81: unsigned int which_drawer(void);
-[; ;standbyMode.h: 82: void standbyMode(void);
+[; ;standbyMode.h: 76: unsigned int verifyKeypress(unsigned char logNumber, unsigned int keypress);
+[; ;standbyMode.h: 77: unsigned int displayLogs(unsigned int logNumber);
+[; ;standbyMode.h: 78: unsigned int viewLogs(void);
+[; ;standbyMode.h: 79: unsigned int get_digits(unsigned int sum);
+[; ;standbyMode.h: 80: unsigned int food_press(unsigned int dietSum, unsigned int drawer);
+[; ;standbyMode.h: 81: unsigned int diet_press(unsigned int drawer);
+[; ;standbyMode.h: 82: unsigned int decode_drawer(unsigned int drawer);
+[; ;standbyMode.h: 83: unsigned int which_drawer(void);
+[; ;standbyMode.h: 84: void standbyMode(void);
 [; ;EEPROMstorage.h: 14: void writeEEPROM(unsigned char address, unsigned char data);
 [; ;EEPROMstorage.h: 15: unsigned char readEEPROM(unsigned char address);
 "11 standbyMode.c
@@ -3628,565 +3632,887 @@ Version 3.2 HI-TECH Software Intermediate Code
 "269
 [e :UE 270 ]
 }
-"272
+"273
+[v _verifyKeypress `(ui ~T0 @X0 1 ef2`uc`ui ]
+{
+[; ;standbyMode.c: 273: unsigned int verifyKeypress(unsigned char logNumber, unsigned int keypress){
+[e :U _verifyKeypress ]
+[v _logNumber `uc ~T0 @X0 1 r1 ]
+[v _keypress `ui ~T0 @X0 1 r2 ]
+[f ]
+"274
+[v _i `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 274: unsigned int i = 0;
+[e = _i -> -> 0 `i `ui ]
+"275
+[v _returnVal `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 275: unsigned int returnVal = 0;
+[e = _returnVal -> -> 0 `i `ui ]
+[; ;standbyMode.c: 277: for (i=0; i<logNumber; i++){
+"277
+{
+[e = _i -> -> 0 `i `ui ]
+[e $U 342  ]
+[e :U 339 ]
+{
+[; ;standbyMode.c: 278: if (keypress == i){
+"278
+[e $ ! == _keypress _i 343  ]
+{
+[; ;standbyMode.c: 279: returnVal = 1;
+"279
+[e = _returnVal -> -> 1 `i `ui ]
+"280
+}
+[e :U 343 ]
+"281
+}
+"277
+[e ++ _i -> -> 1 `i `ui ]
+[e :U 342 ]
+[e $ < _i -> _logNumber `ui 339  ]
+[e :U 340 ]
+"281
+}
+[; ;standbyMode.c: 280: }
+[; ;standbyMode.c: 281: }
+[; ;standbyMode.c: 282: return returnVal;
+"282
+[e ) _returnVal ]
+[e $UE 338  ]
+[; ;standbyMode.c: 283: }
+"283
+[e :UE 338 ]
+}
+"287
 [v _viewLogs `(ui ~T0 @X0 1 ef ]
 {
-[; ;standbyMode.c: 272: unsigned int viewLogs(void){
+[; ;standbyMode.c: 287: unsigned int viewLogs(void){
 [e :U _viewLogs ]
 [f ]
-[; ;standbyMode.c: 273: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"273
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 274: printf("5 previous logs");
-"274
-[e ( _printf :s 1C ]
-[; ;standbyMode.c: 275: lcdInst(0xC0);;
-"275
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 276: printf("available.");
-"276
-[e ( _printf :s 2C ]
-[; ;standbyMode.c: 277: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"277
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 278: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"278
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 279: printf("Please input log");
-"279
-[e ( _printf :s 3C ]
-[; ;standbyMode.c: 280: lcdInst(0xC0);;
-"280
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 281: printf("number: ");
-"281
-[e ( _printf :s 4C ]
-[; ;standbyMode.c: 283: while (1){
-"283
-[e :U 340 ]
-{
-[; ;standbyMode.c: 284: while(PORTBbits.RB1 == 0){ continue; }
-"284
-[e $U 342  ]
-[e :U 343 ]
-{
-[e $U 342  ]
-}
-[e :U 342 ]
-[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 343  ]
-[e :U 344 ]
-"285
-[v _keypress2 `uc ~T0 @X0 1 a ]
-[; ;standbyMode.c: 285: unsigned char keypress2 = (PORTB & 0xF0) >> 4;
-[e = _keypress2 -> >> & -> _PORTB `i -> 240 `i -> 4 `i `uc ]
-[; ;standbyMode.c: 286: while(PORTBbits.RB1 == 1){ continue; }
-"286
-[e $U 345  ]
-[e :U 346 ]
-{
-[e $U 345  ]
-}
-[e :U 345 ]
-[e $ == -> . . _PORTBbits 0 1 `i -> 1 `i 346  ]
-[e :U 347 ]
-[; ;standbyMode.c: 288: if (keypress2 == 0 || keypress2 == 1 || keypress2 == 2 || keypress2 == 4 || keypress2 == 5){
-"288
-[e $ ! || || || || == -> _keypress2 `i -> 0 `i == -> _keypress2 `i -> 1 `i == -> _keypress2 `i -> 2 `i == -> _keypress2 `i -> 4 `i == -> _keypress2 `i -> 5 `i 348  ]
-{
-[; ;standbyMode.c: 289: putch(keys[keypress2]);
 "289
-[e ( _putch (1 *U + &U _keys * -> _keypress2 `ux -> -> # *U &U _keys `ui `ux ]
-[; ;standbyMode.c: 290: _delay((unsigned long)((1000)*(40000000/4000.0)));
+[v _logNumber `uc ~T0 @X0 1 a ]
+[; ;standbyMode.c: 289: unsigned char logNumber = readEEPROM(250);
+[e = _logNumber ( _readEEPROM (1 -> -> 250 `i `uc ]
 "290
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 291: break;
+[v _logView `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 290: unsigned int logView = 0;
+[e = _logView -> -> 0 `i `ui ]
 "291
-[e $U 341  ]
+[v _checkLog `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 291: unsigned int checkLog = 0;
+[e = _checkLog -> -> 0 `i `ui ]
 "292
-}
-[e :U 348 ]
-"293
-}
-[e :U 339 ]
-"283
-[e $U 340  ]
-[e :U 341 ]
-[; ;standbyMode.c: 292: }
-[; ;standbyMode.c: 293: }
+[v _returnVal `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 292: unsigned int returnVal = 0;
+[e = _returnVal -> -> 0 `i `ui ]
+[; ;standbyMode.c: 294: if (logNumber == 0){
+"294
+[e $ ! == -> _logNumber `i -> 0 `i 345  ]
+{
 [; ;standbyMode.c: 295: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 "295
 [e ( _lcdInst (1 -> -> 1 `i `uc ]
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 296: printf("Great!");
+[; ;standbyMode.c: 296: printf("No logs");
 "296
-[e ( _printf :s 5C ]
-[; ;standbyMode.c: 297: _delay((unsigned long)((1000)*(40000000/4000.0)));
+[e ( _printf :s 1C ]
+[; ;standbyMode.c: 297: lcdInst(0xC0);;
 "297
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 298: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 298: printf("available.");
 "298
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 299: printf("Press any key to");
+[e ( _printf :s 2C ]
+[; ;standbyMode.c: 299: _delay((unsigned long)((2000)*(40000000/4000.0)));
 "299
-[e ( _printf :s 6C ]
-[; ;standbyMode.c: 300: lcdInst(0xC0);;
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 300: return 14;
 "300
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 301: printf("move on.");
+[e ) -> -> 14 `i `ui ]
+[e $UE 344  ]
 "301
-[e ( _printf :s 7C ]
-[; ;standbyMode.c: 302: _delay((unsigned long)((500)*(40000000/4000.0)));
+}
+[; ;standbyMode.c: 301: }
+[e $U 346  ]
 "302
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 304: while(PORTBbits.RB1 == 0){
-"304
-[e $U 349  ]
-[e :U 350 ]
+[e :U 345 ]
+[; ;standbyMode.c: 302: else {
 {
-[; ;standbyMode.c: 305: continue;
-"305
-[e $U 349  ]
+[; ;standbyMode.c: 303: if (logNumber == 1){
+"303
+[e $ ! == -> _logNumber `i -> 1 `i 347  ]
+{
+[; ;standbyMode.c: 304: logView = 1;
+"304
+[e = _logView -> -> 1 `i `ui ]
+[; ;standbyMode.c: 306: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 "306
-}
-[e :U 349 ]
-"304
-[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 350  ]
-[e :U 351 ]
-[; ;standbyMode.c: 306: }
-[; ;standbyMode.c: 308: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 307: printf("1 previous log");
+"307
+[e ( _printf :s 3C ]
+[; ;standbyMode.c: 308: lcdInst(0xC0);;
 "308
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 309: printf("Operation time:");
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 309: printf("available.");
 "309
-[e ( _printf :s 8C ]
-[; ;standbyMode.c: 310: lcdInst(0xC0);;
+[e ( _printf :s 4C ]
+[; ;standbyMode.c: 310: _delay((unsigned long)((2000)*(40000000/4000.0)));
 "310
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 311: printf("2:39");
-"311
-[e ( _printf :s 9C ]
-[; ;standbyMode.c: 312: _delay((unsigned long)((500)*(40000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 312: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 "312
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 314: while(PORTBbits.RB1 == 0){
-"314
-[e $U 352  ]
-[e :U 353 ]
-{
-[; ;standbyMode.c: 315: continue;
-"315
-[e $U 352  ]
-"316
-}
-[e :U 352 ]
-"314
-[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 353  ]
-[e :U 354 ]
-[; ;standbyMode.c: 316: }
-[; ;standbyMode.c: 318: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"318
 [e ( _lcdInst (1 -> -> 1 `i `uc ]
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 319: printf("Marked drawers:");
-"319
-[e ( _printf :s 10C ]
-[; ;standbyMode.c: 320: lcdInst(0xC0);;
-"320
+[; ;standbyMode.c: 313: printf("Press any key to");
+"313
+[e ( _printf :s 5C ]
+[; ;standbyMode.c: 314: lcdInst(0xC0);;
+"314
 [e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 321: printf("1, 13");
-"321
-[e ( _printf :s 11C ]
-[; ;standbyMode.c: 322: _delay((unsigned long)((500)*(40000000/4000.0)));
-"322
+[; ;standbyMode.c: 315: printf("move forward.");
+"315
+[e ( _printf :s 6C ]
+[; ;standbyMode.c: 316: _delay((unsigned long)((500)*(40000000/4000.0)));
+"316
 [e ( __delay (1 -> * -> -> 500 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 324: while(PORTBbits.RB1 == 0){
-"324
-[e $U 355  ]
-[e :U 356 ]
+[; ;standbyMode.c: 318: while(PORTBbits.RB1 == 0){
+"318
+[e $U 348  ]
+[e :U 349 ]
 {
-[; ;standbyMode.c: 325: continue;
-"325
-[e $U 355  ]
-"326
+[; ;standbyMode.c: 319: continue;
+"319
+[e $U 348  ]
+"320
 }
-[e :U 355 ]
+[e :U 348 ]
+"318
+[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 349  ]
+[e :U 350 ]
+"321
+}
+[; ;standbyMode.c: 320: }
+[; ;standbyMode.c: 321: }
+[e $U 351  ]
+"322
+[e :U 347 ]
+[; ;standbyMode.c: 322: else {
+{
+[; ;standbyMode.c: 323: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"323
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 324: printf("%i previous logs", logNumber);
 "324
-[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 356  ]
-[e :U 357 ]
-[; ;standbyMode.c: 326: }
+[e ( _printf , (. :s 7C -> _logNumber `i ]
+[; ;standbyMode.c: 325: lcdInst(0xC0);;
+"325
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 326: printf("available.");
+"326
+[e ( _printf :s 8C ]
+[; ;standbyMode.c: 327: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"327
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
 [; ;standbyMode.c: 328: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 "328
 [e ( _lcdInst (1 -> -> 1 `i `uc ]
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 329: printf("Remaining pieces:");
+[; ;standbyMode.c: 329: printf("Please input log");
 "329
-[e ( _printf :s 12C ]
+[e ( _printf :s 9C ]
 [; ;standbyMode.c: 330: lcdInst(0xC0);;
 "330
 [e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 331: printf("R:3  F:12  L:10");
+[; ;standbyMode.c: 331: printf("number: ");
 "331
-[e ( _printf :s 13C ]
-[; ;standbyMode.c: 332: _delay((unsigned long)((500)*(40000000/4000.0)));
-"332
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 334: while(PORTBbits.RB1 == 0){
+[e ( _printf :s 10C ]
+[; ;standbyMode.c: 333: while (1){
+"333
+[e :U 353 ]
+{
+[; ;standbyMode.c: 334: while(PORTBbits.RB1 == 0){ continue; }
 "334
+[e $U 355  ]
+[e :U 356 ]
+{
+[e $U 355  ]
+}
+[e :U 355 ]
+[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 356  ]
+[e :U 357 ]
+"335
+[v _keypress2 `uc ~T0 @X0 1 a ]
+[; ;standbyMode.c: 335: unsigned char keypress2 = (PORTB & 0xF0) >> 4;
+[e = _keypress2 -> >> & -> _PORTB `i -> 240 `i -> 4 `i `uc ]
+[; ;standbyMode.c: 336: while(PORTBbits.RB1 == 1){ continue; }
+"336
 [e $U 358  ]
 [e :U 359 ]
 {
-[; ;standbyMode.c: 335: continue;
-"335
 [e $U 358  ]
-"336
 }
 [e :U 358 ]
-"334
-[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 359  ]
+[e $ == -> . . _PORTBbits 0 1 `i -> 1 `i 359  ]
 [e :U 360 ]
-[; ;standbyMode.c: 336: }
-[; ;standbyMode.c: 338: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+[; ;standbyMode.c: 338: if (keypress2 == 0 || keypress2 == 1 || keypress2 == 2 || keypress2 == 4){
 "338
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 339: printf("Drawer Summary:");
-"339
-[e ( _printf :s 14C ]
-[; ;standbyMode.c: 340: _delay((unsigned long)((500)*(40000000/4000.0)));
-"340
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 342: while(PORTBbits.RB1 == 0){
-"342
-[e $U 361  ]
-[e :U 362 ]
+[e $ ! || || || == -> _keypress2 `i -> 0 `i == -> _keypress2 `i -> 1 `i == -> _keypress2 `i -> 2 `i == -> _keypress2 `i -> 4 `i 361  ]
 {
-[; ;standbyMode.c: 343: continue;
+[; ;standbyMode.c: 339: checkLog = verifyKeypress(logNumber, keypress2);
+"339
+[e = _checkLog ( _verifyKeypress (2 , _logNumber -> _keypress2 `ui ]
+[; ;standbyMode.c: 340: if (checkLog == 1){
+"340
+[e $ ! == _checkLog -> -> 1 `i `ui 362  ]
+{
+[; ;standbyMode.c: 341: putch(keys[keypress2]);
+"341
+[e ( _putch (1 *U + &U _keys * -> _keypress2 `ux -> -> # *U &U _keys `ui `ux ]
+[; ;standbyMode.c: 342: logView = keypress2;
+"342
+[e = _logView -> _keypress2 `ui ]
+[; ;standbyMode.c: 343: _delay((unsigned long)((1000)*(40000000/4000.0)));
 "343
-[e $U 361  ]
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 344: break;
 "344
+[e $U 354  ]
+"345
+}
+[e :U 362 ]
+"346
 }
 [e :U 361 ]
-"342
-[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 362  ]
-[e :U 363 ]
-[; ;standbyMode.c: 344: }
-[; ;standbyMode.c: 346: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"346
+"347
+}
+[e :U 352 ]
+"333
+[e $U 353  ]
+[e :U 354 ]
+[; ;standbyMode.c: 345: }
+[; ;standbyMode.c: 346: }
+[; ;standbyMode.c: 347: }
+[; ;standbyMode.c: 349: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"349
 [e ( _lcdInst (1 -> -> 1 `i `uc ]
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 347: printf("Drawer 1: RF12");
-"347
-[e ( _printf :s 15C ]
-[; ;standbyMode.c: 348: lcdInst(0xC0);;
-"348
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 349: printf("Drawer 2: L1");
-"349
-[e ( _printf :s 16C ]
-[; ;standbyMode.c: 350: _delay((unsigned long)((2000)*(40000000/4000.0)));
+[; ;standbyMode.c: 350: printf("Great!");
 "350
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[e ( _printf :s 11C ]
+[; ;standbyMode.c: 351: _delay((unsigned long)((1000)*(40000000/4000.0)));
+"351
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
 [; ;standbyMode.c: 352: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 "352
 [e ( _lcdInst (1 -> -> 1 `i `uc ]
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 353: printf("Another log?");
+[; ;standbyMode.c: 353: printf("Press any key to");
 "353
-[e ( _printf :s 17C ]
+[e ( _printf :s 12C ]
 [; ;standbyMode.c: 354: lcdInst(0xC0);;
 "354
 [e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 355: printf("# = Yes, D = No");
+[; ;standbyMode.c: 355: printf("move forward.");
 "355
-[e ( _printf :s 18C ]
-[; ;standbyMode.c: 357: while(PORTBbits.RB1 == 0){ continue; }
-"357
-[e $U 364  ]
-[e :U 365 ]
-{
-[e $U 364  ]
-}
-[e :U 364 ]
-[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 365  ]
-[e :U 366 ]
+[e ( _printf :s 13C ]
+[; ;standbyMode.c: 356: _delay((unsigned long)((500)*(40000000/4000.0)));
+"356
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 358: while(PORTBbits.RB1 == 0){
 "358
-[v _keypress3 `uc ~T0 @X0 1 a ]
-[; ;standbyMode.c: 358: unsigned char keypress3 = (PORTB & 0xF0) >> 4;
-[e = _keypress3 -> >> & -> _PORTB `i -> 240 `i -> 4 `i `uc ]
-[; ;standbyMode.c: 359: while(PORTBbits.RB1 == 1){ continue; }
-"359
-[e $U 367  ]
-[e :U 368 ]
+[e $U 363  ]
+[e :U 364 ]
 {
-[e $U 367  ]
-}
-[e :U 367 ]
-[e $ == -> . . _PORTBbits 0 1 `i -> 1 `i 368  ]
-[e :U 369 ]
-[; ;standbyMode.c: 360: return keypress3;
+[; ;standbyMode.c: 359: continue;
+"359
+[e $U 363  ]
 "360
-[e ) -> _keypress3 `ui ]
-[e $UE 338  ]
-[; ;standbyMode.c: 361: }
-"361
-[e :UE 338 ]
 }
+[e :U 363 ]
+"358
+[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 364  ]
+[e :U 365 ]
+"361
+}
+[e :U 351 ]
+[; ;standbyMode.c: 360: }
+[; ;standbyMode.c: 361: }
+[; ;standbyMode.c: 362: returnVal = displayLogs(logNumber);
+"362
+[e = _returnVal ( _displayLogs (1 -> _logNumber `ui ]
+[; ;standbyMode.c: 363: return returnVal;
+"363
+[e ) _returnVal ]
+[e $UE 344  ]
+"364
+}
+[e :U 346 ]
+[; ;standbyMode.c: 364: }
+[; ;standbyMode.c: 365: }
 "365
+[e :UE 344 ]
+}
+"369
+[v _displayLogs `(ui ~T0 @X0 1 ef1`ui ]
+{
+[; ;standbyMode.c: 369: unsigned int displayLogs(unsigned int logNumber){
+[e :U _displayLogs ]
+[v _logNumber `ui ~T0 @X0 1 r1 ]
+[f ]
+"370
+[v _n `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 370: unsigned int n = (logNumber - 1)* 54;
+[e = _n * - _logNumber -> -> 1 `i `ui -> -> 54 `i `ui ]
+"371
+[v _operationTime `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 371: unsigned int operationTime = readEEPROM(3+n);
+[e = _operationTime -> ( _readEEPROM (1 -> + -> -> 3 `i `ui _n `uc `ui ]
+"372
+[v _roundPieces `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 372: unsigned int roundPieces = readEEPROM(4+n);
+[e = _roundPieces -> ( _readEEPROM (1 -> + -> -> 4 `i `ui _n `uc `ui ]
+"373
+[v _flatPieces `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 373: unsigned int flatPieces = readEEPROM(5+n);
+[e = _flatPieces -> ( _readEEPROM (1 -> + -> -> 5 `i `ui _n `uc `ui ]
+"374
+[v _longPieces `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 374: unsigned int longPieces = readEEPROM(6+n);
+[e = _longPieces -> ( _readEEPROM (1 -> + -> -> 6 `i `ui _n `uc `ui ]
+"375
+[v _markedDrawer1 `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 375: unsigned int markedDrawer1 = readEEPROM(7+n);
+[e = _markedDrawer1 -> ( _readEEPROM (1 -> + -> -> 7 `i `ui _n `uc `ui ]
+"376
+[v _markedDrawer2 `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 376: unsigned int markedDrawer2 = readEEPROM(8+n);
+[e = _markedDrawer2 -> ( _readEEPROM (1 -> + -> -> 8 `i `ui _n `uc `ui ]
+"377
+[v _markedDrawer3 `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 377: unsigned int markedDrawer3 = readEEPROM(9+n);
+[e = _markedDrawer3 -> ( _readEEPROM (1 -> + -> -> 9 `i `ui _n `uc `ui ]
+"378
+[v _markedDrawer4 `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 378: unsigned int markedDrawer4 = readEEPROM(10+n);
+[e = _markedDrawer4 -> ( _readEEPROM (1 -> + -> -> 10 `i `ui _n `uc `ui ]
+"380
+[v _minutes `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 380: unsigned int minutes = operationTime/60;
+[e = _minutes / _operationTime -> -> 60 `i `ui ]
+"381
+[v _seconds `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 381: unsigned int seconds = operationTime%60;
+[e = _seconds % _operationTime -> -> 60 `i `ui ]
+[; ;standbyMode.c: 382: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"382
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 383: printf("Operation time:");
+"383
+[e ( _printf :s 14C ]
+[; ;standbyMode.c: 384: lcdInst(0xC0);;
+"384
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 385: if (seconds == 0){
+"385
+[e $ ! == _seconds -> -> 0 `i `ui 367  ]
+{
+[; ;standbyMode.c: 386: printf("%i:%i0", minutes, seconds);
+"386
+[e ( _printf , , (. :s 15C _minutes _seconds ]
+[; ;standbyMode.c: 387: _delay((unsigned long)((500)*(40000000/4000.0)));
+"387
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+"388
+}
+[; ;standbyMode.c: 388: }
+[e $U 368  ]
+"389
+[e :U 367 ]
+[; ;standbyMode.c: 389: else{
+{
+[; ;standbyMode.c: 390: printf("%i:%i", minutes, seconds);
+"390
+[e ( _printf , , (. :s 16C _minutes _seconds ]
+[; ;standbyMode.c: 391: _delay((unsigned long)((500)*(40000000/4000.0)));
+"391
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+"392
+}
+[e :U 368 ]
+[; ;standbyMode.c: 392: }
+[; ;standbyMode.c: 394: while(PORTBbits.RB1 == 0){
+"394
+[e $U 369  ]
+[e :U 370 ]
+{
+[; ;standbyMode.c: 395: continue;
+"395
+[e $U 369  ]
+"396
+}
+[e :U 369 ]
+"394
+[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 370  ]
+[e :U 371 ]
+[; ;standbyMode.c: 396: }
+[; ;standbyMode.c: 398: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"398
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 399: printf("Marked drawers:");
+"399
+[e ( _printf :s 17C ]
+[; ;standbyMode.c: 400: lcdInst(0xC0);;
+"400
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 402: if (markedDrawer4 == 0 && markedDrawer3 == 0 && markedDrawer2 == 0){
+"402
+[e $ ! && && == _markedDrawer4 -> -> 0 `i `ui == _markedDrawer3 -> -> 0 `i `ui == _markedDrawer2 -> -> 0 `i `ui 372  ]
+{
+[; ;standbyMode.c: 403: printf("%i", markedDrawer1);
+"403
+[e ( _printf , (. :s 18C _markedDrawer1 ]
+[; ;standbyMode.c: 404: _delay((unsigned long)((500)*(40000000/4000.0)));
+"404
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+"405
+}
+[; ;standbyMode.c: 405: }
+[e $U 373  ]
+"407
+[e :U 372 ]
+[; ;standbyMode.c: 407: else if (markedDrawer4 == 0 && markedDrawer3 == 0){
+[e $ ! && == _markedDrawer4 -> -> 0 `i `ui == _markedDrawer3 -> -> 0 `i `ui 374  ]
+{
+[; ;standbyMode.c: 408: printf("%i, %i", markedDrawer1, markedDrawer2);
+"408
+[e ( _printf , , (. :s 19C _markedDrawer1 _markedDrawer2 ]
+[; ;standbyMode.c: 409: _delay((unsigned long)((500)*(40000000/4000.0)));
+"409
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+"410
+}
+[; ;standbyMode.c: 410: }
+[e $U 375  ]
+"412
+[e :U 374 ]
+[; ;standbyMode.c: 412: else if (markedDrawer4 == 0){
+[e $ ! == _markedDrawer4 -> -> 0 `i `ui 376  ]
+{
+[; ;standbyMode.c: 413: printf("%i, %i, %i", markedDrawer1, markedDrawer2, markedDrawer3);
+"413
+[e ( _printf , , , (. :s 20C _markedDrawer1 _markedDrawer2 _markedDrawer3 ]
+[; ;standbyMode.c: 414: _delay((unsigned long)((500)*(40000000/4000.0)));
+"414
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+"415
+}
+[; ;standbyMode.c: 415: }
+[e $U 377  ]
+"417
+[e :U 376 ]
+[; ;standbyMode.c: 417: else {
+{
+[; ;standbyMode.c: 418: printf("%i, %i, %i, %i", markedDrawer1, markedDrawer2, markedDrawer3, markedDrawer4);
+"418
+[e ( _printf , , , , (. :s 21C _markedDrawer1 _markedDrawer2 _markedDrawer3 _markedDrawer4 ]
+[; ;standbyMode.c: 419: _delay((unsigned long)((500)*(40000000/4000.0)));
+"419
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+"420
+}
+[e :U 377 ]
+[e :U 375 ]
+[e :U 373 ]
+[; ;standbyMode.c: 420: }
+[; ;standbyMode.c: 422: while(PORTBbits.RB1 == 0){
+"422
+[e $U 378  ]
+[e :U 379 ]
+{
+[; ;standbyMode.c: 423: continue;
+"423
+[e $U 378  ]
+"424
+}
+[e :U 378 ]
+"422
+[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 379  ]
+[e :U 380 ]
+[; ;standbyMode.c: 424: }
+[; ;standbyMode.c: 426: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"426
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 427: printf("Remaining pieces:");
+"427
+[e ( _printf :s 22C ]
+[; ;standbyMode.c: 428: lcdInst(0xC0);;
+"428
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 429: printf("R:%i  F:%i  L:%i", roundPieces, flatPieces, longPieces);
+"429
+[e ( _printf , , , (. :s 23C _roundPieces _flatPieces _longPieces ]
+[; ;standbyMode.c: 430: _delay((unsigned long)((500)*(40000000/4000.0)));
+"430
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 432: while(PORTBbits.RB1 == 0){
+"432
+[e $U 381  ]
+[e :U 382 ]
+{
+[; ;standbyMode.c: 433: continue;
+"433
+[e $U 381  ]
+"434
+}
+[e :U 381 ]
+"432
+[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 382  ]
+[e :U 383 ]
+[; ;standbyMode.c: 434: }
+[; ;standbyMode.c: 436: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"436
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 437: printf("Drawer Summary:");
+"437
+[e ( _printf :s 24C ]
+[; ;standbyMode.c: 438: _delay((unsigned long)((500)*(40000000/4000.0)));
+"438
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 440: while(PORTBbits.RB1 == 0){
+"440
+[e $U 384  ]
+[e :U 385 ]
+{
+[; ;standbyMode.c: 441: continue;
+"441
+[e $U 384  ]
+"442
+}
+[e :U 384 ]
+"440
+[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 385  ]
+[e :U 386 ]
+[; ;standbyMode.c: 442: }
+[; ;standbyMode.c: 444: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"444
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 445: printf("Drawer 1: RF12");
+"445
+[e ( _printf :s 25C ]
+[; ;standbyMode.c: 446: lcdInst(0xC0);;
+"446
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 447: printf("Drawer 2: L1");
+"447
+[e ( _printf :s 26C ]
+[; ;standbyMode.c: 448: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"448
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 450: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"450
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 451: printf("Another log?");
+"451
+[e ( _printf :s 27C ]
+[; ;standbyMode.c: 452: lcdInst(0xC0);;
+"452
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 453: printf("# = No, D = Yes");
+"453
+[e ( _printf :s 28C ]
+[; ;standbyMode.c: 455: while(PORTBbits.RB1 == 0){ continue; }
+"455
+[e $U 387  ]
+[e :U 388 ]
+{
+[e $U 387  ]
+}
+[e :U 387 ]
+[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 388  ]
+[e :U 389 ]
+"456
+[v _keypress3 `uc ~T0 @X0 1 a ]
+[; ;standbyMode.c: 456: unsigned char keypress3 = (PORTB & 0xF0) >> 4;
+[e = _keypress3 -> >> & -> _PORTB `i -> 240 `i -> 4 `i `uc ]
+[; ;standbyMode.c: 457: while(PORTBbits.RB1 == 1){ continue; }
+"457
+[e $U 390  ]
+[e :U 391 ]
+{
+[e $U 390  ]
+}
+[e :U 390 ]
+[e $ == -> . . _PORTBbits 0 1 `i -> 1 `i 391  ]
+[e :U 392 ]
+[; ;standbyMode.c: 458: return keypress3;
+"458
+[e ) -> _keypress3 `ui ]
+[e $UE 366  ]
+[; ;standbyMode.c: 459: }
+"459
+[e :UE 366 ]
+}
+"463
 [v _get_digits `(ui ~T0 @X0 1 ef1`ui ]
 {
-[; ;standbyMode.c: 365: unsigned int get_digits(unsigned int sum){
+[; ;standbyMode.c: 463: unsigned int get_digits(unsigned int sum){
 [e :U _get_digits ]
 [v _sum `ui ~T0 @X0 1 r1 ]
 [f ]
-"367
-[v _count `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 367: unsigned int count = 0;
-[e = _count -> -> 0 `i `ui ]
-[; ;standbyMode.c: 369: switch(sum){
-"369
-[e $U 372  ]
-{
-[; ;standbyMode.c: 371: case 3:
-"371
-[e :U 373 ]
-[; ;standbyMode.c: 372: count = 1;
-"372
-[e = _count -> -> 1 `i `ui ]
-[; ;standbyMode.c: 373: break;
-"373
-[e $U 371  ]
-[; ;standbyMode.c: 376: case 7:
-"376
-[e :U 374 ]
-[; ;standbyMode.c: 377: count = 1;
-"377
-[e = _count -> -> 1 `i `ui ]
-[; ;standbyMode.c: 378: break;
-"378
-[e $U 371  ]
-[; ;standbyMode.c: 381: case 12:
-"381
-[e :U 375 ]
-[; ;standbyMode.c: 382: count = 1;
-"382
-[e = _count -> -> 1 `i `ui ]
-[; ;standbyMode.c: 383: break;
-"383
-[e $U 371  ]
-[; ;standbyMode.c: 386: case 10:
-"386
-[e :U 376 ]
-[; ;standbyMode.c: 387: count = 2;
-"387
-[e = _count -> -> 2 `i `ui ]
-[; ;standbyMode.c: 388: break;
-"388
-[e $U 371  ]
-[; ;standbyMode.c: 391: case 15:
-"391
-[e :U 377 ]
-[; ;standbyMode.c: 392: count = 2;
-"392
-[e = _count -> -> 2 `i `ui ]
-[; ;standbyMode.c: 393: break;
-"393
-[e $U 371  ]
-[; ;standbyMode.c: 396: case 19:
-"396
-[e :U 378 ]
-[; ;standbyMode.c: 397: count = 2;
-"397
-[e = _count -> -> 2 `i `ui ]
-[; ;standbyMode.c: 398: break;
-"398
-[e $U 371  ]
-[; ;standbyMode.c: 401: case 13:
-"401
-[e :U 379 ]
-[; ;standbyMode.c: 402: count = 3;
-"402
-[e = _count -> -> 3 `i `ui ]
-[; ;standbyMode.c: 403: break;
-"403
-[e $U 371  ]
-[; ;standbyMode.c: 406: case 18:
-"406
-[e :U 380 ]
-[; ;standbyMode.c: 407: count = 3;
-"407
-[e = _count -> -> 3 `i `ui ]
-[; ;standbyMode.c: 408: break;
-"408
-[e $U 371  ]
-[; ;standbyMode.c: 411: case 17:
-"411
-[e :U 381 ]
-[; ;standbyMode.c: 412: count = 3;
-"412
-[e = _count -> -> 3 `i `ui ]
-[; ;standbyMode.c: 413: break;
-"413
-[e $U 371  ]
-[; ;standbyMode.c: 416: case 27:
-"416
-[e :U 382 ]
-[; ;standbyMode.c: 417: count = 3;
-"417
-[e = _count -> -> 3 `i `ui ]
-[; ;standbyMode.c: 418: break;
-"418
-[e $U 371  ]
-[; ;standbyMode.c: 421: case 22:
-"421
-[e :U 383 ]
-[; ;standbyMode.c: 422: count = 3;
-"422
-[e = _count -> -> 3 `i `ui ]
-[; ;standbyMode.c: 423: break;
-"423
-[e $U 371  ]
-[; ;standbyMode.c: 426: case 26:
-"426
-[e :U 384 ]
-[; ;standbyMode.c: 427: count = 3;
-"427
-[e = _count -> -> 3 `i `ui ]
-[; ;standbyMode.c: 428: break;
-"428
-[e $U 371  ]
-[; ;standbyMode.c: 431: case 31:
-"431
-[e :U 385 ]
-[; ;standbyMode.c: 432: count = 3;
-"432
-[e = _count -> -> 3 `i `ui ]
-[; ;standbyMode.c: 433: break;
-"433
-[e $U 371  ]
-[; ;standbyMode.c: 436: case 25:
-"436
-[e :U 386 ]
-[; ;standbyMode.c: 437: count = 4;
-"437
-[e = _count -> -> 4 `i `ui ]
-[; ;standbyMode.c: 438: break;
-"438
-[e $U 371  ]
-[; ;standbyMode.c: 441: case 29:
-"441
-[e :U 387 ]
-[; ;standbyMode.c: 442: count = 4;
-"442
-[e = _count -> -> 4 `i `ui ]
-[; ;standbyMode.c: 443: break;
-"443
-[e $U 371  ]
-[; ;standbyMode.c: 446: case 34:
-"446
-[e :U 388 ]
-[; ;standbyMode.c: 447: count = 4;
-"447
-[e = _count -> -> 4 `i `ui ]
-[; ;standbyMode.c: 448: break;
-"448
-[e $U 371  ]
-[; ;standbyMode.c: 451: case 39:
-"451
-[e :U 389 ]
-[; ;standbyMode.c: 452: count = 4;
-"452
-[e = _count -> -> 4 `i `ui ]
-[; ;standbyMode.c: 453: break;
-"453
-[e $U 371  ]
-[; ;standbyMode.c: 456: case 43:
-"456
-[e :U 390 ]
-[; ;standbyMode.c: 457: count = 4;
-"457
-[e = _count -> -> 4 `i `ui ]
-[; ;standbyMode.c: 458: break;
-"458
-[e $U 371  ]
-[; ;standbyMode.c: 461: default:
-"461
-[e :U 391 ]
-[; ;standbyMode.c: 462: count = 0;
-"462
-[e = _count -> -> 0 `i `ui ]
-[; ;standbyMode.c: 463: break;
-"463
-[e $U 371  ]
-"464
-}
-[; ;standbyMode.c: 464: }
-[e $U 371  ]
-"369
-[e :U 372 ]
-[e [\ _sum , $ -> -> 3 `i `ui 373
- , $ -> -> 7 `i `ui 374
- , $ -> -> 12 `i `ui 375
- , $ -> -> 10 `i `ui 376
- , $ -> -> 15 `i `ui 377
- , $ -> -> 19 `i `ui 378
- , $ -> -> 13 `i `ui 379
- , $ -> -> 18 `i `ui 380
- , $ -> -> 17 `i `ui 381
- , $ -> -> 27 `i `ui 382
- , $ -> -> 22 `i `ui 383
- , $ -> -> 26 `i `ui 384
- , $ -> -> 31 `i `ui 385
- , $ -> -> 25 `i `ui 386
- , $ -> -> 29 `i `ui 387
- , $ -> -> 34 `i `ui 388
- , $ -> -> 39 `i `ui 389
- , $ -> -> 43 `i `ui 390
- 391 ]
-"464
-[e :U 371 ]
-[; ;standbyMode.c: 465: return count;
 "465
-[e ) _count ]
-[e $UE 370  ]
-[; ;standbyMode.c: 466: }
-"466
-[e :UE 370 ]
-}
+[v _count `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 465: unsigned int count = 0;
+[e = _count -> -> 0 `i `ui ]
+[; ;standbyMode.c: 467: switch(sum){
+"467
+[e $U 395  ]
+{
+[; ;standbyMode.c: 469: case 3:
+"469
+[e :U 396 ]
+[; ;standbyMode.c: 470: count = 1;
 "470
+[e = _count -> -> 1 `i `ui ]
+[; ;standbyMode.c: 471: break;
+"471
+[e $U 394  ]
+[; ;standbyMode.c: 474: case 7:
+"474
+[e :U 397 ]
+[; ;standbyMode.c: 475: count = 1;
+"475
+[e = _count -> -> 1 `i `ui ]
+[; ;standbyMode.c: 476: break;
+"476
+[e $U 394  ]
+[; ;standbyMode.c: 479: case 12:
+"479
+[e :U 398 ]
+[; ;standbyMode.c: 480: count = 1;
+"480
+[e = _count -> -> 1 `i `ui ]
+[; ;standbyMode.c: 481: break;
+"481
+[e $U 394  ]
+[; ;standbyMode.c: 484: case 10:
+"484
+[e :U 399 ]
+[; ;standbyMode.c: 485: count = 2;
+"485
+[e = _count -> -> 2 `i `ui ]
+[; ;standbyMode.c: 486: break;
+"486
+[e $U 394  ]
+[; ;standbyMode.c: 489: case 15:
+"489
+[e :U 400 ]
+[; ;standbyMode.c: 490: count = 2;
+"490
+[e = _count -> -> 2 `i `ui ]
+[; ;standbyMode.c: 491: break;
+"491
+[e $U 394  ]
+[; ;standbyMode.c: 494: case 19:
+"494
+[e :U 401 ]
+[; ;standbyMode.c: 495: count = 2;
+"495
+[e = _count -> -> 2 `i `ui ]
+[; ;standbyMode.c: 496: break;
+"496
+[e $U 394  ]
+[; ;standbyMode.c: 499: case 13:
+"499
+[e :U 402 ]
+[; ;standbyMode.c: 500: count = 3;
+"500
+[e = _count -> -> 3 `i `ui ]
+[; ;standbyMode.c: 501: break;
+"501
+[e $U 394  ]
+[; ;standbyMode.c: 504: case 18:
+"504
+[e :U 403 ]
+[; ;standbyMode.c: 505: count = 3;
+"505
+[e = _count -> -> 3 `i `ui ]
+[; ;standbyMode.c: 506: break;
+"506
+[e $U 394  ]
+[; ;standbyMode.c: 509: case 17:
+"509
+[e :U 404 ]
+[; ;standbyMode.c: 510: count = 3;
+"510
+[e = _count -> -> 3 `i `ui ]
+[; ;standbyMode.c: 511: break;
+"511
+[e $U 394  ]
+[; ;standbyMode.c: 514: case 27:
+"514
+[e :U 405 ]
+[; ;standbyMode.c: 515: count = 3;
+"515
+[e = _count -> -> 3 `i `ui ]
+[; ;standbyMode.c: 516: break;
+"516
+[e $U 394  ]
+[; ;standbyMode.c: 519: case 22:
+"519
+[e :U 406 ]
+[; ;standbyMode.c: 520: count = 3;
+"520
+[e = _count -> -> 3 `i `ui ]
+[; ;standbyMode.c: 521: break;
+"521
+[e $U 394  ]
+[; ;standbyMode.c: 524: case 26:
+"524
+[e :U 407 ]
+[; ;standbyMode.c: 525: count = 3;
+"525
+[e = _count -> -> 3 `i `ui ]
+[; ;standbyMode.c: 526: break;
+"526
+[e $U 394  ]
+[; ;standbyMode.c: 529: case 31:
+"529
+[e :U 408 ]
+[; ;standbyMode.c: 530: count = 3;
+"530
+[e = _count -> -> 3 `i `ui ]
+[; ;standbyMode.c: 531: break;
+"531
+[e $U 394  ]
+[; ;standbyMode.c: 534: case 25:
+"534
+[e :U 409 ]
+[; ;standbyMode.c: 535: count = 4;
+"535
+[e = _count -> -> 4 `i `ui ]
+[; ;standbyMode.c: 536: break;
+"536
+[e $U 394  ]
+[; ;standbyMode.c: 539: case 29:
+"539
+[e :U 410 ]
+[; ;standbyMode.c: 540: count = 4;
+"540
+[e = _count -> -> 4 `i `ui ]
+[; ;standbyMode.c: 541: break;
+"541
+[e $U 394  ]
+[; ;standbyMode.c: 544: case 34:
+"544
+[e :U 411 ]
+[; ;standbyMode.c: 545: count = 4;
+"545
+[e = _count -> -> 4 `i `ui ]
+[; ;standbyMode.c: 546: break;
+"546
+[e $U 394  ]
+[; ;standbyMode.c: 549: case 39:
+"549
+[e :U 412 ]
+[; ;standbyMode.c: 550: count = 4;
+"550
+[e = _count -> -> 4 `i `ui ]
+[; ;standbyMode.c: 551: break;
+"551
+[e $U 394  ]
+[; ;standbyMode.c: 554: case 43:
+"554
+[e :U 413 ]
+[; ;standbyMode.c: 555: count = 4;
+"555
+[e = _count -> -> 4 `i `ui ]
+[; ;standbyMode.c: 556: break;
+"556
+[e $U 394  ]
+[; ;standbyMode.c: 559: default:
+"559
+[e :U 414 ]
+[; ;standbyMode.c: 560: count = 0;
+"560
+[e = _count -> -> 0 `i `ui ]
+[; ;standbyMode.c: 561: break;
+"561
+[e $U 394  ]
+"562
+}
+[; ;standbyMode.c: 562: }
+[e $U 394  ]
+"467
+[e :U 395 ]
+[e [\ _sum , $ -> -> 3 `i `ui 396
+ , $ -> -> 7 `i `ui 397
+ , $ -> -> 12 `i `ui 398
+ , $ -> -> 10 `i `ui 399
+ , $ -> -> 15 `i `ui 400
+ , $ -> -> 19 `i `ui 401
+ , $ -> -> 13 `i `ui 402
+ , $ -> -> 18 `i `ui 403
+ , $ -> -> 17 `i `ui 404
+ , $ -> -> 27 `i `ui 405
+ , $ -> -> 22 `i `ui 406
+ , $ -> -> 26 `i `ui 407
+ , $ -> -> 31 `i `ui 408
+ , $ -> -> 25 `i `ui 409
+ , $ -> -> 29 `i `ui 410
+ , $ -> -> 34 `i `ui 411
+ , $ -> -> 39 `i `ui 412
+ , $ -> -> 43 `i `ui 413
+ 414 ]
+"562
+[e :U 394 ]
+[; ;standbyMode.c: 563: return count;
+"563
+[e ) _count ]
+[e $UE 393  ]
+[; ;standbyMode.c: 564: }
+"564
+[e :UE 393 ]
+}
+"568
 [v _food_press `(ui ~T0 @X0 1 ef2`ui`ui ]
 {
-[; ;standbyMode.c: 470: unsigned int food_press(unsigned int dietSum, unsigned int drawer){
+[; ;standbyMode.c: 568: unsigned int food_press(unsigned int dietSum, unsigned int drawer){
 [e :U _food_press ]
 [v _dietSum `ui ~T0 @X0 1 r1 ]
 [v _drawer `ui ~T0 @X0 1 r2 ]
 [f ]
-[; ;standbyMode.c: 472: START: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"472
-[e :U 393 ]
+[; ;standbyMode.c: 570: START: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"570
+[e :U 416 ]
 [e ( _lcdInst (1 -> -> 1 `i `uc ]
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 473: printf("Drawer %i food:", drawer);
-"473
-[e ( _printf , (. :s 19C _drawer ]
-[; ;standbyMode.c: 474: lcdInst(0xC0);;
-"474
+[; ;standbyMode.c: 571: printf("Drawer %i food:", drawer);
+"571
+[e ( _printf , (. :s 29C _drawer ]
+[; ;standbyMode.c: 572: lcdInst(0xC0);;
+"572
 [e ( _lcdInst (1 -> -> 192 `i `uc ]
-"476
+"574
 [v _tally `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 476: unsigned int tally = 0;
+[; ;standbyMode.c: 574: unsigned int tally = 0;
 [e = _tally -> -> 0 `i `ui ]
-"477
+"575
 [v _count `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 477: unsigned int count = 0;
+[; ;standbyMode.c: 575: unsigned int count = 0;
 [e = _count -> -> 0 `i `ui ]
-[v F3045 `ui ~T0 @X0 -> 4 `i s ]
-[i F3045
+[v F3080 `ui ~T0 @X0 -> 4 `i s ]
+[i F3080
 :U ..
-"478
+"576
 -> -> 0 `i `ui
 -> -> 0 `i `ui
 -> -> 0 `i `ui
@@ -4194,266 +4520,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [v _foodTable `ui ~T0 @X0 -> 4 `i a ]
-[; ;standbyMode.c: 478: unsigned int foodTable[4] = {0, 0, 0, 0};
-[e = _foodTable F3045 ]
-"479
+[; ;standbyMode.c: 576: unsigned int foodTable[4] = {0, 0, 0, 0};
+[e = _foodTable F3080 ]
+"577
 [v _isValid `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 479: unsigned int isValid = 0;
+[; ;standbyMode.c: 577: unsigned int isValid = 0;
 [e = _isValid -> -> 0 `i `ui ]
-"480
+"578
 [v _backCheck `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 480: unsigned int backCheck = 0;
+[; ;standbyMode.c: 578: unsigned int backCheck = 0;
 [e = _backCheck -> -> 0 `i `ui ]
-[; ;standbyMode.c: 481: tally = get_digits(dietSum);
-"481
+[; ;standbyMode.c: 579: tally = get_digits(dietSum);
+"579
 [e = _tally ( _get_digits (1 _dietSum ]
-[; ;standbyMode.c: 483: while(1){
-"483
-[e :U 395 ]
-{
-[; ;standbyMode.c: 484: while(PORTBbits.RB1 == 0){ continue; }
-"484
-[e $U 397  ]
-[e :U 398 ]
-{
-[e $U 397  ]
-}
-[e :U 397 ]
-[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 398  ]
-[e :U 399 ]
-"485
-[v _keypress `uc ~T0 @X0 1 a ]
-[; ;standbyMode.c: 485: unsigned char keypress = (PORTB & 0xF0) >> 4;
-[e = _keypress -> >> & -> _PORTB `i -> 240 `i -> 4 `i `uc ]
-[; ;standbyMode.c: 486: while(PORTBbits.RB1 == 1){ continue; }
-"486
-[e $U 400  ]
-[e :U 401 ]
-{
-[e $U 400  ]
-}
-[e :U 400 ]
-[e $ == -> . . _PORTBbits 0 1 `i -> 1 `i 401  ]
-[e :U 402 ]
-[; ;standbyMode.c: 488: if(keypress == 15){
-"488
-[e $ ! == -> _keypress `i -> 15 `i 403  ]
-{
-[; ;standbyMode.c: 489: break;
-"489
-[e $U 396  ]
-"490
-}
-[; ;standbyMode.c: 490: }
-[e $U 404  ]
-"491
-[e :U 403 ]
-[; ;standbyMode.c: 491: else if (keypress == 14){
-[e $ ! == -> _keypress `i -> 14 `i 405  ]
-{
-[; ;standbyMode.c: 492: backCheck = 1;
-"492
-[e = _backCheck -> -> 1 `i `ui ]
-[; ;standbyMode.c: 493: break;
-"493
-[e $U 396  ]
-"494
-}
-[; ;standbyMode.c: 494: }
-[e $U 406  ]
-"495
-[e :U 405 ]
-[; ;standbyMode.c: 495: else if (keypress == 0 || keypress == 1 || keypress == 2){
-[e $ ! || || == -> _keypress `i -> 0 `i == -> _keypress `i -> 1 `i == -> _keypress `i -> 2 `i 407  ]
-{
-[; ;standbyMode.c: 496: if (count < tally){
-"496
-[e $ ! < _count _tally 408  ]
-{
-[; ;standbyMode.c: 497: putch(input[keypress]);
-"497
-[e ( _putch (1 *U + &U _input * -> _keypress `ux -> -> # *U &U _input `ui `ux ]
-[; ;standbyMode.c: 498: foodTable[count] = keypress + 1;
-"498
-[e = *U + &U _foodTable * -> _count `ux -> -> # *U &U _foodTable `ui `ux -> + -> _keypress `i -> 1 `i `ui ]
-[; ;standbyMode.c: 499: count += 1;
-"499
-[e =+ _count -> -> 1 `i `ui ]
-"500
-}
-[e :U 408 ]
-"501
-}
-[; ;standbyMode.c: 500: }
-[; ;standbyMode.c: 501: }
-[e $U 409  ]
-"502
-[e :U 407 ]
-[; ;standbyMode.c: 502: else if (keypress == 12){
-[e $ ! == -> _keypress `i -> 12 `i 410  ]
-{
-[; ;standbyMode.c: 503: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"503
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 504: printf("Drawer %i food:", drawer);
-"504
-[e ( _printf , (. :s 20C _drawer ]
-[; ;standbyMode.c: 505: lcdInst(0xC0);;
-"505
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 506: count = 0;
-"506
-[e = _count -> -> 0 `i `ui ]
-[; ;standbyMode.c: 507: foodTable[0] = 0;
-"507
-[e = *U + &U _foodTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _foodTable `ui `ux -> -> 0 `i `ui ]
-[; ;standbyMode.c: 508: foodTable[1] = 0;
-"508
-[e = *U + &U _foodTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _foodTable `ui `ux -> -> 0 `i `ui ]
-[; ;standbyMode.c: 509: foodTable[2] = 0;
-"509
-[e = *U + &U _foodTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _foodTable `ui `ux -> -> 0 `i `ui ]
-[; ;standbyMode.c: 510: foodTable[3] = 0;
-"510
-[e = *U + &U _foodTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _foodTable `ui `ux -> -> 0 `i `ui ]
-"511
-}
-[e :U 410 ]
-"512
-[e :U 409 ]
-[e :U 406 ]
-[e :U 404 ]
-}
-[e :U 394 ]
-"483
-[e $U 395  ]
-[e :U 396 ]
-[; ;standbyMode.c: 511: }
-[; ;standbyMode.c: 512: }
-[; ;standbyMode.c: 514: if (backCheck == 1){
-"514
-[e $ ! == _backCheck -> -> 1 `i `ui 411  ]
-{
-[; ;standbyMode.c: 515: return 100;
-"515
-[e ) -> -> 100 `i `ui ]
-[e $UE 392  ]
-"516
-}
-[; ;standbyMode.c: 516: }
-[e $U 412  ]
-"517
-[e :U 411 ]
-[; ;standbyMode.c: 517: else {
-{
-[; ;standbyMode.c: 518: isValid = check_food(dietSum, foodTable);
-"518
-[e = _isValid ( _check_food (2 , _dietSum &U _foodTable ]
-[; ;standbyMode.c: 520: if (isValid == 0){
-"520
-[e $ ! == _isValid -> -> 0 `i `ui 413  ]
-{
-[; ;standbyMode.c: 521: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"521
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 522: printf("Invalid food!");
-"522
-[e ( _printf :s 21C ]
-[; ;standbyMode.c: 523: lcdInst(0xC0);;
-"523
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 524: printf("Try again.");
-"524
-[e ( _printf :s 22C ]
-[; ;standbyMode.c: 525: _delay((unsigned long)((1000)*(40000000/4000.0)));
-"525
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 526: goto START;
-"526
-[e $U 393  ]
-"527
-}
-[; ;standbyMode.c: 527: }
-[e $U 414  ]
-"528
-[e :U 413 ]
-[; ;standbyMode.c: 528: else {
-{
-[; ;standbyMode.c: 529: return isValid;
-"529
-[e ) _isValid ]
-[e $UE 392  ]
-"530
-}
-[e :U 414 ]
-"531
-}
-[e :U 412 ]
-[; ;standbyMode.c: 530: }
-[; ;standbyMode.c: 531: }
-[; ;standbyMode.c: 532: }
-"532
-[e :UE 392 ]
-}
-"536
-[v _diet_press `(ui ~T0 @X0 1 ef1`ui ]
-{
-[; ;standbyMode.c: 536: unsigned int diet_press(unsigned int drawer){
-[e :U _diet_press ]
-[v _drawer `ui ~T0 @X0 1 r1 ]
-[f ]
-[; ;standbyMode.c: 539: START: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"539
-[e :U 416 ]
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 540: printf("Drawer %i diet:", drawer);
-"540
-[e ( _printf , (. :s 23C _drawer ]
-[; ;standbyMode.c: 541: lcdInst(0xC0);;
-"541
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-"543
-[v _count `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 543: unsigned int count = 0;
-[e = _count -> -> 0 `i `ui ]
-"544
-[v _previous `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 544: unsigned int previous = 0;
-[e = _previous -> -> 0 `i `ui ]
-"545
-[v _sum `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 545: unsigned int sum = 0;
-[e = _sum -> -> 0 `i `ui ]
-"546
-[v _i `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 546: unsigned int i = 0;
-[e = _i -> -> 0 `i `ui ]
-[v F3060 `ui ~T0 @X0 -> 4 `i s ]
-[i F3060
-:U ..
-"547
--> -> 0 `i `ui
--> -> 0 `i `ui
--> -> 0 `i `ui
--> -> 0 `i `ui
-..
-]
-[v _dietTable `ui ~T0 @X0 -> 4 `i a ]
-[; ;standbyMode.c: 547: unsigned int dietTable[4] = {0, 0, 0, 0};
-[e = _dietTable F3060 ]
-"548
-[v _backCheck `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 548: unsigned int backCheck = 0;
-[e = _backCheck -> -> 0 `i `ui ]
-[; ;standbyMode.c: 550: while(1){
-"550
+[; ;standbyMode.c: 581: while(1){
+"581
 [e :U 418 ]
 {
-[; ;standbyMode.c: 551: while(PORTBbits.RB1 == 0){ continue; }
-"551
+[; ;standbyMode.c: 582: while(PORTBbits.RB1 == 0){ continue; }
+"582
 [e $U 420  ]
 [e :U 421 ]
 {
@@ -4462,12 +4547,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 420 ]
 [e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 421  ]
 [e :U 422 ]
-"552
+"583
 [v _keypress `uc ~T0 @X0 1 a ]
-[; ;standbyMode.c: 552: unsigned char keypress = (PORTB & 0xF0) >> 4;
+[; ;standbyMode.c: 583: unsigned char keypress = (PORTB & 0xF0) >> 4;
 [e = _keypress -> >> & -> _PORTB `i -> 240 `i -> 4 `i `uc ]
-[; ;standbyMode.c: 553: while(PORTBbits.RB1 == 1){ continue; }
-"553
+[; ;standbyMode.c: 584: while(PORTBbits.RB1 == 1){ continue; }
+"584
 [e $U 423  ]
 [e :U 424 ]
 {
@@ -4476,1718 +4561,1996 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 423 ]
 [e $ == -> . . _PORTBbits 0 1 `i -> 1 `i 424  ]
 [e :U 425 ]
-[; ;standbyMode.c: 555: if(keypress == 15){
-"555
+[; ;standbyMode.c: 586: if(keypress == 15){
+"586
 [e $ ! == -> _keypress `i -> 15 `i 426  ]
 {
-[; ;standbyMode.c: 556: break;
-"556
+[; ;standbyMode.c: 587: break;
+"587
 [e $U 419  ]
-"557
+"588
 }
-[; ;standbyMode.c: 557: }
+[; ;standbyMode.c: 588: }
 [e $U 427  ]
-"558
+"589
 [e :U 426 ]
-[; ;standbyMode.c: 558: else if (keypress == 14){
+[; ;standbyMode.c: 589: else if (keypress == 14){
 [e $ ! == -> _keypress `i -> 14 `i 428  ]
 {
-[; ;standbyMode.c: 559: backCheck = 1;
-"559
+[; ;standbyMode.c: 590: backCheck = 1;
+"590
 [e = _backCheck -> -> 1 `i `ui ]
-[; ;standbyMode.c: 560: break;
-"560
+[; ;standbyMode.c: 591: break;
+"591
 [e $U 419  ]
-"561
+"592
 }
-[; ;standbyMode.c: 561: }
+[; ;standbyMode.c: 592: }
 [e $U 429  ]
-"562
+"593
 [e :U 428 ]
-[; ;standbyMode.c: 562: else if (keypress == 12){
-[e $ ! == -> _keypress `i -> 12 `i 430  ]
+[; ;standbyMode.c: 593: else if (keypress == 0 || keypress == 1 || keypress == 2){
+[e $ ! || || == -> _keypress `i -> 0 `i == -> _keypress `i -> 1 `i == -> _keypress `i -> 2 `i 430  ]
 {
-[; ;standbyMode.c: 563: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"563
+[; ;standbyMode.c: 594: if (count < tally){
+"594
+[e $ ! < _count _tally 431  ]
+{
+[; ;standbyMode.c: 595: putch(input[keypress]);
+"595
+[e ( _putch (1 *U + &U _input * -> _keypress `ux -> -> # *U &U _input `ui `ux ]
+[; ;standbyMode.c: 596: foodTable[count] = keypress + 1;
+"596
+[e = *U + &U _foodTable * -> _count `ux -> -> # *U &U _foodTable `ui `ux -> + -> _keypress `i -> 1 `i `ui ]
+[; ;standbyMode.c: 597: count += 1;
+"597
+[e =+ _count -> -> 1 `i `ui ]
+"598
+}
+[e :U 431 ]
+"599
+}
+[; ;standbyMode.c: 598: }
+[; ;standbyMode.c: 599: }
+[e $U 432  ]
+"600
+[e :U 430 ]
+[; ;standbyMode.c: 600: else if (keypress == 12){
+[e $ ! == -> _keypress `i -> 12 `i 433  ]
+{
+[; ;standbyMode.c: 601: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"601
 [e ( _lcdInst (1 -> -> 1 `i `uc ]
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 564: printf("Drawer %i diet:", drawer);
-"564
-[e ( _printf , (. :s 24C _drawer ]
-[; ;standbyMode.c: 565: lcdInst(0xC0);;
-"565
+[; ;standbyMode.c: 602: printf("Drawer %i food:", drawer);
+"602
+[e ( _printf , (. :s 30C _drawer ]
+[; ;standbyMode.c: 603: lcdInst(0xC0);;
+"603
 [e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 566: count = 0;
-"566
+[; ;standbyMode.c: 604: count = 0;
+"604
 [e = _count -> -> 0 `i `ui ]
-[; ;standbyMode.c: 567: dietTable[0] = 0;
-"567
-[e = *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui ]
-[; ;standbyMode.c: 568: dietTable[1] = 0;
-"568
-[e = *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui ]
-[; ;standbyMode.c: 569: dietTable[2] = 0;
-"569
-[e = *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui ]
-[; ;standbyMode.c: 570: dietTable[3] = 0;
-"570
-[e = *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui ]
-"571
+[; ;standbyMode.c: 605: foodTable[0] = 0;
+"605
+[e = *U + &U _foodTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _foodTable `ui `ux -> -> 0 `i `ui ]
+[; ;standbyMode.c: 606: foodTable[1] = 0;
+"606
+[e = *U + &U _foodTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _foodTable `ui `ux -> -> 0 `i `ui ]
+[; ;standbyMode.c: 607: foodTable[2] = 0;
+"607
+[e = *U + &U _foodTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _foodTable `ui `ux -> -> 0 `i `ui ]
+[; ;standbyMode.c: 608: foodTable[3] = 0;
+"608
+[e = *U + &U _foodTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _foodTable `ui `ux -> -> 0 `i `ui ]
+"609
 }
-[; ;standbyMode.c: 571: }
-[e $U 431  ]
-"572
-[e :U 430 ]
-[; ;standbyMode.c: 572: else if (count <= 3){
-[e $ ! <= _count -> -> 3 `i `ui 432  ]
-{
-[; ;standbyMode.c: 573: if (keypress == 3 || keypress == 7){
-"573
-[e $ ! || == -> _keypress `i -> 3 `i == -> _keypress `i -> 7 `i 433  ]
-{
-[; ;standbyMode.c: 574: putch(input[keypress]);
-"574
-[e ( _putch (1 *U + &U _input * -> _keypress `ux -> -> # *U &U _input `ui `ux ]
-[; ;standbyMode.c: 575: dietTable[count] = keypress;
-"575
-[e = *U + &U _dietTable * -> _count `ux -> -> # *U &U _dietTable `ui `ux -> _keypress `ui ]
-[; ;standbyMode.c: 576: count += 1;
-"576
-[e =+ _count -> -> 1 `i `ui ]
-"577
-}
-[; ;standbyMode.c: 577: }
-[e $U 434  ]
-"578
 [e :U 433 ]
-[; ;standbyMode.c: 578: else if (keypress == 11){
-[e $ ! == -> _keypress `i -> 11 `i 435  ]
-{
-[; ;standbyMode.c: 579: putch(input[keypress]);
-"579
-[e ( _putch (1 *U + &U _input * -> _keypress `ux -> -> # *U &U _input `ui `ux ]
-[; ;standbyMode.c: 580: dietTable[count] = keypress + 1;
-"580
-[e = *U + &U _dietTable * -> _count `ux -> -> # *U &U _dietTable `ui `ux -> + -> _keypress `i -> 1 `i `ui ]
-[; ;standbyMode.c: 581: count += 1;
-"581
-[e =+ _count -> -> 1 `i `ui ]
-"582
-}
-[e :U 435 ]
-"583
-[e :U 434 ]
-}
+"610
 [e :U 432 ]
-"584
-[e :U 431 ]
 [e :U 429 ]
 [e :U 427 ]
 }
 [e :U 417 ]
-"550
+"581
 [e $U 418  ]
 [e :U 419 ]
-[; ;standbyMode.c: 582: }
-[; ;standbyMode.c: 583: }
-[; ;standbyMode.c: 584: }
-[; ;standbyMode.c: 586: if (backCheck == 1){
-"586
-[e $ ! == _backCheck -> -> 1 `i `ui 436  ]
-{
-[; ;standbyMode.c: 587: sum = 100;
-"587
-[e = _sum -> -> 100 `i `ui ]
-"588
-}
-[; ;standbyMode.c: 588: }
-[e $U 437  ]
-"591
-[e :U 436 ]
-[; ;standbyMode.c: 591: else if (dietTable[0] == 12 && dietTable[1] == 0 && dietTable[2] == 0 && dietTable[3] == 0){
-[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui 438  ]
-{
-[; ;standbyMode.c: 592: sum = 12;
-"592
-[e = _sum -> -> 12 `i `ui ]
-"593
-}
-[; ;standbyMode.c: 593: }
-[e $U 439  ]
-"596
-[e :U 438 ]
-[; ;standbyMode.c: 596: else if (dietTable[0] == 3 && dietTable[1] == 0 && dietTable[2] == 0 && dietTable[3] == 0){
-[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui 440  ]
-{
-[; ;standbyMode.c: 597: sum = 3;
-"597
-[e = _sum -> -> 3 `i `ui ]
-"598
-}
-[; ;standbyMode.c: 598: }
-[e $U 441  ]
-"601
-[e :U 440 ]
-[; ;standbyMode.c: 601: else if (dietTable[0] == 7 && dietTable[1] == 0 && dietTable[2] == 0 && dietTable[3] == 0){
-[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui 442  ]
-{
-[; ;standbyMode.c: 602: sum = 7;
-"602
-[e = _sum -> -> 7 `i `ui ]
-"603
-}
-[; ;standbyMode.c: 603: }
-[e $U 443  ]
-"606
-[e :U 442 ]
-[; ;standbyMode.c: 606: else if (dietTable[0] == 3 && dietTable[1] == 7 && dietTable[2] == 0 && dietTable[3] == 0){
-[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui 444  ]
-{
-[; ;standbyMode.c: 607: sum = 10;
-"607
-[e = _sum -> -> 10 `i `ui ]
-"608
-}
-[; ;standbyMode.c: 608: }
-[e $U 445  ]
-"611
-[e :U 444 ]
-[; ;standbyMode.c: 611: else if (dietTable[0] == 3 && dietTable[1] == 12 && dietTable[2] == 0 && dietTable[3] == 0){
-[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui 446  ]
-{
-[; ;standbyMode.c: 612: sum = 15;
+[; ;standbyMode.c: 609: }
+[; ;standbyMode.c: 610: }
+[; ;standbyMode.c: 612: if (backCheck == 1){
 "612
-[e = _sum -> -> 15 `i `ui ]
+[e $ ! == _backCheck -> -> 1 `i `ui 434  ]
+{
+[; ;standbyMode.c: 613: return 100;
 "613
+[e ) -> -> 100 `i `ui ]
+[e $UE 415  ]
+"614
 }
-[; ;standbyMode.c: 613: }
-[e $U 447  ]
+[; ;standbyMode.c: 614: }
+[e $U 435  ]
+"615
+[e :U 434 ]
+[; ;standbyMode.c: 615: else {
+{
+[; ;standbyMode.c: 616: isValid = check_food(dietSum, foodTable);
 "616
-[e :U 446 ]
-[; ;standbyMode.c: 616: else if (dietTable[0] == 7 && dietTable[1] == 12 && dietTable[2] == 0 && dietTable[3] == 0){
-[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui 448  ]
-{
-[; ;standbyMode.c: 617: sum = 19;
-"617
-[e = _sum -> -> 19 `i `ui ]
+[e = _isValid ( _check_food (2 , _dietSum &U _foodTable ]
+[; ;standbyMode.c: 618: if (isValid == 0){
 "618
-}
-[; ;standbyMode.c: 618: }
-[e $U 449  ]
-"621
-[e :U 448 ]
-[; ;standbyMode.c: 621: else if (dietTable[0] == 3 && dietTable[1] == 3 && dietTable[2] == 7 && dietTable[3] == 0){
-[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui 450  ]
+[e $ ! == _isValid -> -> 0 `i `ui 436  ]
 {
-[; ;standbyMode.c: 622: sum = 13;
-"622
-[e = _sum -> -> 13 `i `ui ]
-"623
-}
-[; ;standbyMode.c: 623: }
-[e $U 451  ]
-"626
-[e :U 450 ]
-[; ;standbyMode.c: 626: else if (dietTable[0] == 3 && dietTable[1] == 3 && dietTable[2] == 12 && dietTable[3] == 0){
-[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui 452  ]
-{
-[; ;standbyMode.c: 627: sum = 18;
-"627
-[e = _sum -> -> 18 `i `ui ]
-"628
-}
-[; ;standbyMode.c: 628: }
-[e $U 453  ]
-"631
-[e :U 452 ]
-[; ;standbyMode.c: 631: else if (dietTable[0] == 3 && dietTable[1] == 7 && dietTable[2] == 7 && dietTable[3] == 0){
-[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui 454  ]
-{
-[; ;standbyMode.c: 632: sum = 17;
-"632
-[e = _sum -> -> 17 `i `ui ]
-"633
-}
-[; ;standbyMode.c: 633: }
-[e $U 455  ]
-"636
-[e :U 454 ]
-[; ;standbyMode.c: 636: else if (dietTable[0] == 3 && dietTable[1] == 12 && dietTable[2] == 12 && dietTable[3] == 0){
-[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui 456  ]
-{
-[; ;standbyMode.c: 637: sum = 27;
-"637
-[e = _sum -> -> 27 `i `ui ]
-"638
-}
-[; ;standbyMode.c: 638: }
-[e $U 457  ]
-"641
-[e :U 456 ]
-[; ;standbyMode.c: 641: else if (dietTable[0] == 3 && dietTable[1] == 7 && dietTable[2] == 12 && dietTable[3] == 0){
-[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui 458  ]
-{
-[; ;standbyMode.c: 642: sum = 22;
-"642
-[e = _sum -> -> 22 `i `ui ]
-"643
-}
-[; ;standbyMode.c: 643: }
-[e $U 459  ]
-"646
-[e :U 458 ]
-[; ;standbyMode.c: 646: else if (dietTable[0] == 7 && dietTable[1] == 7 && dietTable[2] == 12 && dietTable[3] == 0){
-[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui 460  ]
-{
-[; ;standbyMode.c: 647: sum = 26;
-"647
-[e = _sum -> -> 26 `i `ui ]
-"648
-}
-[; ;standbyMode.c: 648: }
-[e $U 461  ]
-"651
-[e :U 460 ]
-[; ;standbyMode.c: 651: else if (dietTable[0] == 7 && dietTable[1] == 12 && dietTable[2] == 12 && dietTable[3] == 0){
-[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui 462  ]
-{
-[; ;standbyMode.c: 652: sum = 31;
-"652
-[e = _sum -> -> 31 `i `ui ]
-"653
-}
-[; ;standbyMode.c: 653: }
-[e $U 463  ]
-"656
-[e :U 462 ]
-[; ;standbyMode.c: 656: else if (dietTable[0] == 3 && dietTable[1] == 3 && dietTable[2] == 7 && dietTable[3] == 12){
-[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui 464  ]
-{
-[; ;standbyMode.c: 657: sum = 25;
-"657
-[e = _sum -> -> 25 `i `ui ]
-"658
-}
-[; ;standbyMode.c: 658: }
-[e $U 465  ]
-"661
-[e :U 464 ]
-[; ;standbyMode.c: 661: else if (dietTable[0] == 3 && dietTable[1] == 7 && dietTable[2] == 7 && dietTable[3] == 12){
-[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui 466  ]
-{
-[; ;standbyMode.c: 662: sum = 29;
-"662
-[e = _sum -> -> 29 `i `ui ]
-"663
-}
-[; ;standbyMode.c: 663: }
-[e $U 467  ]
-"666
-[e :U 466 ]
-[; ;standbyMode.c: 666: else if (dietTable[0] == 3 && dietTable[1] == 7 && dietTable[2] == 12 && dietTable[3] == 12){
-[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui 468  ]
-{
-[; ;standbyMode.c: 667: sum = 34;
-"667
-[e = _sum -> -> 34 `i `ui ]
-"668
-}
-[; ;standbyMode.c: 668: }
-[e $U 469  ]
-"671
-[e :U 468 ]
-[; ;standbyMode.c: 671: else if (dietTable[0] == 3 && dietTable[1] == 12 && dietTable[2] == 12 && dietTable[3] == 12){
-[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui 470  ]
-{
-[; ;standbyMode.c: 672: sum = 39;
-"672
-[e = _sum -> -> 39 `i `ui ]
-"673
-}
-[; ;standbyMode.c: 673: }
-[e $U 471  ]
-"676
-[e :U 470 ]
-[; ;standbyMode.c: 676: else if (dietTable[0] == 7 && dietTable[1] == 12 && dietTable[2] == 12 && dietTable[3] == 12){
-[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui 472  ]
-{
-[; ;standbyMode.c: 677: sum = 43;
-"677
-[e = _sum -> -> 43 `i `ui ]
-"678
-}
-[; ;standbyMode.c: 678: }
-[e $U 473  ]
-"681
-[e :U 472 ]
-[; ;standbyMode.c: 681: else{
-{
-[; ;standbyMode.c: 682: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"682
+[; ;standbyMode.c: 619: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"619
 [e ( _lcdInst (1 -> -> 1 `i `uc ]
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 683: printf("Invalid diet!");
-"683
-[e ( _printf :s 25C ]
-[; ;standbyMode.c: 684: lcdInst(0xC0);;
-"684
+[; ;standbyMode.c: 620: printf("Invalid food!");
+"620
+[e ( _printf :s 31C ]
+[; ;standbyMode.c: 621: lcdInst(0xC0);;
+"621
 [e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 685: printf("Try again.");
-"685
-[e ( _printf :s 26C ]
-[; ;standbyMode.c: 686: _delay((unsigned long)((1000)*(40000000/4000.0)));
-"686
+[; ;standbyMode.c: 622: printf("Try again.");
+"622
+[e ( _printf :s 32C ]
+[; ;standbyMode.c: 623: _delay((unsigned long)((1000)*(40000000/4000.0)));
+"623
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 687: sum = 0;
-"687
-[e = _sum -> -> 0 `i `ui ]
-[; ;standbyMode.c: 688: goto START;
-"688
+[; ;standbyMode.c: 624: goto START;
+"624
 [e $U 416  ]
-"689
+"625
 }
-[e :U 473 ]
-[e :U 471 ]
-[e :U 469 ]
-[e :U 467 ]
-[e :U 465 ]
-[e :U 463 ]
-[e :U 461 ]
-[e :U 459 ]
-[e :U 457 ]
-[e :U 455 ]
-[e :U 453 ]
-[e :U 451 ]
-[e :U 449 ]
-[e :U 447 ]
-[e :U 445 ]
-[e :U 443 ]
-[e :U 441 ]
-[e :U 439 ]
-[e :U 437 ]
-[; ;standbyMode.c: 689: }
-[; ;standbyMode.c: 690: return sum;
-"690
-[e ) _sum ]
+[; ;standbyMode.c: 625: }
+[e $U 437  ]
+"626
+[e :U 436 ]
+[; ;standbyMode.c: 626: else {
+{
+[; ;standbyMode.c: 627: return isValid;
+"627
+[e ) _isValid ]
 [e $UE 415  ]
-[; ;standbyMode.c: 691: }
-"691
+"628
+}
+[e :U 437 ]
+"629
+}
+[e :U 435 ]
+[; ;standbyMode.c: 628: }
+[; ;standbyMode.c: 629: }
+[; ;standbyMode.c: 630: }
+"630
 [e :UE 415 ]
 }
+"634
+[v _diet_press `(ui ~T0 @X0 1 ef1`ui ]
+{
+[; ;standbyMode.c: 634: unsigned int diet_press(unsigned int drawer){
+[e :U _diet_press ]
+[v _drawer `ui ~T0 @X0 1 r1 ]
+[f ]
+[; ;standbyMode.c: 637: START: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"637
+[e :U 439 ]
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 638: printf("Drawer %i diet:", drawer);
+"638
+[e ( _printf , (. :s 33C _drawer ]
+[; ;standbyMode.c: 639: lcdInst(0xC0);;
+"639
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+"641
+[v _count `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 641: unsigned int count = 0;
+[e = _count -> -> 0 `i `ui ]
+"642
+[v _previous `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 642: unsigned int previous = 0;
+[e = _previous -> -> 0 `i `ui ]
+"643
+[v _sum `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 643: unsigned int sum = 0;
+[e = _sum -> -> 0 `i `ui ]
+"644
+[v _i `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 644: unsigned int i = 0;
+[e = _i -> -> 0 `i `ui ]
+[v F3095 `ui ~T0 @X0 -> 4 `i s ]
+[i F3095
+:U ..
+"645
+-> -> 0 `i `ui
+-> -> 0 `i `ui
+-> -> 0 `i `ui
+-> -> 0 `i `ui
+..
+]
+[v _dietTable `ui ~T0 @X0 -> 4 `i a ]
+[; ;standbyMode.c: 645: unsigned int dietTable[4] = {0, 0, 0, 0};
+[e = _dietTable F3095 ]
+"646
+[v _backCheck `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 646: unsigned int backCheck = 0;
+[e = _backCheck -> -> 0 `i `ui ]
+[; ;standbyMode.c: 648: while(1){
+"648
+[e :U 441 ]
+{
+[; ;standbyMode.c: 649: while(PORTBbits.RB1 == 0){ continue; }
+"649
+[e $U 443  ]
+[e :U 444 ]
+{
+[e $U 443  ]
+}
+[e :U 443 ]
+[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 444  ]
+[e :U 445 ]
+"650
+[v _keypress `uc ~T0 @X0 1 a ]
+[; ;standbyMode.c: 650: unsigned char keypress = (PORTB & 0xF0) >> 4;
+[e = _keypress -> >> & -> _PORTB `i -> 240 `i -> 4 `i `uc ]
+[; ;standbyMode.c: 651: while(PORTBbits.RB1 == 1){ continue; }
+"651
+[e $U 446  ]
+[e :U 447 ]
+{
+[e $U 446  ]
+}
+[e :U 446 ]
+[e $ == -> . . _PORTBbits 0 1 `i -> 1 `i 447  ]
+[e :U 448 ]
+[; ;standbyMode.c: 653: if(keypress == 15){
+"653
+[e $ ! == -> _keypress `i -> 15 `i 449  ]
+{
+[; ;standbyMode.c: 654: break;
+"654
+[e $U 442  ]
+"655
+}
+[; ;standbyMode.c: 655: }
+[e $U 450  ]
+"656
+[e :U 449 ]
+[; ;standbyMode.c: 656: else if (keypress == 14){
+[e $ ! == -> _keypress `i -> 14 `i 451  ]
+{
+[; ;standbyMode.c: 657: backCheck = 1;
+"657
+[e = _backCheck -> -> 1 `i `ui ]
+[; ;standbyMode.c: 658: break;
+"658
+[e $U 442  ]
+"659
+}
+[; ;standbyMode.c: 659: }
+[e $U 452  ]
+"660
+[e :U 451 ]
+[; ;standbyMode.c: 660: else if (keypress == 12){
+[e $ ! == -> _keypress `i -> 12 `i 453  ]
+{
+[; ;standbyMode.c: 661: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"661
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 662: printf("Drawer %i diet:", drawer);
+"662
+[e ( _printf , (. :s 34C _drawer ]
+[; ;standbyMode.c: 663: lcdInst(0xC0);;
+"663
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 664: count = 0;
+"664
+[e = _count -> -> 0 `i `ui ]
+[; ;standbyMode.c: 665: dietTable[0] = 0;
+"665
+[e = *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui ]
+[; ;standbyMode.c: 666: dietTable[1] = 0;
+"666
+[e = *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui ]
+[; ;standbyMode.c: 667: dietTable[2] = 0;
+"667
+[e = *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui ]
+[; ;standbyMode.c: 668: dietTable[3] = 0;
+"668
+[e = *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui ]
+"669
+}
+[; ;standbyMode.c: 669: }
+[e $U 454  ]
+"670
+[e :U 453 ]
+[; ;standbyMode.c: 670: else if (count <= 3){
+[e $ ! <= _count -> -> 3 `i `ui 455  ]
+{
+[; ;standbyMode.c: 671: if (keypress == 3 || keypress == 7){
+"671
+[e $ ! || == -> _keypress `i -> 3 `i == -> _keypress `i -> 7 `i 456  ]
+{
+[; ;standbyMode.c: 672: putch(input[keypress]);
+"672
+[e ( _putch (1 *U + &U _input * -> _keypress `ux -> -> # *U &U _input `ui `ux ]
+[; ;standbyMode.c: 673: dietTable[count] = keypress;
+"673
+[e = *U + &U _dietTable * -> _count `ux -> -> # *U &U _dietTable `ui `ux -> _keypress `ui ]
+[; ;standbyMode.c: 674: count += 1;
+"674
+[e =+ _count -> -> 1 `i `ui ]
+"675
+}
+[; ;standbyMode.c: 675: }
+[e $U 457  ]
+"676
+[e :U 456 ]
+[; ;standbyMode.c: 676: else if (keypress == 11){
+[e $ ! == -> _keypress `i -> 11 `i 458  ]
+{
+[; ;standbyMode.c: 677: putch(input[keypress]);
+"677
+[e ( _putch (1 *U + &U _input * -> _keypress `ux -> -> # *U &U _input `ui `ux ]
+[; ;standbyMode.c: 678: dietTable[count] = keypress + 1;
+"678
+[e = *U + &U _dietTable * -> _count `ux -> -> # *U &U _dietTable `ui `ux -> + -> _keypress `i -> 1 `i `ui ]
+[; ;standbyMode.c: 679: count += 1;
+"679
+[e =+ _count -> -> 1 `i `ui ]
+"680
+}
+[e :U 458 ]
+"681
+[e :U 457 ]
+}
+[e :U 455 ]
+"682
+[e :U 454 ]
+[e :U 452 ]
+[e :U 450 ]
+}
+[e :U 440 ]
+"648
+[e $U 441  ]
+[e :U 442 ]
+[; ;standbyMode.c: 680: }
+[; ;standbyMode.c: 681: }
+[; ;standbyMode.c: 682: }
+[; ;standbyMode.c: 684: if (backCheck == 1){
+"684
+[e $ ! == _backCheck -> -> 1 `i `ui 459  ]
+{
+[; ;standbyMode.c: 685: sum = 100;
+"685
+[e = _sum -> -> 100 `i `ui ]
+"686
+}
+[; ;standbyMode.c: 686: }
+[e $U 460  ]
+"689
+[e :U 459 ]
+[; ;standbyMode.c: 689: else if (dietTable[0] == 12 && dietTable[1] == 0 && dietTable[2] == 0 && dietTable[3] == 0){
+[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui 461  ]
+{
+[; ;standbyMode.c: 690: sum = 12;
+"690
+[e = _sum -> -> 12 `i `ui ]
+"691
+}
+[; ;standbyMode.c: 691: }
+[e $U 462  ]
+"694
+[e :U 461 ]
+[; ;standbyMode.c: 694: else if (dietTable[0] == 3 && dietTable[1] == 0 && dietTable[2] == 0 && dietTable[3] == 0){
+[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui 463  ]
+{
+[; ;standbyMode.c: 695: sum = 3;
 "695
+[e = _sum -> -> 3 `i `ui ]
+"696
+}
+[; ;standbyMode.c: 696: }
+[e $U 464  ]
+"699
+[e :U 463 ]
+[; ;standbyMode.c: 699: else if (dietTable[0] == 7 && dietTable[1] == 0 && dietTable[2] == 0 && dietTable[3] == 0){
+[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui 465  ]
+{
+[; ;standbyMode.c: 700: sum = 7;
+"700
+[e = _sum -> -> 7 `i `ui ]
+"701
+}
+[; ;standbyMode.c: 701: }
+[e $U 466  ]
+"704
+[e :U 465 ]
+[; ;standbyMode.c: 704: else if (dietTable[0] == 3 && dietTable[1] == 7 && dietTable[2] == 0 && dietTable[3] == 0){
+[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui 467  ]
+{
+[; ;standbyMode.c: 705: sum = 10;
+"705
+[e = _sum -> -> 10 `i `ui ]
+"706
+}
+[; ;standbyMode.c: 706: }
+[e $U 468  ]
+"709
+[e :U 467 ]
+[; ;standbyMode.c: 709: else if (dietTable[0] == 3 && dietTable[1] == 12 && dietTable[2] == 0 && dietTable[3] == 0){
+[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui 469  ]
+{
+[; ;standbyMode.c: 710: sum = 15;
+"710
+[e = _sum -> -> 15 `i `ui ]
+"711
+}
+[; ;standbyMode.c: 711: }
+[e $U 470  ]
+"714
+[e :U 469 ]
+[; ;standbyMode.c: 714: else if (dietTable[0] == 7 && dietTable[1] == 12 && dietTable[2] == 0 && dietTable[3] == 0){
+[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui 471  ]
+{
+[; ;standbyMode.c: 715: sum = 19;
+"715
+[e = _sum -> -> 19 `i `ui ]
+"716
+}
+[; ;standbyMode.c: 716: }
+[e $U 472  ]
+"719
+[e :U 471 ]
+[; ;standbyMode.c: 719: else if (dietTable[0] == 3 && dietTable[1] == 3 && dietTable[2] == 7 && dietTable[3] == 0){
+[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui 473  ]
+{
+[; ;standbyMode.c: 720: sum = 13;
+"720
+[e = _sum -> -> 13 `i `ui ]
+"721
+}
+[; ;standbyMode.c: 721: }
+[e $U 474  ]
+"724
+[e :U 473 ]
+[; ;standbyMode.c: 724: else if (dietTable[0] == 3 && dietTable[1] == 3 && dietTable[2] == 12 && dietTable[3] == 0){
+[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui 475  ]
+{
+[; ;standbyMode.c: 725: sum = 18;
+"725
+[e = _sum -> -> 18 `i `ui ]
+"726
+}
+[; ;standbyMode.c: 726: }
+[e $U 476  ]
+"729
+[e :U 475 ]
+[; ;standbyMode.c: 729: else if (dietTable[0] == 3 && dietTable[1] == 7 && dietTable[2] == 7 && dietTable[3] == 0){
+[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui 477  ]
+{
+[; ;standbyMode.c: 730: sum = 17;
+"730
+[e = _sum -> -> 17 `i `ui ]
+"731
+}
+[; ;standbyMode.c: 731: }
+[e $U 478  ]
+"734
+[e :U 477 ]
+[; ;standbyMode.c: 734: else if (dietTable[0] == 3 && dietTable[1] == 12 && dietTable[2] == 12 && dietTable[3] == 0){
+[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui 479  ]
+{
+[; ;standbyMode.c: 735: sum = 27;
+"735
+[e = _sum -> -> 27 `i `ui ]
+"736
+}
+[; ;standbyMode.c: 736: }
+[e $U 480  ]
+"739
+[e :U 479 ]
+[; ;standbyMode.c: 739: else if (dietTable[0] == 3 && dietTable[1] == 7 && dietTable[2] == 12 && dietTable[3] == 0){
+[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui 481  ]
+{
+[; ;standbyMode.c: 740: sum = 22;
+"740
+[e = _sum -> -> 22 `i `ui ]
+"741
+}
+[; ;standbyMode.c: 741: }
+[e $U 482  ]
+"744
+[e :U 481 ]
+[; ;standbyMode.c: 744: else if (dietTable[0] == 7 && dietTable[1] == 7 && dietTable[2] == 12 && dietTable[3] == 0){
+[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui 483  ]
+{
+[; ;standbyMode.c: 745: sum = 26;
+"745
+[e = _sum -> -> 26 `i `ui ]
+"746
+}
+[; ;standbyMode.c: 746: }
+[e $U 484  ]
+"749
+[e :U 483 ]
+[; ;standbyMode.c: 749: else if (dietTable[0] == 7 && dietTable[1] == 12 && dietTable[2] == 12 && dietTable[3] == 0){
+[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 0 `i `ui 485  ]
+{
+[; ;standbyMode.c: 750: sum = 31;
+"750
+[e = _sum -> -> 31 `i `ui ]
+"751
+}
+[; ;standbyMode.c: 751: }
+[e $U 486  ]
+"754
+[e :U 485 ]
+[; ;standbyMode.c: 754: else if (dietTable[0] == 3 && dietTable[1] == 3 && dietTable[2] == 7 && dietTable[3] == 12){
+[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui 487  ]
+{
+[; ;standbyMode.c: 755: sum = 25;
+"755
+[e = _sum -> -> 25 `i `ui ]
+"756
+}
+[; ;standbyMode.c: 756: }
+[e $U 488  ]
+"759
+[e :U 487 ]
+[; ;standbyMode.c: 759: else if (dietTable[0] == 3 && dietTable[1] == 7 && dietTable[2] == 7 && dietTable[3] == 12){
+[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui 489  ]
+{
+[; ;standbyMode.c: 760: sum = 29;
+"760
+[e = _sum -> -> 29 `i `ui ]
+"761
+}
+[; ;standbyMode.c: 761: }
+[e $U 490  ]
+"764
+[e :U 489 ]
+[; ;standbyMode.c: 764: else if (dietTable[0] == 3 && dietTable[1] == 7 && dietTable[2] == 12 && dietTable[3] == 12){
+[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui 491  ]
+{
+[; ;standbyMode.c: 765: sum = 34;
+"765
+[e = _sum -> -> 34 `i `ui ]
+"766
+}
+[; ;standbyMode.c: 766: }
+[e $U 492  ]
+"769
+[e :U 491 ]
+[; ;standbyMode.c: 769: else if (dietTable[0] == 3 && dietTable[1] == 12 && dietTable[2] == 12 && dietTable[3] == 12){
+[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 3 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui 493  ]
+{
+[; ;standbyMode.c: 770: sum = 39;
+"770
+[e = _sum -> -> 39 `i `ui ]
+"771
+}
+[; ;standbyMode.c: 771: }
+[e $U 494  ]
+"774
+[e :U 493 ]
+[; ;standbyMode.c: 774: else if (dietTable[0] == 7 && dietTable[1] == 12 && dietTable[2] == 12 && dietTable[3] == 12){
+[e $ ! && && && == *U + &U _dietTable * -> -> -> 0 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 7 `i `ui == *U + &U _dietTable * -> -> -> 1 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 2 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui == *U + &U _dietTable * -> -> -> 3 `i `ui `ux -> -> # *U &U _dietTable `ui `ux -> -> 12 `i `ui 495  ]
+{
+[; ;standbyMode.c: 775: sum = 43;
+"775
+[e = _sum -> -> 43 `i `ui ]
+"776
+}
+[; ;standbyMode.c: 776: }
+[e $U 496  ]
+"779
+[e :U 495 ]
+[; ;standbyMode.c: 779: else{
+{
+[; ;standbyMode.c: 780: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"780
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 781: printf("Invalid diet!");
+"781
+[e ( _printf :s 35C ]
+[; ;standbyMode.c: 782: lcdInst(0xC0);;
+"782
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 783: printf("Try again.");
+"783
+[e ( _printf :s 36C ]
+[; ;standbyMode.c: 784: _delay((unsigned long)((1000)*(40000000/4000.0)));
+"784
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 785: sum = 0;
+"785
+[e = _sum -> -> 0 `i `ui ]
+[; ;standbyMode.c: 786: goto START;
+"786
+[e $U 439  ]
+"787
+}
+[e :U 496 ]
+[e :U 494 ]
+[e :U 492 ]
+[e :U 490 ]
+[e :U 488 ]
+[e :U 486 ]
+[e :U 484 ]
+[e :U 482 ]
+[e :U 480 ]
+[e :U 478 ]
+[e :U 476 ]
+[e :U 474 ]
+[e :U 472 ]
+[e :U 470 ]
+[e :U 468 ]
+[e :U 466 ]
+[e :U 464 ]
+[e :U 462 ]
+[e :U 460 ]
+[; ;standbyMode.c: 787: }
+[; ;standbyMode.c: 788: return sum;
+"788
+[e ) _sum ]
+[e $UE 438  ]
+[; ;standbyMode.c: 789: }
+"789
+[e :UE 438 ]
+}
+"793
 [v _decode_drawer `(ui ~T0 @X0 1 ef1`ui ]
 {
-[; ;standbyMode.c: 695: unsigned int decode_drawer(unsigned int drawer){
+[; ;standbyMode.c: 793: unsigned int decode_drawer(unsigned int drawer){
 [e :U _decode_drawer ]
 [v _drawer `ui ~T0 @X0 1 r1 ]
 [f ]
-"696
+"794
 [v _returnValue `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 696: unsigned int returnValue;
-[; ;standbyMode.c: 698: switch(drawer){
-"698
-[e $U 476  ]
+[; ;standbyMode.c: 794: unsigned int returnValue;
+[; ;standbyMode.c: 796: switch(drawer){
+"796
+[e $U 499  ]
 {
-[; ;standbyMode.c: 700: case 20:
-"700
-[e :U 477 ]
-[; ;standbyMode.c: 701: returnValue = 1;
-"701
+[; ;standbyMode.c: 798: case 20:
+"798
+[e :U 500 ]
+[; ;standbyMode.c: 799: returnValue = 1;
+"799
 [e = _returnValue -> -> 1 `i `ui ]
-[; ;standbyMode.c: 702: break;
-"702
-[e $U 475  ]
-[; ;standbyMode.c: 705: case 1:
-"705
-[e :U 478 ]
-[; ;standbyMode.c: 706: returnValue = 2;
-"706
+[; ;standbyMode.c: 800: break;
+"800
+[e $U 498  ]
+[; ;standbyMode.c: 803: case 1:
+"803
+[e :U 501 ]
+[; ;standbyMode.c: 804: returnValue = 2;
+"804
 [e = _returnValue -> -> 2 `i `ui ]
-[; ;standbyMode.c: 707: break;
-"707
-[e $U 475  ]
-[; ;standbyMode.c: 710: case 2:
-"710
-[e :U 479 ]
-[; ;standbyMode.c: 711: returnValue = 3;
-"711
+[; ;standbyMode.c: 805: break;
+"805
+[e $U 498  ]
+[; ;standbyMode.c: 808: case 2:
+"808
+[e :U 502 ]
+[; ;standbyMode.c: 809: returnValue = 3;
+"809
 [e = _returnValue -> -> 3 `i `ui ]
-[; ;standbyMode.c: 712: break;
-"712
-[e $U 475  ]
-[; ;standbyMode.c: 715: case 8:
-"715
-[e :U 480 ]
-[; ;standbyMode.c: 716: returnValue = 7;
-"716
+[; ;standbyMode.c: 810: break;
+"810
+[e $U 498  ]
+[; ;standbyMode.c: 813: case 8:
+"813
+[e :U 503 ]
+[; ;standbyMode.c: 814: returnValue = 7;
+"814
 [e = _returnValue -> -> 7 `i `ui ]
-[; ;standbyMode.c: 717: break;
-"717
-[e $U 475  ]
-[; ;standbyMode.c: 720: case 9:
-"720
-[e :U 481 ]
-[; ;standbyMode.c: 721: returnValue = 8;
-"721
+[; ;standbyMode.c: 815: break;
+"815
+[e $U 498  ]
+[; ;standbyMode.c: 818: case 9:
+"818
+[e :U 504 ]
+[; ;standbyMode.c: 819: returnValue = 8;
+"819
 [e = _returnValue -> -> 8 `i `ui ]
-[; ;standbyMode.c: 722: break;
-"722
-[e $U 475  ]
-[; ;standbyMode.c: 725: case 10:
-"725
-[e :U 482 ]
-[; ;standbyMode.c: 726: returnValue = 9;
-"726
+[; ;standbyMode.c: 820: break;
+"820
+[e $U 498  ]
+[; ;standbyMode.c: 823: case 10:
+"823
+[e :U 505 ]
+[; ;standbyMode.c: 824: returnValue = 9;
+"824
 [e = _returnValue -> -> 9 `i `ui ]
-[; ;standbyMode.c: 727: break;
-"727
-[e $U 475  ]
-[; ;standbyMode.c: 730: case 33:
-"730
-[e :U 483 ]
-[; ;standbyMode.c: 731: returnValue = 10;
-"731
+[; ;standbyMode.c: 825: break;
+"825
+[e $U 498  ]
+[; ;standbyMode.c: 828: case 33:
+"828
+[e :U 506 ]
+[; ;standbyMode.c: 829: returnValue = 10;
+"829
 [e = _returnValue -> -> 10 `i `ui ]
-[; ;standbyMode.c: 732: break;
-"732
-[e $U 475  ]
-[; ;standbyMode.c: 735: case 40:
-"735
-[e :U 484 ]
-[; ;standbyMode.c: 736: returnValue = 11;
-"736
+[; ;standbyMode.c: 830: break;
+"830
+[e $U 498  ]
+[; ;standbyMode.c: 833: case 40:
+"833
+[e :U 507 ]
+[; ;standbyMode.c: 834: returnValue = 11;
+"834
 [e = _returnValue -> -> 11 `i `ui ]
-[; ;standbyMode.c: 737: break;
-"737
-[e $U 475  ]
-[; ;standbyMode.c: 740: case 21:
-"740
-[e :U 485 ]
-[; ;standbyMode.c: 741: returnValue = 12;
-"741
+[; ;standbyMode.c: 835: break;
+"835
+[e $U 498  ]
+[; ;standbyMode.c: 838: case 21:
+"838
+[e :U 508 ]
+[; ;standbyMode.c: 839: returnValue = 12;
+"839
 [e = _returnValue -> -> 12 `i `ui ]
-[; ;standbyMode.c: 742: break;
-"742
-[e $U 475  ]
-[; ;standbyMode.c: 745: case 22:
-"745
-[e :U 486 ]
-[; ;standbyMode.c: 746: returnValue = 13;
-"746
+[; ;standbyMode.c: 840: break;
+"840
+[e $U 498  ]
+[; ;standbyMode.c: 843: case 22:
+"843
+[e :U 509 ]
+[; ;standbyMode.c: 844: returnValue = 13;
+"844
 [e = _returnValue -> -> 13 `i `ui ]
-[; ;standbyMode.c: 747: break;
-"747
-[e $U 475  ]
-[; ;standbyMode.c: 750: case 24:
-"750
-[e :U 487 ]
-[; ;standbyMode.c: 751: returnValue = 14;
-"751
+[; ;standbyMode.c: 845: break;
+"845
+[e $U 498  ]
+[; ;standbyMode.c: 848: case 24:
+"848
+[e :U 510 ]
+[; ;standbyMode.c: 849: returnValue = 14;
+"849
 [e = _returnValue -> -> 14 `i `ui ]
-[; ;standbyMode.c: 752: break;
-"752
-[e $U 475  ]
-[; ;standbyMode.c: 755: case 25:
-"755
-[e :U 488 ]
-[; ;standbyMode.c: 756: returnValue = 15;
-"756
+[; ;standbyMode.c: 850: break;
+"850
+[e $U 498  ]
+[; ;standbyMode.c: 853: case 25:
+"853
+[e :U 511 ]
+[; ;standbyMode.c: 854: returnValue = 15;
+"854
 [e = _returnValue -> -> 15 `i `ui ]
-[; ;standbyMode.c: 757: break;
-"757
-[e $U 475  ]
-[; ;standbyMode.c: 760: case 26:
-"760
-[e :U 489 ]
-[; ;standbyMode.c: 761: returnValue = 16;
-"761
+[; ;standbyMode.c: 855: break;
+"855
+[e $U 498  ]
+[; ;standbyMode.c: 858: case 26:
+"858
+[e :U 512 ]
+[; ;standbyMode.c: 859: returnValue = 16;
+"859
 [e = _returnValue -> -> 16 `i `ui ]
-[; ;standbyMode.c: 762: break;
-"762
-[e $U 475  ]
-[; ;standbyMode.c: 764: default:
-"764
-[e :U 490 ]
-[; ;standbyMode.c: 765: returnValue = drawer;
-"765
+[; ;standbyMode.c: 860: break;
+"860
+[e $U 498  ]
+[; ;standbyMode.c: 862: default:
+"862
+[e :U 513 ]
+[; ;standbyMode.c: 863: returnValue = drawer;
+"863
 [e = _returnValue _drawer ]
-[; ;standbyMode.c: 766: break;
-"766
-[e $U 475  ]
-"767
+[; ;standbyMode.c: 864: break;
+"864
+[e $U 498  ]
+"865
 }
-[; ;standbyMode.c: 767: }
-[e $U 475  ]
-"698
-[e :U 476 ]
-[e [\ _drawer , $ -> -> 20 `i `ui 477
- , $ -> -> 1 `i `ui 478
- , $ -> -> 2 `i `ui 479
- , $ -> -> 8 `i `ui 480
- , $ -> -> 9 `i `ui 481
- , $ -> -> 10 `i `ui 482
- , $ -> -> 33 `i `ui 483
- , $ -> -> 40 `i `ui 484
- , $ -> -> 21 `i `ui 485
- , $ -> -> 22 `i `ui 486
- , $ -> -> 24 `i `ui 487
- , $ -> -> 25 `i `ui 488
- , $ -> -> 26 `i `ui 489
- 490 ]
-"767
-[e :U 475 ]
-[; ;standbyMode.c: 768: return returnValue;
-"768
+[; ;standbyMode.c: 865: }
+[e $U 498  ]
+"796
+[e :U 499 ]
+[e [\ _drawer , $ -> -> 20 `i `ui 500
+ , $ -> -> 1 `i `ui 501
+ , $ -> -> 2 `i `ui 502
+ , $ -> -> 8 `i `ui 503
+ , $ -> -> 9 `i `ui 504
+ , $ -> -> 10 `i `ui 505
+ , $ -> -> 33 `i `ui 506
+ , $ -> -> 40 `i `ui 507
+ , $ -> -> 21 `i `ui 508
+ , $ -> -> 22 `i `ui 509
+ , $ -> -> 24 `i `ui 510
+ , $ -> -> 25 `i `ui 511
+ , $ -> -> 26 `i `ui 512
+ 513 ]
+"865
+[e :U 498 ]
+[; ;standbyMode.c: 866: return returnValue;
+"866
 [e ) _returnValue ]
-[e $UE 474  ]
-[; ;standbyMode.c: 769: }
-"769
-[e :UE 474 ]
+[e $UE 497  ]
+[; ;standbyMode.c: 867: }
+"867
+[e :UE 497 ]
 }
-"773
+"871
 [v _which_drawer `(ui ~T0 @X0 1 ef ]
 {
-[; ;standbyMode.c: 773: unsigned int which_drawer(void){
+[; ;standbyMode.c: 871: unsigned int which_drawer(void){
 [e :U _which_drawer ]
 [f ]
-[; ;standbyMode.c: 774: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
-"774
+[; ;standbyMode.c: 872: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
+"872
 [e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;standbyMode.c: 775: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"775
+[; ;standbyMode.c: 873: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"873
 [e ( _lcdInst (1 -> -> 1 `i `uc ]
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 776: printf("Drawer number:");
-"776
-[e ( _printf :s 27C ]
-[; ;standbyMode.c: 777: lcdInst(0xC0);;
-"777
+[; ;standbyMode.c: 874: printf("Drawer number:");
+"874
+[e ( _printf :s 37C ]
+[; ;standbyMode.c: 875: lcdInst(0xC0);;
+"875
 [e ( _lcdInst (1 -> -> 192 `i `uc ]
-"779
+"877
 [v _count `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 779: unsigned int count = 0;
+[; ;standbyMode.c: 877: unsigned int count = 0;
 [e = _count -> -> 0 `i `ui ]
-"780
+"878
 [v _sum `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 780: unsigned int sum = 0;
+[; ;standbyMode.c: 878: unsigned int sum = 0;
 [e = _sum -> -> 0 `i `ui ]
-"781
+"879
 [v _backCheck `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 781: unsigned int backCheck = 0;
+[; ;standbyMode.c: 879: unsigned int backCheck = 0;
 [e = _backCheck -> -> 0 `i `ui ]
-[; ;standbyMode.c: 783: while(1){
-"783
-[e :U 493 ]
-{
-[; ;standbyMode.c: 784: while(PORTBbits.RB1 == 0){ continue; }
-"784
-[e $U 495  ]
-[e :U 496 ]
-{
-[e $U 495  ]
-}
-[e :U 495 ]
-[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 496  ]
-[e :U 497 ]
-"785
-[v _keypress `uc ~T0 @X0 1 a ]
-[; ;standbyMode.c: 785: unsigned char keypress = (PORTB & 0xF0) >> 4;
-[e = _keypress -> >> & -> _PORTB `i -> 240 `i -> 4 `i `uc ]
-[; ;standbyMode.c: 786: while(PORTBbits.RB1 == 1){ continue; }
-"786
-[e $U 498  ]
-[e :U 499 ]
-{
-[e $U 498  ]
-}
-[e :U 498 ]
-[e $ == -> . . _PORTBbits 0 1 `i -> 1 `i 499  ]
-[e :U 500 ]
-[; ;standbyMode.c: 788: if(keypress == 15){
-"788
-[e $ ! == -> _keypress `i -> 15 `i 501  ]
-{
-[; ;standbyMode.c: 789: break;
-"789
-[e $U 494  ]
-"790
-}
-[; ;standbyMode.c: 790: }
-[e $U 502  ]
-"791
-[e :U 501 ]
-[; ;standbyMode.c: 791: else if (keypress == 14){
-[e $ ! == -> _keypress `i -> 14 `i 503  ]
-{
-[; ;standbyMode.c: 792: backCheck = 100;
-"792
-[e = _backCheck -> -> 100 `i `ui ]
-[; ;standbyMode.c: 793: break;
-"793
-[e $U 494  ]
-"794
-}
-[; ;standbyMode.c: 794: }
-[e $U 504  ]
-"795
-[e :U 503 ]
-[; ;standbyMode.c: 795: else if(keypress == 0 || keypress == 1 || keypress == 2 || keypress == 4 || keypress == 5 || keypress == 6 || keypress == 8 || keypress == 9 || keypress == 10 || keypress == 13){
-[e $ ! || || || || || || || || || == -> _keypress `i -> 0 `i == -> _keypress `i -> 1 `i == -> _keypress `i -> 2 `i == -> _keypress `i -> 4 `i == -> _keypress `i -> 5 `i == -> _keypress `i -> 6 `i == -> _keypress `i -> 8 `i == -> _keypress `i -> 9 `i == -> _keypress `i -> 10 `i == -> _keypress `i -> 13 `i 505  ]
-{
-[; ;standbyMode.c: 796: if (count == 0){
-"796
-[e $ ! == _count -> -> 0 `i `ui 506  ]
-{
-[; ;standbyMode.c: 797: if (keypress == 1 || keypress == 2 || keypress == 4 || keypress == 5 || keypress == 6 || keypress == 8 || keypress == 9 || keypress == 10){
-"797
-[e $ ! || || || || || || || == -> _keypress `i -> 1 `i == -> _keypress `i -> 2 `i == -> _keypress `i -> 4 `i == -> _keypress `i -> 5 `i == -> _keypress `i -> 6 `i == -> _keypress `i -> 8 `i == -> _keypress `i -> 9 `i == -> _keypress `i -> 10 `i 507  ]
-{
-[; ;standbyMode.c: 798: count += 2;
-"798
-[e =+ _count -> -> 2 `i `ui ]
-[; ;standbyMode.c: 799: putch(input[keypress]);
-"799
-[e ( _putch (1 *U + &U _input * -> _keypress `ux -> -> # *U &U _input `ui `ux ]
-[; ;standbyMode.c: 800: sum += keypress;
-"800
-[e =+ _sum -> _keypress `ui ]
-"801
-}
-[; ;standbyMode.c: 801: }
-[e $U 508  ]
-"802
-[e :U 507 ]
-[; ;standbyMode.c: 802: else if (keypress == 0){
-[e $ ! == -> _keypress `i -> 0 `i 509  ]
-{
-[; ;standbyMode.c: 803: putch(input[keypress]);
-"803
-[e ( _putch (1 *U + &U _input * -> _keypress `ux -> -> # *U &U _input `ui `ux ]
-[; ;standbyMode.c: 804: count += 1;
-"804
-[e =+ _count -> -> 1 `i `ui ]
-[; ;standbyMode.c: 805: sum += 20;
-"805
-[e =+ _sum -> -> 20 `i `ui ]
-"806
-}
-[e :U 509 ]
-"807
-[e :U 508 ]
-}
-[; ;standbyMode.c: 806: }
-[; ;standbyMode.c: 807: }
-[e $U 510  ]
-"808
-[e :U 506 ]
-[; ;standbyMode.c: 808: else if (count == 1){
-[e $ ! == _count -> -> 1 `i `ui 511  ]
-{
-[; ;standbyMode.c: 809: if (keypress < 8 || keypress == 13){
-"809
-[e $ ! || < -> _keypress `i -> 8 `i == -> _keypress `i -> 13 `i 512  ]
-{
-[; ;standbyMode.c: 810: putch(input[keypress]);
-"810
-[e ( _putch (1 *U + &U _input * -> _keypress `ux -> -> # *U &U _input `ui `ux ]
-[; ;standbyMode.c: 811: count += 1;
-"811
-[e =+ _count -> -> 1 `i `ui ]
-[; ;standbyMode.c: 812: if(keypress == 0){
-"812
-[e $ ! == -> _keypress `i -> 0 `i 513  ]
-{
-[; ;standbyMode.c: 813: sum += 20;
-"813
-[e =+ _sum -> -> 20 `i `ui ]
-"814
-}
-[; ;standbyMode.c: 814: }
-[e $U 514  ]
-"815
-[e :U 513 ]
-[; ;standbyMode.c: 815: else {
-{
-[; ;standbyMode.c: 816: sum += keypress;
-"816
-[e =+ _sum -> _keypress `ui ]
-"817
-}
-[e :U 514 ]
-"818
-}
-[e :U 512 ]
-"819
-}
-[e :U 511 ]
-"820
-[e :U 510 ]
-}
-[; ;standbyMode.c: 817: }
-[; ;standbyMode.c: 818: }
-[; ;standbyMode.c: 819: }
-[; ;standbyMode.c: 820: }
-[e $U 515  ]
-"821
-[e :U 505 ]
-[; ;standbyMode.c: 821: else if (keypress == 12){
-[e $ ! == -> _keypress `i -> 12 `i 516  ]
-{
-[; ;standbyMode.c: 822: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"822
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 823: printf("Drawer number:");
-"823
-[e ( _printf :s 28C ]
-[; ;standbyMode.c: 824: lcdInst(0xC0);;
-"824
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 825: count = 0;
-"825
-[e = _count -> -> 0 `i `ui ]
-[; ;standbyMode.c: 826: sum = 0;
-"826
-[e = _sum -> -> 0 `i `ui ]
-"827
-}
+[; ;standbyMode.c: 881: while(1){
+"881
 [e :U 516 ]
-"828
-[e :U 515 ]
-[e :U 504 ]
-[e :U 502 ]
-}
-[e :U 492 ]
-"783
-[e $U 493  ]
-[e :U 494 ]
-[; ;standbyMode.c: 827: }
-[; ;standbyMode.c: 828: }
-[; ;standbyMode.c: 830: if (backCheck == 100){
-"830
-[e $ ! == _backCheck -> -> 100 `i `ui 517  ]
 {
-[; ;standbyMode.c: 831: return backCheck;
-"831
-[e ) _backCheck ]
-[e $UE 491  ]
-"832
-}
-[; ;standbyMode.c: 832: }
+[; ;standbyMode.c: 882: while(PORTBbits.RB1 == 0){ continue; }
+"882
 [e $U 518  ]
-"833
-[e :U 517 ]
-[; ;standbyMode.c: 833: else{
+[e :U 519 ]
 {
-"834
-[v _rand `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 834: unsigned int rand = decode_drawer(sum);
-[e = _rand ( _decode_drawer (1 _sum ]
-[; ;standbyMode.c: 835: return rand;
-"835
-[e ) _rand ]
-[e $UE 491  ]
-"836
+[e $U 518  ]
 }
 [e :U 518 ]
-[; ;standbyMode.c: 836: }
-[; ;standbyMode.c: 837: }
-"837
-[e :UE 491 ]
-}
-"839
-[v _standbyMode `(v ~T0 @X0 1 ef ]
-{
-[; ;standbyMode.c: 839: void standbyMode(void){
-[e :U _standbyMode ]
-[f ]
-[; ;standbyMode.c: 840: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"840
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 841: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
-"841
-[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;standbyMode.c: 842: printf("Standby");
-"842
-[e ( _printf :s 29C ]
-[; ;standbyMode.c: 843: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"843
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 844: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"844
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 845: printf("Press any key to");
-"845
-[e ( _printf :s 30C ]
-[; ;standbyMode.c: 846: lcdInst(0xC0);;
-"846
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 847: printf("begin operation.");
-"847
-[e ( _printf :s 31C ]
-[; ;standbyMode.c: 849: while(PORTBbits.RB1 == 0){
-"849
-[e $U 520  ]
-[e :U 521 ]
-{
-[; ;standbyMode.c: 850: continue;
-"850
-[e $U 520  ]
-"851
-}
+[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 519  ]
 [e :U 520 ]
-"849
-[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 521  ]
-[e :U 522 ]
-[; ;standbyMode.c: 851: }
-[; ;standbyMode.c: 853: writeEEPROM(0x0, 0x1);
-"853
-[e ( _writeEEPROM (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
-"854
-[v _display `uc ~T0 @X0 1 a ]
-[; ;standbyMode.c: 854: unsigned char display = readEEPROM(0x0);
-[e = _display ( _readEEPROM (1 -> -> 0 `i `uc ]
-[; ;standbyMode.c: 855: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"855
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 856: printf("Stored value: ");
-"856
-[e ( _printf :s 32C ]
-[; ;standbyMode.c: 857: putch(input[display]);
-"857
-[e ( _putch (1 *U + &U _input * -> _display `ux -> -> # *U &U _input `ui `ux ]
-[; ;standbyMode.c: 858: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"858
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 860: writeEEPROM(0x0, 0x3);
-"860
-[e ( _writeEEPROM (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
-[; ;standbyMode.c: 861: unsigned char display = readEEPROM(0x0);
-"861
-[e = _display ( _readEEPROM (1 -> -> 0 `i `uc ]
-[; ;standbyMode.c: 862: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"862
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 863: printf("Stored value: ");
-"863
-[e ( _printf :s 33C ]
-[; ;standbyMode.c: 864: putch(input[display]);
-"864
-[e ( _putch (1 *U + &U _input * -> _display `ux -> -> # *U &U _input `ui `ux ]
-[; ;standbyMode.c: 865: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"865
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 868: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"868
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 869: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
-"869
-[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;standbyMode.c: 870: printf("Welcome to your");
-"870
-[e ( _printf :s 34C ]
-[; ;standbyMode.c: 871: lcdInst(0xC0);;
-"871
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 872: printf("cabinet sorter!");
-"872
-[e ( _printf :s 35C ]
-[; ;standbyMode.c: 873: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"873
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 876: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"876
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 877: printf("Press # to");
-"877
-[e ( _printf :s 36C ]
-[; ;standbyMode.c: 878: lcdInst(0xC0);;
-"878
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 879: printf("view logs,");
-"879
-[e ( _printf :s 37C ]
-[; ;standbyMode.c: 880: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"880
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 881: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"881
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 882: printf("or press D to");
-"882
-[e ( _printf :s 38C ]
-[; ;standbyMode.c: 883: lcdInst(0xC0);;
 "883
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 884: printf("begin operation.");
-"884
-[e ( _printf :s 39C ]
-[; ;standbyMode.c: 886: while(PORTBbits.RB1 == 0){ continue; }
-"886
-[e $U 523  ]
-[e :U 524 ]
-{
-[e $U 523  ]
-}
-[e :U 523 ]
-[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 524  ]
-[e :U 525 ]
-"887
 [v _keypress `uc ~T0 @X0 1 a ]
-[; ;standbyMode.c: 887: unsigned char keypress = (PORTB & 0xF0) >> 4;
+[; ;standbyMode.c: 883: unsigned char keypress = (PORTB & 0xF0) >> 4;
 [e = _keypress -> >> & -> _PORTB `i -> 240 `i -> 4 `i `uc ]
-[; ;standbyMode.c: 888: while(PORTBbits.RB1 == 1){ continue; }
-"888
-[e $U 526  ]
-[e :U 527 ]
+[; ;standbyMode.c: 884: while(PORTBbits.RB1 == 1){ continue; }
+"884
+[e $U 521  ]
+[e :U 522 ]
 {
-[e $U 526  ]
+[e $U 521  ]
 }
-[e :U 526 ]
-[e $ == -> . . _PORTBbits 0 1 `i -> 1 `i 527  ]
-[e :U 528 ]
-[; ;standbyMode.c: 890: if (keypress == 15){
+[e :U 521 ]
+[e $ == -> . . _PORTBbits 0 1 `i -> 1 `i 522  ]
+[e :U 523 ]
+[; ;standbyMode.c: 886: if(keypress == 15){
+"886
+[e $ ! == -> _keypress `i -> 15 `i 524  ]
+{
+[; ;standbyMode.c: 887: break;
+"887
+[e $U 517  ]
+"888
+}
+[; ;standbyMode.c: 888: }
+[e $U 525  ]
+"889
+[e :U 524 ]
+[; ;standbyMode.c: 889: else if (keypress == 14){
+[e $ ! == -> _keypress `i -> 14 `i 526  ]
+{
+[; ;standbyMode.c: 890: backCheck = 100;
 "890
-[e $ ! == -> _keypress `i -> 15 `i 529  ]
+[e = _backCheck -> -> 100 `i `ui ]
+[; ;standbyMode.c: 891: break;
+"891
+[e $U 517  ]
+"892
+}
+[; ;standbyMode.c: 892: }
+[e $U 527  ]
+"893
+[e :U 526 ]
+[; ;standbyMode.c: 893: else if(keypress == 0 || keypress == 1 || keypress == 2 || keypress == 4 || keypress == 5 || keypress == 6 || keypress == 8 || keypress == 9 || keypress == 10 || keypress == 13){
+[e $ ! || || || || || || || || || == -> _keypress `i -> 0 `i == -> _keypress `i -> 1 `i == -> _keypress `i -> 2 `i == -> _keypress `i -> 4 `i == -> _keypress `i -> 5 `i == -> _keypress `i -> 6 `i == -> _keypress `i -> 8 `i == -> _keypress `i -> 9 `i == -> _keypress `i -> 10 `i == -> _keypress `i -> 13 `i 528  ]
 {
-"932
-[v _drawerCount `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 932: unsigned int drawerCount = 0;
-[e = _drawerCount -> -> 0 `i `ui ]
-"933
-[v _i `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 933: unsigned int i = 0;
-[e = _i -> -> 0 `i `ui ]
-"934
-[v _validDrawer `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 934: unsigned int validDrawer = 0;
-[e = _validDrawer -> -> 0 `i `ui ]
-"935
-[v _zero `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 935: unsigned int zero = 0;
-[e = _zero -> -> 0 `i `ui ]
-"936
-[v _firstIteration `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 936: unsigned int firstIteration = 0;
-[e = _firstIteration -> -> 0 `i `ui ]
-"937
-[v _drawer `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 937: unsigned int drawer = 0;
-[e = _drawer -> -> 0 `i `ui ]
-"938
-[v _diet `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 938: unsigned int diet = 0;
-[e = _diet -> -> 0 `i `ui ]
-"939
-[v _food `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 939: unsigned int food = 0;
-[e = _food -> -> 0 `i `ui ]
-[; ;standbyMode.c: 941: while (1){
-"941
+[; ;standbyMode.c: 894: if (count == 0){
+"894
+[e $ ! == _count -> -> 0 `i `ui 529  ]
+{
+[; ;standbyMode.c: 895: if (keypress == 1 || keypress == 2 || keypress == 4 || keypress == 5 || keypress == 6 || keypress == 8 || keypress == 9 || keypress == 10){
+"895
+[e $ ! || || || || || || || == -> _keypress `i -> 1 `i == -> _keypress `i -> 2 `i == -> _keypress `i -> 4 `i == -> _keypress `i -> 5 `i == -> _keypress `i -> 6 `i == -> _keypress `i -> 8 `i == -> _keypress `i -> 9 `i == -> _keypress `i -> 10 `i 530  ]
+{
+[; ;standbyMode.c: 896: count += 2;
+"896
+[e =+ _count -> -> 2 `i `ui ]
+[; ;standbyMode.c: 897: putch(input[keypress]);
+"897
+[e ( _putch (1 *U + &U _input * -> _keypress `ux -> -> # *U &U _input `ui `ux ]
+[; ;standbyMode.c: 898: sum += keypress;
+"898
+[e =+ _sum -> _keypress `ui ]
+"899
+}
+[; ;standbyMode.c: 899: }
+[e $U 531  ]
+"900
+[e :U 530 ]
+[; ;standbyMode.c: 900: else if (keypress == 0){
+[e $ ! == -> _keypress `i -> 0 `i 532  ]
+{
+[; ;standbyMode.c: 901: putch(input[keypress]);
+"901
+[e ( _putch (1 *U + &U _input * -> _keypress `ux -> -> # *U &U _input `ui `ux ]
+[; ;standbyMode.c: 902: count += 1;
+"902
+[e =+ _count -> -> 1 `i `ui ]
+[; ;standbyMode.c: 903: sum += 20;
+"903
+[e =+ _sum -> -> 20 `i `ui ]
+"904
+}
+[e :U 532 ]
+"905
 [e :U 531 ]
+}
+[; ;standbyMode.c: 904: }
+[; ;standbyMode.c: 905: }
+[e $U 533  ]
+"906
+[e :U 529 ]
+[; ;standbyMode.c: 906: else if (count == 1){
+[e $ ! == _count -> -> 1 `i `ui 534  ]
 {
-[; ;standbyMode.c: 942: if (firstIteration == 1){
-"942
-[e $ ! == _firstIteration -> -> 1 `i `ui 533  ]
+[; ;standbyMode.c: 907: if (keypress < 8 || keypress == 13){
+"907
+[e $ ! || < -> _keypress `i -> 8 `i == -> _keypress `i -> 13 `i 535  ]
 {
-[; ;standbyMode.c: 943: while (1){
-"943
-[e :U 535 ]
+[; ;standbyMode.c: 908: putch(input[keypress]);
+"908
+[e ( _putch (1 *U + &U _input * -> _keypress `ux -> -> # *U &U _input `ui `ux ]
+[; ;standbyMode.c: 909: count += 1;
+"909
+[e =+ _count -> -> 1 `i `ui ]
+[; ;standbyMode.c: 910: if(keypress == 0){
+"910
+[e $ ! == -> _keypress `i -> 0 `i 536  ]
 {
-[; ;standbyMode.c: 945: if(drawerCount >= 8){
-"945
-[e $ ! >= _drawerCount -> -> 8 `i `ui 537  ]
+[; ;standbyMode.c: 911: sum += 20;
+"911
+[e =+ _sum -> -> 20 `i `ui ]
+"912
+}
+[; ;standbyMode.c: 912: }
+[e $U 537  ]
+"913
+[e :U 536 ]
+[; ;standbyMode.c: 913: else {
 {
-[; ;standbyMode.c: 946: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"946
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 947: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
-"947
-[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;standbyMode.c: 948: printf("Maximum of 8");
-"948
-[e ( _printf :s 40C ]
-[; ;standbyMode.c: 949: lcdInst(0xC0);;
-"949
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 950: printf("drawers reached!");
-"950
-[e ( _printf :s 41C ]
-[; ;standbyMode.c: 951: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"951
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 952: break;
-"952
-[e $U 536  ]
-"953
+[; ;standbyMode.c: 914: sum += keypress;
+"914
+[e =+ _sum -> _keypress `ui ]
+"915
 }
 [e :U 537 ]
-[; ;standbyMode.c: 953: }
-[; ;standbyMode.c: 955: DRAWER_BACK: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"955
-[e :U 538 ]
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 956: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
-"956
-[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;standbyMode.c: 957: printf("Another drawer?");
-"957
-[e ( _printf :s 42C ]
-[; ;standbyMode.c: 958: lcdInst(0xC0);;
-"958
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 959: printf("# = No, D = Yes");
-"959
-[e ( _printf :s 43C ]
-[; ;standbyMode.c: 961: while(PORTBbits.RB1 == 0){ continue; }
-"961
-[e $U 539  ]
-[e :U 540 ]
-{
-[e $U 539  ]
+"916
 }
-[e :U 539 ]
-[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 540  ]
-[e :U 541 ]
-"962
-[v _keypress1 `uc ~T0 @X0 1 a ]
-[; ;standbyMode.c: 962: unsigned char keypress1 = (PORTB & 0xF0) >> 4;
-[e = _keypress1 -> >> & -> _PORTB `i -> 240 `i -> 4 `i `uc ]
-[; ;standbyMode.c: 963: while(PORTBbits.RB1 == 1){ continue; }
-"963
-[e $U 542  ]
-[e :U 543 ]
-{
-[e $U 542  ]
-}
-[e :U 542 ]
-[e $ == -> . . _PORTBbits 0 1 `i -> 1 `i 543  ]
-[e :U 544 ]
-[; ;standbyMode.c: 965: if (keypress1 == 15){
-"965
-[e $ ! == -> _keypress1 `i -> 15 `i 545  ]
-{
-[; ;standbyMode.c: 966: DIET_BACK1: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"966
-[e :U 546 ]
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 967: drawer = which_drawer();
-"967
-[e = _drawer ( _which_drawer ..  ]
-[; ;standbyMode.c: 969: if (drawer == 100){
-"969
-[e $ ! == _drawer -> -> 100 `i `ui 547  ]
-{
-[; ;standbyMode.c: 970: drawer = 0;
-"970
-[e = _drawer -> -> 0 `i `ui ]
-[; ;standbyMode.c: 971: goto DRAWER_BACK;
-"971
-[e $U 538  ]
-"972
-}
-[e :U 547 ]
-[; ;standbyMode.c: 972: }
-[; ;standbyMode.c: 974: for (i=0; i<8; i++){
-"974
-{
-[e = _i -> -> 0 `i `ui ]
-[e $ < _i -> -> 8 `i `ui 548  ]
-[e $U 549  ]
-[e :U 548 ]
-{
-[; ;standbyMode.c: 975: if (drawerInformation[i] == drawer){
-"975
-[e $ ! == *U + &U _drawerInformation * -> _i `ux -> -> # *U &U _drawerInformation `ui `ux _drawer 551  ]
-{
-[; ;standbyMode.c: 976: validDrawer = 1;
-"976
-[e = _validDrawer -> -> 1 `i `ui ]
-[; ;standbyMode.c: 977: if (drawerInformation[i] == 0){
-"977
-[e $ ! == *U + &U _drawerInformation * -> _i `ux -> -> # *U &U _drawerInformation `ui `ux -> -> 0 `i `ui 552  ]
-{
-[; ;standbyMode.c: 978: zero = 1;
-"978
-[e = _zero -> -> 1 `i `ui ]
-"979
-}
-[e :U 552 ]
-"980
-}
-[e :U 551 ]
-"981
-}
-"974
-[e ++ _i -> -> 1 `i `ui ]
-[e $ < _i -> -> 8 `i `ui 548  ]
-[e :U 549 ]
-"981
-}
-[; ;standbyMode.c: 979: }
-[; ;standbyMode.c: 980: }
-[; ;standbyMode.c: 981: }
-[; ;standbyMode.c: 982: if (validDrawer == 1){
-"982
-[e $ ! == _validDrawer -> -> 1 `i `ui 553  ]
-{
-[; ;standbyMode.c: 983: if (zero == 1){
-"983
-[e $ ! == _zero -> -> 1 `i `ui 554  ]
-{
-[; ;standbyMode.c: 984: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"984
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 985: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
-"985
-[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;standbyMode.c: 986: printf("No drawer");
-"986
-[e ( _printf :s 44C ]
-[; ;standbyMode.c: 987: lcdInst(0xC0);;
-"987
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 988: printf("number pressed.");
-"988
-[e ( _printf :s 45C ]
-[; ;standbyMode.c: 989: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"989
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 990: zero = 0;
-"990
-[e = _zero -> -> 0 `i `ui ]
-"991
-}
-[; ;standbyMode.c: 991: }
-[e $U 555  ]
-"992
-[e :U 554 ]
-[; ;standbyMode.c: 992: else{
-{
-[; ;standbyMode.c: 993: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"993
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 994: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
-"994
-[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;standbyMode.c: 995: printf("Drawer already");
-"995
-[e ( _printf :s 46C ]
-[; ;standbyMode.c: 996: lcdInst(0xC0);;
-"996
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 997: printf("in use!");
-"997
-[e ( _printf :s 47C ]
-[; ;standbyMode.c: 998: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"998
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-"999
-}
-[e :U 555 ]
-[; ;standbyMode.c: 999: }
-[; ;standbyMode.c: 1000: validDrawer = 0;
-"1000
-[e = _validDrawer -> -> 0 `i `ui ]
-[; ;standbyMode.c: 1001: continue;
-"1001
-[e $U 534  ]
-"1002
-}
-[; ;standbyMode.c: 1002: }
-[e $U 556  ]
-"1003
-[e :U 553 ]
-[; ;standbyMode.c: 1003: else{
-{
-[; ;standbyMode.c: 1004: FOOD_BACK1: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"1004
-[e :U 557 ]
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 1005: diet = diet_press(drawer);
-"1005
-[e = _diet ( _diet_press (1 _drawer ]
-[; ;standbyMode.c: 1006: if (diet == 100){
-"1006
-[e $ ! == _diet -> -> 100 `i `ui 558  ]
-{
-[; ;standbyMode.c: 1007: diet = 0;
-"1007
-[e = _diet -> -> 0 `i `ui ]
-[; ;standbyMode.c: 1008: goto DIET_BACK1;
-"1008
-[e $U 546  ]
-"1009
-}
-[e :U 558 ]
-[; ;standbyMode.c: 1009: }
-[; ;standbyMode.c: 1011: food = food_press(diet, drawer);
-"1011
-[e = _food ( _food_press (2 , _diet _drawer ]
-[; ;standbyMode.c: 1012: if (food == 100){
-"1012
-[e $ ! == _food -> -> 100 `i `ui 559  ]
-{
-[; ;standbyMode.c: 1013: diet = 0;
-"1013
-[e = _diet -> -> 0 `i `ui ]
-[; ;standbyMode.c: 1014: food = 0;
-"1014
-[e = _food -> -> 0 `i `ui ]
-[; ;standbyMode.c: 1015: goto FOOD_BACK1;
-"1015
-[e $U 557  ]
-"1016
-}
-[e :U 559 ]
-[; ;standbyMode.c: 1016: }
-[; ;standbyMode.c: 1017: drawerInformation[drawerCount] = drawer;
-"1017
-[e = *U + &U _drawerInformation * -> _drawerCount `ux -> -> # *U &U _drawerInformation `ui `ux _drawer ]
-[; ;standbyMode.c: 1018: drawerCount += 1;
-"1018
-[e =+ _drawerCount -> -> 1 `i `ui ]
-"1019
-}
-[e :U 556 ]
-"1020
-}
-[; ;standbyMode.c: 1019: }
-[; ;standbyMode.c: 1020: }
-[e $U 560  ]
-"1021
-[e :U 545 ]
-[; ;standbyMode.c: 1021: else if (keypress1 == 14){
-[e $ ! == -> _keypress1 `i -> 14 `i 561  ]
-{
-[; ;standbyMode.c: 1022: break;
-"1022
-[e $U 536  ]
-"1023
-}
-[e :U 561 ]
-"1024
-[e :U 560 ]
-[; ;standbyMode.c: 1023: }
-[; ;standbyMode.c: 1024: keypress1 = 0;
-[e = _keypress1 -> -> 0 `i `uc ]
-"1025
+[e :U 535 ]
+"917
 }
 [e :U 534 ]
-"943
-[e $U 535  ]
-[e :U 536 ]
-[; ;standbyMode.c: 1025: }
-[; ;standbyMode.c: 1026: break;
-"1026
-[e $U 532  ]
-"1027
-}
-[; ;standbyMode.c: 1027: }
-[e $U 562  ]
-"1028
+"918
 [e :U 533 ]
-[; ;standbyMode.c: 1028: else{
-{
-[; ;standbyMode.c: 1029: DIET_BACK2: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"1029
-[e :U 563 ]
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 1030: drawer = which_drawer();
-"1030
-[e = _drawer ( _which_drawer ..  ]
-[; ;standbyMode.c: 1032: if (drawer == 100){
-"1032
-[e $ ! == _drawer -> -> 100 `i `ui 564  ]
-{
-[; ;standbyMode.c: 1033: drawer = 0;
-"1033
-[e = _drawer -> -> 0 `i `ui ]
-[; ;standbyMode.c: 1034: firstIteration = 1;
-"1034
-[e = _firstIteration -> -> 1 `i `ui ]
-[; ;standbyMode.c: 1035: goto DRAWER_BACK;
-"1035
+}
+[; ;standbyMode.c: 915: }
+[; ;standbyMode.c: 916: }
+[; ;standbyMode.c: 917: }
+[; ;standbyMode.c: 918: }
 [e $U 538  ]
-"1036
-}
-[e :U 564 ]
-[; ;standbyMode.c: 1036: }
-[; ;standbyMode.c: 1038: firstIteration = 1;
-"1038
-[e = _firstIteration -> -> 1 `i `ui ]
-[; ;standbyMode.c: 1039: for (i=0; i<8; i++){
-"1039
+"919
+[e :U 528 ]
+[; ;standbyMode.c: 919: else if (keypress == 12){
+[e $ ! == -> _keypress `i -> 12 `i 539  ]
 {
-[e = _i -> -> 0 `i `ui ]
-[e $ < _i -> -> 8 `i `ui 565  ]
-[e $U 566  ]
-[e :U 565 ]
-{
-[; ;standbyMode.c: 1040: if (drawerInformation[i] == drawer){
-"1040
-[e $ ! == *U + &U _drawerInformation * -> _i `ux -> -> # *U &U _drawerInformation `ui `ux _drawer 568  ]
-{
-[; ;standbyMode.c: 1041: validDrawer = 1;
-"1041
-[e = _validDrawer -> -> 1 `i `ui ]
-[; ;standbyMode.c: 1042: if (drawerInformation[i] == 0){
-"1042
-[e $ ! == *U + &U _drawerInformation * -> _i `ux -> -> # *U &U _drawerInformation `ui `ux -> -> 0 `i `ui 569  ]
-{
-[; ;standbyMode.c: 1043: zero = 1;
-"1043
-[e = _zero -> -> 1 `i `ui ]
-"1044
-}
-[e :U 569 ]
-"1045
-}
-[e :U 568 ]
-"1046
-}
-"1039
-[e ++ _i -> -> 1 `i `ui ]
-[e $ < _i -> -> 8 `i `ui 565  ]
-[e :U 566 ]
-"1046
-}
-[; ;standbyMode.c: 1044: }
-[; ;standbyMode.c: 1045: }
-[; ;standbyMode.c: 1046: }
-[; ;standbyMode.c: 1047: if (validDrawer == 1){
-"1047
-[e $ ! == _validDrawer -> -> 1 `i `ui 570  ]
-{
-[; ;standbyMode.c: 1048: if (zero == 1){
-"1048
-[e $ ! == _zero -> -> 1 `i `ui 571  ]
-{
-[; ;standbyMode.c: 1049: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"1049
+[; ;standbyMode.c: 920: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"920
 [e ( _lcdInst (1 -> -> 1 `i `uc ]
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 1050: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
-"1050
+[; ;standbyMode.c: 921: printf("Drawer number:");
+"921
+[e ( _printf :s 38C ]
+[; ;standbyMode.c: 922: lcdInst(0xC0);;
+"922
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 923: count = 0;
+"923
+[e = _count -> -> 0 `i `ui ]
+[; ;standbyMode.c: 924: sum = 0;
+"924
+[e = _sum -> -> 0 `i `ui ]
+"925
+}
+[e :U 539 ]
+"926
+[e :U 538 ]
+[e :U 527 ]
+[e :U 525 ]
+}
+[e :U 515 ]
+"881
+[e $U 516  ]
+[e :U 517 ]
+[; ;standbyMode.c: 925: }
+[; ;standbyMode.c: 926: }
+[; ;standbyMode.c: 928: if (backCheck == 100){
+"928
+[e $ ! == _backCheck -> -> 100 `i `ui 540  ]
+{
+[; ;standbyMode.c: 929: return backCheck;
+"929
+[e ) _backCheck ]
+[e $UE 514  ]
+"930
+}
+[; ;standbyMode.c: 930: }
+[e $U 541  ]
+"931
+[e :U 540 ]
+[; ;standbyMode.c: 931: else{
+{
+"932
+[v _rand `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 932: unsigned int rand = decode_drawer(sum);
+[e = _rand ( _decode_drawer (1 _sum ]
+[; ;standbyMode.c: 933: return rand;
+"933
+[e ) _rand ]
+[e $UE 514  ]
+"934
+}
+[e :U 541 ]
+[; ;standbyMode.c: 934: }
+[; ;standbyMode.c: 935: }
+"935
+[e :UE 514 ]
+}
+"937
+[v _standbyMode `(v ~T0 @X0 1 ef ]
+{
+[; ;standbyMode.c: 937: void standbyMode(void){
+[e :U _standbyMode ]
+[f ]
+[; ;standbyMode.c: 938: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"938
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 939: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
+"939
 [e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;standbyMode.c: 1051: printf("No drawer");
-"1051
+[; ;standbyMode.c: 940: printf("Standby");
+"940
+[e ( _printf :s 39C ]
+[; ;standbyMode.c: 941: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"941
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 942: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"942
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 943: printf("Press any key to");
+"943
+[e ( _printf :s 40C ]
+[; ;standbyMode.c: 944: lcdInst(0xC0);;
+"944
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 945: printf("begin operation.");
+"945
+[e ( _printf :s 41C ]
+[; ;standbyMode.c: 947: while(PORTBbits.RB1 == 0){
+"947
+[e $U 543  ]
+[e :U 544 ]
+{
+[; ;standbyMode.c: 948: continue;
+"948
+[e $U 543  ]
+"949
+}
+[e :U 543 ]
+"947
+[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 544  ]
+[e :U 545 ]
+[; ;standbyMode.c: 949: }
+[; ;standbyMode.c: 951: writeEEPROM(250, 1);
+"951
+[e ( _writeEEPROM (2 , -> -> 250 `i `uc -> -> 1 `i `uc ]
+[; ;standbyMode.c: 952: writeEEPROM(3, 91);
+"952
+[e ( _writeEEPROM (2 , -> -> 3 `i `uc -> -> 91 `i `uc ]
+[; ;standbyMode.c: 953: writeEEPROM(4, 3);
+"953
+[e ( _writeEEPROM (2 , -> -> 4 `i `uc -> -> 3 `i `uc ]
+[; ;standbyMode.c: 954: writeEEPROM(5, 15);
+"954
+[e ( _writeEEPROM (2 , -> -> 5 `i `uc -> -> 15 `i `uc ]
+[; ;standbyMode.c: 955: writeEEPROM(6, 8);
+"955
+[e ( _writeEEPROM (2 , -> -> 6 `i `uc -> -> 8 `i `uc ]
+[; ;standbyMode.c: 956: writeEEPROM(7, 12);
+"956
+[e ( _writeEEPROM (2 , -> -> 7 `i `uc -> -> 12 `i `uc ]
+[; ;standbyMode.c: 957: writeEEPROM(8, 1);
+"957
+[e ( _writeEEPROM (2 , -> -> 8 `i `uc -> -> 1 `i `uc ]
+[; ;standbyMode.c: 958: writeEEPROM(9, 13);
+"958
+[e ( _writeEEPROM (2 , -> -> 9 `i `uc -> -> 13 `i `uc ]
+[; ;standbyMode.c: 959: writeEEPROM(10, 0);
+"959
+[e ( _writeEEPROM (2 , -> -> 10 `i `uc -> -> 0 `i `uc ]
+[; ;standbyMode.c: 960: writeEEPROM(0x0, 0x1);
+"960
+[e ( _writeEEPROM (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+"961
+[v _display `uc ~T0 @X0 1 a ]
+[; ;standbyMode.c: 961: unsigned char display = readEEPROM(0x0);
+[e = _display ( _readEEPROM (1 -> -> 0 `i `uc ]
+[; ;standbyMode.c: 962: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"962
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 963: printf("Stored value: ");
+"963
+[e ( _printf :s 42C ]
+[; ;standbyMode.c: 964: putch(input[display]);
+"964
+[e ( _putch (1 *U + &U _input * -> _display `ux -> -> # *U &U _input `ui `ux ]
+[; ;standbyMode.c: 965: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"965
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 967: writeEEPROM(0x0, 0x3);
+"967
+[e ( _writeEEPROM (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
+[; ;standbyMode.c: 968: unsigned char display = readEEPROM(0x0);
+"968
+[e = _display ( _readEEPROM (1 -> -> 0 `i `uc ]
+[; ;standbyMode.c: 969: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"969
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 970: printf("Stored value: ");
+"970
+[e ( _printf :s 43C ]
+[; ;standbyMode.c: 971: putch(input[display]);
+"971
+[e ( _putch (1 *U + &U _input * -> _display `ux -> -> # *U &U _input `ui `ux ]
+[; ;standbyMode.c: 972: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"972
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 975: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"975
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 976: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
+"976
+[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
+[; ;standbyMode.c: 977: printf("Welcome to your");
+"977
+[e ( _printf :s 44C ]
+[; ;standbyMode.c: 978: lcdInst(0xC0);;
+"978
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 979: printf("cabinet sorter!");
+"979
+[e ( _printf :s 45C ]
+[; ;standbyMode.c: 980: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"980
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 983: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"983
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 984: printf("Press # to");
+"984
+[e ( _printf :s 46C ]
+[; ;standbyMode.c: 985: lcdInst(0xC0);;
+"985
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 986: printf("view logs,");
+"986
+[e ( _printf :s 47C ]
+[; ;standbyMode.c: 987: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"987
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 988: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"988
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 989: printf("or press D to");
+"989
 [e ( _printf :s 48C ]
-[; ;standbyMode.c: 1052: lcdInst(0xC0);;
-"1052
+[; ;standbyMode.c: 990: lcdInst(0xC0);;
+"990
 [e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 1053: printf("number pressed.");
-"1053
+[; ;standbyMode.c: 991: printf("begin operation.");
+"991
 [e ( _printf :s 49C ]
-[; ;standbyMode.c: 1054: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"1054
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 1055: zero = 0;
-"1055
-[e = _zero -> -> 0 `i `ui ]
-"1056
-}
-[; ;standbyMode.c: 1056: }
-[e $U 572  ]
-"1057
-[e :U 571 ]
-[; ;standbyMode.c: 1057: else{
+[; ;standbyMode.c: 993: while(PORTBbits.RB1 == 0){ continue; }
+"993
+[e $U 546  ]
+[e :U 547 ]
 {
-[; ;standbyMode.c: 1058: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"1058
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 1059: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
-"1059
-[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;standbyMode.c: 1060: printf("Drawer already");
-"1060
-[e ( _printf :s 50C ]
-[; ;standbyMode.c: 1061: lcdInst(0xC0);;
-"1061
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 1062: printf("in use!");
-"1062
-[e ( _printf :s 51C ]
-[; ;standbyMode.c: 1063: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"1063
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-"1064
+[e $U 546  ]
 }
-[e :U 572 ]
-[; ;standbyMode.c: 1064: }
-[; ;standbyMode.c: 1065: validDrawer = 0;
-"1065
+[e :U 546 ]
+[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 547  ]
+[e :U 548 ]
+"994
+[v _keypress `uc ~T0 @X0 1 a ]
+[; ;standbyMode.c: 994: unsigned char keypress = (PORTB & 0xF0) >> 4;
+[e = _keypress -> >> & -> _PORTB `i -> 240 `i -> 4 `i `uc ]
+[; ;standbyMode.c: 995: while(PORTBbits.RB1 == 1){ continue; }
+"995
+[e $U 549  ]
+[e :U 550 ]
+{
+[e $U 549  ]
+}
+[e :U 549 ]
+[e $ == -> . . _PORTBbits 0 1 `i -> 1 `i 550  ]
+[e :U 551 ]
+[; ;standbyMode.c: 997: if (keypress == 15){
+"997
+[e $ ! == -> _keypress `i -> 15 `i 552  ]
+{
+"1039
+[v _drawerCount `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 1039: unsigned int drawerCount = 0;
+[e = _drawerCount -> -> 0 `i `ui ]
+"1040
+[v _i `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 1040: unsigned int i = 0;
+[e = _i -> -> 0 `i `ui ]
+"1041
+[v _validDrawer `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 1041: unsigned int validDrawer = 0;
 [e = _validDrawer -> -> 0 `i `ui ]
-[; ;standbyMode.c: 1066: continue;
-"1066
-[e $U 530  ]
-"1067
-}
-[; ;standbyMode.c: 1067: }
-[e $U 573  ]
-"1068
-[e :U 570 ]
-[; ;standbyMode.c: 1068: else{
+"1042
+[v _zero `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 1042: unsigned int zero = 0;
+[e = _zero -> -> 0 `i `ui ]
+"1043
+[v _firstIteration `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 1043: unsigned int firstIteration = 0;
+[e = _firstIteration -> -> 0 `i `ui ]
+"1044
+[v _drawer `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 1044: unsigned int drawer = 0;
+[e = _drawer -> -> 0 `i `ui ]
+"1045
+[v _diet `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 1045: unsigned int diet = 0;
+[e = _diet -> -> 0 `i `ui ]
+"1046
+[v _food `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 1046: unsigned int food = 0;
+[e = _food -> -> 0 `i `ui ]
+[; ;standbyMode.c: 1048: while (1){
+"1048
+[e :U 554 ]
 {
-[; ;standbyMode.c: 1069: FOOD_BACK2: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"1069
-[e :U 574 ]
+[; ;standbyMode.c: 1049: if (firstIteration == 1){
+"1049
+[e $ ! == _firstIteration -> -> 1 `i `ui 556  ]
+{
+[; ;standbyMode.c: 1050: while (1){
+"1050
+[e :U 558 ]
+{
+[; ;standbyMode.c: 1052: if(drawerCount >= 8){
+"1052
+[e $ ! >= _drawerCount -> -> 8 `i `ui 560  ]
+{
+[; ;standbyMode.c: 1053: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"1053
 [e ( _lcdInst (1 -> -> 1 `i `uc ]
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 1070: diet = diet_press(drawer);
-"1070
-[e = _diet ( _diet_press (1 _drawer ]
-[; ;standbyMode.c: 1071: if (diet == 100){
-"1071
-[e $ ! == _diet -> -> 100 `i `ui 575  ]
+[; ;standbyMode.c: 1054: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
+"1054
+[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
+[; ;standbyMode.c: 1055: printf("Maximum of 8");
+"1055
+[e ( _printf :s 50C ]
+[; ;standbyMode.c: 1056: lcdInst(0xC0);;
+"1056
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 1057: printf("drawers reached!");
+"1057
+[e ( _printf :s 51C ]
+[; ;standbyMode.c: 1058: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"1058
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1059: break;
+"1059
+[e $U 559  ]
+"1060
+}
+[e :U 560 ]
+[; ;standbyMode.c: 1060: }
+[; ;standbyMode.c: 1062: DRAWER_BACK: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"1062
+[e :U 561 ]
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1063: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
+"1063
+[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
+[; ;standbyMode.c: 1064: printf("Another drawer?");
+"1064
+[e ( _printf :s 52C ]
+[; ;standbyMode.c: 1065: lcdInst(0xC0);;
+"1065
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 1066: printf("# = No, D = Yes");
+"1066
+[e ( _printf :s 53C ]
+[; ;standbyMode.c: 1068: while(PORTBbits.RB1 == 0){ continue; }
+"1068
+[e $U 562  ]
+[e :U 563 ]
 {
-[; ;standbyMode.c: 1072: diet = 0;
-"1072
-[e = _diet -> -> 0 `i `ui ]
-[; ;standbyMode.c: 1073: goto DIET_BACK2;
-"1073
-[e $U 563  ]
-"1074
-}
-[e :U 575 ]
-[; ;standbyMode.c: 1074: }
-[; ;standbyMode.c: 1076: food = food_press(diet, drawer);
-"1076
-[e = _food ( _food_press (2 , _diet _drawer ]
-[; ;standbyMode.c: 1077: if (food == 100){
-"1077
-[e $ ! == _food -> -> 100 `i `ui 576  ]
-{
-[; ;standbyMode.c: 1078: diet = 0;
-"1078
-[e = _diet -> -> 0 `i `ui ]
-[; ;standbyMode.c: 1079: food = 0;
-"1079
-[e = _food -> -> 0 `i `ui ]
-[; ;standbyMode.c: 1080: goto FOOD_BACK2;
-"1080
-[e $U 574  ]
-"1081
-}
-[e :U 576 ]
-[; ;standbyMode.c: 1081: }
-[; ;standbyMode.c: 1082: drawerInformation[drawerCount] = drawer;
-"1082
-[e = *U + &U _drawerInformation * -> _drawerCount `ux -> -> # *U &U _drawerInformation `ui `ux _drawer ]
-[; ;standbyMode.c: 1083: drawerCount += 1;
-"1083
-[e =+ _drawerCount -> -> 1 `i `ui ]
-"1084
-}
-[e :U 573 ]
-"1085
+[e $U 562  ]
 }
 [e :U 562 ]
+[e $ == -> . . _PORTBbits 0 1 `i -> 0 `i 563  ]
+[e :U 564 ]
+"1069
+[v _keypress1 `uc ~T0 @X0 1 a ]
+[; ;standbyMode.c: 1069: unsigned char keypress1 = (PORTB & 0xF0) >> 4;
+[e = _keypress1 -> >> & -> _PORTB `i -> 240 `i -> 4 `i `uc ]
+[; ;standbyMode.c: 1070: while(PORTBbits.RB1 == 1){ continue; }
+"1070
+[e $U 565  ]
+[e :U 566 ]
+{
+[e $U 565  ]
+}
+[e :U 565 ]
+[e $ == -> . . _PORTBbits 0 1 `i -> 1 `i 566  ]
+[e :U 567 ]
+[; ;standbyMode.c: 1072: if (keypress1 == 15){
+"1072
+[e $ ! == -> _keypress1 `i -> 15 `i 568  ]
+{
+[; ;standbyMode.c: 1073: DIET_BACK1: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"1073
+[e :U 569 ]
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1074: drawer = which_drawer();
+"1074
+[e = _drawer ( _which_drawer ..  ]
+[; ;standbyMode.c: 1076: if (drawer == 100){
+"1076
+[e $ ! == _drawer -> -> 100 `i `ui 570  ]
+{
+[; ;standbyMode.c: 1077: drawer = 0;
+"1077
+[e = _drawer -> -> 0 `i `ui ]
+[; ;standbyMode.c: 1078: goto DRAWER_BACK;
+"1078
+[e $U 561  ]
+"1079
+}
+[e :U 570 ]
+[; ;standbyMode.c: 1079: }
+[; ;standbyMode.c: 1081: for (i=0; i<8; i++){
+"1081
+{
+[e = _i -> -> 0 `i `ui ]
+[e $ < _i -> -> 8 `i `ui 571  ]
+[e $U 572  ]
+[e :U 571 ]
+{
+[; ;standbyMode.c: 1082: if (drawerInformation[i] == drawer){
+"1082
+[e $ ! == *U + &U _drawerInformation * -> _i `ux -> -> # *U &U _drawerInformation `ui `ux _drawer 574  ]
+{
+[; ;standbyMode.c: 1083: validDrawer = 1;
+"1083
+[e = _validDrawer -> -> 1 `i `ui ]
+[; ;standbyMode.c: 1084: if (drawerInformation[i] == 0){
+"1084
+[e $ ! == *U + &U _drawerInformation * -> _i `ux -> -> # *U &U _drawerInformation `ui `ux -> -> 0 `i `ui 575  ]
+{
+[; ;standbyMode.c: 1085: zero = 1;
+"1085
+[e = _zero -> -> 1 `i `ui ]
 "1086
 }
-[e :U 530 ]
-"941
-[e $U 531  ]
-[e :U 532 ]
+[e :U 575 ]
 "1087
 }
-[; ;standbyMode.c: 1084: }
-[; ;standbyMode.c: 1085: }
+[e :U 574 ]
+"1088
+}
+"1081
+[e ++ _i -> -> 1 `i `ui ]
+[e $ < _i -> -> 8 `i `ui 571  ]
+[e :U 572 ]
+"1088
+}
 [; ;standbyMode.c: 1086: }
 [; ;standbyMode.c: 1087: }
-[e $U 577  ]
-"1088
-[e :U 529 ]
-[; ;standbyMode.c: 1088: else if (keypress == 14){
-[e $ ! == -> _keypress `i -> 14 `i 578  ]
-{
-[; ;standbyMode.c: 1089: while (1){
+[; ;standbyMode.c: 1088: }
+[; ;standbyMode.c: 1089: if (validDrawer == 1){
 "1089
-[e :U 580 ]
+[e $ ! == _validDrawer -> -> 1 `i `ui 576  ]
 {
+[; ;standbyMode.c: 1090: if (zero == 1){
 "1090
-[v _whichKey `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 1090: unsigned int whichKey = viewLogs();
-[e = _whichKey ( _viewLogs ..  ]
-[; ;standbyMode.c: 1091: if (whichKey == 14){
+[e $ ! == _zero -> -> 1 `i `ui 577  ]
+{
+[; ;standbyMode.c: 1091: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 "1091
-[e $ ! == _whichKey -> -> 14 `i `ui 582  ]
-{
-[; ;standbyMode.c: 1092: continue;
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1092: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
 "1092
-[e $U 579  ]
+[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
+[; ;standbyMode.c: 1093: printf("No drawer");
 "1093
-}
-[; ;standbyMode.c: 1093: }
-[e $U 583  ]
-"1094
-[e :U 582 ]
-[; ;standbyMode.c: 1094: else if (whichKey == 15){
-[e $ ! == _whichKey -> -> 15 `i `ui 584  ]
-{
-[; ;standbyMode.c: 1095: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"1095
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 1096: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
-"1096
-[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;standbyMode.c: 1097: printf("Rebooting.");
-"1097
-[e ( _printf :s 52C ]
-[; ;standbyMode.c: 1098: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"1098
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 1099: break;
-"1099
-[e $U 581  ]
-"1100
-}
-[; ;standbyMode.c: 1100: }
-[e $U 585  ]
-"1101
-[e :U 584 ]
-[; ;standbyMode.c: 1101: else{
-{
-[; ;standbyMode.c: 1102: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"1102
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 1103: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
-"1103
-[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;standbyMode.c: 1104: printf("Invalid key!");
-"1104
-[e ( _printf :s 53C ]
-[; ;standbyMode.c: 1105: lcdInst(0xC0);;
-"1105
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 1106: printf("Rebooting.");
-"1106
 [e ( _printf :s 54C ]
-[; ;standbyMode.c: 1107: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"1107
+[; ;standbyMode.c: 1094: lcdInst(0xC0);;
+"1094
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 1095: printf("number pressed.");
+"1095
+[e ( _printf :s 55C ]
+[; ;standbyMode.c: 1096: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"1096
 [e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 1108: break;
+[; ;standbyMode.c: 1097: zero = 0;
+"1097
+[e = _zero -> -> 0 `i `ui ]
+"1098
+}
+[; ;standbyMode.c: 1098: }
+[e $U 578  ]
+"1099
+[e :U 577 ]
+[; ;standbyMode.c: 1099: else{
+{
+[; ;standbyMode.c: 1100: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"1100
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1101: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
+"1101
+[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
+[; ;standbyMode.c: 1102: printf("Drawer already");
+"1102
+[e ( _printf :s 56C ]
+[; ;standbyMode.c: 1103: lcdInst(0xC0);;
+"1103
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 1104: printf("in use!");
+"1104
+[e ( _printf :s 57C ]
+[; ;standbyMode.c: 1105: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"1105
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+"1106
+}
+[e :U 578 ]
+[; ;standbyMode.c: 1106: }
+[; ;standbyMode.c: 1107: validDrawer = 0;
+"1107
+[e = _validDrawer -> -> 0 `i `ui ]
+[; ;standbyMode.c: 1108: continue;
 "1108
-[e $U 581  ]
+[e $U 557  ]
 "1109
 }
-[e :U 585 ]
-[e :U 583 ]
-"1110
-}
-[e :U 579 ]
-"1089
-[e $U 580  ]
-[e :U 581 ]
-"1112
-}
 [; ;standbyMode.c: 1109: }
-[; ;standbyMode.c: 1110: }
-[; ;standbyMode.c: 1112: }
-[e $U 586  ]
-"1114
-[e :U 578 ]
-[; ;standbyMode.c: 1114: else {
+[e $U 579  ]
+"1110
+[e :U 576 ]
+[; ;standbyMode.c: 1110: else{
 {
-[; ;standbyMode.c: 1115: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"1115
+[; ;standbyMode.c: 1111: FOOD_BACK1: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"1111
+[e :U 580 ]
 [e ( _lcdInst (1 -> -> 1 `i `uc ]
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 1116: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
+[; ;standbyMode.c: 1112: diet = diet_press(drawer);
+"1112
+[e = _diet ( _diet_press (1 _drawer ]
+[; ;standbyMode.c: 1113: if (diet == 100){
+"1113
+[e $ ! == _diet -> -> 100 `i `ui 581  ]
+{
+[; ;standbyMode.c: 1114: diet = 0;
+"1114
+[e = _diet -> -> 0 `i `ui ]
+[; ;standbyMode.c: 1115: goto DIET_BACK1;
+"1115
+[e $U 569  ]
 "1116
-[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;standbyMode.c: 1117: printf("Invalid key!");
-"1117
-[e ( _printf :s 55C ]
-[; ;standbyMode.c: 1118: lcdInst(0xC0);;
-"1118
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 1119: printf("Rebooting.");
-"1119
-[e ( _printf :s 56C ]
-[; ;standbyMode.c: 1120: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"1120
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-"1121
 }
-[e :U 586 ]
-[e :U 577 ]
-[; ;standbyMode.c: 1121: }
-[; ;standbyMode.c: 1122: }
+[e :U 581 ]
+[; ;standbyMode.c: 1116: }
+[; ;standbyMode.c: 1118: food = food_press(diet, drawer);
+"1118
+[e = _food ( _food_press (2 , _diet _drawer ]
+[; ;standbyMode.c: 1119: if (food == 100){
+"1119
+[e $ ! == _food -> -> 100 `i `ui 582  ]
+{
+[; ;standbyMode.c: 1120: diet = 0;
+"1120
+[e = _diet -> -> 0 `i `ui ]
+[; ;standbyMode.c: 1121: food = 0;
+"1121
+[e = _food -> -> 0 `i `ui ]
+[; ;standbyMode.c: 1122: goto FOOD_BACK1;
 "1122
-[e :UE 519 ]
+[e $U 580  ]
+"1123
+}
+[e :U 582 ]
+[; ;standbyMode.c: 1123: }
+[; ;standbyMode.c: 1124: drawerInformation[drawerCount] = drawer;
+"1124
+[e = *U + &U _drawerInformation * -> _drawerCount `ux -> -> # *U &U _drawerInformation `ui `ux _drawer ]
+[; ;standbyMode.c: 1125: drawerCount += 1;
+"1125
+[e =+ _drawerCount -> -> 1 `i `ui ]
+"1126
+}
+[e :U 579 ]
+"1127
+}
+[; ;standbyMode.c: 1126: }
+[; ;standbyMode.c: 1127: }
+[e $U 583  ]
+"1128
+[e :U 568 ]
+[; ;standbyMode.c: 1128: else if (keypress1 == 14){
+[e $ ! == -> _keypress1 `i -> 14 `i 584  ]
+{
+[; ;standbyMode.c: 1129: break;
+"1129
+[e $U 559  ]
+"1130
+}
+[e :U 584 ]
+"1131
+[e :U 583 ]
+[; ;standbyMode.c: 1130: }
+[; ;standbyMode.c: 1131: keypress1 = 0;
+[e = _keypress1 -> -> 0 `i `uc ]
+"1132
+}
+[e :U 557 ]
+"1050
+[e $U 558  ]
+[e :U 559 ]
+[; ;standbyMode.c: 1132: }
+[; ;standbyMode.c: 1133: break;
+"1133
+[e $U 555  ]
+"1134
+}
+[; ;standbyMode.c: 1134: }
+[e $U 585  ]
+"1135
+[e :U 556 ]
+[; ;standbyMode.c: 1135: else{
+{
+[; ;standbyMode.c: 1136: DIET_BACK2: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"1136
+[e :U 586 ]
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1137: drawer = which_drawer();
+"1137
+[e = _drawer ( _which_drawer ..  ]
+[; ;standbyMode.c: 1139: if (drawer == 100){
+"1139
+[e $ ! == _drawer -> -> 100 `i `ui 587  ]
+{
+[; ;standbyMode.c: 1140: drawer = 0;
+"1140
+[e = _drawer -> -> 0 `i `ui ]
+[; ;standbyMode.c: 1141: firstIteration = 1;
+"1141
+[e = _firstIteration -> -> 1 `i `ui ]
+[; ;standbyMode.c: 1142: goto DRAWER_BACK;
+"1142
+[e $U 561  ]
+"1143
+}
+[e :U 587 ]
+[; ;standbyMode.c: 1143: }
+[; ;standbyMode.c: 1145: firstIteration = 1;
+"1145
+[e = _firstIteration -> -> 1 `i `ui ]
+[; ;standbyMode.c: 1146: for (i=0; i<8; i++){
+"1146
+{
+[e = _i -> -> 0 `i `ui ]
+[e $ < _i -> -> 8 `i `ui 588  ]
+[e $U 589  ]
+[e :U 588 ]
+{
+[; ;standbyMode.c: 1147: if (drawerInformation[i] == drawer){
+"1147
+[e $ ! == *U + &U _drawerInformation * -> _i `ux -> -> # *U &U _drawerInformation `ui `ux _drawer 591  ]
+{
+[; ;standbyMode.c: 1148: validDrawer = 1;
+"1148
+[e = _validDrawer -> -> 1 `i `ui ]
+[; ;standbyMode.c: 1149: if (drawerInformation[i] == 0){
+"1149
+[e $ ! == *U + &U _drawerInformation * -> _i `ux -> -> # *U &U _drawerInformation `ui `ux -> -> 0 `i `ui 592  ]
+{
+[; ;standbyMode.c: 1150: zero = 1;
+"1150
+[e = _zero -> -> 1 `i `ui ]
+"1151
+}
+[e :U 592 ]
+"1152
+}
+[e :U 591 ]
+"1153
+}
+"1146
+[e ++ _i -> -> 1 `i `ui ]
+[e $ < _i -> -> 8 `i `ui 588  ]
+[e :U 589 ]
+"1153
+}
+[; ;standbyMode.c: 1151: }
+[; ;standbyMode.c: 1152: }
+[; ;standbyMode.c: 1153: }
+[; ;standbyMode.c: 1154: if (validDrawer == 1){
+"1154
+[e $ ! == _validDrawer -> -> 1 `i `ui 593  ]
+{
+[; ;standbyMode.c: 1155: if (zero == 1){
+"1155
+[e $ ! == _zero -> -> 1 `i `ui 594  ]
+{
+[; ;standbyMode.c: 1156: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"1156
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1157: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
+"1157
+[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
+[; ;standbyMode.c: 1158: printf("No drawer");
+"1158
+[e ( _printf :s 58C ]
+[; ;standbyMode.c: 1159: lcdInst(0xC0);;
+"1159
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 1160: printf("number pressed.");
+"1160
+[e ( _printf :s 59C ]
+[; ;standbyMode.c: 1161: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"1161
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1162: zero = 0;
+"1162
+[e = _zero -> -> 0 `i `ui ]
+"1163
+}
+[; ;standbyMode.c: 1163: }
+[e $U 595  ]
+"1164
+[e :U 594 ]
+[; ;standbyMode.c: 1164: else{
+{
+[; ;standbyMode.c: 1165: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"1165
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1166: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
+"1166
+[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
+[; ;standbyMode.c: 1167: printf("Drawer already");
+"1167
+[e ( _printf :s 60C ]
+[; ;standbyMode.c: 1168: lcdInst(0xC0);;
+"1168
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 1169: printf("in use!");
+"1169
+[e ( _printf :s 61C ]
+[; ;standbyMode.c: 1170: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"1170
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+"1171
+}
+[e :U 595 ]
+[; ;standbyMode.c: 1171: }
+[; ;standbyMode.c: 1172: validDrawer = 0;
+"1172
+[e = _validDrawer -> -> 0 `i `ui ]
+[; ;standbyMode.c: 1173: continue;
+"1173
+[e $U 553  ]
+"1174
+}
+[; ;standbyMode.c: 1174: }
+[e $U 596  ]
+"1175
+[e :U 593 ]
+[; ;standbyMode.c: 1175: else{
+{
+[; ;standbyMode.c: 1176: FOOD_BACK2: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"1176
+[e :U 597 ]
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1177: diet = diet_press(drawer);
+"1177
+[e = _diet ( _diet_press (1 _drawer ]
+[; ;standbyMode.c: 1178: if (diet == 100){
+"1178
+[e $ ! == _diet -> -> 100 `i `ui 598  ]
+{
+[; ;standbyMode.c: 1179: diet = 0;
+"1179
+[e = _diet -> -> 0 `i `ui ]
+[; ;standbyMode.c: 1180: goto DIET_BACK2;
+"1180
+[e $U 586  ]
+"1181
+}
+[e :U 598 ]
+[; ;standbyMode.c: 1181: }
+[; ;standbyMode.c: 1183: food = food_press(diet, drawer);
+"1183
+[e = _food ( _food_press (2 , _diet _drawer ]
+[; ;standbyMode.c: 1184: if (food == 100){
+"1184
+[e $ ! == _food -> -> 100 `i `ui 599  ]
+{
+[; ;standbyMode.c: 1185: diet = 0;
+"1185
+[e = _diet -> -> 0 `i `ui ]
+[; ;standbyMode.c: 1186: food = 0;
+"1186
+[e = _food -> -> 0 `i `ui ]
+[; ;standbyMode.c: 1187: goto FOOD_BACK2;
+"1187
+[e $U 597  ]
+"1188
+}
+[e :U 599 ]
+[; ;standbyMode.c: 1188: }
+[; ;standbyMode.c: 1189: drawerInformation[drawerCount] = drawer;
+"1189
+[e = *U + &U _drawerInformation * -> _drawerCount `ux -> -> # *U &U _drawerInformation `ui `ux _drawer ]
+[; ;standbyMode.c: 1190: drawerCount += 1;
+"1190
+[e =+ _drawerCount -> -> 1 `i `ui ]
+"1191
+}
+[e :U 596 ]
+"1192
+}
+[e :U 585 ]
+"1193
+}
+[e :U 553 ]
+"1048
+[e $U 554  ]
+[e :U 555 ]
+"1194
+}
+[; ;standbyMode.c: 1191: }
+[; ;standbyMode.c: 1192: }
+[; ;standbyMode.c: 1193: }
+[; ;standbyMode.c: 1194: }
+[e $U 600  ]
+"1195
+[e :U 552 ]
+[; ;standbyMode.c: 1195: else if (keypress == 14){
+[e $ ! == -> _keypress `i -> 14 `i 601  ]
+{
+[; ;standbyMode.c: 1196: while (1){
+"1196
+[e :U 603 ]
+{
+"1197
+[v _whichKey `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 1197: unsigned int whichKey = viewLogs();
+[e = _whichKey ( _viewLogs ..  ]
+[; ;standbyMode.c: 1198: if (whichKey == 15){
+"1198
+[e $ ! == _whichKey -> -> 15 `i `ui 605  ]
+{
+[; ;standbyMode.c: 1199: continue;
+"1199
+[e $U 602  ]
+"1200
+}
+[; ;standbyMode.c: 1200: }
+[e $U 606  ]
+"1201
+[e :U 605 ]
+[; ;standbyMode.c: 1201: else if (whichKey == 14){
+[e $ ! == _whichKey -> -> 14 `i `ui 607  ]
+{
+[; ;standbyMode.c: 1202: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"1202
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1203: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
+"1203
+[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
+[; ;standbyMode.c: 1204: printf("Rebooting.");
+"1204
+[e ( _printf :s 62C ]
+[; ;standbyMode.c: 1205: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"1205
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1206: break;
+"1206
+[e $U 604  ]
+"1207
+}
+[; ;standbyMode.c: 1207: }
+[e $U 608  ]
+"1208
+[e :U 607 ]
+[; ;standbyMode.c: 1208: else{
+{
+[; ;standbyMode.c: 1209: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"1209
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1210: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
+"1210
+[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
+[; ;standbyMode.c: 1211: printf("Invalid key!");
+"1211
+[e ( _printf :s 63C ]
+[; ;standbyMode.c: 1212: lcdInst(0xC0);;
+"1212
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 1213: printf("Rebooting.");
+"1213
+[e ( _printf :s 64C ]
+[; ;standbyMode.c: 1214: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"1214
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1215: break;
+"1215
+[e $U 604  ]
+"1216
+}
+[e :U 608 ]
+[e :U 606 ]
+"1217
+}
+[e :U 602 ]
+"1196
+[e $U 603  ]
+[e :U 604 ]
+"1218
+}
+[; ;standbyMode.c: 1216: }
+[; ;standbyMode.c: 1217: }
+[; ;standbyMode.c: 1218: }
+[e $U 609  ]
+"1220
+[e :U 601 ]
+[; ;standbyMode.c: 1220: else {
+{
+[; ;standbyMode.c: 1221: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"1221
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1222: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
+"1222
+[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
+[; ;standbyMode.c: 1223: printf("Invalid key!");
+"1223
+[e ( _printf :s 65C ]
+[; ;standbyMode.c: 1224: lcdInst(0xC0);;
+"1224
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 1225: printf("Rebooting.");
+"1225
+[e ( _printf :s 66C ]
+[; ;standbyMode.c: 1226: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"1226
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+"1227
+}
+[e :U 609 ]
+[e :U 600 ]
+[; ;standbyMode.c: 1227: }
+[; ;standbyMode.c: 1228: }
+"1228
+[e :UE 542 ]
 }
 [p f _printf 8388736 ]
-[a 46C 68 114 97 119 101 114 32 97 108 114 101 97 100 121 0 ]
-[a 50C 68 114 97 119 101 114 32 97 108 114 101 97 100 121 0 ]
-[a 29C 83 116 97 110 100 98 121 0 ]
-[a 1C 53 32 112 114 101 118 105 111 117 115 32 108 111 103 115 0 ]
-[a 43C 35 32 61 32 78 111 44 32 68 32 61 32 89 101 115 0 ]
-[a 34C 87 101 108 99 111 109 101 32 116 111 32 121 111 117 114 0 ]
-[a 44C 78 111 32 100 114 97 119 101 114 0 ]
-[a 48C 78 111 32 100 114 97 119 101 114 0 ]
-[a 6C 80 114 101 115 115 32 97 110 121 32 107 101 121 32 116 111 0 ]
-[a 30C 80 114 101 115 115 32 97 110 121 32 107 101 121 32 116 111 0 ]
-[a 38C 111 114 32 112 114 101 115 115 32 68 32 116 111 0 ]
-[a 36C 80 114 101 115 115 32 35 32 116 111 0 ]
-[a 18C 35 32 61 32 89 101 115 44 32 68 32 61 32 78 111 0 ]
-[a 3C 80 108 101 97 115 101 32 105 110 112 117 116 32 108 111 103 0 ]
-[a 42C 65 110 111 116 104 101 114 32 100 114 97 119 101 114 63 0 ]
-[a 17C 65 110 111 116 104 101 114 32 108 111 103 63 0 ]
-[a 14C 68 114 97 119 101 114 32 83 117 109 109 97 114 121 58 0 ]
-[a 23C 68 114 97 119 101 114 32 37 105 32 100 105 101 116 58 0 ]
-[a 24C 68 114 97 119 101 114 32 37 105 32 100 105 101 116 58 0 ]
-[a 10C 77 97 114 107 101 100 32 100 114 97 119 101 114 115 58 0 ]
-[a 12C 82 101 109 97 105 110 105 110 103 32 112 105 101 99 101 115 58 0 ]
-[a 27C 68 114 97 119 101 114 32 110 117 109 98 101 114 58 0 ]
-[a 28C 68 114 97 119 101 114 32 110 117 109 98 101 114 58 0 ]
-[a 8C 79 112 101 114 97 116 105 111 110 32 116 105 109 101 58 0 ]
-[a 19C 68 114 97 119 101 114 32 37 105 32 102 111 111 100 58 0 ]
-[a 20C 68 114 97 119 101 114 32 37 105 32 102 111 111 100 58 0 ]
-[a 9C 50 58 51 57 0 ]
-[a 40C 77 97 120 105 109 117 109 32 111 102 32 56 0 ]
-[a 11C 49 44 32 49 51 0 ]
-[a 15C 68 114 97 119 101 114 32 49 58 32 82 70 49 50 0 ]
-[a 16C 68 114 97 119 101 114 32 50 58 32 76 49 0 ]
-[a 13C 82 58 51 32 32 70 58 49 50 32 32 76 58 49 48 0 ]
-[a 31C 98 101 103 105 110 32 111 112 101 114 97 116 105 111 110 46 0 ]
-[a 39C 98 101 103 105 110 32 111 112 101 114 97 116 105 111 110 46 0 ]
-[a 7C 109 111 118 101 32 111 110 46 0 ]
-[a 22C 84 114 121 32 97 103 97 105 110 46 0 ]
-[a 26C 84 114 121 32 97 103 97 105 110 46 0 ]
-[a 52C 82 101 98 111 111 116 105 110 103 46 0 ]
-[a 54C 82 101 98 111 111 116 105 110 103 46 0 ]
-[a 56C 82 101 98 111 111 116 105 110 103 46 0 ]
+[a 56C 68 114 97 119 101 114 32 97 108 114 101 97 100 121 0 ]
+[a 60C 68 114 97 119 101 114 32 97 108 114 101 97 100 121 0 ]
+[a 39C 83 116 97 110 100 98 121 0 ]
+[a 7C 37 105 32 112 114 101 118 105 111 117 115 32 108 111 103 115 0 ]
+[a 1C 78 111 32 108 111 103 115 0 ]
+[a 28C 35 32 61 32 78 111 44 32 68 32 61 32 89 101 115 0 ]
+[a 53C 35 32 61 32 78 111 44 32 68 32 61 32 89 101 115 0 ]
+[a 44C 87 101 108 99 111 109 101 32 116 111 32 121 111 117 114 0 ]
+[a 54C 78 111 32 100 114 97 119 101 114 0 ]
+[a 58C 78 111 32 100 114 97 119 101 114 0 ]
+[a 5C 80 114 101 115 115 32 97 110 121 32 107 101 121 32 116 111 0 ]
+[a 12C 80 114 101 115 115 32 97 110 121 32 107 101 121 32 116 111 0 ]
+[a 40C 80 114 101 115 115 32 97 110 121 32 107 101 121 32 116 111 0 ]
+[a 48C 111 114 32 112 114 101 115 115 32 68 32 116 111 0 ]
+[a 46C 80 114 101 115 115 32 35 32 116 111 0 ]
+[a 16C 37 105 58 37 105 0 ]
+[a 23C 82 58 37 105 32 32 70 58 37 105 32 32 76 58 37 105 0 ]
+[a 21C 37 105 44 32 37 105 44 32 37 105 44 32 37 105 0 ]
+[a 20C 37 105 44 32 37 105 44 32 37 105 0 ]
+[a 19C 37 105 44 32 37 105 0 ]
+[a 18C 37 105 0 ]
+[a 9C 80 108 101 97 115 101 32 105 110 112 117 116 32 108 111 103 0 ]
+[a 3C 49 32 112 114 101 118 105 111 117 115 32 108 111 103 0 ]
+[a 52C 65 110 111 116 104 101 114 32 100 114 97 119 101 114 63 0 ]
+[a 27C 65 110 111 116 104 101 114 32 108 111 103 63 0 ]
+[a 24C 68 114 97 119 101 114 32 83 117 109 109 97 114 121 58 0 ]
+[a 33C 68 114 97 119 101 114 32 37 105 32 100 105 101 116 58 0 ]
+[a 34C 68 114 97 119 101 114 32 37 105 32 100 105 101 116 58 0 ]
+[a 17C 77 97 114 107 101 100 32 100 114 97 119 101 114 115 58 0 ]
+[a 22C 82 101 109 97 105 110 105 110 103 32 112 105 101 99 101 115 58 0 ]
+[a 37C 68 114 97 119 101 114 32 110 117 109 98 101 114 58 0 ]
+[a 38C 68 114 97 119 101 114 32 110 117 109 98 101 114 58 0 ]
+[a 14C 79 112 101 114 97 116 105 111 110 32 116 105 109 101 58 0 ]
+[a 29C 68 114 97 119 101 114 32 37 105 32 102 111 111 100 58 0 ]
+[a 30C 68 114 97 119 101 114 32 37 105 32 102 111 111 100 58 0 ]
+[a 50C 77 97 120 105 109 117 109 32 111 102 32 56 0 ]
+[a 25C 68 114 97 119 101 114 32 49 58 32 82 70 49 50 0 ]
+[a 26C 68 114 97 119 101 114 32 50 58 32 76 49 0 ]
+[a 15C 37 105 58 37 105 48 0 ]
+[a 41C 98 101 103 105 110 32 111 112 101 114 97 116 105 111 110 46 0 ]
+[a 49C 98 101 103 105 110 32 111 112 101 114 97 116 105 111 110 46 0 ]
+[a 32C 84 114 121 32 97 103 97 105 110 46 0 ]
+[a 36C 84 114 121 32 97 103 97 105 110 46 0 ]
+[a 62C 82 101 98 111 111 116 105 110 103 46 0 ]
+[a 64C 82 101 98 111 111 116 105 110 103 46 0 ]
+[a 66C 82 101 98 111 111 116 105 110 103 46 0 ]
 [a 2C 97 118 97 105 108 97 98 108 101 46 0 ]
-[a 45C 110 117 109 98 101 114 32 112 114 101 115 115 101 100 46 0 ]
-[a 49C 110 117 109 98 101 114 32 112 114 101 115 115 101 100 46 0 ]
-[a 37C 118 105 101 119 32 108 111 103 115 44 0 ]
-[a 53C 73 110 118 97 108 105 100 32 107 101 121 33 0 ]
-[a 55C 73 110 118 97 108 105 100 32 107 101 121 33 0 ]
-[a 25C 73 110 118 97 108 105 100 32 100 105 101 116 33 0 ]
-[a 5C 71 114 101 97 116 33 0 ]
-[a 35C 99 97 98 105 110 101 116 32 115 111 114 116 101 114 33 0 ]
-[a 47C 105 110 32 117 115 101 33 0 ]
-[a 51C 105 110 32 117 115 101 33 0 ]
-[a 21C 73 110 118 97 108 105 100 32 102 111 111 100 33 0 ]
-[a 41C 100 114 97 119 101 114 115 32 114 101 97 99 104 101 100 33 0 ]
-[a 4C 110 117 109 98 101 114 58 32 0 ]
-[a 32C 83 116 111 114 101 100 32 118 97 108 117 101 58 32 0 ]
-[a 33C 83 116 111 114 101 100 32 118 97 108 117 101 58 32 0 ]
+[a 4C 97 118 97 105 108 97 98 108 101 46 0 ]
+[a 8C 97 118 97 105 108 97 98 108 101 46 0 ]
+[a 6C 109 111 118 101 32 102 111 114 119 97 114 100 46 0 ]
+[a 13C 109 111 118 101 32 102 111 114 119 97 114 100 46 0 ]
+[a 55C 110 117 109 98 101 114 32 112 114 101 115 115 101 100 46 0 ]
+[a 59C 110 117 109 98 101 114 32 112 114 101 115 115 101 100 46 0 ]
+[a 47C 118 105 101 119 32 108 111 103 115 44 0 ]
+[a 63C 73 110 118 97 108 105 100 32 107 101 121 33 0 ]
+[a 65C 73 110 118 97 108 105 100 32 107 101 121 33 0 ]
+[a 35C 73 110 118 97 108 105 100 32 100 105 101 116 33 0 ]
+[a 11C 71 114 101 97 116 33 0 ]
+[a 45C 99 97 98 105 110 101 116 32 115 111 114 116 101 114 33 0 ]
+[a 57C 105 110 32 117 115 101 33 0 ]
+[a 61C 105 110 32 117 115 101 33 0 ]
+[a 31C 73 110 118 97 108 105 100 32 102 111 111 100 33 0 ]
+[a 51C 100 114 97 119 101 114 115 32 114 101 97 99 104 101 100 33 0 ]
+[a 10C 110 117 109 98 101 114 58 32 0 ]
+[a 42C 83 116 111 114 101 100 32 118 97 108 117 101 58 32 0 ]
+[a 43C 83 116 111 114 101 100 32 118 97 108 117 101 58 32 0 ]

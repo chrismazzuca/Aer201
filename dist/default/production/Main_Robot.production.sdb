@@ -27,6 +27,8 @@
 [v ___fldiv __fldiv `(d  1 e 3 0 ]
 "8 /Applications/microchip/xc8/v1.45/sources/common/sprcmul.c
 [v ___flmul __flmul `(d  1 e 3 0 ]
+"15 /Applications/microchip/xc8/v1.45/sources/common/Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
 "15 /Applications/microchip/xc8/v1.45/sources/common/Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "10 /Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
@@ -45,23 +47,27 @@
 [v _putch putch `(v  1 e 1 0 ]
 "88
 [v _check_food check_food `(ui  1 e 2 0 ]
-"272
+"273
+[v _verifyKeypress verifyKeypress `(ui  1 e 2 0 ]
+"287
 [v _viewLogs viewLogs `(ui  1 e 2 0 ]
-"365
+"369
+[v _displayLogs displayLogs `(ui  1 e 2 0 ]
+"463
 [v _get_digits get_digits `(ui  1 e 2 0 ]
-"470
+"568
 [v _food_press food_press `(ui  1 e 2 0 ]
-"536
+"634
 [v _diet_press diet_press `(ui  1 e 2 0 ]
-"695
+"793
 [v _decode_drawer decode_drawer `(ui  1 e 2 0 ]
-"773
+"871
 [v _which_drawer which_drawer `(ui  1 e 2 0 ]
-"839
+"937
 [v _standbyMode standbyMode `(v  1 e 1 0 ]
 "187 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
 [v _PORTB PORTB `VEuc  1 e 1 @3969 ]
-[s S179 . 1 `uc 1 RB0 1 0 :1:0 
+[s S184 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -71,7 +77,7 @@
 `uc 1 RB7 1 0 :1:7 
 ]
 "228
-[s S188 . 1 `uc 1 INT0 1 0 :1:0 
+[s S193 . 1 `uc 1 INT0 1 0 :1:0 
 `uc 1 INT1 1 0 :1:1 
 `uc 1 INT2 1 0 :1:2 
 `uc 1 CCP2 1 0 :1:3 
@@ -80,7 +86,7 @@
 `uc 1 KBI2 1 0 :1:6 
 `uc 1 KBI3 1 0 :1:7 
 ]
-[s S197 . 1 `uc 1 AN12 1 0 :1:0 
+[s S202 . 1 `uc 1 AN12 1 0 :1:0 
 `uc 1 AN10 1 0 :1:1 
 `uc 1 AN8 1 0 :1:2 
 `uc 1 AN9 1 0 :1:3 
@@ -89,11 +95,11 @@
 `uc 1 PGC 1 0 :1:6 
 `uc 1 PGD 1 0 :1:7 
 ]
-[s S206 . 1 `uc 1 . 1 0 :3:0 
+[s S211 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CCP2_PA2 1 0 :1:3 
 ]
-[u S209 . 1 `S179 1 . 1 0 `S188 1 . 1 0 `S197 1 . 1 0 `S206 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES209  1 e 1 @3969 ]
+[u S214 . 1 `S184 1 . 1 0 `S193 1 . 1 0 `S202 1 . 1 0 `S211 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES214  1 e 1 @3969 ]
 "878
 [v _LATA LATA `VEuc  1 e 1 @3977 ]
 "990
@@ -135,7 +141,7 @@
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
 "2266
 [v _TRISE TRISE `VEuc  1 e 1 @3990 ]
-[s S416 . 1 `uc 1 RD 1 0 :1:0 
+[s S454 . 1 `uc 1 RD 1 0 :1:0 
 `uc 1 WR 1 0 :1:1 
 `uc 1 WREN 1 0 :1:2 
 `uc 1 WRERR 1 0 :1:3 
@@ -145,11 +151,11 @@
 `uc 1 EEPGD 1 0 :1:7 
 ]
 "2945
-[s S425 . 1 `uc 1 . 1 0 :6:0 
+[s S463 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 EEFS 1 0 :1:6 
 ]
-[u S428 . 1 `S416 1 . 1 0 `S425 1 . 1 0 ]
-[v _EECON1bits EECON1bits `VES428  1 e 1 @4006 ]
+[u S466 . 1 `S454 1 . 1 0 `S463 1 . 1 0 ]
+[v _EECON1bits EECON1bits `VES466  1 e 1 @4006 ]
 "2990
 [v _EECON2 EECON2 `VEuc  1 e 1 @4007 ]
 "2997
@@ -200,34 +206,34 @@
 {
 "58
 } 0
-"839 /Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+"937 /Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
 [v _standbyMode standbyMode `(v  1 e 1 0 ]
 {
-"962
-[v standbyMode@keypress1 keypress1 `uc  1 a 1 55 ]
-"1090
-[v standbyMode@whichKey whichKey `ui  1 a 2 51 ]
-"937
-[v standbyMode@drawer drawer `ui  1 a 2 68 ]
-"933
-[v standbyMode@i i `ui  1 a 2 66 ]
-"938
-[v standbyMode@diet diet `ui  1 a 2 64 ]
-"932
-[v standbyMode@drawerCount drawerCount `ui  1 a 2 62 ]
-"939
-[v standbyMode@food food `ui  1 a 2 60 ]
-"935
-[v standbyMode@zero zero `ui  1 a 2 58 ]
-"934
-[v standbyMode@validDrawer validDrawer `ui  1 a 2 56 ]
-"936
-[v standbyMode@firstIteration firstIteration `ui  1 a 2 49 ]
-"854
-[v standbyMode@display display `uc  1 a 1 54 ]
-"887
-[v standbyMode@keypress keypress `uc  1 a 1 53 ]
-"1122
+"1069
+[v standbyMode@keypress1 keypress1 `uc  1 a 1 77 ]
+"1197
+[v standbyMode@whichKey whichKey `ui  1 a 2 73 ]
+"1044
+[v standbyMode@drawer drawer `ui  1 a 2 90 ]
+"1040
+[v standbyMode@i i `ui  1 a 2 88 ]
+"1045
+[v standbyMode@diet diet `ui  1 a 2 86 ]
+"1039
+[v standbyMode@drawerCount drawerCount `ui  1 a 2 84 ]
+"1046
+[v standbyMode@food food `ui  1 a 2 82 ]
+"1042
+[v standbyMode@zero zero `ui  1 a 2 80 ]
+"1041
+[v standbyMode@validDrawer validDrawer `ui  1 a 2 78 ]
+"1043
+[v standbyMode@firstIteration firstIteration `ui  1 a 2 71 ]
+"961
+[v standbyMode@display display `uc  1 a 1 76 ]
+"994
+[v standbyMode@keypress keypress `uc  1 a 1 75 ]
+"1228
 } 0
 "10 /Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
 [v _writeEEPROM writeEEPROM `(v  1 e 1 0 ]
@@ -238,38 +244,89 @@
 [v writeEEPROM@address address `uc  1 a 1 1 ]
 "27
 } 0
-"773 /Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+"871 /Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
 [v _which_drawer which_drawer `(ui  1 e 2 0 ]
 {
-"834
-[v which_drawer@rand rand `ui  1 a 2 27 ]
-"785
-[v which_drawer@keypress keypress `uc  1 a 1 35 ]
-"779
-[v which_drawer@count count `ui  1 a 2 33 ]
-"781
-[v which_drawer@backCheck backCheck `ui  1 a 2 31 ]
-"780
-[v which_drawer@sum sum `ui  1 a 2 29 ]
-"837
+"932
+[v which_drawer@rand rand `ui  1 a 2 33 ]
+"883
+[v which_drawer@keypress keypress `uc  1 a 1 41 ]
+"877
+[v which_drawer@count count `ui  1 a 2 39 ]
+"879
+[v which_drawer@backCheck backCheck `ui  1 a 2 37 ]
+"878
+[v which_drawer@sum sum `ui  1 a 2 35 ]
+"935
 } 0
-"695
+"793
 [v _decode_drawer decode_drawer `(ui  1 e 2 0 ]
 {
-"696
+"794
 [v decode_drawer@returnValue returnValue `ui  1 a 2 4 ]
-"695
+"793
 [v decode_drawer@drawer drawer `ui  1 p 2 0 ]
-"769
+"867
 } 0
-"272
+"287
 [v _viewLogs viewLogs `(ui  1 e 2 0 ]
 {
-"285
-[v viewLogs@keypress2 keypress2 `uc  1 a 1 29 ]
-"358
-[v viewLogs@keypress3 keypress3 `uc  1 a 1 28 ]
-"361
+"335
+[v viewLogs@keypress2 keypress2 `uc  1 a 1 68 ]
+"292
+[v viewLogs@returnVal returnVal `ui  1 a 2 65 ]
+"291
+[v viewLogs@checkLog checkLog `ui  1 a 2 63 ]
+"290
+[v viewLogs@logView logView `ui  1 a 2 61 ]
+"289
+[v viewLogs@logNumber logNumber `uc  1 a 1 67 ]
+"365
+} 0
+"273
+[v _verifyKeypress verifyKeypress `(ui  1 e 2 0 ]
+{
+[v verifyKeypress@logNumber logNumber `uc  1 a 1 wreg ]
+"274
+[v verifyKeypress@i i `ui  1 a 2 7 ]
+"275
+[v verifyKeypress@returnVal returnVal `ui  1 a 2 5 ]
+"273
+[v verifyKeypress@logNumber logNumber `uc  1 a 1 wreg ]
+[v verifyKeypress@keypress keypress `ui  1 p 2 0 ]
+[v verifyKeypress@logNumber logNumber `uc  1 a 1 4 ]
+"283
+} 0
+"369
+[v _displayLogs displayLogs `(ui  1 e 2 0 ]
+{
+"370
+[v displayLogs@n n `ui  1 a 2 55 ]
+"378
+[v displayLogs@markedDrawer4 markedDrawer4 `ui  1 a 2 53 ]
+"377
+[v displayLogs@markedDrawer3 markedDrawer3 `ui  1 a 2 51 ]
+"376
+[v displayLogs@markedDrawer2 markedDrawer2 `ui  1 a 2 49 ]
+"375
+[v displayLogs@markedDrawer1 markedDrawer1 `ui  1 a 2 47 ]
+"381
+[v displayLogs@seconds seconds `ui  1 a 2 45 ]
+"380
+[v displayLogs@minutes minutes `ui  1 a 2 43 ]
+"371
+[v displayLogs@operationTime operationTime `ui  1 a 2 41 ]
+"374
+[v displayLogs@longPieces longPieces `ui  1 a 2 38 ]
+"373
+[v displayLogs@flatPieces flatPieces `ui  1 a 2 36 ]
+"372
+[v displayLogs@roundPieces roundPieces `ui  1 a 2 34 ]
+"456
+[v displayLogs@keypress3 keypress3 `uc  1 a 1 40 ]
+"369
+[v displayLogs@logNumber logNumber `ui  1 p 2 30 ]
+"459
 } 0
 "29 /Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
 [v _readEEPROM readEEPROM `(uc  1 e 1 0 ]
@@ -279,36 +336,46 @@
 [v readEEPROM@address address `uc  1 a 1 0 ]
 "37
 } 0
-"470 /Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+"15 /Applications/microchip/xc8/v1.45/sources/common/Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
+} 0
+"568 /Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
 [v _food_press food_press `(ui  1 e 2 0 ]
 {
-"485
-[v food_press@keypress keypress `uc  1 a 1 46 ]
-"478
-[v food_press@foodTable foodTable `[4]ui  1 a 8 38 ]
-"477
-[v food_press@count count `ui  1 a 2 36 ]
-"479
-[v food_press@isValid isValid `ui  1 a 2 34 ]
-"480
-[v food_press@backCheck backCheck `ui  1 a 2 32 ]
-"476
-[v food_press@tally tally `ui  1 a 2 30 ]
-"470
-[v food_press@dietSum dietSum `ui  1 p 2 24 ]
-[v food_press@drawer drawer `ui  1 p 2 26 ]
-"477
-[v food_press@F3045 F3045 `[4]ui  1 s 8 F3045 ]
-"532
+"583
+[v food_press@keypress keypress `uc  1 a 1 52 ]
+"576
+[v food_press@foodTable foodTable `[4]ui  1 a 8 44 ]
+"575
+[v food_press@count count `ui  1 a 2 42 ]
+"577
+[v food_press@isValid isValid `ui  1 a 2 40 ]
+"578
+[v food_press@backCheck backCheck `ui  1 a 2 38 ]
+"574
+[v food_press@tally tally `ui  1 a 2 36 ]
+"568
+[v food_press@dietSum dietSum `ui  1 p 2 30 ]
+[v food_press@drawer drawer `ui  1 p 2 32 ]
+"575
+[v food_press@F3080 F3080 `[4]ui  1 s 8 F3080 ]
+"630
 } 0
-"365
+"463
 [v _get_digits get_digits `(ui  1 e 2 0 ]
 {
-"367
+"465
 [v get_digits@count count `ui  1 a 2 4 ]
-"365
+"463
 [v get_digits@sum sum `ui  1 p 2 0 ]
-"466
+"564
 } 0
 "88
 [v _check_food check_food `(ui  1 e 2 0 ]
@@ -320,42 +387,42 @@
 [v check_food@foodInput foodInput `*.39ui  1 p 2 2 ]
 "269
 } 0
-"536
+"634
 [v _diet_press diet_press `(ui  1 e 2 0 ]
 {
-"552
-[v diet_press@keypress keypress `uc  1 a 1 38 ]
-"547
-[v diet_press@dietTable dietTable `[4]ui  1 a 8 39 ]
-"545
-[v diet_press@sum sum `ui  1 a 2 36 ]
-"543
-[v diet_press@count count `ui  1 a 2 34 ]
-"548
-[v diet_press@backCheck backCheck `ui  1 a 2 32 ]
-"546
-[v diet_press@i i `ui  1 a 2 30 ]
-"544
-[v diet_press@previous previous `ui  1 a 2 28 ]
-"536
-[v diet_press@drawer drawer `ui  1 p 2 24 ]
-"546
-[v diet_press@F3060 F3060 `[4]ui  1 s 8 F3060 ]
-"691
+"650
+[v diet_press@keypress keypress `uc  1 a 1 44 ]
+"645
+[v diet_press@dietTable dietTable `[4]ui  1 a 8 45 ]
+"643
+[v diet_press@sum sum `ui  1 a 2 42 ]
+"641
+[v diet_press@count count `ui  1 a 2 40 ]
+"646
+[v diet_press@backCheck backCheck `ui  1 a 2 38 ]
+"644
+[v diet_press@i i `ui  1 a 2 36 ]
+"642
+[v diet_press@previous previous `ui  1 a 2 34 ]
+"634
+[v diet_press@drawer drawer `ui  1 p 2 30 ]
+"644
+[v diet_press@F3095 F3095 `[4]ui  1 s 8 F3095 ]
+"789
 } 0
 "464 /Applications/microchip/xc8/v1.45/sources/common/doprnt.c
 [v _printf printf `(i  1 e 2 0 ]
 {
 "528
-[v printf@val val `ui  1 a 2 21 ]
+[v printf@val val `ui  1 a 2 27 ]
 "466
-[v printf@ap ap `[1]*.39v  1 a 2 17 ]
+[v printf@ap ap `[1]*.39v  1 a 2 23 ]
 "499
-[v printf@c c `c  1 a 1 23 ]
+[v printf@c c `c  1 a 1 29 ]
 "506
-[v printf@prec prec `c  1 a 1 20 ]
+[v printf@prec prec `c  1 a 1 26 ]
 "508
-[v printf@flag flag `uc  1 a 1 19 ]
+[v printf@flag flag `uc  1 a 1 25 ]
 "464
 [v printf@f f `*.25Cuc  1 p 2 12 ]
 "1541
