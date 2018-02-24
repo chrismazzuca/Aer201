@@ -12,32 +12,41 @@
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
 $dist/default/production/Main_Robot.production.obj
-cinit CODE 0 D7C4 D7C4 16 1
-text0 CODE 0 D82A D82A 38 1
-text1 CODE 0 F4DC F4DC 89C 1
-text2 CODE 0 D800 D800 2A 1
-text3 CODE 0 DEC4 DEC4 204 1
-text4 CODE 0 DAD0 DAD0 E2 1
-text5 CODE 0 E0C8 E0C8 2CE 1
-text6 CODE 0 D942 D942 52 1
-text7 CODE 0 E396 E396 3EE 1
-text8 CODE 0 D7B0 D7B0 14 1
-text9 CODE 0 D7DA D7DA 26 1
-text10 CODE 0 DCD0 DCD0 1F4 1
-text11 CODE 0 DA12 DA12 BE 1
-text12 CODE 0 ECAA ECAA 832 1
-text13 CODE 0 E784 E784 526 1
-text14 CODE 0 DBB2 DBB2 11E 1
-text15 CODE 0 D79C D79C 14 1
-text16 CODE 0 D862 D862 42 1
-text17 CODE 0 D8F0 D8F0 52 1
-text18 CODE 0 D8A4 D8A4 4C 1
-text19 CODE 0 D788 D788 14 1
-text20 CODE 0 D994 D994 7E 1
-cstackCOMRAM COMRAM 1 1 1 5C 1
-bssCOMRAM COMRAM 1 5D 5D 22 1
-mediumconst MEDIUMCONST 0 FD78 FD78 288 1
-$/tmp/xcXjOjGDx.obj
+cinit CODE 0 D332 D332 22 1
+text0 CODE 0 D3C8 D3C8 38 1
+text1 CODE 0 F346 F346 9DE 1
+text2 CODE 0 D39E D39E 2A 1
+text3 CODE 0 DA22 DA22 204 1
+text4 CODE 0 D74C D74C E2 1
+text5 CODE 0 DC26 DC26 2CE 1
+text6 CODE 0 D4E0 D4E0 52 1
+text7 CODE 0 E200 E200 3EE 1
+text8 CODE 0 D300 D300 14 1
+text9 CODE 0 D82E D82E 1F4 1
+text10 CODE 0 D68E D68E BE 1
+text11 CODE 0 EB14 EB14 832 1
+text12 CODE 0 E5EE E5EE 526 1
+text13 CODE 0 DEF4 DEF4 30C 1
+text14 CODE 0 D2EC D2EC 14 1
+text15 CODE 0 D314 D314 1E 1
+text16 CODE 0 D378 D378 26 1
+text17 CODE 0 D400 D400 42 1
+text18 CODE 0 D48E D48E 52 1
+text19 CODE 0 D2BC D2BC A 1
+text20 CODE 0 D2B4 D2B4 8 1
+text21 CODE 0 D2AC D2AC 8 1
+text22 CODE 0 D354 D354 24 1
+text23 CODE 0 D2C6 D2C6 12 1
+text24 CODE 0 D532 D532 5C 1
+text25 CODE 0 D60C D60C 82 1
+text26 CODE 0 D442 D442 4C 1
+text27 CODE 0 D2D8 D2D8 14 1
+text28 CODE 0 D58E D58E 7E 1
+cstackCOMRAM COMRAM 1 1 1 6B 1
+bssBANK0 BANK0 1 80 80 10 1
+bssCOMRAM COMRAM 1 6C 6C 12 1
+mediumconst MEDIUMCONST 0 FD24 FD24 2DC 1
+$/tmp/xcCZVZrxC.obj
 idloc IDLOC 0 200000 200000 8 1
 init CODE 0 0 0 4 1
 config CONFIG 0 300000 300000 E 1
@@ -47,9 +56,9 @@ config CONFIG 0 300000 300000 E 1
 #    <class name> <range> <delta>
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
-RAM 80-F7F 1
+RAM 90-F7F 1
 SFR F80-FFF 1
-BANK0 80-FF 1
+BANK0 90-FF 1
 BANK1 100-1FF 1
 BANK2 200-2FF 1
 BANK3 300-3FF 1
@@ -59,20 +68,21 @@ BANK6 600-6FF 1
 BANK7 700-7FF 1
 BANK8 800-8FF 1
 BANK9 900-9FF 1
-CONST 4-D787 1
-STACK 80-F7F 1
-SMALLCONST 1000-D787 1
-CODE 4-D787 1
+CONST 4-D2AB 1
+STACK 90-F7F 1
+SMALLCONST 1000-D2AB 1
+CODE 4-D2AB 1
 BANK10 A00-AFF 1
 BANK11 B00-BFF 1
 BANK12 C00-CFF 1
 BANK13 D00-DFF 1
 BANK14 E00-EFF 1
 BANK15 F00-F7F 1
-BIGRAM 7F-F7F 1
-COMRAM 7F-7F 1
+BIGRAM 7E-7F 1
+BIGRAM 90-F7F 1
+COMRAM 7E-7F 1
 EEDATA F00000-F003FF 1
-MEDIUMCONST 1000-D787 1
+MEDIUMCONST 1000-D2AB 1
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -87,823 +97,954 @@ MEDIUMCONST 1000-D787 1
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production/Main_Robot.production.obj
-D994 text20 CODE >50:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D996 text20 CODE >58:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D99C text20 CODE >59:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D9A2 text20 CODE >60:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D9A8 text20 CODE >62:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D9D0 text20 CODE >65:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D9D6 text20 CODE >66:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D9DC text20 CODE >67:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D9E2 text20 CODE >68:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D9E8 text20 CODE >70:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DA10 text20 CODE >71:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D788 text19 CODE >15:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D78A text19 CODE >23:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D78C text19 CODE >24:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D792 text19 CODE >25:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D79A text19 CODE >26:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D8A4 text18 CODE >29:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D8A4 text18 CODE >37:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D8B4 text18 CODE >38:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D8BA text18 CODE >39:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D8C0 text18 CODE >40:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D8C6 text18 CODE >41:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D8CC text18 CODE >42:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D8D2 text18 CODE >43:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D8E8 text18 CODE >46:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D8EE text18 CODE >47:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D8F0 text17 CODE >8:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
-D8F0 text17 CODE >14:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
-D8F8 text17 CODE >15:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
-D900 text17 CODE >16:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
-D904 text17 CODE >17:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
-D906 text17 CODE >18:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
-D90C text17 CODE >19:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
-D90E text17 CODE >17:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
-D90E text17 CODE >20:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
-D912 text17 CODE >22:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
-D918 text17 CODE >23:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
-D924 text17 CODE >24:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
-D92C text17 CODE >25:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
-D92E text17 CODE >26:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
-D92E text17 CODE >27:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
-D934 text17 CODE >28:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
-D938 text17 CODE >30:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
-D940 text17 CODE >31:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
-D862 text16 CODE >8:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
-D862 text16 CODE >13:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
-D86A text16 CODE >14:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
-D86E text16 CODE >15:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
-D870 text16 CODE >16:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
-D876 text16 CODE >17:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
-D878 text16 CODE >15:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
-D878 text16 CODE >18:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
-D87C text16 CODE >20:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
-D888 text16 CODE >21:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
-D890 text16 CODE >22:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
-D896 text16 CODE >23:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
-D89A text16 CODE >25:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
-D8A2 text16 CODE >26:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
-D79C text15 CODE >74:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D79E text15 CODE >82:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D7A0 text15 CODE >83:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D7A6 text15 CODE >84:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D7AE text15 CODE >85:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DBB2 text14 CODE >464:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-DBB2 text14 CODE >533:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-DBBA text14 CODE >536:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-DBBC text14 CODE >538:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-DBC4 text14 CODE >541:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-DBCA text14 CODE >542:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-DBCC text14 CODE >543:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-DBCC text14 CODE >548:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-DBD0 text14 CODE >635:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-DBF6 text14 CODE >822:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-DBF6 text14 CODE >1259:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-DC0E text14 CODE >1261:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-DC12 text14 CODE >1262:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-DC16 text14 CODE >1263:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-DC1E text14 CODE >1264:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-DC1E text14 CODE >1305:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-DC2A text14 CODE >1306:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-DC4A text14 CODE >1305:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-DC4E text14 CODE >1438:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-DC5A text14 CODE >1439:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-DC60 text14 CODE >1472:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-DC64 text14 CODE >1474:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-DC66 text14 CODE >1489:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-DCA8 text14 CODE >1524:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-DCAE text14 CODE >1474:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-DCAE text14 CODE >1525:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-DCB6 text14 CODE >536:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
-E784 text13 CODE >634:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E784 text13 CODE >637:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E79A text13 CODE >638:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E7AE text13 CODE >639:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E7B4 text13 CODE >641:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E7BC text13 CODE >642:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E7C4 text13 CODE >643:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E7CC text13 CODE >644:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E7D4 text13 CODE >645:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E7E6 text13 CODE >646:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E7EE text13 CODE >648:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E7EE text13 CODE >649:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E7F2 text13 CODE >650:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E7FA text13 CODE >651:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E7FE text13 CODE >653:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E806 text13 CODE >656:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E80E text13 CODE >657:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E816 text13 CODE >658:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E818 text13 CODE >660:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E820 text13 CODE >661:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E836 text13 CODE >662:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E84A text13 CODE >663:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E850 text13 CODE >664:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E858 text13 CODE >665:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E860 text13 CODE >666:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E868 text13 CODE >667:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E870 text13 CODE >668:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E878 text13 CODE >669:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E87A text13 CODE >670:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E886 text13 CODE >671:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E896 text13 CODE >672:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E8AE text13 CODE >673:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E8B6 text13 CODE >674:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E8BA text13 CODE >675:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E8BC text13 CODE >676:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E8C4 text13 CODE >677:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E8DC text13 CODE >678:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E904 text13 CODE >679:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E906 text13 CODE >648:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E906 text13 CODE >684:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E90E text13 CODE >685:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E916 text13 CODE >689:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E938 text13 CODE >690:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E940 text13 CODE >694:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E962 text13 CODE >695:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E96A text13 CODE >699:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E98C text13 CODE >700:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E994 text13 CODE >704:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E9B8 text13 CODE >705:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E9C0 text13 CODE >709:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E9E4 text13 CODE >710:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E9EC text13 CODE >714:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EA10 text13 CODE >715:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EA18 text13 CODE >719:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EA3E text13 CODE >720:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EA46 text13 CODE >724:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EA6C text13 CODE >725:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EA74 text13 CODE >729:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EA9A text13 CODE >730:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EAA2 text13 CODE >734:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EAC8 text13 CODE >735:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EAD0 text13 CODE >739:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EAF6 text13 CODE >740:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EAFE text13 CODE >744:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EB24 text13 CODE >745:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EB2C text13 CODE >749:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EB52 text13 CODE >750:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EB5A text13 CODE >754:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EB82 text13 CODE >755:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EB8A text13 CODE >759:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EBB2 text13 CODE >760:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EBBA text13 CODE >764:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EBE2 text13 CODE >765:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EBEA text13 CODE >769:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EC12 text13 CODE >770:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EC1A text13 CODE >774:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EC42 text13 CODE >775:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EC4A text13 CODE >776:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EC4C text13 CODE >779:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EC4C text13 CODE >780:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EC62 text13 CODE >781:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EC6E text13 CODE >782:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EC74 text13 CODE >783:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EC80 text13 CODE >784:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EC96 text13 CODE >785:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EC9E text13 CODE >786:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-ECA0 text13 CODE >787:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-ECA0 text13 CODE >788:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-ECA8 text13 CODE >789:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-ECAA text12 CODE >88:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-ECAA text12 CODE >90:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-ECB2 text12 CODE >92:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-ECB4 text12 CODE >94:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-ECB4 text12 CODE >95:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-ECD6 text12 CODE >96:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-ECDE text12 CODE >101:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-ECDE text12 CODE >102:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-ED00 text12 CODE >103:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-ED08 text12 CODE >108:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-ED08 text12 CODE >109:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-ED3C text12 CODE >110:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-ED44 text12 CODE >115:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-ED44 text12 CODE >116:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-ED90 text12 CODE >117:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-ED98 text12 CODE >122:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-ED98 text12 CODE >123:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EDAE text12 CODE >124:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EDBE text12 CODE >125:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EDC6 text12 CODE >128:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EDE8 text12 CODE >129:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EDF0 text12 CODE >134:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EDF0 text12 CODE >135:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EE06 text12 CODE >136:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EE16 text12 CODE >137:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EE1E text12 CODE >140:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EE40 text12 CODE >141:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EE48 text12 CODE >146:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EE48 text12 CODE >147:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EE6C text12 CODE >148:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EE96 text12 CODE >149:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EE9E text12 CODE >155:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EE9E text12 CODE >156:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EEC2 text12 CODE >157:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EEEC text12 CODE >158:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EEF4 text12 CODE >164:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EEF4 text12 CODE >165:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EF1C text12 CODE >166:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EF3E text12 CODE >167:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EF46 text12 CODE >173:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EF46 text12 CODE >174:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EF7E text12 CODE >175:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EF86 text12 CODE >177:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EFC0 text12 CODE >178:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-EFC8 text12 CODE >180:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F002 text12 CODE >181:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F00A text12 CODE >183:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F044 text12 CODE >184:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F04C text12 CODE >189:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F04C text12 CODE >190:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F084 text12 CODE >191:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F08C text12 CODE >193:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F0C6 text12 CODE >194:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F0CE text12 CODE >196:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F108 text12 CODE >197:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F110 text12 CODE >199:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F14A text12 CODE >200:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F152 text12 CODE >205:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F152 text12 CODE >206:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F176 text12 CODE >207:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F1A0 text12 CODE >208:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F1A8 text12 CODE >214:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F1A8 text12 CODE >215:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F1E0 text12 CODE >216:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F1E8 text12 CODE >218:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F222 text12 CODE >219:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F22A text12 CODE >221:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F264 text12 CODE >222:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F26C text12 CODE >224:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F2A6 text12 CODE >225:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F2AE text12 CODE >230:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F2AE text12 CODE >231:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F2FA text12 CODE >232:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F302 text12 CODE >237:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F302 text12 CODE >238:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F34E text12 CODE >239:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F356 text12 CODE >244:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F356 text12 CODE >245:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F3A2 text12 CODE >246:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F3AA text12 CODE >251:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F3AA text12 CODE >252:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F3F6 text12 CODE >253:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F3FE text12 CODE >258:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F3FE text12 CODE >259:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F44A text12 CODE >260:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F452 text12 CODE >267:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F454 text12 CODE >92:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F4D2 text12 CODE >267:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F4D2 text12 CODE >268:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F4DA text12 CODE >269:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DA12 text11 CODE >463:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DA12 text11 CODE >465:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DA1A text11 CODE >467:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DA1C text11 CODE >469:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DA1C text11 CODE >480:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DA22 text11 CODE >485:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DA24 text11 CODE >486:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DA26 text11 CODE >489:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DA26 text11 CODE >495:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DA2E text11 CODE >499:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DA2E text11 CODE >530:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DA36 text11 CODE >534:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DA36 text11 CODE >555:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DA3E text11 CODE >559:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DA3E text11 CODE >560:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DA46 text11 CODE >467:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DAC6 text11 CODE >562:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DAC6 text11 CODE >563:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DACE text11 CODE >564:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DCD0 text10 CODE >568:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DCD0 text10 CODE >570:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DCE6 text10 CODE >571:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DCFA text10 CODE >572:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DD00 text10 CODE >574:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DD08 text10 CODE >575:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DD10 text10 CODE >576:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DD22 text10 CODE >577:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DD2A text10 CODE >578:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DD32 text10 CODE >579:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DD46 text10 CODE >581:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DD46 text10 CODE >582:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DD4A text10 CODE >583:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DD52 text10 CODE >584:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DD56 text10 CODE >586:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DD5E text10 CODE >589:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DD66 text10 CODE >590:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DD6E text10 CODE >591:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DD70 text10 CODE >593:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DD84 text10 CODE >594:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DD90 text10 CODE >595:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DDA8 text10 CODE >596:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DDD0 text10 CODE >597:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DDD4 text10 CODE >599:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DDD6 text10 CODE >600:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DDDE text10 CODE >601:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DDF4 text10 CODE >602:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DE08 text10 CODE >603:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DE0E text10 CODE >604:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DE16 text10 CODE >605:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DE1E text10 CODE >606:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DE26 text10 CODE >607:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DE2E text10 CODE >608:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DE36 text10 CODE >581:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DE38 text10 CODE >612:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DE40 text10 CODE >613:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DE48 text10 CODE >614:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DE4A text10 CODE >615:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DE4A text10 CODE >616:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DE66 text10 CODE >618:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DE6E text10 CODE >619:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DE84 text10 CODE >620:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DE90 text10 CODE >621:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DE96 text10 CODE >622:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DEA2 text10 CODE >623:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DEB8 text10 CODE >624:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DEBA text10 CODE >626:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DEBA text10 CODE >627:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DEC2 text10 CODE >628:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D7DA text9 CODE >15:/Applications/microchip/xc8/v1.45/sources/common/Umul16.c
-D7DA text9 CODE >37:/Applications/microchip/xc8/v1.45/sources/common/Umul16.c
-D7E6 text9 CODE >38:/Applications/microchip/xc8/v1.45/sources/common/Umul16.c
-D7EE text9 CODE >39:/Applications/microchip/xc8/v1.45/sources/common/Umul16.c
-D7F6 text9 CODE >52:/Applications/microchip/xc8/v1.45/sources/common/Umul16.c
-D7B0 text8 CODE >29:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
-D7B2 text8 CODE >30:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
-D7B6 text8 CODE >32:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
-D7BA text8 CODE >33:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
-D7BC text8 CODE >34:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
-D7BE text8 CODE >35:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
-D7C0 text8 CODE >36:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
-E396 text7 CODE >369:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E396 text7 CODE >370:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E3B6 text7 CODE >371:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E3C6 text7 CODE >372:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E3D6 text7 CODE >373:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E3E6 text7 CODE >374:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E3F6 text7 CODE >375:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E406 text7 CODE >376:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E416 text7 CODE >377:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E426 text7 CODE >378:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E436 text7 CODE >380:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E452 text7 CODE >381:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E46E text7 CODE >382:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E484 text7 CODE >383:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E490 text7 CODE >384:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E496 text7 CODE >385:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E49E text7 CODE >386:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E4BA text7 CODE >387:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E4D2 text7 CODE >389:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E4D2 text7 CODE >390:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E4EE text7 CODE >391:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E506 text7 CODE >392:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E506 text7 CODE >394:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E50A text7 CODE >398:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E520 text7 CODE >399:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E52C text7 CODE >400:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E532 text7 CODE >402:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E54A text7 CODE >403:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E55E text7 CODE >404:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E576 text7 CODE >407:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E586 text7 CODE >408:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E5A2 text7 CODE >409:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E5BA text7 CODE >412:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E5C2 text7 CODE >413:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E5E6 text7 CODE >414:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E5FE text7 CODE >417:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E5FE text7 CODE >418:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E62A text7 CODE >419:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E642 text7 CODE >420:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E642 text7 CODE >422:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E646 text7 CODE >426:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E65C text7 CODE >427:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E668 text7 CODE >428:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E66E text7 CODE >429:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E692 text7 CODE >430:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E6AA text7 CODE >432:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E6AE text7 CODE >436:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E6C4 text7 CODE >437:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E6D0 text7 CODE >438:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E6E8 text7 CODE >440:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E6EC text7 CODE >444:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E702 text7 CODE >445:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E70E text7 CODE >446:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E714 text7 CODE >447:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E720 text7 CODE >448:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E738 text7 CODE >450:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E74E text7 CODE >451:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E75A text7 CODE >452:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E760 text7 CODE >453:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E76C text7 CODE >455:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E770 text7 CODE >456:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E778 text7 CODE >457:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E77C text7 CODE >458:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E782 text7 CODE >459:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D942 text6 CODE >273:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D944 text6 CODE >274:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D94C text6 CODE >275:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D954 text6 CODE >277:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D95E text6 CODE >278:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D96C text6 CODE >279:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D974 text6 CODE >277:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D974 text6 CODE >280:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D98A text6 CODE >282:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D992 text6 CODE >283:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E0C8 text5 CODE >287:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E0C8 text5 CODE >289:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E0D0 text5 CODE >290:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E0D8 text5 CODE >291:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E0E0 text5 CODE >292:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E0E8 text5 CODE >294:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E0EE text5 CODE >295:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E104 text5 CODE >296:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E110 text5 CODE >297:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E116 text5 CODE >298:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E122 text5 CODE >299:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E13A text5 CODE >300:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E142 text5 CODE >301:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E144 text5 CODE >302:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E144 text5 CODE >303:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E14A text5 CODE >304:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E152 text5 CODE >306:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E168 text5 CODE >307:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E174 text5 CODE >308:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E17A text5 CODE >309:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E186 text5 CODE >310:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E19E text5 CODE >312:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E1B4 text5 CODE >313:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E1C0 text5 CODE >314:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E1C6 text5 CODE >315:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E1D2 text5 CODE >316:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E1EA text5 CODE >318:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E1F0 text5 CODE >322:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E1F0 text5 CODE >323:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E206 text5 CODE >324:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E218 text5 CODE >325:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E21E text5 CODE >326:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E22A text5 CODE >327:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E242 text5 CODE >328:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E258 text5 CODE >329:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E264 text5 CODE >330:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E26A text5 CODE >331:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E276 text5 CODE >333:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E276 text5 CODE >334:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E27A text5 CODE >335:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E282 text5 CODE >336:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E286 text5 CODE >338:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E2A2 text5 CODE >339:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E2B6 text5 CODE >340:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E2BE text5 CODE >341:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E2D6 text5 CODE >342:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E2DC text5 CODE >343:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E2F2 text5 CODE >349:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E308 text5 CODE >350:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E314 text5 CODE >351:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E32A text5 CODE >352:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E340 text5 CODE >353:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E34C text5 CODE >354:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E352 text5 CODE >355:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E35E text5 CODE >356:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E376 text5 CODE >358:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E37A text5 CODE >362:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E38C text5 CODE >363:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DAD0 text4 CODE >793:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DAD0 text4 CODE >796:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DAD2 text4 CODE >798:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DAD2 text4 CODE >799:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DADA text4 CODE >803:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DADA text4 CODE >804:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DAE2 text4 CODE >808:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DAE2 text4 CODE >809:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DAEA text4 CODE >813:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DAEA text4 CODE >814:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DAF2 text4 CODE >818:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DAF2 text4 CODE >819:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DAFA text4 CODE >823:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DAFA text4 CODE >824:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DB02 text4 CODE >828:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DB02 text4 CODE >829:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DB0A text4 CODE >833:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DB0A text4 CODE >834:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DB12 text4 CODE >838:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DB12 text4 CODE >839:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DB1A text4 CODE >843:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DB1A text4 CODE >844:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DB22 text4 CODE >848:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DB22 text4 CODE >849:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DB2A text4 CODE >853:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DB2A text4 CODE >854:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DB32 text4 CODE >858:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DB32 text4 CODE >859:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DB3A text4 CODE >860:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DB3C text4 CODE >862:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DB3C text4 CODE >863:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DB44 text4 CODE >865:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DB46 text4 CODE >796:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DBA8 text4 CODE >865:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DBA8 text4 CODE >866:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DBB0 text4 CODE >867:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DEC4 text3 CODE >871:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DEC4 text3 CODE >872:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DECA text3 CODE >873:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DEE0 text3 CODE >874:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DEEC text3 CODE >875:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DEF2 text3 CODE >877:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DEFA text3 CODE >878:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DF02 text3 CODE >879:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DF0A text3 CODE >881:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DF0A text3 CODE >882:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DF0E text3 CODE >883:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DF16 text3 CODE >884:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DF1A text3 CODE >886:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DF22 text3 CODE >889:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DF2A text3 CODE >890:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DF32 text3 CODE >891:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DF34 text3 CODE >893:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DF80 text3 CODE >894:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DF88 text3 CODE >895:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DFC6 text3 CODE >896:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DFCE text3 CODE >897:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DFE6 text3 CODE >898:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DFE8 text3 CODE >900:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-DFEE text3 CODE >901:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E006 text3 CODE >902:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E00A text3 CODE >903:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E012 text3 CODE >905:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E014 text3 CODE >906:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E01C text3 CODE >907:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E02A text3 CODE >908:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E042 text3 CODE >909:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E046 text3 CODE >910:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E04C text3 CODE >911:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E050 text3 CODE >913:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E050 text3 CODE >914:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E054 text3 CODE >919:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E05C text3 CODE >920:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E072 text3 CODE >921:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E07E text3 CODE >922:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E084 text3 CODE >923:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E08C text3 CODE >924:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E094 text3 CODE >881:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E096 text3 CODE >928:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E0A0 text3 CODE >929:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E0A8 text3 CODE >930:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E0AA text3 CODE >931:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E0AA text3 CODE >932:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-E0BE text3 CODE >933:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D800 text2 CODE >10:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
-D802 text2 CODE >11:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
-D806 text2 CODE >13:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
-D808 text2 CODE >14:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
-D80C text2 CODE >15:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
-D810 text2 CODE >16:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
-D812 text2 CODE >17:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
-D814 text2 CODE >18:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
-D816 text2 CODE >20:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
-D81A text2 CODE >21:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
-D81E text2 CODE >22:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
-D820 text2 CODE >24:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
-D822 text2 CODE >25:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
-D826 text2 CODE >26:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
-D828 text2 CODE >27:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
-F4DC text1 CODE >937:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F4DC text1 CODE >938:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F4F2 text1 CODE >939:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F4F8 text1 CODE >940:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F504 text1 CODE >941:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F51C text1 CODE >942:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F532 text1 CODE >943:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F53E text1 CODE >944:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F544 text1 CODE >945:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F550 text1 CODE >947:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F554 text1 CODE >951:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F55E text1 CODE >952:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F568 text1 CODE >953:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F572 text1 CODE >954:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F57C text1 CODE >955:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F586 text1 CODE >956:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F590 text1 CODE >957:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F59A text1 CODE >958:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F5A4 text1 CODE >959:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F5AE text1 CODE >960:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F5B8 text1 CODE >961:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F5C0 text1 CODE >962:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F5D6 text1 CODE >963:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F5E2 text1 CODE >964:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F5FA text1 CODE >965:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F612 text1 CODE >967:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F61C text1 CODE >968:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F624 text1 CODE >969:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F63A text1 CODE >970:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F646 text1 CODE >971:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F65E text1 CODE >972:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F676 text1 CODE >975:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F68C text1 CODE >976:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F692 text1 CODE >977:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F69E text1 CODE >978:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F6A4 text1 CODE >979:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F6B0 text1 CODE >980:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F6C8 text1 CODE >983:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F6DE text1 CODE >984:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F6EA text1 CODE >985:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F6F0 text1 CODE >986:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F6FC text1 CODE >987:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F714 text1 CODE >988:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F72A text1 CODE >989:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F736 text1 CODE >990:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F73C text1 CODE >991:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F748 text1 CODE >993:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F74C text1 CODE >994:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F754 text1 CODE >995:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F758 text1 CODE >997:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F760 text1 CODE >1039:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F768 text1 CODE >1040:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F770 text1 CODE >1041:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F778 text1 CODE >1042:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F780 text1 CODE >1043:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F788 text1 CODE >1044:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F790 text1 CODE >1045:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F798 text1 CODE >1046:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F7A0 text1 CODE >1048:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F7A0 text1 CODE >1049:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F7A8 text1 CODE >1052:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F7B4 text1 CODE >1053:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F7CA text1 CODE >1054:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F7D0 text1 CODE >1055:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F7DC text1 CODE >1056:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F7E2 text1 CODE >1057:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F7EE text1 CODE >1058:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F806 text1 CODE >1059:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F808 text1 CODE >1060:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F808 text1 CODE >1062:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F81E text1 CODE >1063:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F824 text1 CODE >1064:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F830 text1 CODE >1065:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F836 text1 CODE >1066:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F842 text1 CODE >1068:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F846 text1 CODE >1069:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F84E text1 CODE >1070:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F852 text1 CODE >1072:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F85A text1 CODE >1073:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F870 text1 CODE >1074:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F87C text1 CODE >1076:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F886 text1 CODE >1077:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F88E text1 CODE >1078:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F890 text1 CODE >1079:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F890 text1 CODE >1081:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F8A4 text1 CODE >1082:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F8C4 text1 CODE >1083:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F8CC text1 CODE >1084:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F8E6 text1 CODE >1085:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F8EE text1 CODE >1081:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F8EE text1 CODE >1086:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F8F4 text1 CODE >1089:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F8FC text1 CODE >1090:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F904 text1 CODE >1091:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F91A text1 CODE >1092:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F920 text1 CODE >1093:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F92C text1 CODE >1094:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F932 text1 CODE >1095:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F93E text1 CODE >1096:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F956 text1 CODE >1097:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F95E text1 CODE >1098:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F960 text1 CODE >1099:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F960 text1 CODE >1100:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F976 text1 CODE >1101:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F97C text1 CODE >1102:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F988 text1 CODE >1103:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F98E text1 CODE >1104:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F99A text1 CODE >1105:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F9B2 text1 CODE >1106:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F9B2 text1 CODE >1107:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F9BA text1 CODE >1108:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F9BC text1 CODE >1110:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F9BC text1 CODE >1111:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F9D2 text1 CODE >1112:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F9E6 text1 CODE >1113:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F9F0 text1 CODE >1114:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F9F8 text1 CODE >1115:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F9FA text1 CODE >1116:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-F9FA text1 CODE >1118:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FA16 text1 CODE >1119:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FA20 text1 CODE >1120:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FA28 text1 CODE >1121:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FA30 text1 CODE >1122:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FA32 text1 CODE >1123:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FA32 text1 CODE >1124:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FA4C text1 CODE >1125:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FA50 text1 CODE >1127:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FA52 text1 CODE >1128:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FA5A text1 CODE >1130:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FA5A text1 CODE >1131:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FA5E text1 CODE >1050:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FA60 text1 CODE >1135:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FA60 text1 CODE >1136:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FA76 text1 CODE >1137:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FA82 text1 CODE >1139:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FA8C text1 CODE >1140:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FA94 text1 CODE >1141:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FA9C text1 CODE >1142:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FA9E text1 CODE >1143:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FA9E text1 CODE >1145:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FAA6 text1 CODE >1146:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FABA text1 CODE >1147:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FADA text1 CODE >1148:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FAE2 text1 CODE >1149:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FAFC text1 CODE >1150:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FB04 text1 CODE >1146:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FB04 text1 CODE >1151:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FB0A text1 CODE >1154:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FB12 text1 CODE >1155:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FB1A text1 CODE >1156:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FB30 text1 CODE >1157:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FB36 text1 CODE >1158:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FB42 text1 CODE >1159:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FB48 text1 CODE >1160:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FB54 text1 CODE >1161:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FB6C text1 CODE >1162:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FB74 text1 CODE >1163:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FB76 text1 CODE >1164:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FB76 text1 CODE >1165:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FB8C text1 CODE >1166:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FB92 text1 CODE >1167:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FB9E text1 CODE >1168:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FBA4 text1 CODE >1169:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FBB0 text1 CODE >1170:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FBC8 text1 CODE >1171:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FBC8 text1 CODE >1172:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FBD0 text1 CODE >1174:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FBD2 text1 CODE >1175:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FBD2 text1 CODE >1176:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FBE8 text1 CODE >1177:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FBFC text1 CODE >1178:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FC06 text1 CODE >1179:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FC0E text1 CODE >1180:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FC10 text1 CODE >1181:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FC10 text1 CODE >1183:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FC2C text1 CODE >1184:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FC36 text1 CODE >1185:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FC3E text1 CODE >1186:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FC46 text1 CODE >1187:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FC48 text1 CODE >1188:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FC48 text1 CODE >1189:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FC62 text1 CODE >1190:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FC66 text1 CODE >1048:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FC68 text1 CODE >1195:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FC70 text1 CODE >1197:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FC7C text1 CODE >1198:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FC86 text1 CODE >1201:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FC90 text1 CODE >1202:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FCA6 text1 CODE >1203:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FCAC text1 CODE >1204:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FCB8 text1 CODE >1205:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FCD0 text1 CODE >1208:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FCD0 text1 CODE >1209:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FCE6 text1 CODE >1210:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FCEC text1 CODE >1211:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FCF8 text1 CODE >1212:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FCFE text1 CODE >1213:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FD0A text1 CODE >1214:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FD22 text1 CODE >1215:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FD24 text1 CODE >1220:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FD24 text1 CODE >1221:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FD3A text1 CODE >1222:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FD40 text1 CODE >1223:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FD4C text1 CODE >1224:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FD52 text1 CODE >1225:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FD5E text1 CODE >1226:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-FD76 text1 CODE >1227:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
-D82A text0 CODE >13:/Users/chrismazzuca/Desktop/Main Robot/main.c
-D82A text0 CODE >19:/Users/chrismazzuca/Desktop/Main Robot/main.c
-D82E text0 CODE >20:/Users/chrismazzuca/Desktop/Main Robot/main.c
-D832 text0 CODE >21:/Users/chrismazzuca/Desktop/Main Robot/main.c
-D836 text0 CODE >22:/Users/chrismazzuca/Desktop/Main Robot/main.c
-D83A text0 CODE >23:/Users/chrismazzuca/Desktop/Main Robot/main.c
-D83E text0 CODE >27:/Users/chrismazzuca/Desktop/Main Robot/main.c
-D840 text0 CODE >28:/Users/chrismazzuca/Desktop/Main Robot/main.c
-D842 text0 CODE >29:/Users/chrismazzuca/Desktop/Main Robot/main.c
-D846 text0 CODE >30:/Users/chrismazzuca/Desktop/Main Robot/main.c
-D84A text0 CODE >31:/Users/chrismazzuca/Desktop/Main Robot/main.c
-D84E text0 CODE >34:/Users/chrismazzuca/Desktop/Main Robot/main.c
-D852 text0 CODE >35:/Users/chrismazzuca/Desktop/Main Robot/main.c
-D856 text0 CODE >38:/Users/chrismazzuca/Desktop/Main Robot/main.c
-D85A text0 CODE >56:/Users/chrismazzuca/Desktop/Main Robot/main.c
-D85E text0 CODE >58:/Users/chrismazzuca/Desktop/Main Robot/main.c
-D7C4 cinit CODE >2118:/tmp/xci6aPumi
-D7C4 cinit CODE >2120:/tmp/xci6aPumi
-D7C4 cinit CODE >2123:/tmp/xci6aPumi
-D7C4 cinit CODE >2143:/tmp/xci6aPumi
-D7C8 cinit CODE >2144:/tmp/xci6aPumi
-D7CA cinit CODE >2145:/tmp/xci6aPumi
-D7CA cinit CODE >2146:/tmp/xci6aPumi
-D7CC cinit CODE >2147:/tmp/xci6aPumi
-D7CE cinit CODE >2148:/tmp/xci6aPumi
-D7D0 cinit CODE >2154:/tmp/xci6aPumi
-D7D0 cinit CODE >2157:/tmp/xci6aPumi
-D7D2 cinit CODE >2158:/tmp/xci6aPumi
-D7D4 cinit CODE >2159:/tmp/xci6aPumi
-D7D6 cinit CODE >2160:/tmp/xci6aPumi
+D58E text28 CODE >61:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D590 text28 CODE >69:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D596 text28 CODE >70:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D59C text28 CODE >71:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D5A2 text28 CODE >73:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D5CA text28 CODE >76:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D5D0 text28 CODE >77:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D5D6 text28 CODE >78:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D5DC text28 CODE >79:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D5E2 text28 CODE >81:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D60A text28 CODE >82:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D2D8 text27 CODE >26:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D2DA text27 CODE >34:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D2DC text27 CODE >35:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D2E2 text27 CODE >36:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D2EA text27 CODE >37:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D442 text26 CODE >40:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D442 text26 CODE >48:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D452 text26 CODE >49:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D458 text26 CODE >50:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D45E text26 CODE >51:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D464 text26 CODE >52:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D46A text26 CODE >53:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D470 text26 CODE >54:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D486 text26 CODE >57:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D48C text26 CODE >58:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D60C text25 CODE >8:/Applications/microchip/xc8/v1.45/sources/common/lldiv.c
+D60C text25 CODE >14:/Applications/microchip/xc8/v1.45/sources/common/lldiv.c
+D61C text25 CODE >15:/Applications/microchip/xc8/v1.45/sources/common/lldiv.c
+D628 text25 CODE >16:/Applications/microchip/xc8/v1.45/sources/common/lldiv.c
+D62C text25 CODE >17:/Applications/microchip/xc8/v1.45/sources/common/lldiv.c
+D62E text25 CODE >18:/Applications/microchip/xc8/v1.45/sources/common/lldiv.c
+D638 text25 CODE >19:/Applications/microchip/xc8/v1.45/sources/common/lldiv.c
+D63A text25 CODE >17:/Applications/microchip/xc8/v1.45/sources/common/lldiv.c
+D63A text25 CODE >20:/Applications/microchip/xc8/v1.45/sources/common/lldiv.c
+D63E text25 CODE >22:/Applications/microchip/xc8/v1.45/sources/common/lldiv.c
+D648 text25 CODE >23:/Applications/microchip/xc8/v1.45/sources/common/lldiv.c
+D65C text25 CODE >24:/Applications/microchip/xc8/v1.45/sources/common/lldiv.c
+D66C text25 CODE >25:/Applications/microchip/xc8/v1.45/sources/common/lldiv.c
+D66E text25 CODE >26:/Applications/microchip/xc8/v1.45/sources/common/lldiv.c
+D66E text25 CODE >27:/Applications/microchip/xc8/v1.45/sources/common/lldiv.c
+D678 text25 CODE >28:/Applications/microchip/xc8/v1.45/sources/common/lldiv.c
+D67C text25 CODE >30:/Applications/microchip/xc8/v1.45/sources/common/lldiv.c
+D68C text25 CODE >31:/Applications/microchip/xc8/v1.45/sources/common/lldiv.c
+D532 text24 CODE >14:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D532 text24 CODE >34:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D534 text24 CODE >37:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D536 text24 CODE >38:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D538 text24 CODE >41:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D53C text24 CODE >42:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D540 text24 CODE >43:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D544 text24 CODE >48:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D58C text24 CODE >49:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D2C6 text23 CODE >51:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D2C6 text23 CODE >66:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D354 text22 CODE >120:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D356 text22 CODE >132:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D35A text22 CODE >133:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D35C text22 CODE >135:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D360 text22 CODE >136:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D364 text22 CODE >138:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D368 text22 CODE >139:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D372 text22 CODE >140:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D374 text22 CODE >142:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D2AC text21 CODE >69:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D2AC text21 CODE >78:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D2B0 text21 CODE >79:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D2B2 text21 CODE >80:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D2B4 text20 CODE >95:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D2B4 text20 CODE >104:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D2B8 text20 CODE >105:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D2BA text20 CODE >106:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D2BC text19 CODE >108:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D2BC text19 CODE >116:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D2C0 text19 CODE >117:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D2C4 text19 CODE >118:/Users/chrismazzuca/Desktop/Main Robot/I2C.c
+D48E text18 CODE >8:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
+D48E text18 CODE >14:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
+D496 text18 CODE >15:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
+D49E text18 CODE >16:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
+D4A2 text18 CODE >17:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
+D4A4 text18 CODE >18:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
+D4AA text18 CODE >19:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
+D4AC text18 CODE >17:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
+D4AC text18 CODE >20:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
+D4B0 text18 CODE >22:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
+D4B6 text18 CODE >23:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
+D4C2 text18 CODE >24:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
+D4CA text18 CODE >25:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
+D4CC text18 CODE >26:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
+D4CC text18 CODE >27:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
+D4D2 text18 CODE >28:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
+D4D6 text18 CODE >30:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
+D4DE text18 CODE >31:/Applications/microchip/xc8/v1.45/sources/common/lwdiv.c
+D400 text17 CODE >8:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
+D400 text17 CODE >13:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
+D408 text17 CODE >14:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
+D40C text17 CODE >15:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
+D40E text17 CODE >16:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
+D414 text17 CODE >17:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
+D416 text17 CODE >15:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
+D416 text17 CODE >18:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
+D41A text17 CODE >20:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
+D426 text17 CODE >21:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
+D42E text17 CODE >22:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
+D434 text17 CODE >23:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
+D438 text17 CODE >25:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
+D440 text17 CODE >26:/Applications/microchip/xc8/v1.45/sources/common/lwmod.c
+D378 text16 CODE >15:/Applications/microchip/xc8/v1.45/sources/common/Umul16.c
+D378 text16 CODE >37:/Applications/microchip/xc8/v1.45/sources/common/Umul16.c
+D384 text16 CODE >38:/Applications/microchip/xc8/v1.45/sources/common/Umul16.c
+D38C text16 CODE >39:/Applications/microchip/xc8/v1.45/sources/common/Umul16.c
+D394 text16 CODE >52:/Applications/microchip/xc8/v1.45/sources/common/Umul16.c
+D314 text15 CODE >8:/Applications/microchip/xc8/v1.45/sources/common/isdigit.c
+D316 text15 CODE >14:/Applications/microchip/xc8/v1.45/sources/common/isdigit.c
+D2EC text14 CODE >85:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D2EE text14 CODE >93:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D2F0 text14 CODE >94:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D2F6 text14 CODE >95:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D2FE text14 CODE >96:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DEF4 text13 CODE >464:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DEF4 text13 CODE >533:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DEFC text13 CODE >536:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DEFE text13 CODE >538:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DF06 text13 CODE >541:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DF0C text13 CODE >542:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DF0E text13 CODE >543:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DF0E text13 CODE >546:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DF16 text13 CODE >548:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DF1A text13 CODE >551:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DF1C text13 CODE >579:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DF1C text13 CODE >580:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DF1E text13 CODE >581:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DF22 text13 CODE >551:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DF34 text13 CODE >597:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DF48 text13 CODE >598:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DF50 text13 CODE >599:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DF50 text13 CODE >600:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DF6C text13 CODE >601:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DF98 text13 CODE >602:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DFAE text13 CODE >718:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DFAE text13 CODE >721:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DFB0 text13 CODE >723:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DFB2 text13 CODE >635:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DFE0 text13 CODE >822:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DFE0 text13 CODE >1251:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DFE4 text13 CODE >1259:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+DFFC text13 CODE >1261:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E000 text13 CODE >1262:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E004 text13 CODE >1263:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E00C text13 CODE >1266:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E00E text13 CODE >1268:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E00E text13 CODE >1286:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E026 text13 CODE >1294:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E028 text13 CODE >1299:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E028 text13 CODE >1305:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E034 text13 CODE >1306:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E054 text13 CODE >1305:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E058 text13 CODE >1314:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E058 text13 CODE >1316:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E064 text13 CODE >1317:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E084 text13 CODE >1316:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E088 text13 CODE >1294:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E098 text13 CODE >1336:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E098 text13 CODE >1345:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E0AC text13 CODE >1346:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E0B2 text13 CODE >1381:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E0C8 text13 CODE >1382:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E0D6 text13 CODE >1383:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E0D6 text13 CODE >1384:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E0DE text13 CODE >1387:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E0E2 text13 CODE >1392:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E0EE text13 CODE >1393:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E0F4 text13 CODE >1415:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E0FC text13 CODE >1417:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E102 text13 CODE >1418:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E10A text13 CODE >1420:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E10A text13 CODE >1428:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E112 text13 CODE >1430:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E118 text13 CODE >1431:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E126 text13 CODE >1438:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E132 text13 CODE >1439:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E138 text13 CODE >1472:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E13C text13 CODE >1474:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E13E text13 CODE >1483:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E13E text13 CODE >1489:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E180 text13 CODE >1491:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E182 text13 CODE >1497:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E182 text13 CODE >1500:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E1B0 text13 CODE >1506:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E1C6 text13 CODE >1523:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E1C8 text13 CODE >1476:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E1D8 text13 CODE >1523:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E1D8 text13 CODE >1524:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E1DE text13 CODE >1474:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E1DE text13 CODE >1525:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E1E6 text13 CODE >536:/Applications/microchip/xc8/v1.45/sources/common/doprnt.c
+E5EE text12 CODE >666:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E5EE text12 CODE >669:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E604 text12 CODE >670:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E618 text12 CODE >671:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E61E text12 CODE >673:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E626 text12 CODE >674:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E62E text12 CODE >675:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E636 text12 CODE >676:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E63E text12 CODE >677:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E650 text12 CODE >678:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E658 text12 CODE >680:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E658 text12 CODE >681:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E65C text12 CODE >682:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E664 text12 CODE >683:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E668 text12 CODE >685:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E670 text12 CODE >688:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E678 text12 CODE >689:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E680 text12 CODE >690:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E682 text12 CODE >692:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E68A text12 CODE >693:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E6A0 text12 CODE >694:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E6B4 text12 CODE >695:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E6BA text12 CODE >696:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E6C2 text12 CODE >697:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E6CA text12 CODE >698:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E6D2 text12 CODE >699:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E6DA text12 CODE >700:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E6E2 text12 CODE >701:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E6E4 text12 CODE >702:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E6F0 text12 CODE >703:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E700 text12 CODE >704:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E718 text12 CODE >705:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E720 text12 CODE >706:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E724 text12 CODE >707:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E726 text12 CODE >708:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E72E text12 CODE >709:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E746 text12 CODE >710:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E76E text12 CODE >711:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E770 text12 CODE >680:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E770 text12 CODE >716:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E778 text12 CODE >717:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E780 text12 CODE >721:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E7A2 text12 CODE >722:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E7AA text12 CODE >726:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E7CC text12 CODE >727:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E7D4 text12 CODE >731:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E7F6 text12 CODE >732:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E7FE text12 CODE >736:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E822 text12 CODE >737:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E82A text12 CODE >741:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E84E text12 CODE >742:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E856 text12 CODE >746:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E87A text12 CODE >747:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E882 text12 CODE >751:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E8A8 text12 CODE >752:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E8B0 text12 CODE >756:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E8D6 text12 CODE >757:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E8DE text12 CODE >761:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E904 text12 CODE >762:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E90C text12 CODE >766:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E932 text12 CODE >767:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E93A text12 CODE >771:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E960 text12 CODE >772:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E968 text12 CODE >776:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E98E text12 CODE >777:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E996 text12 CODE >781:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E9BC text12 CODE >782:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E9C4 text12 CODE >786:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E9EC text12 CODE >787:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E9F4 text12 CODE >791:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EA1C text12 CODE >792:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EA24 text12 CODE >796:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EA4C text12 CODE >797:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EA54 text12 CODE >801:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EA7C text12 CODE >802:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EA84 text12 CODE >806:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EAAC text12 CODE >807:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EAB4 text12 CODE >808:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EAB6 text12 CODE >811:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EAB6 text12 CODE >812:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EACC text12 CODE >813:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EAD8 text12 CODE >814:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EADE text12 CODE >815:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EAEA text12 CODE >816:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EB00 text12 CODE >817:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EB08 text12 CODE >818:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EB0A text12 CODE >819:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EB0A text12 CODE >820:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EB12 text12 CODE >821:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EB14 text11 CODE >120:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EB14 text11 CODE >122:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EB1C text11 CODE >124:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EB1E text11 CODE >126:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EB1E text11 CODE >127:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EB40 text11 CODE >128:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EB48 text11 CODE >133:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EB48 text11 CODE >134:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EB6A text11 CODE >135:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EB72 text11 CODE >140:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EB72 text11 CODE >141:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EBA6 text11 CODE >142:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EBAE text11 CODE >147:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EBAE text11 CODE >148:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EBFA text11 CODE >149:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EC02 text11 CODE >154:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EC02 text11 CODE >155:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EC18 text11 CODE >156:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EC28 text11 CODE >157:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EC30 text11 CODE >160:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EC52 text11 CODE >161:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EC5A text11 CODE >166:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EC5A text11 CODE >167:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EC70 text11 CODE >168:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EC80 text11 CODE >169:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EC88 text11 CODE >172:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+ECAA text11 CODE >173:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+ECB2 text11 CODE >178:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+ECB2 text11 CODE >179:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+ECD6 text11 CODE >180:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+ED00 text11 CODE >181:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+ED08 text11 CODE >187:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+ED08 text11 CODE >188:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+ED2C text11 CODE >189:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+ED56 text11 CODE >190:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+ED5E text11 CODE >196:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+ED5E text11 CODE >197:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+ED86 text11 CODE >198:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EDA8 text11 CODE >199:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EDB0 text11 CODE >205:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EDB0 text11 CODE >206:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EDE8 text11 CODE >207:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EDF0 text11 CODE >209:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EE2A text11 CODE >210:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EE32 text11 CODE >212:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EE6C text11 CODE >213:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EE74 text11 CODE >215:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EEAE text11 CODE >216:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EEB6 text11 CODE >221:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EEB6 text11 CODE >222:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EEEE text11 CODE >223:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EEF6 text11 CODE >225:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EF30 text11 CODE >226:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EF38 text11 CODE >228:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EF72 text11 CODE >229:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EF7A text11 CODE >231:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EFB4 text11 CODE >232:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EFBC text11 CODE >237:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EFBC text11 CODE >238:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+EFE0 text11 CODE >239:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F00A text11 CODE >240:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F012 text11 CODE >246:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F012 text11 CODE >247:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F04A text11 CODE >248:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F052 text11 CODE >250:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F08C text11 CODE >251:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F094 text11 CODE >253:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F0CE text11 CODE >254:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F0D6 text11 CODE >256:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F110 text11 CODE >257:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F118 text11 CODE >262:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F118 text11 CODE >263:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F164 text11 CODE >264:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F16C text11 CODE >269:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F16C text11 CODE >270:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F1B8 text11 CODE >271:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F1C0 text11 CODE >276:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F1C0 text11 CODE >277:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F20C text11 CODE >278:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F214 text11 CODE >283:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F214 text11 CODE >284:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F260 text11 CODE >285:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F268 text11 CODE >290:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F268 text11 CODE >291:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F2B4 text11 CODE >292:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F2BC text11 CODE >299:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F2BE text11 CODE >124:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F33C text11 CODE >299:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F33C text11 CODE >300:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F344 text11 CODE >301:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D68E text10 CODE >495:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D68E text10 CODE >497:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D696 text10 CODE >499:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D698 text10 CODE >501:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D698 text10 CODE >512:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D69E text10 CODE >517:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D6A0 text10 CODE >518:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D6A2 text10 CODE >521:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D6A2 text10 CODE >527:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D6AA text10 CODE >531:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D6AA text10 CODE >562:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D6B2 text10 CODE >566:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D6B2 text10 CODE >587:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D6BA text10 CODE >591:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D6BA text10 CODE >592:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D6C2 text10 CODE >499:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D742 text10 CODE >594:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D742 text10 CODE >595:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D74A text10 CODE >596:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D82E text9 CODE >600:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D82E text9 CODE >602:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D844 text9 CODE >603:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D858 text9 CODE >604:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D85E text9 CODE >606:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D866 text9 CODE >607:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D86E text9 CODE >608:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D880 text9 CODE >609:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D888 text9 CODE >610:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D890 text9 CODE >611:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D8A4 text9 CODE >613:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D8A4 text9 CODE >614:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D8A8 text9 CODE >615:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D8B0 text9 CODE >616:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D8B4 text9 CODE >618:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D8BC text9 CODE >621:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D8C4 text9 CODE >622:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D8CC text9 CODE >623:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D8CE text9 CODE >625:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D8E2 text9 CODE >626:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D8EE text9 CODE >627:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D906 text9 CODE >628:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D92E text9 CODE >629:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D932 text9 CODE >631:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D934 text9 CODE >632:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D93C text9 CODE >633:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D952 text9 CODE >634:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D966 text9 CODE >635:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D96C text9 CODE >636:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D974 text9 CODE >637:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D97C text9 CODE >638:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D984 text9 CODE >639:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D98C text9 CODE >640:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D994 text9 CODE >613:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D996 text9 CODE >644:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D99E text9 CODE >645:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D9A6 text9 CODE >646:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D9A8 text9 CODE >647:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D9A8 text9 CODE >648:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D9C4 text9 CODE >650:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D9CC text9 CODE >651:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D9E2 text9 CODE >652:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D9EE text9 CODE >653:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D9F4 text9 CODE >654:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DA00 text9 CODE >655:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DA16 text9 CODE >656:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DA18 text9 CODE >658:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DA18 text9 CODE >659:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DA20 text9 CODE >660:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D300 text8 CODE >29:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
+D302 text8 CODE >30:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
+D306 text8 CODE >32:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
+D30A text8 CODE >33:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
+D30C text8 CODE >34:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
+D30E text8 CODE >35:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
+D310 text8 CODE >36:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
+E200 text7 CODE >401:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E200 text7 CODE >402:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E220 text7 CODE >403:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E230 text7 CODE >404:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E240 text7 CODE >405:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E250 text7 CODE >406:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E260 text7 CODE >407:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E270 text7 CODE >408:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E280 text7 CODE >409:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E290 text7 CODE >410:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E2A0 text7 CODE >412:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E2BC text7 CODE >413:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E2D8 text7 CODE >414:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E2EE text7 CODE >415:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E2FA text7 CODE >416:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E300 text7 CODE >417:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E308 text7 CODE >418:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E324 text7 CODE >419:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E33C text7 CODE >421:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E33C text7 CODE >422:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E358 text7 CODE >423:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E370 text7 CODE >424:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E370 text7 CODE >426:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E374 text7 CODE >430:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E38A text7 CODE >431:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E396 text7 CODE >432:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E39C text7 CODE >434:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E3B4 text7 CODE >435:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E3C8 text7 CODE >436:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E3E0 text7 CODE >439:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E3F0 text7 CODE >440:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E40C text7 CODE >441:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E424 text7 CODE >444:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E42C text7 CODE >445:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E450 text7 CODE >446:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E468 text7 CODE >449:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E468 text7 CODE >450:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E494 text7 CODE >451:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E4AC text7 CODE >452:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E4AC text7 CODE >454:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E4B0 text7 CODE >458:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E4C6 text7 CODE >459:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E4D2 text7 CODE >460:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E4D8 text7 CODE >461:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E4FC text7 CODE >462:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E514 text7 CODE >464:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E518 text7 CODE >468:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E52E text7 CODE >469:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E53A text7 CODE >470:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E552 text7 CODE >472:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E556 text7 CODE >476:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E56C text7 CODE >477:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E578 text7 CODE >478:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E57E text7 CODE >479:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E58A text7 CODE >480:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E5A2 text7 CODE >482:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E5B8 text7 CODE >483:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E5C4 text7 CODE >484:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E5CA text7 CODE >485:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E5D6 text7 CODE >487:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E5DA text7 CODE >488:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E5E2 text7 CODE >489:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E5E6 text7 CODE >490:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+E5EC text7 CODE >491:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D4E0 text6 CODE >305:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D4E2 text6 CODE >306:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D4EA text6 CODE >307:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D4F2 text6 CODE >309:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D4FC text6 CODE >310:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D50A text6 CODE >311:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D512 text6 CODE >309:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D512 text6 CODE >312:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D528 text6 CODE >314:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D530 text6 CODE >315:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DC26 text5 CODE >319:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DC26 text5 CODE >321:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DC2E text5 CODE >322:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DC36 text5 CODE >323:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DC3E text5 CODE >324:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DC46 text5 CODE >326:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DC4C text5 CODE >327:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DC62 text5 CODE >328:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DC6E text5 CODE >329:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DC74 text5 CODE >330:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DC80 text5 CODE >331:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DC98 text5 CODE >332:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DCA0 text5 CODE >333:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DCA2 text5 CODE >334:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DCA2 text5 CODE >335:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DCA8 text5 CODE >336:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DCB0 text5 CODE >338:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DCC6 text5 CODE >339:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DCD2 text5 CODE >340:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DCD8 text5 CODE >341:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DCE4 text5 CODE >342:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DCFC text5 CODE >344:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DD12 text5 CODE >345:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DD1E text5 CODE >346:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DD24 text5 CODE >347:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DD30 text5 CODE >348:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DD48 text5 CODE >350:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DD4E text5 CODE >354:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DD4E text5 CODE >355:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DD64 text5 CODE >356:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DD76 text5 CODE >357:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DD7C text5 CODE >358:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DD88 text5 CODE >359:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DDA0 text5 CODE >360:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DDB6 text5 CODE >361:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DDC2 text5 CODE >362:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DDC8 text5 CODE >363:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DDD4 text5 CODE >365:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DDD4 text5 CODE >366:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DDD8 text5 CODE >367:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DDE0 text5 CODE >368:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DDE4 text5 CODE >370:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DE00 text5 CODE >371:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DE14 text5 CODE >372:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DE1C text5 CODE >373:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DE34 text5 CODE >374:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DE3A text5 CODE >375:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DE50 text5 CODE >381:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DE66 text5 CODE >382:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DE72 text5 CODE >383:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DE88 text5 CODE >384:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DE9E text5 CODE >385:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DEAA text5 CODE >386:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DEB0 text5 CODE >387:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DEBC text5 CODE >388:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DED4 text5 CODE >390:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DED8 text5 CODE >394:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DEEA text5 CODE >395:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D74C text4 CODE >825:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D74C text4 CODE >828:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D74E text4 CODE >830:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D74E text4 CODE >831:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D756 text4 CODE >835:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D756 text4 CODE >836:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D75E text4 CODE >840:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D75E text4 CODE >841:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D766 text4 CODE >845:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D766 text4 CODE >846:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D76E text4 CODE >850:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D76E text4 CODE >851:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D776 text4 CODE >855:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D776 text4 CODE >856:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D77E text4 CODE >860:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D77E text4 CODE >861:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D786 text4 CODE >865:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D786 text4 CODE >866:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D78E text4 CODE >870:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D78E text4 CODE >871:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D796 text4 CODE >875:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D796 text4 CODE >876:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D79E text4 CODE >880:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D79E text4 CODE >881:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D7A6 text4 CODE >885:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D7A6 text4 CODE >886:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D7AE text4 CODE >890:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D7AE text4 CODE >891:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D7B6 text4 CODE >892:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D7B8 text4 CODE >894:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D7B8 text4 CODE >895:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D7C0 text4 CODE >897:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D7C2 text4 CODE >828:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D824 text4 CODE >897:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D824 text4 CODE >898:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D82C text4 CODE >899:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DA22 text3 CODE >903:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DA22 text3 CODE >904:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DA28 text3 CODE >905:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DA3E text3 CODE >906:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DA4A text3 CODE >907:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DA50 text3 CODE >909:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DA58 text3 CODE >910:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DA60 text3 CODE >911:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DA68 text3 CODE >913:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DA68 text3 CODE >914:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DA6C text3 CODE >915:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DA74 text3 CODE >916:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DA78 text3 CODE >918:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DA80 text3 CODE >921:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DA88 text3 CODE >922:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DA90 text3 CODE >923:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DA92 text3 CODE >925:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DADE text3 CODE >926:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DAE6 text3 CODE >927:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DB24 text3 CODE >928:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DB2C text3 CODE >929:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DB44 text3 CODE >930:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DB46 text3 CODE >932:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DB4C text3 CODE >933:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DB64 text3 CODE >934:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DB68 text3 CODE >935:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DB70 text3 CODE >937:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DB72 text3 CODE >938:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DB7A text3 CODE >939:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DB88 text3 CODE >940:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DBA0 text3 CODE >941:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DBA4 text3 CODE >942:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DBAA text3 CODE >943:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DBAE text3 CODE >945:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DBAE text3 CODE >946:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DBB2 text3 CODE >951:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DBBA text3 CODE >952:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DBD0 text3 CODE >953:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DBDC text3 CODE >954:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DBE2 text3 CODE >955:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DBEA text3 CODE >956:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DBF2 text3 CODE >913:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DBF4 text3 CODE >960:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DBFE text3 CODE >961:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DC06 text3 CODE >962:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DC08 text3 CODE >963:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DC08 text3 CODE >964:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+DC1C text3 CODE >965:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D39E text2 CODE >10:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
+D3A0 text2 CODE >11:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
+D3A4 text2 CODE >13:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
+D3A6 text2 CODE >14:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
+D3AA text2 CODE >15:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
+D3AE text2 CODE >16:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
+D3B0 text2 CODE >17:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
+D3B2 text2 CODE >18:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
+D3B4 text2 CODE >20:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
+D3B8 text2 CODE >21:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
+D3BC text2 CODE >22:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
+D3BE text2 CODE >24:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
+D3C0 text2 CODE >25:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
+D3C4 text2 CODE >26:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
+D3C6 text2 CODE >27:/Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
+F346 text1 CODE >969:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F346 text1 CODE >970:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F35A text1 CODE >972:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F362 text1 CODE >975:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F378 text1 CODE >976:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F37E text1 CODE >977:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F38A text1 CODE >978:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F3A2 text1 CODE >979:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F3B8 text1 CODE >980:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F3C4 text1 CODE >981:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F3CA text1 CODE >982:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F3D6 text1 CODE >984:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F3DA text1 CODE >988:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F3E4 text1 CODE >989:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F3EE text1 CODE >990:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F3F8 text1 CODE >991:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F402 text1 CODE >992:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F40C text1 CODE >993:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F416 text1 CODE >994:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F420 text1 CODE >995:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F42A text1 CODE >996:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F434 text1 CODE >997:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F43E text1 CODE >998:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F446 text1 CODE >999:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F45C text1 CODE >1000:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F468 text1 CODE >1001:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F480 text1 CODE >1002:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F498 text1 CODE >1004:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F4A2 text1 CODE >1005:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F4AA text1 CODE >1006:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F4C0 text1 CODE >1007:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F4CC text1 CODE >1008:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F4E4 text1 CODE >1009:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F4FC text1 CODE >1012:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F512 text1 CODE >1013:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F518 text1 CODE >1014:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F524 text1 CODE >1015:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F52A text1 CODE >1016:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F536 text1 CODE >1017:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F54E text1 CODE >1020:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F552 text1 CODE >1021:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F55E text1 CODE >1022:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F56A text1 CODE >1023:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F56E text1 CODE >1026:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F572 text1 CODE >1027:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F57E text1 CODE >1028:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F592 text1 CODE >1029:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F5A6 text1 CODE >1028:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F5AC text1 CODE >1031:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F5B4 text1 CODE >1032:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F5B8 text1 CODE >1034:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F5CE text1 CODE >1035:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F5DA text1 CODE >1036:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F5E0 text1 CODE >1037:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F5EC text1 CODE >1038:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F604 text1 CODE >1040:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F61A text1 CODE >1041:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F638 text1 CODE >1042:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F63E text1 CODE >1043:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F65C text1 CODE >1044:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F674 text1 CODE >1047:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F68A text1 CODE >1048:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F696 text1 CODE >1049:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F69C text1 CODE >1050:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F6A8 text1 CODE >1051:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F6C0 text1 CODE >1052:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F6D6 text1 CODE >1053:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F6E2 text1 CODE >1054:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F6E8 text1 CODE >1055:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F6F4 text1 CODE >1057:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F6F8 text1 CODE >1058:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F700 text1 CODE >1059:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F704 text1 CODE >1061:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F70C text1 CODE >1103:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F714 text1 CODE >1104:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F71C text1 CODE >1105:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F724 text1 CODE >1106:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F72C text1 CODE >1107:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F734 text1 CODE >1108:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F73C text1 CODE >1109:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F744 text1 CODE >1110:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F74C text1 CODE >1112:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F74C text1 CODE >1113:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F754 text1 CODE >1116:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F760 text1 CODE >1117:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F776 text1 CODE >1118:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F77C text1 CODE >1119:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F788 text1 CODE >1120:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F78E text1 CODE >1121:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F79A text1 CODE >1122:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F7B2 text1 CODE >1123:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F7B4 text1 CODE >1124:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F7B4 text1 CODE >1126:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F7CA text1 CODE >1127:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F7D0 text1 CODE >1128:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F7DC text1 CODE >1129:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F7E2 text1 CODE >1130:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F7EE text1 CODE >1132:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F7F2 text1 CODE >1133:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F7FA text1 CODE >1134:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F7FE text1 CODE >1136:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F806 text1 CODE >1137:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F81C text1 CODE >1138:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F828 text1 CODE >1140:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F832 text1 CODE >1141:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F83A text1 CODE >1142:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F83C text1 CODE >1143:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F83C text1 CODE >1145:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F850 text1 CODE >1146:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F870 text1 CODE >1147:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F878 text1 CODE >1148:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F892 text1 CODE >1149:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F89A text1 CODE >1145:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F89A text1 CODE >1150:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F8A0 text1 CODE >1153:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F8A8 text1 CODE >1154:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F8B0 text1 CODE >1155:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F8C6 text1 CODE >1156:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F8CC text1 CODE >1157:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F8D8 text1 CODE >1158:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F8DE text1 CODE >1159:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F8EA text1 CODE >1160:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F902 text1 CODE >1161:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F90A text1 CODE >1162:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F90C text1 CODE >1163:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F90C text1 CODE >1164:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F922 text1 CODE >1165:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F928 text1 CODE >1166:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F934 text1 CODE >1167:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F93A text1 CODE >1168:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F946 text1 CODE >1169:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F95E text1 CODE >1170:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F95E text1 CODE >1171:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F966 text1 CODE >1172:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F968 text1 CODE >1174:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F968 text1 CODE >1175:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F97E text1 CODE >1176:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F992 text1 CODE >1177:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F99C text1 CODE >1178:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F9A4 text1 CODE >1179:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F9A6 text1 CODE >1180:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F9A6 text1 CODE >1182:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F9C2 text1 CODE >1183:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F9CC text1 CODE >1184:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F9D4 text1 CODE >1185:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F9DC text1 CODE >1186:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F9DE text1 CODE >1187:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F9DE text1 CODE >1188:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F9F8 text1 CODE >1189:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F9FC text1 CODE >1191:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+F9FE text1 CODE >1192:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FA06 text1 CODE >1194:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FA06 text1 CODE >1195:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FA0A text1 CODE >1114:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FA0C text1 CODE >1199:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FA0C text1 CODE >1200:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FA22 text1 CODE >1201:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FA2E text1 CODE >1203:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FA38 text1 CODE >1204:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FA40 text1 CODE >1205:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FA48 text1 CODE >1206:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FA4A text1 CODE >1207:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FA4A text1 CODE >1209:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FA52 text1 CODE >1210:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FA66 text1 CODE >1211:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FA86 text1 CODE >1212:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FA8E text1 CODE >1213:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FAA8 text1 CODE >1214:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FAB0 text1 CODE >1210:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FAB0 text1 CODE >1215:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FAB6 text1 CODE >1218:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FABE text1 CODE >1219:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FAC6 text1 CODE >1220:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FADC text1 CODE >1221:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FAE2 text1 CODE >1222:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FAEE text1 CODE >1223:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FAF4 text1 CODE >1224:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FB00 text1 CODE >1225:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FB18 text1 CODE >1226:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FB20 text1 CODE >1227:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FB22 text1 CODE >1228:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FB22 text1 CODE >1229:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FB38 text1 CODE >1230:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FB3E text1 CODE >1231:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FB4A text1 CODE >1232:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FB50 text1 CODE >1233:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FB5C text1 CODE >1234:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FB74 text1 CODE >1235:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FB74 text1 CODE >1236:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FB7C text1 CODE >1238:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FB7E text1 CODE >1239:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FB7E text1 CODE >1240:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FB94 text1 CODE >1241:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FBA8 text1 CODE >1242:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FBB2 text1 CODE >1243:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FBBA text1 CODE >1244:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FBBC text1 CODE >1245:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FBBC text1 CODE >1247:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FBD8 text1 CODE >1248:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FBE2 text1 CODE >1249:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FBEA text1 CODE >1250:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FBF2 text1 CODE >1251:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FBF4 text1 CODE >1252:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FBF4 text1 CODE >1253:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FC0E text1 CODE >1254:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FC12 text1 CODE >1112:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FC14 text1 CODE >1259:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FC1C text1 CODE >1261:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FC28 text1 CODE >1262:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FC32 text1 CODE >1265:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FC3C text1 CODE >1266:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FC52 text1 CODE >1267:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FC58 text1 CODE >1268:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FC64 text1 CODE >1269:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FC7C text1 CODE >1272:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FC7C text1 CODE >1273:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FC92 text1 CODE >1274:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FC98 text1 CODE >1275:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FCA4 text1 CODE >1276:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FCAA text1 CODE >1277:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FCB6 text1 CODE >1278:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FCCE text1 CODE >1279:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FCD0 text1 CODE >1284:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FCD0 text1 CODE >1285:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FCE6 text1 CODE >1286:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FCEC text1 CODE >1287:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FCF8 text1 CODE >1288:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FCFE text1 CODE >1289:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FD0A text1 CODE >1290:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+FD22 text1 CODE >1291:/Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+D3C8 text0 CODE >13:/Users/chrismazzuca/Desktop/Main Robot/main.c
+D3C8 text0 CODE >19:/Users/chrismazzuca/Desktop/Main Robot/main.c
+D3CC text0 CODE >20:/Users/chrismazzuca/Desktop/Main Robot/main.c
+D3D0 text0 CODE >21:/Users/chrismazzuca/Desktop/Main Robot/main.c
+D3D4 text0 CODE >22:/Users/chrismazzuca/Desktop/Main Robot/main.c
+D3D8 text0 CODE >23:/Users/chrismazzuca/Desktop/Main Robot/main.c
+D3DC text0 CODE >27:/Users/chrismazzuca/Desktop/Main Robot/main.c
+D3DE text0 CODE >28:/Users/chrismazzuca/Desktop/Main Robot/main.c
+D3E0 text0 CODE >29:/Users/chrismazzuca/Desktop/Main Robot/main.c
+D3E4 text0 CODE >30:/Users/chrismazzuca/Desktop/Main Robot/main.c
+D3E8 text0 CODE >31:/Users/chrismazzuca/Desktop/Main Robot/main.c
+D3EC text0 CODE >34:/Users/chrismazzuca/Desktop/Main Robot/main.c
+D3F0 text0 CODE >35:/Users/chrismazzuca/Desktop/Main Robot/main.c
+D3F4 text0 CODE >38:/Users/chrismazzuca/Desktop/Main Robot/main.c
+D3F8 text0 CODE >56:/Users/chrismazzuca/Desktop/Main Robot/main.c
+D3FC text0 CODE >58:/Users/chrismazzuca/Desktop/Main Robot/main.c
+D332 cinit CODE >2526:/tmp/xc3ndBLwY
+D332 cinit CODE >2528:/tmp/xc3ndBLwY
+D332 cinit CODE >2531:/tmp/xc3ndBLwY
+D332 cinit CODE >2554:/tmp/xc3ndBLwY
+D336 cinit CODE >2555:/tmp/xc3ndBLwY
+D338 cinit CODE >2556:/tmp/xc3ndBLwY
+D338 cinit CODE >2557:/tmp/xc3ndBLwY
+D33A cinit CODE >2558:/tmp/xc3ndBLwY
+D33C cinit CODE >2559:/tmp/xc3ndBLwY
+D33E cinit CODE >2562:/tmp/xc3ndBLwY
+D342 cinit CODE >2563:/tmp/xc3ndBLwY
+D344 cinit CODE >2564:/tmp/xc3ndBLwY
+D344 cinit CODE >2565:/tmp/xc3ndBLwY
+D346 cinit CODE >2566:/tmp/xc3ndBLwY
+D348 cinit CODE >2567:/tmp/xc3ndBLwY
+D34A cinit CODE >2573:/tmp/xc3ndBLwY
+D34A cinit CODE >2576:/tmp/xc3ndBLwY
+D34C cinit CODE >2577:/tmp/xc3ndBLwY
+D34E cinit CODE >2578:/tmp/xc3ndBLwY
+D350 cinit CODE >2579:/tmp/xc3ndBLwY
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -918,60 +1059,61 @@ D7D6 cinit CODE >2160:/tmp/xci6aPumi
 %SYMTAB
 putch@data 3 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 ___lwmod@counter C 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-food_press@foodTable 2D 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-_which_drawer DEC4 0 CODE 0 text3 dist/default/production/Main_Robot.production.obj
-__Lmediumconst FD78 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
+food_press@foodTable 33 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+_which_drawer DA22 0 CODE 0 text3 dist/default/production/Main_Robot.production.obj
+__Lmediumconst FD24 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
 __Hspace_0 30000E 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-__Hspace_1 7F 0 ABS 0 - dist/default/production/Main_Robot.production.obj
+__Hspace_1 90 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __Hspace_2 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __CFG_IESO$OFF 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __size_of_lcdInst 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-viewLogs@keypress2 45 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+viewLogs@keypress2 4B 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __size_of_displayLogs 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-diet_press@previous 23 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+diet_press@previous 29 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 ?_get_digits 1 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-_lcdNibble D994 0 CODE 0 text20 dist/default/production/Main_Robot.production.obj
+_lcdNibble D58E 0 CODE 0 text28 dist/default/production/Main_Robot.production.obj
 __Hibigdata 0 0 CODE 0 ibigdata dist/default/production/Main_Robot.production.obj
-__mediumconst FD78 0 MEDIUMCONST 0 mediumconst /tmp/xcXjOjGDx.obj
+__mediumconst FD24 0 MEDIUMCONST 0 mediumconst /tmp/xcCZVZrxC.obj
 __Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production/Main_Robot.production.obj
 __CFG_MCLRE$ON 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-standbyMode@firstIteration 48 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-displayLogs@logNumber 1F 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+standbyMode@firstIteration 55 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+displayLogs@logNumber 25 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __Lsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production/Main_Robot.production.obj
 _LATA F89 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 _LATB F8A 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 _LATC F8B 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 _LATD F8C 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 _LATE F8D 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-___sp 0 0 STACK 2 stack /tmp/xcXjOjGDx.obj
-_keys FD79 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
-_main D82A 0 CODE 0 text0 dist/default/production/Main_Robot.production.obj
-start 0 0 CODE 0 init /tmp/xcXjOjGDx.obj
-__end_of_food_press DEC4 0 CODE 0 text10 dist/default/production/Main_Robot.production.obj
+___sp 0 0 STACK 2 stack /tmp/xcCZVZrxC.obj
+_keys FD25 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
+_main D3C8 0 CODE 0 text0 dist/default/production/Main_Robot.production.obj
+start 0 0 CODE 0 init /tmp/xcCZVZrxC.obj
+__end_of_food_press DA22 0 CODE 0 text9 dist/default/production/Main_Robot.production.obj
 __size_of_main 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
+__size_of___lldiv 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __size_of___lwdiv 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __size_of___lwmod 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-standbyMode@whichKey 4A 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+standbyMode@whichKey 57 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __HbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production/Main_Robot.production.obj
-standbyMode@drawer 5B 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+standbyMode@drawer 6A 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 ?___wmul 1 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-displayLogs@keypress3 29 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-standbyMode@LCDinterruptState 7D 0 COMRAM 1 bssCOMRAM dist/default/production/Main_Robot.production.obj
-viewLogs@checkLog 40 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-standbyMode@validDrawer 4F 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+displayLogs@keypress3 2F 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+standbyMode@LCDinterruptState 7C 0 COMRAM 1 bssCOMRAM dist/default/production/Main_Robot.production.obj
+viewLogs@checkLog 46 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+standbyMode@validDrawer 5C 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __size_of_decode_drawer 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __size_of_which_drawer 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-_LCD_LEFT FDA5 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
+_LCD_LEFT FD60 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
 __Hpowerup 0 0 CODE 0 powerup dist/default/production/Main_Robot.production.obj
-printf@c 1E 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+printf@c 24 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 printf@f D 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-__accesstop 80 0 ABS 0 - /tmp/xcXjOjGDx.obj
-__end_of_LCD_LEFT FDA6 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
-intlevel0 0 0 CODE 0 text /tmp/xcXjOjGDx.obj
-intlevel1 0 0 CODE 0 text /tmp/xcXjOjGDx.obj
-intlevel2 0 0 CODE 0 text /tmp/xcXjOjGDx.obj
-intlevel3 0 0 CODE 0 text /tmp/xcXjOjGDx.obj
-standbyMode@keypress1 4E 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+__accesstop 80 0 ABS 0 - /tmp/xcCZVZrxC.obj
+__end_of_LCD_LEFT FD61 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
+intlevel0 0 0 CODE 0 text /tmp/xcCZVZrxC.obj
+intlevel1 0 0 CODE 0 text /tmp/xcCZVZrxC.obj
+intlevel2 0 0 CODE 0 text /tmp/xcCZVZrxC.obj
+intlevel3 0 0 CODE 0 text /tmp/xcCZVZrxC.obj
+standbyMode@keypress1 5B 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production/Main_Robot.production.obj
 __LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production/Main_Robot.production.obj
 __CFG_EBTR0$OFF 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
@@ -979,72 +1121,85 @@ __CFG_EBTR1$OFF 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __CFG_EBTR2$OFF 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __CFG_EBTR3$OFF 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __CFG_EBTRB$OFF 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-_writeEEPROM D800 0 CODE 0 text2 dist/default/production/Main_Robot.production.obj
+_writeEEPROM D39E 0 CODE 0 text2 dist/default/production/Main_Robot.production.obj
 __Hifardata 0 0 CODE 0 ifardata dist/default/production/Main_Robot.production.obj
-__end_of_which_drawer E0C8 0 CODE 0 text3 dist/default/production/Main_Robot.production.obj
+__end_of_which_drawer DC26 0 CODE 0 text3 dist/default/production/Main_Robot.production.obj
 check_food@returnValue 7 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __Hclrtext 0 0 ABS 0 clrtext dist/default/production/Main_Robot.production.obj
-displayLogs@longPieces 27 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-__end_of_decode_drawer DBB2 0 CODE 0 text4 dist/default/production/Main_Robot.production.obj
+displayLogs@longPieces 2D 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+__end_of_decode_drawer D82E 0 CODE 0 text4 dist/default/production/Main_Robot.production.obj
 ___wmul@multiplicand 3 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-printf@flag 1A 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-printf@prec 1B 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-_LCD_SIZE_HORZ FDA8 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
-_LCD_SIZE_VERT FDA7 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
+printf@flag 21 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+printf@prec 1E 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+_LCD_SIZE_HORZ FD63 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
+_LCD_SIZE_VERT FD62 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
 _ADCON0 FC2 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 _ADCON1 FC1 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __size_of_diet_press 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-__end_of_lcdInst D79C 0 CODE 0 text19 dist/default/production/Main_Robot.production.obj
-___inthi_sp 0 0 STACK 2 stack /tmp/xcXjOjGDx.obj
-___intlo_sp 0 0 STACK 2 stack /tmp/xcXjOjGDx.obj
+__end_of_lcdInst D2EC 0 CODE 0 text27 dist/default/production/Main_Robot.production.obj
+___inthi_sp 0 0 STACK 2 stack /tmp/xcCZVZrxC.obj
+printf@width 22 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+___intlo_sp 0 0 STACK 2 stack /tmp/xcCZVZrxC.obj
 _EECON1bits FA6 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-?_which_drawer 1F 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+?_which_drawer 25 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __size_of_initLCD 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __Hintcode_body 0 0 ABS 0 intcode_body dist/default/production/Main_Robot.production.obj
-__end_of___wmul D800 0 CODE 0 text9 dist/default/production/Main_Robot.production.obj
-?_diet_press 1F 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+__end_of___wmul D39E 0 CODE 0 text16 dist/default/production/Main_Robot.production.obj
+?_diet_press 25 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 _EECON2 FA7 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 _EEDATA FA8 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __Lintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production/Main_Robot.production.obj
-displayLogs@minutes 2C 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+displayLogs@minutes 32 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 verifyKeypress@keypress 1 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __Hmediumconst 10000 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
 ?_printf D 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __Hintcodelo 0 0 CODE 0 intcodelo dist/default/production/Main_Robot.production.obj
-standbyMode@keypress 4C 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+standbyMode@keypress 59 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 ___lwmod@divisor A 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __size_of_verifyKeypress 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-__end_of___lwdiv D942 0 CODE 0 text17 dist/default/production/Main_Robot.production.obj
-__end_of___lwmod D8A4 0 CODE 0 text16 dist/default/production/Main_Robot.production.obj
-which_drawer@rand 22 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-displayLogs@roundPieces 23 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-_check_food ECAA 0 CODE 0 text12 dist/default/production/Main_Robot.production.obj
-_dpowers FD9B 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
+__end_of___lldiv D68E 0 CODE 0 text25 dist/default/production/Main_Robot.production.obj
+__end_of___lwdiv D4E0 0 CODE 0 text18 dist/default/production/Main_Robot.production.obj
+__end_of___lwmod D442 0 CODE 0 text17 dist/default/production/Main_Robot.production.obj
+__size_of_isdigit 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
+which_drawer@rand 28 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+displayLogs@roundPieces 29 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+_check_food EB14 0 CODE 0 text11 dist/default/production/Main_Robot.production.obj
+_dpowers FD47 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
 ___lwdiv@quotient 5 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 writeEEPROM@data 1 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __size_of_putch 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-which_drawer@backCheck 26 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-__end_of_standbyMode FD78 0 CODE 0 text1 dist/default/production/Main_Robot.production.obj
+which_drawer@backCheck 2C 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+__end_of_standbyMode FD24 0 CODE 0 text1 dist/default/production/Main_Robot.production.obj
 ___lwmod@dividend 8 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+___lldiv@counter D 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __Lintcodelo 0 0 CODE 0 intcodelo dist/default/production/Main_Robot.production.obj
 __CFG_FCMEN$OFF 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-start_initialization D7C4 0 CODE 0 cinit dist/default/production/Main_Robot.production.obj
+start_initialization D332 0 CODE 0 cinit dist/default/production/Main_Robot.production.obj
 __CFG_PBADEN$ON 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
+__end_of_hexpowers FD59 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
 __HnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production/Main_Robot.production.obj
-standbyMode@diet 57 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-standbyMode@food 53 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-standbyMode@zero 51 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+_TRISCbits F94 0 ABS 0 - dist/default/production/Main_Robot.production.obj
+standbyMode@diet 66 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+___lldiv@dividend 1 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+standbyMode@food 60 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+standbyMode@time 4E 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+standbyMode@zero 5E 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 ___rparam_used 1 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-_displayLogs E396 0 CODE 0 text7 dist/default/production/Main_Robot.production.obj
+_displayLogs E200 0 CODE 0 text7 dist/default/production/Main_Robot.production.obj
 __CFG_WDTPS$32768 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-food_press@dietSum 1F 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+_SSPADD FC8 0 ABS 0 - dist/default/production/Main_Robot.production.obj
+_SSPBUF FC9 0 ABS 0 - dist/default/production/Main_Robot.production.obj
+food_press@dietSum 25 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 check_food@foodInput 3 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+_hexpowers FD51 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
 __size_of_food_press 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-__end_of_printf DCD0 0 CODE 0 text14 dist/default/production/Main_Robot.production.obj
-__end_of_initLCD D8F0 0 CODE 0 text18 dist/default/production/Main_Robot.production.obj
-diet_press@F3095 6D 0 COMRAM 1 bssCOMRAM dist/default/production/Main_Robot.production.obj
-_readEEPROM D7B0 0 CODE 0 text8 dist/default/production/Main_Robot.production.obj
-__end_of_LCD_RIGHT FDA7 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
+__end_of_printf E200 0 CODE 0 text13 dist/default/production/Main_Robot.production.obj
+_isdigit$930 2 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+__end_of_initLCD D48E 0 CODE 0 text26 dist/default/production/Main_Robot.production.obj
+I2C_Master_Read@ackBit 2 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+diet_press@F3112 80 0 BANK0 1 bssBANK0 dist/default/production/Main_Robot.production.obj
+_readEEPROM D300 0 CODE 0 text8 dist/default/production/Main_Robot.production.obj
+__end_of_LCD_RIGHT FD62 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
 __Hbank0 0 0 ABS 0 bank0 dist/default/production/Main_Robot.production.obj
 __Hbank1 0 0 ABS 0 bank1 dist/default/production/Main_Robot.production.obj
 __Hbank2 0 0 ABS 0 bank2 dist/default/production/Main_Robot.production.obj
@@ -1055,12 +1210,12 @@ __Hbank6 0 0 ABS 0 bank6 dist/default/production/Main_Robot.production.obj
 __Hbank7 0 0 ABS 0 bank7 dist/default/production/Main_Robot.production.obj
 __Hbank8 0 0 ABS 0 bank8 dist/default/production/Main_Robot.production.obj
 __Hbank9 0 0 ABS 0 bank9 dist/default/production/Main_Robot.production.obj
-?_food_press 1F 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+?_food_press 25 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __Hcinit 0 0 ABS 0 cinit dist/default/production/Main_Robot.production.obj
 __Hconst 0 0 CONST 0 const dist/default/production/Main_Robot.production.obj
 __Hidata 0 0 CODE 0 idata dist/default/production/Main_Robot.production.obj
 __Hidloc 200008 0 IDLOC 0 idloc dist/default/production/Main_Robot.production.obj
-__end_of_check_food F4DC 0 CODE 0 text12 dist/default/production/Main_Robot.production.obj
+__end_of_check_food F346 0 CODE 0 text11 dist/default/production/Main_Robot.production.obj
 __Hnvbit 0 0 COMRAM 1 nvbit dist/default/production/Main_Robot.production.obj
 __Hparam 0 0 COMRAM 1 rparam dist/default/production/Main_Robot.production.obj
 __Hrdata 0 0 COMRAM 1 rdata dist/default/production/Main_Robot.production.obj
@@ -1075,7 +1230,7 @@ __Htext6 0 0 ABS 0 text6 dist/default/production/Main_Robot.production.obj
 __Htext7 0 0 ABS 0 text7 dist/default/production/Main_Robot.production.obj
 __Htext8 0 0 ABS 0 text8 dist/default/production/Main_Robot.production.obj
 __Htext9 0 0 ABS 0 text9 dist/default/production/Main_Robot.production.obj
-diet_press@count 29 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+diet_press@count 2F 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 ___lwdiv@counter 7 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __Hbank10 0 0 ABS 0 bank10 dist/default/production/Main_Robot.production.obj
 __Hbank11 0 0 ABS 0 bank11 dist/default/production/Main_Robot.production.obj
@@ -1085,7 +1240,7 @@ __Hbank14 0 0 ABS 0 bank14 dist/default/production/Main_Robot.production.obj
 __Hbank15 0 0 ABS 0 bank15 dist/default/production/Main_Robot.production.obj
 __Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production/Main_Robot.production.obj
 __Hbigram 0 0 ABS 0 bigram dist/default/production/Main_Robot.production.obj
-__smallconst 0 0 SMALLCONST 0 smallconst /tmp/xcXjOjGDx.obj
+__smallconst 0 0 SMALLCONST 0 smallconst /tmp/xcCZVZrxC.obj
 __Hcomram 0 0 ABS 0 comram dist/default/production/Main_Robot.production.obj
 __Hconfig 30000E 0 CONFIG 0 config dist/default/production/Main_Robot.production.obj
 __CFG_LPT1OSC$OFF 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
@@ -1099,6 +1254,7 @@ __Lbank6 0 0 ABS 0 bank6 dist/default/production/Main_Robot.production.obj
 __Lbank7 0 0 ABS 0 bank7 dist/default/production/Main_Robot.production.obj
 __Lbank8 0 0 ABS 0 bank8 dist/default/production/Main_Robot.production.obj
 __Lbank9 0 0 ABS 0 bank9 dist/default/production/Main_Robot.production.obj
+__end_of_isdigit D332 0 CODE 0 text15 dist/default/production/Main_Robot.production.obj
 __Lcinit 0 0 ABS 0 cinit dist/default/production/Main_Robot.production.obj
 __Lconst 0 0 CONST 0 const dist/default/production/Main_Robot.production.obj
 __Lidata 0 0 CODE 0 idata dist/default/production/Main_Robot.production.obj
@@ -1121,10 +1277,10 @@ writeEEPROM@address 2 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot
 __Hfarbss 0 0 FARRAM 0 farbss dist/default/production/Main_Robot.production.obj
 __Lintcode_body 0 0 ABS 0 intcode_body dist/default/production/Main_Robot.production.obj
 _PORTBbits F81 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-_LCD_RIGHT FDA6 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
+_LCD_RIGHT FD61 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
 _INTCONbits FF2 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-__end_of_LCD_SIZE_HORZ FDA9 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
-__end_of_LCD_SIZE_VERT FDA8 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
+__end_of_LCD_SIZE_HORZ FD64 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
+__end_of_LCD_SIZE_VERT FD63 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
 __Habs1 0 0 ABS 0 abs1 dist/default/production/Main_Robot.production.obj
 __Hdata 0 0 ABS 0 data dist/default/production/Main_Robot.production.obj
 __Hinit 4 0 CODE 0 init dist/default/production/Main_Robot.production.obj
@@ -1140,35 +1296,39 @@ __Lrbss 0 0 COMRAM 1 rbss dist/default/production/Main_Robot.production.obj
 __Ltemp 0 0 COMRAM 1 temp dist/default/production/Main_Robot.production.obj
 __Ltext 0 0 ABS 0 text dist/default/production/Main_Robot.production.obj
 __CFG_XINST$OFF 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-___wmul D7DA 0 CODE 0 text9 dist/default/production/Main_Robot.production.obj
+___wmul D378 0 CODE 0 text16 dist/default/production/Main_Robot.production.obj
 __size_of_viewLogs 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __HcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __Hintret 0 0 ABS 0 intret dist/default/production/Main_Robot.production.obj
 __Hirdata 0 0 CODE 0 irdata dist/default/production/Main_Robot.production.obj
 __S0 30000E 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-__S1 7F 0 ABS 0 - dist/default/production/Main_Robot.production.obj
+__S1 90 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __S2 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-viewLogs@logView 3E 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+viewLogs@logView 44 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 verifyKeypress@returnVal 6 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+_I2C_Master_Start D2AC 0 CODE 0 text21 dist/default/production/Main_Robot.production.obj
+_I2C_Master_Write D2BC 0 CODE 0 text19 dist/default/production/Main_Robot.production.obj
 __Lbigdata 0 0 BIGRAM 1 bigdata dist/default/production/Main_Robot.production.obj
 __Hnvrram 0 0 COMRAM 1 nvrram dist/default/production/Main_Robot.production.obj
 decode_drawer@returnValue 5 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-__end_of_readEEPROM D7C4 0 CODE 0 text8 dist/default/production/Main_Robot.production.obj
+__end_of_readEEPROM D314 0 CODE 0 text8 dist/default/production/Main_Robot.production.obj
 lcdInst@data 3 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __CFG_CCP2MX$PORTC 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-__end_of_writeEEPROM D82A 0 CODE 0 text2 dist/default/production/Main_Robot.production.obj
-_get_digits DA12 0 CODE 0 text11 dist/default/production/Main_Robot.production.obj
+__end_of_writeEEPROM D3C8 0 CODE 0 text2 dist/default/production/Main_Robot.production.obj
+_get_digits D68E 0 CODE 0 text10 dist/default/production/Main_Robot.production.obj
 __Lintentry 0 0 ABS 0 intentry dist/default/production/Main_Robot.production.obj
+___lldiv@divisor 5 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 check_food@sum 1 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-_lcdInst D788 0 CODE 0 text19 dist/default/production/Main_Robot.production.obj
+_lcdInst D2D8 0 CODE 0 text27 dist/default/production/Main_Robot.production.obj
 __Hramtop 1000 0 RAM 0 ramtop dist/default/production/Main_Robot.production.obj
 __Hrparam 0 0 COMRAM 1 rparam dist/default/production/Main_Robot.production.obj
-which_drawer@keypress 2A 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+which_drawer@keypress 30 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 readEEPROM@address 1 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __size_of_standbyMode 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __activetblptr 2 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __Hstruct 0 0 COMRAM 1 struct dist/default/production/Main_Robot.production.obj
 __size_of___wmul 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
+__LbssBANK0 0 0 ABS 0 bssBANK0 dist/default/production/Main_Robot.production.obj
 __Htext10 0 0 ABS 0 text10 dist/default/production/Main_Robot.production.obj
 __Htext11 0 0 ABS 0 text11 dist/default/production/Main_Robot.production.obj
 __Htext12 0 0 ABS 0 text12 dist/default/production/Main_Robot.production.obj
@@ -1180,45 +1340,63 @@ __Htext17 0 0 ABS 0 text17 dist/default/production/Main_Robot.production.obj
 __Htext18 0 0 ABS 0 text18 dist/default/production/Main_Robot.production.obj
 __Htext19 0 0 ABS 0 text19 dist/default/production/Main_Robot.production.obj
 __Htext20 0 0 ABS 0 text20 dist/default/production/Main_Robot.production.obj
-displayLogs@operationTime 2A 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-standbyMode@i 59 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-_viewLogs E0C8 0 CODE 0 text5 dist/default/production/Main_Robot.production.obj
+__Htext21 0 0 ABS 0 text21 dist/default/production/Main_Robot.production.obj
+__Htext22 0 0 ABS 0 text22 dist/default/production/Main_Robot.production.obj
+__Htext23 0 0 ABS 0 text23 dist/default/production/Main_Robot.production.obj
+__Htext24 0 0 ABS 0 text24 dist/default/production/Main_Robot.production.obj
+__Htext25 0 0 ABS 0 text25 dist/default/production/Main_Robot.production.obj
+__Htext26 0 0 ABS 0 text26 dist/default/production/Main_Robot.production.obj
+__Htext27 0 0 ABS 0 text27 dist/default/production/Main_Robot.production.obj
+__Htext28 0 0 ABS 0 text28 dist/default/production/Main_Robot.production.obj
+displayLogs@operationTime 30 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+standbyMode@i 68 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+standbyMode@x 62 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+_viewLogs DC26 0 CODE 0 text5 dist/default/production/Main_Robot.production.obj
 lcdNibble@data 2 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 lcdNibble@temp 1 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-diet_press@drawer 1F 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-standbyMode@display 4D 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-standbyMode@drawerCount 55 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-__ptext10 DCD0 0 CODE 0 text10 dist/default/production/Main_Robot.production.obj
-__ptext11 DA12 0 CODE 0 text11 dist/default/production/Main_Robot.production.obj
-__ptext12 ECAA 0 CODE 0 text12 dist/default/production/Main_Robot.production.obj
-__ptext13 E784 0 CODE 0 text13 dist/default/production/Main_Robot.production.obj
-__ptext14 DBB2 0 CODE 0 text14 dist/default/production/Main_Robot.production.obj
-__ptext15 D79C 0 CODE 0 text15 dist/default/production/Main_Robot.production.obj
-__ptext16 D862 0 CODE 0 text16 dist/default/production/Main_Robot.production.obj
-__ptext17 D8F0 0 CODE 0 text17 dist/default/production/Main_Robot.production.obj
-__ptext18 D8A4 0 CODE 0 text18 dist/default/production/Main_Robot.production.obj
-__ptext19 D788 0 CODE 0 text19 dist/default/production/Main_Robot.production.obj
-__ptext20 D994 0 CODE 0 text20 dist/default/production/Main_Robot.production.obj
-diet_press@sum 2B 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-food_press@keypress 35 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-___lwdiv D8F0 0 CODE 0 text17 dist/default/production/Main_Robot.production.obj
-___lwmod D862 0 CODE 0 text16 dist/default/production/Main_Robot.production.obj
+diet_press@drawer 25 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+standbyMode@display 5A 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+standbyMode@drawerCount 64 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+__ptext10 D68E 0 CODE 0 text10 dist/default/production/Main_Robot.production.obj
+__ptext11 EB14 0 CODE 0 text11 dist/default/production/Main_Robot.production.obj
+__ptext12 E5EE 0 CODE 0 text12 dist/default/production/Main_Robot.production.obj
+__ptext13 DEF4 0 CODE 0 text13 dist/default/production/Main_Robot.production.obj
+__ptext14 D2EC 0 CODE 0 text14 dist/default/production/Main_Robot.production.obj
+__ptext15 D314 0 CODE 0 text15 dist/default/production/Main_Robot.production.obj
+__ptext16 D378 0 CODE 0 text16 dist/default/production/Main_Robot.production.obj
+__ptext17 D400 0 CODE 0 text17 dist/default/production/Main_Robot.production.obj
+__ptext18 D48E 0 CODE 0 text18 dist/default/production/Main_Robot.production.obj
+__ptext19 D2BC 0 CODE 0 text19 dist/default/production/Main_Robot.production.obj
+__ptext20 D2B4 0 CODE 0 text20 dist/default/production/Main_Robot.production.obj
+__ptext21 D2AC 0 CODE 0 text21 dist/default/production/Main_Robot.production.obj
+__ptext22 D354 0 CODE 0 text22 dist/default/production/Main_Robot.production.obj
+__ptext23 D2C6 0 CODE 0 text23 dist/default/production/Main_Robot.production.obj
+__ptext24 D532 0 CODE 0 text24 dist/default/production/Main_Robot.production.obj
+__ptext25 D60C 0 CODE 0 text25 dist/default/production/Main_Robot.production.obj
+__ptext26 D442 0 CODE 0 text26 dist/default/production/Main_Robot.production.obj
+__ptext27 D2D8 0 CODE 0 text27 dist/default/production/Main_Robot.production.obj
+__ptext28 D58E 0 CODE 0 text28 dist/default/production/Main_Robot.production.obj
+diet_press@sum 31 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+food_press@keypress 3B 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+___lldiv D60C 0 CODE 0 text25 dist/default/production/Main_Robot.production.obj
+___lwdiv D48E 0 CODE 0 text18 dist/default/production/Main_Robot.production.obj
+___lwmod D400 0 CODE 0 text17 dist/default/production/Main_Robot.production.obj
 __Lbank10 0 0 ABS 0 bank10 dist/default/production/Main_Robot.production.obj
 __Lbank11 0 0 ABS 0 bank11 dist/default/production/Main_Robot.production.obj
 __Lbank12 0 0 ABS 0 bank12 dist/default/production/Main_Robot.production.obj
 __Lbank13 0 0 ABS 0 bank13 dist/default/production/Main_Robot.production.obj
 __Lbank14 0 0 ABS 0 bank14 dist/default/production/Main_Robot.production.obj
 __Lbank15 0 0 ABS 0 bank15 dist/default/production/Main_Robot.production.obj
-_LCD_VERT_LIMIT FDA9 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
+_LCD_VERT_LIMIT FD64 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
 __Lbigbss 0 0 BIGRAM 1 bigbss dist/default/production/Main_Robot.production.obj
 __Lbigram 0 0 ABS 0 bigram dist/default/production/Main_Robot.production.obj
-displayLogs@flatPieces 25 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+displayLogs@flatPieces 2B 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __CFG_BORV$3 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-__end_of_viewLogs E396 0 CODE 0 text5 dist/default/production/Main_Robot.production.obj
+__end_of_viewLogs DEF4 0 CODE 0 text5 dist/default/production/Main_Robot.production.obj
 __Lcomram 0 0 ABS 0 comram dist/default/production/Main_Robot.production.obj
 __Lconfig 300000 0 CONFIG 0 config dist/default/production/Main_Robot.production.obj
 ?_decode_drawer 1 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-_printf DBB2 0 CODE 0 text14 dist/default/production/Main_Robot.production.obj
+_printf DEF4 0 CODE 0 text13 dist/default/production/Main_Robot.production.obj
 __CFG_CPD$ON 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 ___wmul@multiplier 1 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 _LATDbits F8C 0 ABS 0 - dist/default/production/Main_Robot.production.obj
@@ -1226,62 +1404,78 @@ __Lfarbss 0 0 FARRAM 0 farbss dist/default/production/Main_Robot.production.obj
 decode_drawer@drawer 1 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 ___lwdiv@divisor 3 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __Lfardata 0 0 FARRAM 0 fardata dist/default/production/Main_Robot.production.obj
-which_drawer@count 28 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-diet_press@keypress 2D 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-stackhi F7F 0 ABS 0 - /tmp/xcXjOjGDx.obj
-stacklo 80 0 ABS 0 - /tmp/xcXjOjGDx.obj
-food_press@F3080 75 0 COMRAM 1 bssCOMRAM dist/default/production/Main_Robot.production.obj
+which_drawer@count 2E 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+I2C_Master_Write@byteToWrite 2 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+diet_press@keypress 33 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+stackhi F7F 0 ABS 0 - /tmp/xcCZVZrxC.obj
+stacklo 90 0 ABS 0 - /tmp/xcCZVZrxC.obj
+food_press@F3097 88 0 BANK0 1 bssBANK0 dist/default/production/Main_Robot.production.obj
+I2C_Master_Read@receivedByte 3 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __Lintcode 0 0 CODE 0 intcode dist/default/production/Main_Robot.production.obj
-__end_of_get_digits DAD0 0 CODE 0 text11 dist/default/production/Main_Robot.production.obj
+__end_of_get_digits D74C 0 CODE 0 text10 dist/default/production/Main_Robot.production.obj
 __Lintret 0 0 ABS 0 intret dist/default/production/Main_Robot.production.obj
-food_press@count 2B 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+__end_of_I2C_Master_Init D58E 0 CODE 0 text24 dist/default/production/Main_Robot.production.obj
+food_press@count 31 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+__end_of_I2C_Master_Read D378 0 CODE 0 text22 dist/default/production/Main_Robot.production.obj
+__end_of_I2C_Master_Stop D2BC 0 CODE 0 text20 dist/default/production/Main_Robot.production.obj
+__end_of_I2C_Master_Wait D2D8 0 CODE 0 text23 dist/default/production/Main_Robot.production.obj
 __Lirdata 0 0 CODE 0 irdata dist/default/production/Main_Robot.production.obj
-food_press@tally 25 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+food_press@tally 2B 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __CFG_LVP$OFF 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-_verifyKeypress D942 0 CODE 0 text6 dist/default/production/Main_Robot.production.obj
+_verifyKeypress D4E0 0 CODE 0 text6 dist/default/production/Main_Robot.production.obj
+__end_of_I2C_Master_Start D2B4 0 CODE 0 text21 dist/default/production/Main_Robot.production.obj
 __Lspace_0 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __Lspace_1 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __Lspace_2 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-__pbssCOMRAM 5D 0 COMRAM 1 bssCOMRAM dist/default/production/Main_Robot.production.obj
-food_press@drawer 21 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-displayLogs@markedDrawer1 30 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-displayLogs@markedDrawer2 32 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-displayLogs@markedDrawer3 34 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-displayLogs@markedDrawer4 36 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-food_press@backCheck 27 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+__end_of_I2C_Master_Write D2C6 0 CODE 0 text19 dist/default/production/Main_Robot.production.obj
+__pbssCOMRAM 6C 0 COMRAM 1 bssCOMRAM dist/default/production/Main_Robot.production.obj
+food_press@drawer 27 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+displayLogs@markedDrawer1 36 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+displayLogs@markedDrawer2 38 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+displayLogs@markedDrawer3 3A 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+displayLogs@markedDrawer4 3C 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+food_press@backCheck 2D 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __LcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __size_of_check_food 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-printf@ap 18 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-end_of_initialization D7D0 0 CODE 0 cinit dist/default/production/Main_Robot.production.obj
+printf@ap 1C 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+__size_of_I2C_Master_Start 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
+_happynewyear FD59 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
+__size_of_I2C_Master_Write 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
+end_of_initialization D34A 0 CODE 0 cinit dist/default/production/Main_Robot.production.obj
 __Lnvrram 0 0 COMRAM 1 nvrram dist/default/production/Main_Robot.production.obj
 __Hintentry 0 0 ABS 0 intentry dist/default/production/Main_Robot.production.obj
 __CFG_STVREN$ON 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __size_of_printf 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-__end_of_LCD_VERT_LIMIT FDAA 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
-viewLogs@returnVal 42 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-__end_of_displayLogs E784 0 CODE 0 text7 dist/default/production/Main_Robot.production.obj
+__end_of_LCD_VERT_LIMIT FD65 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
+viewLogs@returnVal 48 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+__end_of_displayLogs E5EE 0 CODE 0 text7 dist/default/production/Main_Robot.production.obj
 ___lwdiv@dividend 1 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+?___lldiv 1 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 ?___lwdiv 1 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 ?___lwmod 8 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 ?_check_food 1 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-_diet_press E784 0 CODE 0 text13 dist/default/production/Main_Robot.production.obj
+_diet_press E5EE 0 CODE 0 text12 dist/default/production/Main_Robot.production.obj
 __Hreset_vec 0 0 CODE 0 reset_vec dist/default/production/Main_Robot.production.obj
-_LCD_HORZ_LIMIT FDAA 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
+_LCD_HORZ_LIMIT FD65 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
+__HbssBANK0 0 0 ABS 0 bssBANK0 dist/default/production/Main_Robot.production.obj
 verifyKeypress@logNumber 5 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-_initLCD D8A4 0 CODE 0 text18 dist/default/production/Main_Robot.production.obj
+_initLCD D442 0 CODE 0 text26 dist/default/production/Main_Robot.production.obj
 __Lramtop 1000 0 RAM 0 ramtop dist/default/production/Main_Robot.production.obj
 __Lrparam 0 0 COMRAM 1 rparam dist/default/production/Main_Robot.production.obj
-__pcinit D7C4 0 CODE 0 cinit dist/default/production/Main_Robot.production.obj
-__ptext0 D82A 0 CODE 0 text0 dist/default/production/Main_Robot.production.obj
-__ptext1 F4DC 0 CODE 0 text1 dist/default/production/Main_Robot.production.obj
-__ptext2 D800 0 CODE 0 text2 dist/default/production/Main_Robot.production.obj
-__ptext3 DEC4 0 CODE 0 text3 dist/default/production/Main_Robot.production.obj
-__ptext4 DAD0 0 CODE 0 text4 dist/default/production/Main_Robot.production.obj
-__ptext5 E0C8 0 CODE 0 text5 dist/default/production/Main_Robot.production.obj
-__ptext6 D942 0 CODE 0 text6 dist/default/production/Main_Robot.production.obj
-__ptext7 E396 0 CODE 0 text7 dist/default/production/Main_Robot.production.obj
-__ptext8 D7B0 0 CODE 0 text8 dist/default/production/Main_Robot.production.obj
-__ptext9 D7DA 0 CODE 0 text9 dist/default/production/Main_Robot.production.obj
+__pcinit D332 0 CODE 0 cinit dist/default/production/Main_Robot.production.obj
+_SSPCON1bits FC6 0 ABS 0 - dist/default/production/Main_Robot.production.obj
+_SSPCON2bits FC5 0 ABS 0 - dist/default/production/Main_Robot.production.obj
+__ptext0 D3C8 0 CODE 0 text0 dist/default/production/Main_Robot.production.obj
+__ptext1 F346 0 CODE 0 text1 dist/default/production/Main_Robot.production.obj
+__ptext2 D39E 0 CODE 0 text2 dist/default/production/Main_Robot.production.obj
+__ptext3 DA22 0 CODE 0 text3 dist/default/production/Main_Robot.production.obj
+__ptext4 D74C 0 CODE 0 text4 dist/default/production/Main_Robot.production.obj
+__ptext5 DC26 0 CODE 0 text5 dist/default/production/Main_Robot.production.obj
+__ptext6 D4E0 0 CODE 0 text6 dist/default/production/Main_Robot.production.obj
+__ptext7 E200 0 CODE 0 text7 dist/default/production/Main_Robot.production.obj
+__ptext8 D300 0 CODE 0 text8 dist/default/production/Main_Robot.production.obj
+__ptext9 D82E 0 CODE 0 text9 dist/default/production/Main_Robot.production.obj
+I2C_Master_Init@clockFreq E 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __Lstruct 0 0 COMRAM 1 struct dist/default/production/Main_Robot.production.obj
 __Ltext10 0 0 ABS 0 text10 dist/default/production/Main_Robot.production.obj
 __Ltext11 0 0 ABS 0 text11 dist/default/production/Main_Robot.production.obj
@@ -1294,19 +1488,32 @@ __Ltext17 0 0 ABS 0 text17 dist/default/production/Main_Robot.production.obj
 __Ltext18 0 0 ABS 0 text18 dist/default/production/Main_Robot.production.obj
 __Ltext19 0 0 ABS 0 text19 dist/default/production/Main_Robot.production.obj
 __Ltext20 0 0 ABS 0 text20 dist/default/production/Main_Robot.production.obj
-__ramtop 1000 0 RAM 0 ramtop /tmp/xcXjOjGDx.obj
+__Ltext21 0 0 ABS 0 text21 dist/default/production/Main_Robot.production.obj
+__Ltext22 0 0 ABS 0 text22 dist/default/production/Main_Robot.production.obj
+__Ltext23 0 0 ABS 0 text23 dist/default/production/Main_Robot.production.obj
+__Ltext24 0 0 ABS 0 text24 dist/default/production/Main_Robot.production.obj
+__Ltext25 0 0 ABS 0 text25 dist/default/production/Main_Robot.production.obj
+__Ltext26 0 0 ABS 0 text26 dist/default/production/Main_Robot.production.obj
+__Ltext27 0 0 ABS 0 text27 dist/default/production/Main_Robot.production.obj
+__Ltext28 0 0 ABS 0 text28 dist/default/production/Main_Robot.production.obj
+__ramtop 1000 0 RAM 0 ramtop /tmp/xcCZVZrxC.obj
 __Lpowerup 0 0 CODE 0 powerup dist/default/production/Main_Robot.production.obj
 __Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production/Main_Robot.production.obj
+_I2C_Master_Init D532 0 CODE 0 text24 dist/default/production/Main_Robot.production.obj
+_I2C_Master_Read D354 0 CODE 0 text22 dist/default/production/Main_Robot.production.obj
+_I2C_Master_Stop D2B4 0 CODE 0 text20 dist/default/production/Main_Robot.production.obj
+_I2C_Master_Wait D2C6 0 CODE 0 text23 dist/default/production/Main_Robot.production.obj
+_isdigit D314 0 CODE 0 text15 dist/default/production/Main_Robot.production.obj
 __Lreset_vec 0 0 CODE 0 reset_vec dist/default/production/Main_Robot.production.obj
-__end_of_verifyKeypress D994 0 CODE 0 text6 dist/default/production/Main_Robot.production.obj
+__end_of_verifyKeypress D532 0 CODE 0 text6 dist/default/production/Main_Robot.production.obj
 verifyKeypress@i 8 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __size_of_writeEEPROM 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-which_drawer@sum 24 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-diet_press@dietTable 2E 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+which_drawer@sum 2A 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+diet_press@dietTable 34 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 ___param_bank 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __CFG_WDT$OFF 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __Hbigdata 0 0 BIGRAM 1 bigdata dist/default/production/Main_Robot.production.obj
-__end_of__initialization D7D0 0 CODE 0 cinit dist/default/production/Main_Robot.production.obj
+__end_of__initialization D34A 0 CODE 0 cinit dist/default/production/Main_Robot.production.obj
 __CFG_WRT0$OFF 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __CFG_WRT1$OFF 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __CFG_WRT2$OFF 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
@@ -1318,31 +1525,38 @@ __CFG_WRTC$OFF 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __CFG_WRTD$OFF 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __size_of_readEEPROM 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 ?_verifyKeypress 1 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-diet_press@backCheck 27 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-?_viewLogs 3A 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+diet_press@backCheck 2D 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+?_viewLogs 40 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __Lclrtext 0 0 ABS 0 clrtext dist/default/production/Main_Robot.production.obj
 __CFG_OSC$HSPLL 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-__end_of_LCD_HORZ_LIMIT FDAB 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
+__end_of_LCD_HORZ_LIMIT FD66 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
 __CFG_PWRT$OFF 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
+___lldiv@quotient 9 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __pcstackCOMRAM 1 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-__end_of_diet_press ECAA 0 CODE 0 text13 dist/default/production/Main_Robot.production.obj
-__pmediumconst FD78 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
+__end_of_happynewyear FD60 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
+__end_of_diet_press EB14 0 CODE 0 text12 dist/default/production/Main_Robot.production.obj
+__pmediumconst FD24 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
+_SSPCON1 FC6 0 ABS 0 - dist/default/production/Main_Robot.production.obj
+_SSPCON2 FC5 0 ABS 0 - dist/default/production/Main_Robot.production.obj
+_SSPSTAT FC7 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __CFG_BOREN$SBORDIS 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-_decode_drawer DAD0 0 CODE 0 text4 dist/default/production/Main_Robot.production.obj
-_standbyMode F4DC 0 CODE 0 text1 dist/default/production/Main_Robot.production.obj
-__end_of_keys FD8A 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
-__end_of_main D862 0 CODE 0 text0 dist/default/production/Main_Robot.production.obj
-printf@val 1C 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-__end_of_dpowers FDA5 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
+_decode_drawer D74C 0 CODE 0 text4 dist/default/production/Main_Robot.production.obj
+_standbyMode F346 0 CODE 0 text1 dist/default/production/Main_Robot.production.obj
+__end_of_keys FD36 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
+__end_of_main D400 0 CODE 0 text0 dist/default/production/Main_Robot.production.obj
+isdigit@c 3 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+printf@idx 1B 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+printf@val 1F 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+__end_of_dpowers FD51 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
 _EEADR FA9 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-__end_of_input FD9B 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
+__end_of_input FD47 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
 _PORTB F81 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 _TRISA F92 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 _TRISB F93 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 _TRISC F94 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 _TRISD F95 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 _TRISE F96 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-__end_of_putch D7B0 0 CODE 0 text15 dist/default/production/Main_Robot.production.obj
+__end_of_putch D300 0 CODE 0 text14 dist/default/production/Main_Robot.production.obj
 __CFG_CP0$OFF 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __CFG_CP1$OFF 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __HRAM 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
@@ -1355,28 +1569,33 @@ __Lram 0 0 ABS 0 ram dist/default/production/Main_Robot.production.obj
 __Lsfr 0 0 ABS 0 sfr dist/default/production/Main_Robot.production.obj
 __CFG_CP2$OFF 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __CFG_CP3$OFF 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-_input FD8A 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
+_input FD36 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
 __CFG_CPB$OFF 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-_putch D79C 0 CODE 0 text15 dist/default/production/Main_Robot.production.obj
-_food_press DCD0 0 CODE 0 text10 dist/default/production/Main_Robot.production.obj
+_putch D2EC 0 CODE 0 text14 dist/default/production/Main_Robot.production.obj
+_food_press D82E 0 CODE 0 text9 dist/default/production/Main_Robot.production.obj
 get_digits@sum 1 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-displayLogs@n 38 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-__initialization D7C4 0 CODE 0 cinit dist/default/production/Main_Robot.production.obj
-?_displayLogs 1F 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-food_press@isValid 29 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-_drawerInformation 5D 0 COMRAM 1 bssCOMRAM dist/default/production/Main_Robot.production.obj
-diet_press@i 25 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-__end_of_lcdNibble DA12 0 CODE 0 text20 dist/default/production/Main_Robot.production.obj
+displayLogs@n 3E 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+__initialization D332 0 CODE 0 cinit dist/default/production/Main_Robot.production.obj
+?_displayLogs 25 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+food_press@isValid 2F 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+__pbssBANK0 80 0 BANK0 1 bssBANK0 dist/default/production/Main_Robot.production.obj
+_drawerInformation 6C 0 COMRAM 1 bssCOMRAM dist/default/production/Main_Robot.production.obj
+diet_press@i 2B 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+__end_of_lcdNibble D60C 0 CODE 0 text28 dist/default/production/Main_Robot.production.obj
 __Hfardata 0 0 FARRAM 0 fardata dist/default/production/Main_Robot.production.obj
 ___wmul@product 5 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __Hsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production/Main_Robot.production.obj
-viewLogs@logNumber 44 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+viewLogs@logNumber 4A 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __size_of_lcdNibble 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __Lifardata 0 0 CODE 0 ifardata dist/default/production/Main_Robot.production.obj
 __Hintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production/Main_Robot.production.obj
+__size_of_I2C_Master_Init 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
+__size_of_I2C_Master_Read 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
+__size_of_I2C_Master_Stop 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
+__size_of_I2C_Master_Wait 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __Hintcode 0 0 CODE 0 intcode dist/default/production/Main_Robot.production.obj
 __size_of_get_digits 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-displayLogs@seconds 2E 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
+displayLogs@seconds 34 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -1401,30 +1620,39 @@ displayLogs@seconds 2E 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robo
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
-cinit 0 D7C4 D7C4 16 1
+cinit 0 D332 D332 22 1
 idloc 0 200000 200000 8 1
-text0 0 D82A D82A 38 1
-text1 0 F4DC F4DC 89C 1
-text2 0 D800 D800 2A 1
-text3 0 DEC4 DEC4 204 1
-text4 0 DAD0 DAD0 E2 1
-text5 0 E0C8 E0C8 2CE 1
-text6 0 D942 D942 52 1
-text7 0 E396 E396 3EE 1
-text8 0 D7B0 D7B0 14 1
-text9 0 D7DA D7DA 26 1
-text10 0 DCD0 DCD0 1F4 1
-text11 0 DA12 DA12 BE 1
-text12 0 ECAA ECAA 832 1
-text13 0 E784 E784 526 1
-text14 0 DBB2 DBB2 11E 1
-text15 0 D79C D79C 14 1
-text16 0 D862 D862 42 1
-text17 0 D8F0 D8F0 52 1
-text18 0 D8A4 D8A4 4C 1
-text19 0 D788 D788 14 1
-text20 0 D994 D994 7E 1
-cstackCOMRAM 1 1 1 7E 1
+text0 0 D3C8 D3C8 38 1
+text1 0 F346 F346 9DE 1
+text2 0 D39E D39E 2A 1
+text3 0 DA22 DA22 204 1
+text4 0 D74C D74C E2 1
+text5 0 DC26 DC26 2CE 1
+text6 0 D4E0 D4E0 52 1
+text7 0 E200 E200 3EE 1
+text8 0 D300 D300 14 1
+text9 0 D82E D82E 1F4 1
+text10 0 D68E D68E BE 1
+text11 0 EB14 EB14 832 1
+text12 0 E5EE E5EE 526 1
+text13 0 DEF4 DEF4 30C 1
+text14 0 D2EC D2EC 14 1
+text15 0 D314 D314 1E 1
+text16 0 D378 D378 26 1
+text17 0 D400 D400 42 1
+text18 0 D48E D48E 52 1
+text19 0 D2BC D2BC A 1
+text20 0 D2B4 D2B4 8 1
+text21 0 D2AC D2AC 8 1
+text22 0 D354 D354 24 1
+text23 0 D2C6 D2C6 12 1
+text24 0 D532 D532 5C 1
+text25 0 D60C D60C 82 1
+text26 0 D442 D442 4C 1
+text27 0 D2D8 D2D8 14 1
+text28 0 D58E D58E 7E 1
+cstackCOMRAM 1 1 1 7D 1
 reset_vec 0 0 0 4 1
-mediumconst 0 FD78 FD78 288 1
+bssBANK0 1 80 80 10 1
+mediumconst 0 FD24 FD24 2DC 1
 config 0 300000 300000 E 1

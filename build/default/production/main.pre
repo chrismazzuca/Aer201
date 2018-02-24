@@ -3842,6 +3842,7 @@ void initLCD(void);
 void putch(char data);
 void lcdNibble(char data);
 void lcdInst(char data);
+void RTC_setTime(void);
 unsigned int check_food(unsigned int sum, unsigned int foodInput[4]);
 unsigned int verifyKeypress(unsigned char logNumber, unsigned int keypress);
 unsigned int displayLogs(unsigned int logNumber);
