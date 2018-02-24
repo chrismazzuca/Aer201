@@ -7,10 +7,21 @@
 
 #include "standbyMode.h"
 #include "EEPROMstorage.h"
+#include "I2C.h"
+
+#define __bcd_to_num(num) (num & 0x0F) + ((num & 0xF0)>>4)*10
 
 const char input[] = "123R456F789L*0#D";
 const char keys[] = "123A456B789C*0#D";
 unsigned int drawerInformation[8] = {};
+const char happynewyear[7] = {  0x00, // Seconds 
+                                0x28, // Minutes
+                                0x00, // 24 hour mode, set to 23:00
+                                0x06, // Sunday is 00
+                                0x24, // Days
+                                0x02, // Months
+                                0x18  // Year
+};
 
 void lcdInst(char data){
     /* Sends a command to a display control register.
@@ -82,6 +93,27 @@ void putch(char data){
     RS = 1;
     lcdNibble(data);
     __delay_us(100);
+}
+
+
+void RTC_setTime(void){
+    /* Writes the happynewyear array to the RTC memory.
+     *
+     * Arguments: none
+     *
+     * Returns: none
+     */
+    
+    I2C_Master_Start(); // Start condition
+    I2C_Master_Write(0b11010000); //7 bit RTC address + Write
+    I2C_Master_Write(0x00); // Set memory pointer to seconds
+    
+    /* Write array. */
+    for(char i=0; i<7; i++){
+        I2C_Master_Write(happynewyear[i]);
+    }
+    
+    I2C_Master_Stop(); //Stop condition
 }
 
 
@@ -935,6 +967,11 @@ unsigned int which_drawer(void){
 }
 
 void standbyMode(void){
+    I2C_Master_Init(100000); //Initialize I2C Master with 100 kHz clock
+    unsigned char time[7];             /*Create a byte array to hold time read from RTC*/
+    unsigned int x = 0;
+    //RTC_setTime();
+    
     __lcd_clear();
     __lcd_display_control(1, 0, 0);
     printf("Standby");
@@ -977,6 +1014,33 @@ void standbyMode(void){
     printf("Welcome to your");
     __lcd_newline();
     printf("cabinet sorter!");
+    __delay_ms(2000);
+    
+    /* Print current time */
+    I2C_Master_Start(); // Start condition
+    I2C_Master_Write(0b11010000); // 7 bit RTC address + Write
+    I2C_Master_Write(0x00); // Set memory pointer to seconds
+    I2C_Master_Stop(); // Stop condition
+
+    /* Read current time. */
+    I2C_Master_Start(); // Start condition
+    I2C_Master_Write(0b11010001); // 7 bit RTC address + Read
+    for(x = 0; x < 6; x++){
+        time[x] = I2C_Master_Read(ACK); // Read with ACK to continue reading
+    }
+    time[6] = I2C_Master_Read(NACK); // Final Read with NACK
+    I2C_Master_Stop(); // Stop condition
+    
+    __lcd_clear();
+    printf("Current date");
+    __lcd_newline();
+    printf("and time:");
+    __delay_ms(2000);
+    
+    __lcd_clear();
+    printf("%02x/%02x/%02x", time[6],time[5],time[4]); // Print date in YY/MM/DD
+    __lcd_newline();
+    printf("%02x:%02x:%02x", time[2],time[1],time[0]); // HH:MM:SS
     __delay_ms(2000);
     
     /*View logs, or begin operation*/
