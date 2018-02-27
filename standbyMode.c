@@ -1005,7 +1005,7 @@ void standbyMode(void){
     printf("cabinet sorter!");
     __delay_ms(1000);
     
-    initEEPROM();
+    //initEEPROM();
     writeEEPROM(250, 2);
     writeEEPROM(0, 18);
     writeEEPROM(1, 2);
