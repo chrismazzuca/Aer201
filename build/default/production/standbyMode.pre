@@ -3857,6 +3857,8 @@ void standbyMode(void);
 # 14 "EEPROMstorage.h"
 void writeEEPROM(unsigned char address, unsigned char data);
 unsigned char readEEPROM(unsigned char address);
+void initEEPROM(void);
+void shiftEEPROM(void);
 
 # 22 "I2C.h"
 void I2C_Master_Init(const unsigned long c);
@@ -4202,7 +4204,12 @@ if (keypress2 == 0 || keypress2 == 1 || keypress2 == 2 || keypress2 == 4){
 checkLog = verifyKeypress(logNumber, keypress2);
 if (checkLog == 1){
 putch(keys[keypress2]);
+if (keypress2 == 4){
 logView = keypress2;
+}
+else{
+logView = keypress2 + 1;
+}
 _delay((unsigned long)((1000)*(40000000/4000.0)));
 break;
 }
@@ -4222,7 +4229,7 @@ while(PORTBbits.RB1 == 0){
 continue;
 }
 }
-returnVal = displayLogs(logNumber);
+returnVal = displayLogs(logView);
 return returnVal;
 }
 }
@@ -4230,7 +4237,10 @@ return returnVal;
 
 
 unsigned int displayLogs(unsigned int logNumber){
-unsigned int n = (logNumber - 1)* 54;
+unsigned int n = (logNumber-1)*51;
+unsigned int year = readEEPROM(n);
+unsigned int month = readEEPROM(1+n);
+unsigned int day = readEEPROM(2+n);
 unsigned int operationTime = readEEPROM(3+n);
 unsigned int roundPieces = readEEPROM(4+n);
 unsigned int flatPieces = readEEPROM(5+n);
@@ -4240,19 +4250,22 @@ unsigned int markedDrawer2 = readEEPROM(8+n);
 unsigned int markedDrawer3 = readEEPROM(9+n);
 unsigned int markedDrawer4 = readEEPROM(10+n);
 
+lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+printf("Date:");
+lcdInst(0xC0);;
+printf("%02i/%02i/%02i", year, month, day);
+_delay((unsigned long)((500)*(40000000/4000.0)));
+while(PORTBbits.RB1 == 0){
+continue;
+}
+
 unsigned int minutes = operationTime/60;
 unsigned int seconds = operationTime%60;
 lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 printf("Operation time:");
 lcdInst(0xC0);;
-if (seconds == 0){
-printf("%i:%i0", minutes, seconds);
+printf("%i:%02i", minutes, seconds);
 _delay((unsigned long)((500)*(40000000/4000.0)));
-}
-else{
-printf("%i:%i", minutes, seconds);
-_delay((unsigned long)((500)*(40000000/4000.0)));
-}
 
 while(PORTBbits.RB1 == 0){
 continue;
@@ -4801,6 +4814,7 @@ void standbyMode(void){
 I2C_Master_Init(100000);
 unsigned char time[7];
 unsigned int x = 0;
+initEEPROM();
 
 
 lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
@@ -4816,7 +4830,19 @@ while(PORTBbits.RB1 == 0){
 continue;
 }
 
-writeEEPROM(250, 1);
+
+lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
+printf("Welcome to your");
+lcdInst(0xC0);;
+printf("cabinet sorter!");
+_delay((unsigned long)((1000)*(40000000/4000.0)));
+
+
+writeEEPROM(250, 2);
+writeEEPROM(0, 18);
+writeEEPROM(1, 2);
+writeEEPROM(2, 28);
 writeEEPROM(3, 91);
 writeEEPROM(4, 3);
 writeEEPROM(5, 15);
@@ -4825,35 +4851,9 @@ writeEEPROM(7, 12);
 writeEEPROM(8, 1);
 writeEEPROM(9, 13);
 writeEEPROM(10, 0);
-writeEEPROM(0x0, 0x1);
-unsigned char display = readEEPROM(0x0);
-lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-printf("Stored value: ");
-putch(input[display]);
-_delay((unsigned long)((2000)*(40000000/4000.0)));
+shiftEEPROM();
 
-writeEEPROM(0x0, 0x3);
-unsigned char display = readEEPROM(0x0);
-lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-printf("Stored value: ");
-putch(input[display]);
-_delay((unsigned long)((2000)*(40000000/4000.0)));
-
-
-lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
-printf("Welcome to your");
-lcdInst(0xC0);;
-printf("cabinet sorter!");
-_delay((unsigned long)((2000)*(40000000/4000.0)));
-
-
-I2C_Master_Start();
-I2C_Master_Write(0b11010000);
-I2C_Master_Write(0x00);
-I2C_Master_Stop();
-
-
+# 1030
 I2C_Master_Start();
 I2C_Master_Write(0b11010001);
 for(x = 0; x < 6; x++){
@@ -4891,7 +4891,7 @@ while(PORTBbits.RB1 == 1){ continue; }
 
 if (keypress == 15){
 
-# 1103
+# 1107
 unsigned int drawerCount = 0;
 unsigned int i = 0;
 unsigned int validDrawer = 0;

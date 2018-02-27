@@ -2745,6 +2745,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 195: extern int printf(const char *, ...);
 [; ;EEPROMstorage.h: 14: void writeEEPROM(unsigned char address, unsigned char data);
 [; ;EEPROMstorage.h: 15: unsigned char readEEPROM(unsigned char address);
+[; ;EEPROMstorage.h: 16: void initEEPROM(void);
+[; ;EEPROMstorage.h: 17: void shiftEEPROM(void);
 "10 EEPROMstorage.c
 [v _writeEEPROM `(v ~T0 @X0 1 ef2`uc`uc ]
 {
@@ -2843,4 +2845,125 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;EEPROMstorage.c: 37: }
 "37
 [e :UE 273 ]
+}
+"40
+[v _initEEPROM `(v ~T0 @X0 1 ef ]
+{
+[; ;EEPROMstorage.c: 40: void initEEPROM(void){
+[e :U _initEEPROM ]
+[f ]
+"41
+[v _i `ui ~T0 @X0 1 a ]
+[; ;EEPROMstorage.c: 41: unsigned int i = 0;
+[e = _i -> -> 0 `i `ui ]
+[; ;EEPROMstorage.c: 42: for (i=0; i<256; i++){
+"42
+{
+[e = _i -> -> 0 `i `ui ]
+[e $ < _i -> -> 256 `i `ui 278  ]
+[e $U 279  ]
+[e :U 278 ]
+{
+[; ;EEPROMstorage.c: 43: writeEEPROM(i, 0);
+"43
+[e ( _writeEEPROM (2 , -> _i `uc -> -> 0 `i `uc ]
+"44
+}
+"42
+[e ++ _i -> -> 1 `i `ui ]
+[e $ < _i -> -> 256 `i `ui 278  ]
+[e :U 279 ]
+"44
+}
+[; ;EEPROMstorage.c: 44: }
+[; ;EEPROMstorage.c: 45: }
+"45
+[e :UE 277 ]
+}
+"48
+[v _shiftEEPROM `(v ~T0 @X0 1 ef ]
+{
+[; ;EEPROMstorage.c: 48: void shiftEEPROM(void){
+[e :U _shiftEEPROM ]
+[f ]
+"49
+[v _i `ui ~T0 @X0 1 a ]
+[; ;EEPROMstorage.c: 49: unsigned int i = 0;
+[e = _i -> -> 0 `i `ui ]
+"50
+[v _temp `ui ~T0 @X0 1 a ]
+[; ;EEPROMstorage.c: 50: unsigned int temp = 0;
+[e = _temp -> -> 0 `i `ui ]
+[; ;EEPROMstorage.c: 51: for (i=102; i<153; i++){
+"51
+{
+[e = _i -> -> 102 `i `ui ]
+[e $ < _i -> -> 153 `i `ui 282  ]
+[e $U 283  ]
+[e :U 282 ]
+{
+[; ;EEPROMstorage.c: 52: temp = readEEPROM(i);
+"52
+[e = _temp -> ( _readEEPROM (1 -> _i `uc `ui ]
+[; ;EEPROMstorage.c: 53: writeEEPROM(i+51, temp);
+"53
+[e ( _writeEEPROM (2 , -> + _i -> -> 51 `i `ui `uc -> _temp `uc ]
+"54
+}
+"51
+[e ++ _i -> -> 1 `i `ui ]
+[e $ < _i -> -> 153 `i `ui 282  ]
+[e :U 283 ]
+"54
+}
+[; ;EEPROMstorage.c: 54: }
+[; ;EEPROMstorage.c: 56: for (i=51; i<102; i++){
+"56
+{
+[e = _i -> -> 51 `i `ui ]
+[e $ < _i -> -> 102 `i `ui 285  ]
+[e $U 286  ]
+[e :U 285 ]
+{
+[; ;EEPROMstorage.c: 57: temp = readEEPROM(i);
+"57
+[e = _temp -> ( _readEEPROM (1 -> _i `uc `ui ]
+[; ;EEPROMstorage.c: 58: writeEEPROM(i+51, temp);
+"58
+[e ( _writeEEPROM (2 , -> + _i -> -> 51 `i `ui `uc -> _temp `uc ]
+"59
+}
+"56
+[e ++ _i -> -> 1 `i `ui ]
+[e $ < _i -> -> 102 `i `ui 285  ]
+[e :U 286 ]
+"59
+}
+[; ;EEPROMstorage.c: 59: }
+[; ;EEPROMstorage.c: 61: for (i=0; i<51; i++){
+"61
+{
+[e = _i -> -> 0 `i `ui ]
+[e $ < _i -> -> 51 `i `ui 288  ]
+[e $U 289  ]
+[e :U 288 ]
+{
+[; ;EEPROMstorage.c: 62: temp = readEEPROM(i);
+"62
+[e = _temp -> ( _readEEPROM (1 -> _i `uc `ui ]
+[; ;EEPROMstorage.c: 63: writeEEPROM(i+51, temp);
+"63
+[e ( _writeEEPROM (2 , -> + _i -> -> 51 `i `ui `uc -> _temp `uc ]
+"64
+}
+"61
+[e ++ _i -> -> 1 `i `ui ]
+[e $ < _i -> -> 51 `i `ui 288  ]
+[e :U 289 ]
+"64
+}
+[; ;EEPROMstorage.c: 64: }
+[; ;EEPROMstorage.c: 65: }
+"65
+[e :UE 281 ]
 }

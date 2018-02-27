@@ -371,7 +371,12 @@ unsigned int viewLogs(void){
                     checkLog = verifyKeypress(logNumber, keypress2);
                     if (checkLog == 1){
                         putch(keys[keypress2]);
-                        logView = keypress2;
+                        if (keypress2 == 4){
+                            logView = keypress2;
+                        }
+                        else{
+                            logView = keypress2 + 1;
+                        }
                         __delay_ms(1000);
                         break;
                     }
@@ -391,7 +396,7 @@ unsigned int viewLogs(void){
                 continue;   
             }
         }
-        returnVal = displayLogs(logNumber);
+        returnVal = displayLogs(logView);
         return returnVal;
     }
 }
@@ -399,7 +404,10 @@ unsigned int viewLogs(void){
 
 /*Takes in the log number, and displays information gathered from EEPROM*/
 unsigned int displayLogs(unsigned int logNumber){
-    unsigned int n = (logNumber - 1)* 54;
+    unsigned int n = (logNumber-1)*51;
+    unsigned int year = readEEPROM(n);
+    unsigned int month = readEEPROM(1+n);
+    unsigned int day = readEEPROM(2+n);
     unsigned int operationTime = readEEPROM(3+n);
     unsigned int roundPieces = readEEPROM(4+n);
     unsigned int flatPieces = readEEPROM(5+n);
@@ -408,20 +416,23 @@ unsigned int displayLogs(unsigned int logNumber){
     unsigned int markedDrawer2 = readEEPROM(8+n);
     unsigned int markedDrawer3 = readEEPROM(9+n);
     unsigned int markedDrawer4 = readEEPROM(10+n);
-        
+    
+        __lcd_clear();
+        printf("Date:");
+        __lcd_newline();
+        printf("%02i/%02i/%02i", year, month, day);
+        __delay_ms(500);
+        while(PORTBbits.RB1 == 0){  
+            continue;   
+        }
+    
         unsigned int minutes = operationTime/60;
         unsigned int seconds = operationTime%60;
         __lcd_clear();
         printf("Operation time:");
         __lcd_newline();
-        if (seconds == 0){
-            printf("%i:%i0", minutes, seconds);
-            __delay_ms(500);
-        }
-        else{
-            printf("%i:%i", minutes, seconds);
-            __delay_ms(500);
-        }
+        printf("%i:%02i", minutes, seconds);
+        __delay_ms(500);
         
         while(PORTBbits.RB1 == 0){  
             continue;   
@@ -970,6 +981,7 @@ void standbyMode(void){
     I2C_Master_Init(100000); //Initialize I2C Master with 100 kHz clock
     unsigned char time[7];             /*Create a byte array to hold time read from RTC*/
     unsigned int x = 0;
+    initEEPROM();
     //RTC_setTime();
     
     __lcd_clear();
@@ -985,7 +997,19 @@ void standbyMode(void){
         continue;   
     }
     
-    writeEEPROM(250, 1);
+    /* Welcome message */
+    __lcd_clear();
+    __lcd_display_control(1, 0, 0);
+    printf("Welcome to your");
+    __lcd_newline();
+    printf("cabinet sorter!");
+    __delay_ms(1000);
+    
+    initEEPROM();
+    writeEEPROM(250, 2);
+    writeEEPROM(0, 18);
+    writeEEPROM(1, 2);
+    writeEEPROM(2, 28);
     writeEEPROM(3, 91);
     writeEEPROM(4, 3);
     writeEEPROM(5, 15);
@@ -994,33 +1018,13 @@ void standbyMode(void){
     writeEEPROM(8, 1);
     writeEEPROM(9, 13);
     writeEEPROM(10, 0);
-    writeEEPROM(0x0, 0x1);
-    unsigned char display = readEEPROM(0x0);
-    __lcd_clear();
-    printf("Stored value: ");
-    putch(input[display]);
-    __delay_ms(2000);
-    
-    writeEEPROM(0x0, 0x3);
-    unsigned char display = readEEPROM(0x0);
-    __lcd_clear();
-    printf("Stored value: ");
-    putch(input[display]);
-    __delay_ms(2000);
-    
-    /* Welcome message */
-    __lcd_clear();
-    __lcd_display_control(1, 0, 0);
-    printf("Welcome to your");
-    __lcd_newline();
-    printf("cabinet sorter!");
-    __delay_ms(2000);
+    shiftEEPROM();
     
     /* Print current time */
-    I2C_Master_Start(); // Start condition
-    I2C_Master_Write(0b11010000); // 7 bit RTC address + Write
-    I2C_Master_Write(0x00); // Set memory pointer to seconds
-    I2C_Master_Stop(); // Stop condition
+    //I2C_Master_Start(); // Start condition
+    //I2C_Master_Write(0b11010000); // 7 bit RTC address + Write
+    //I2C_Master_Write(0x00); // Set memory pointer to seconds
+    //I2C_Master_Stop(); // Stop condition
 
     /* Read current time. */
     I2C_Master_Start(); // Start condition

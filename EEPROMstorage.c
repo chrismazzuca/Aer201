@@ -35,3 +35,31 @@ unsigned char readEEPROM(unsigned char address){
     EECON1bits.RD    = 1;                   // initiate read 
     return( EEDATA );
 }
+
+
+void initEEPROM(void){
+    unsigned int i = 0;
+    for (i=0; i<256; i++){
+        writeEEPROM(i, 0);
+    }
+}
+
+
+void shiftEEPROM(void){
+    unsigned int i = 0;
+    unsigned int temp = 0;
+    for (i=102; i<153; i++){
+        temp = readEEPROM(i);
+        writeEEPROM(i+51, temp);
+    }
+    
+    for (i=51; i<102; i++){
+        temp = readEEPROM(i);
+        writeEEPROM(i+51, temp);
+    }
+    
+    for (i=0; i<51; i++){
+        temp = readEEPROM(i);
+        writeEEPROM(i+51, temp);
+    }
+}

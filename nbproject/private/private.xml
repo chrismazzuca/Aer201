@@ -2,18 +2,18 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2">
         <file>
-            <url>lcd.h</url>
-            <bookmark id="1">
+            <url>standbyMode.c</url>
+            <bookmark id="2">
                 <name/>
-                <line>74</line>
+                <line>15</line>
                 <key/>
             </bookmark>
         </file>
         <file>
-            <url>standbyMode.c</url>
-            <bookmark id="2">
+            <url>lcd.h</url>
+            <bookmark id="1">
                 <name/>
-                <line>12</line>
+                <line>74</line>
                 <key/>
             </bookmark>
         </file>

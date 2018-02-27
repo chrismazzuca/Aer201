@@ -13,5 +13,7 @@
 
 void writeEEPROM(unsigned char address, unsigned char data);
 unsigned char readEEPROM(unsigned char address);
+void initEEPROM(void);
+void shiftEEPROM(void);
 
 #endif	/* EEPROMstorage_H */
