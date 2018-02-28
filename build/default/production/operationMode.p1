@@ -2789,128 +2789,136 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;operationMode.h: 27: unsigned int checkCount(unsigned int pieceType);
 [; ;operationMode.h: 28: unsigned int trapDoor(unsigned int type, unsigned int direction);
 [; ;operationMode.h: 29: void mainOperation(void);
-"12 operationMode.c
+[; ;I2C.h: 22: void I2C_Master_Init(const unsigned long c);
+[; ;I2C.h: 23: void I2C_Master_Start(void);
+[; ;I2C.h: 24: void I2C_Master_RepeatedStart(void);
+[; ;I2C.h: 25: void I2C_Master_Stop(void);
+[; ;I2C.h: 26: void I2C_Master_Write(unsigned byteToWrite);
+[; ;I2C.h: 27: unsigned char I2C_Master_Read(unsigned char ackBit);
+[; ;arduinoSetup.h: 15: void sendByteToArduino(unsigned char byte);
+[; ;arduinoSetup.h: 17: void setArduinoToStandby(void);
+"13 operationMode.c
 [v _configTimer `(v ~T0 @X0 1 ef1`ui ]
 {
-[; ;operationMode.c: 12: void configTimer(unsigned int configure){
+[; ;operationMode.c: 13: void configTimer(unsigned int configure){
 [e :U _configTimer ]
 [v _configure `ui ~T0 @X0 1 r1 ]
 [f ]
-[; ;operationMode.c: 14: }
-"14
+[; ;operationMode.c: 15: }
+"15
 [e :UE 266 ]
 }
-"17
+"18
 [v _verticalStepper `(v ~T0 @X0 1 ef2`ui`ui ]
 {
-[; ;operationMode.c: 17: void verticalStepper(unsigned int rotations, unsigned int direction){
+[; ;operationMode.c: 18: void verticalStepper(unsigned int rotations, unsigned int direction){
 [e :U _verticalStepper ]
 [v _rotations `ui ~T0 @X0 1 r1 ]
 [v _direction `ui ~T0 @X0 1 r2 ]
 [f ]
-[; ;operationMode.c: 20: }
-"20
+[; ;operationMode.c: 21: }
+"21
 [e :UE 267 ]
 }
-"23
+"24
 [v _horizontalStepper `(ui ~T0 @X0 1 ef2`ui`ui ]
 {
-[; ;operationMode.c: 23: unsigned int horizontalStepper(unsigned int rotations, unsigned int direction){
+[; ;operationMode.c: 24: unsigned int horizontalStepper(unsigned int rotations, unsigned int direction){
 [e :U _horizontalStepper ]
 [v _rotations `ui ~T0 @X0 1 r1 ]
 [v _direction `ui ~T0 @X0 1 r2 ]
 [f ]
-[; ;operationMode.c: 26: return 1;
-"26
+[; ;operationMode.c: 27: return 1;
+"27
 [e ) -> -> 1 `i `ui ]
 [e $UE 268  ]
-[; ;operationMode.c: 27: }
-"27
+[; ;operationMode.c: 28: }
+"28
 [e :UE 268 ]
 }
-"30
+"31
 [v _detectTape `(ui ~T0 @X0 1 ef ]
 {
-[; ;operationMode.c: 30: unsigned int detectTape(void){
+[; ;operationMode.c: 31: unsigned int detectTape(void){
 [e :U _detectTape ]
 [f ]
-[; ;operationMode.c: 32: return 1;
-"32
+[; ;operationMode.c: 33: return 1;
+"33
 [e ) -> -> 1 `i `ui ]
 [e $UE 269  ]
-[; ;operationMode.c: 33: }
-"33
+[; ;operationMode.c: 34: }
+"34
 [e :UE 269 ]
 }
-"36
+"37
 [v _configDrawer `(ui ~T0 @X0 1 ef1`ui ]
 {
-[; ;operationMode.c: 36: unsigned int configDrawer(unsigned int direction){
+[; ;operationMode.c: 37: unsigned int configDrawer(unsigned int direction){
 [e :U _configDrawer ]
 [v _direction `ui ~T0 @X0 1 r1 ]
 [f ]
-[; ;operationMode.c: 39: return 1;
-"39
+[; ;operationMode.c: 40: return 1;
+"40
 [e ) -> -> 1 `i `ui ]
 [e $UE 270  ]
-[; ;operationMode.c: 40: }
-"40
+[; ;operationMode.c: 41: }
+"41
 [e :UE 270 ]
 }
-"43
+"44
 [v _distributePieces `(ui ~T0 @X0 1 ef2`ui`ui ]
 {
-[; ;operationMode.c: 43: unsigned int distributePieces(unsigned int count, unsigned int pieceType){
+[; ;operationMode.c: 44: unsigned int distributePieces(unsigned int count, unsigned int pieceType){
 [e :U _distributePieces ]
 [v _count `ui ~T0 @X0 1 r1 ]
 [v _pieceType `ui ~T0 @X0 1 r2 ]
 [f ]
-[; ;operationMode.c: 46: return count;
-"46
+[; ;operationMode.c: 47: return count;
+"47
 [e ) _count ]
 [e $UE 271  ]
-[; ;operationMode.c: 47: }
-"47
+[; ;operationMode.c: 48: }
+"48
 [e :UE 271 ]
 }
-"50
+"51
 [v _checkCount `(ui ~T0 @X0 1 ef1`ui ]
 {
-[; ;operationMode.c: 50: unsigned int checkCount(unsigned int pieceType){
+[; ;operationMode.c: 51: unsigned int checkCount(unsigned int pieceType){
 [e :U _checkCount ]
 [v _pieceType `ui ~T0 @X0 1 r1 ]
 [f ]
-[; ;operationMode.c: 52: return 1;
-"52
+[; ;operationMode.c: 53: return 1;
+"53
 [e ) -> -> 1 `i `ui ]
 [e $UE 272  ]
-[; ;operationMode.c: 53: }
-"53
+[; ;operationMode.c: 54: }
+"54
 [e :UE 272 ]
 }
-"56
+"57
 [v _trapDoor `(ui ~T0 @X0 1 ef2`ui`ui ]
 {
-[; ;operationMode.c: 56: unsigned int trapDoor(unsigned int type, unsigned int direction){
+[; ;operationMode.c: 57: unsigned int trapDoor(unsigned int type, unsigned int direction){
 [e :U _trapDoor ]
 [v _type `ui ~T0 @X0 1 r1 ]
 [v _direction `ui ~T0 @X0 1 r2 ]
 [f ]
-[; ;operationMode.c: 60: return 1;
-"60
+[; ;operationMode.c: 61: return 1;
+"61
 [e ) -> -> 1 `i `ui ]
 [e $UE 273  ]
-[; ;operationMode.c: 61: }
-"61
+[; ;operationMode.c: 62: }
+"62
 [e :UE 273 ]
 }
-"64
+"65
 [v _mainOperation `(v ~T0 @X0 1 ef ]
 {
-[; ;operationMode.c: 64: void mainOperation(void){
+[; ;operationMode.c: 65: void mainOperation(void){
 [e :U _mainOperation ]
 [f ]
-[; ;operationMode.c: 88: }
-"88
+[; ;operationMode.c: 89: }
+"89
 [e :UE 274 ]
 }

@@ -3836,7 +3836,20 @@ unsigned int checkCount(unsigned int pieceType);
 unsigned int trapDoor(unsigned int type, unsigned int direction);
 void mainOperation(void);
 
-# 12 "operationMode.c"
+# 22 "I2C.h"
+void I2C_Master_Init(const unsigned long c);
+void I2C_Master_Start(void);
+void I2C_Master_RepeatedStart(void);
+void I2C_Master_Stop(void);
+void I2C_Master_Write(unsigned byteToWrite);
+unsigned char I2C_Master_Read(unsigned char ackBit);
+
+# 15 "arduinoSetup.h"
+void sendByteToArduino(unsigned char byte);
+
+void setArduinoToStandby(void);
+
+# 13 "operationMode.c"
 void configTimer(unsigned int configure){
 
 }
@@ -3891,5 +3904,5 @@ return 1;
 
 void mainOperation(void){
 
-# 88
+# 89
 }

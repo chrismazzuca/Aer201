@@ -3868,22 +3868,24 @@ void I2C_Master_Stop(void);
 void I2C_Master_Write(unsigned byteToWrite);
 unsigned char I2C_Master_Read(unsigned char ackBit);
 
+# 16 "RTC.h"
+void RTC_setTime(void);
+void tick(unsigned int *hour, unsigned int *minute, unsigned int *second);
+signed int tock(unsigned int Hour, unsigned int Minute, unsigned int Second);
+
+# 15 "arduinoSetup.h"
+void sendByteToArduino(unsigned char byte);
+
+void setArduinoToStandby(void);
+
 # 14 "standbyMode.c"
 const char input[] = "123R456F789L*0#D";
 const char keys[] = "123A456B789C*0#D";
-unsigned int drawerInformation[8] = {};
-const char happynewyear[7] = { 0x00,
-0x28,
-0x00,
-0x06,
-0x24,
-0x02,
-0x18
-};
+unsigned int drawerInformation[8] = {0,0,0,0,0,0,0,0};
 
 void lcdInst(char data){
 
-# 34
+# 26
 LATDbits.LATD2 = 0;
 lcdNibble(data);
 _delay((unsigned long)((100)*(40000000/4000000.0)));
@@ -3892,7 +3894,7 @@ _delay((unsigned long)((100)*(40000000/4000000.0)));
 
 void initLCD(void){
 
-# 48
+# 40
 _delay((unsigned long)((15)*(40000000/4000.0)));
 lcdInst(0b00110011);
 lcdInst(0b00110010);
@@ -3908,7 +3910,7 @@ lcdInst(8 | (1 << 2) | (1 << 1)| 1);;
 
 void lcdNibble(char data){
 
-# 69
+# 61
 char temp = (unsigned char) (data & 0xF0);
 LATD = (unsigned char) (LATD & 0x0F);
 LATD = (unsigned char) (temp | LATD);
@@ -3927,26 +3929,10 @@ LATD = (unsigned char) (temp | LATD);
 
 void putch(char data){
 
-# 93
+# 85
 LATDbits.LATD2 = 1;
 lcdNibble(data);
 _delay((unsigned long)((100)*(40000000/4000000.0)));
-}
-
-
-void RTC_setTime(void){
-
-# 107
-I2C_Master_Start();
-I2C_Master_Write(0b11010000);
-I2C_Master_Write(0x00);
-
-
-for(char i=0; i<7; i++){
-I2C_Master_Write(happynewyear[i]);
-}
-
-I2C_Master_Stop();
 }
 
 
@@ -4811,7 +4797,8 @@ return rand;
 }
 
 void standbyMode(void){
-I2C_Master_Init(100000);
+
+
 unsigned char time[7];
 unsigned int x = 0;
 initEEPROM();
@@ -4853,7 +4840,8 @@ writeEEPROM(9, 13);
 writeEEPROM(10, 0);
 shiftEEPROM();
 
-# 1030
+# 1002
+I2C_Master_Init(100000);
 I2C_Master_Start();
 I2C_Master_Write(0b11010001);
 for(x = 0; x < 6; x++){
@@ -4891,7 +4879,7 @@ while(PORTBbits.RB1 == 1){ continue; }
 
 if (keypress == 15){
 
-# 1107
+# 1080
 unsigned int drawerCount = 0;
 unsigned int i = 0;
 unsigned int validDrawer = 0;

@@ -6,6 +6,7 @@
  */
 
 #include "operationMode.h"
+#include "arduinoSetup.h"
 //#include "EEPROMstorage.h"
 
 /*Function will start/stop the timer whenever required*/
