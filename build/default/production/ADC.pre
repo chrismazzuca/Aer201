@@ -1,5 +1,5 @@
 
-# 1 "operationMode.c"
+# 1 "ADC.c"
 
 # 26 "/Applications/microchip/xc8/v1.45/include/htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -3704,69 +3704,6 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 4 "/Applications/microchip/xc8/v1.45/include/__size_t.h"
-typedef unsigned size_t;
-
-# 7 "/Applications/microchip/xc8/v1.45/include/stdarg.h"
-typedef void * va_list[1];
-
-#pragma intrinsic(__va_start)
-extern void * __va_start(void);
-
-#pragma intrinsic(__va_arg)
-extern void * __va_arg(void *, ...);
-
-# 43 "/Applications/microchip/xc8/v1.45/include/stdio.h"
-struct __prbuf
-{
-char * ptr;
-void (* func)(char);
-};
-
-# 29 "/Applications/microchip/xc8/v1.45/include/errno.h"
-extern int errno;
-
-# 12 "/Applications/microchip/xc8/v1.45/include/conio.h"
-extern void init_uart(void);
-
-extern char getch(void);
-extern char getche(void);
-extern void putch(char);
-extern void ungetch(char);
-
-extern __bit kbhit(void);
-
-# 23
-extern char * cgets(char *);
-extern void cputs(const char *);
-
-# 88 "/Applications/microchip/xc8/v1.45/include/stdio.h"
-extern int cprintf(char *, ...);
-#pragma printf_check(cprintf)
-
-
-
-extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-
-
-# 180
-#pragma printf_check(vprintf) const
-#pragma printf_check(vsprintf) const
-
-extern char * gets(char *);
-extern int puts(const char *);
-extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-
-#pragma printf_check(printf) const
-#pragma printf_check(sprintf) const
-extern int sprintf(char *, const char *, ...);
-extern int printf(const char *, ...);
-
 
 # 12 "configBits.h"
 #pragma config OSC = HSPLL
@@ -3823,78 +3760,16 @@ extern int printf(const char *, ...);
 
 #pragma config EBTRB = OFF
 
-# 19 "operationMode.h"
-void updateEEPROM(unsigned int data);
-unsigned int readEEPROM(void);
-void configTimer(unsigned int configure);
-void verticalStepper(unsigned int rotations, unsigned int direction);
-unsigned int horizontalStepper(unsigned int rotations, unsigned int direction);
-unsigned int detectTape(void);
-unsigned int configDrawer(unsigned int direction);
-unsigned int distributePieces(unsigned int count, unsigned int pieceType);
-unsigned int checkCount(unsigned int pieceType);
-unsigned int trapDoor(unsigned int type, unsigned int direction);
-void mainOperation(void);
+# 14 "ADC.h"
+unsigned short readADC(char channel);
 
-# 14 "arduinoSetup.h"
-void sendByteToArduino(unsigned char byte);
+# 12 "ADC.c"
+unsigned short readADC(char channel){
 
-void setArduinoToStandby(void);
-
-# 13 "operationMode.c"
-void configTimer(unsigned int configure){
-
-}
-
-
-void verticalStepper(unsigned int rotations, unsigned int direction){
-
-
-}
-
-
-unsigned int horizontalStepper(unsigned int rotations, unsigned int direction){
-
-
-return 1;
-}
-
-
-unsigned int detectTape(void){
-
-return 1;
-}
-
-
-unsigned int configDrawer(unsigned int direction){
-
-
-return 1;
-}
-
-
-unsigned int distributePieces(unsigned int count, unsigned int pieceType){
-
-
-return count;
-}
-
-
-unsigned int checkCount(unsigned int pieceType){
-
-return 1;
-}
-
-
-unsigned int trapDoor(unsigned int type, unsigned int direction){
-
-
-
-return 1;
-}
-
-
-void mainOperation(void){
-
-# 89
+# 21
+ADCON0 = (channel & 0x0F) << 2;
+ADON = 1;
+ADCON0bits.GO = 1;
+while(ADCON0bits.GO_NOT_DONE){ continue; }
+return (ADRESH << 8) | ADRESL;
 }

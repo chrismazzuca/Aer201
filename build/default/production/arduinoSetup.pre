@@ -3760,6 +3760,11 @@ extern __nonreentrant void _delay3(unsigned char);
 
 #pragma config EBTRB = OFF
 
+# 14 "arduinoSetup.h"
+void sendByteToArduino(unsigned char byte);
+
+void setArduinoToStandby(void);
+
 # 22 "I2C.h"
 void I2C_Master_Init(const unsigned long c);
 void I2C_Master_Start(void);
@@ -3767,11 +3772,6 @@ void I2C_Master_RepeatedStart(void);
 void I2C_Master_Stop(void);
 void I2C_Master_Write(unsigned byteToWrite);
 unsigned char I2C_Master_Read(unsigned char ackBit);
-
-# 15 "arduinoSetup.h"
-void sendByteToArduino(unsigned char byte);
-
-void setArduinoToStandby(void);
 
 # 11 "arduinoSetup.c"
 void sendByteToArduino(unsigned char byte){

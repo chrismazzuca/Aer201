@@ -37,19 +37,15 @@ void main(void) {
     
     initLCD();
     
-    /*TRISCbits.TRISC4 = 0;
-    TRISCbits.TRISC3 = 0;
-    LATCbits.LATC3 = 1;
-    LATCbits.LATC4 = 1;
-    __delay_ms(100);
 
+    /*TRISCbits.TRISC0 = 0;
+    LATCbits.LATC0 = 0;
+    
     while(1){
-    LATCbits.LATC3 = 0;
-    LATCbits.LATC4 = 1;
-    __delay_ms(3000);
-    LATCbits.LATC3 = 1;
-    LATCbits.LATC4 = 0;
-    __delay_ms(3000);
+        LATCbits.LATC0 = 1;
+        __delay_ms(115);
+        LATCbits.LATC0 = 0;
+        __delay_ms(2000);
     }*/
     
     /* Standby Mode */

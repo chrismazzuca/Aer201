@@ -46,11 +46,11 @@ void loop() {
      * Moving motor one full revolution using the degree notation
      */
     for (int x=0; x<3; x++){
-      stepper.rotate(600);
+      stepper.rotate(400);
       delay(1000);
     }
     for (int x=0; x<3; x++){
-      stepper.rotate(-600);
+      stepper.rotate(-400);
       delay(1000);
     }
 

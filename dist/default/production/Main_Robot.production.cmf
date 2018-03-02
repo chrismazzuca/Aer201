@@ -48,7 +48,7 @@ cstackCOMRAM COMRAM 1 1 1 70 1
 bssBANK0 BANK0 1 80 80 18 1
 bssCOMRAM COMRAM 1 71 71 A 1
 mediumconst MEDIUMCONST 0 FD22 FD22 2DE 1
-$/tmp/xczcnZ824.obj
+$/tmp/xczUfdTOh.obj
 idloc IDLOC 0 200000 200000 8 1
 init CODE 0 0 0 4 1
 config CONFIG 0 300000 300000 E 1
@@ -1044,28 +1044,28 @@ D38C text0 CODE >31:/Users/chrismazzuca/Desktop/Main Robot/main.c
 D390 text0 CODE >34:/Users/chrismazzuca/Desktop/Main Robot/main.c
 D394 text0 CODE >35:/Users/chrismazzuca/Desktop/Main Robot/main.c
 D398 text0 CODE >38:/Users/chrismazzuca/Desktop/Main Robot/main.c
-D39C text0 CODE >56:/Users/chrismazzuca/Desktop/Main Robot/main.c
-D3A0 text0 CODE >58:/Users/chrismazzuca/Desktop/Main Robot/main.c
-D2B0 cinit CODE >3077:/tmp/xcxSOaaWW
-D2B0 cinit CODE >3079:/tmp/xcxSOaaWW
-D2B0 cinit CODE >3082:/tmp/xcxSOaaWW
-D2B0 cinit CODE >3105:/tmp/xcxSOaaWW
-D2B4 cinit CODE >3106:/tmp/xcxSOaaWW
-D2B6 cinit CODE >3107:/tmp/xcxSOaaWW
-D2B6 cinit CODE >3108:/tmp/xcxSOaaWW
-D2B8 cinit CODE >3109:/tmp/xcxSOaaWW
-D2BA cinit CODE >3110:/tmp/xcxSOaaWW
-D2BC cinit CODE >3113:/tmp/xcxSOaaWW
-D2C0 cinit CODE >3114:/tmp/xcxSOaaWW
-D2C2 cinit CODE >3115:/tmp/xcxSOaaWW
-D2C2 cinit CODE >3116:/tmp/xcxSOaaWW
-D2C4 cinit CODE >3117:/tmp/xcxSOaaWW
-D2C6 cinit CODE >3118:/tmp/xcxSOaaWW
-D2C8 cinit CODE >3124:/tmp/xcxSOaaWW
-D2C8 cinit CODE >3127:/tmp/xcxSOaaWW
-D2CA cinit CODE >3128:/tmp/xcxSOaaWW
-D2CC cinit CODE >3129:/tmp/xcxSOaaWW
-D2CE cinit CODE >3130:/tmp/xcxSOaaWW
+D39C text0 CODE >52:/Users/chrismazzuca/Desktop/Main Robot/main.c
+D3A0 text0 CODE >54:/Users/chrismazzuca/Desktop/Main Robot/main.c
+D2B0 cinit CODE >3359:/tmp/xcuRBxwiA
+D2B0 cinit CODE >3361:/tmp/xcuRBxwiA
+D2B0 cinit CODE >3364:/tmp/xcuRBxwiA
+D2B0 cinit CODE >3387:/tmp/xcuRBxwiA
+D2B4 cinit CODE >3388:/tmp/xcuRBxwiA
+D2B6 cinit CODE >3389:/tmp/xcuRBxwiA
+D2B6 cinit CODE >3390:/tmp/xcuRBxwiA
+D2B8 cinit CODE >3391:/tmp/xcuRBxwiA
+D2BA cinit CODE >3392:/tmp/xcuRBxwiA
+D2BC cinit CODE >3395:/tmp/xcuRBxwiA
+D2C0 cinit CODE >3396:/tmp/xcuRBxwiA
+D2C2 cinit CODE >3397:/tmp/xcuRBxwiA
+D2C2 cinit CODE >3398:/tmp/xcuRBxwiA
+D2C4 cinit CODE >3399:/tmp/xcuRBxwiA
+D2C6 cinit CODE >3400:/tmp/xcuRBxwiA
+D2C8 cinit CODE >3406:/tmp/xcuRBxwiA
+D2C8 cinit CODE >3409:/tmp/xcuRBxwiA
+D2CA cinit CODE >3410:/tmp/xcuRBxwiA
+D2CC cinit CODE >3411:/tmp/xcuRBxwiA
+D2CE cinit CODE >3412:/tmp/xcuRBxwiA
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -1094,21 +1094,22 @@ diet_press@previous 29 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robo
 ?_get_digits 1 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 _lcdNibble D532 0 CODE 0 text30 dist/default/production/Main_Robot.production.obj
 __Hibigdata 0 0 CODE 0 ibigdata dist/default/production/Main_Robot.production.obj
-__mediumconst FD22 0 MEDIUMCONST 0 mediumconst /tmp/xczcnZ824.obj
+__mediumconst FD22 0 MEDIUMCONST 0 mediumconst /tmp/xczUfdTOh.obj
 __Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production/Main_Robot.production.obj
 __CFG_MCLRE$ON 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 standbyMode@firstIteration 5B 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 displayLogs@logNumber 25 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __Lsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production/Main_Robot.production.obj
+_ADON 7E10 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 _LATA F89 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 _LATB F8A 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 _LATC F8B 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 _LATD F8C 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 _LATE F8D 0 ABS 0 - dist/default/production/Main_Robot.production.obj
-___sp 0 0 STACK 2 stack /tmp/xczcnZ824.obj
+___sp 0 0 STACK 2 stack /tmp/xczUfdTOh.obj
 _keys FD23 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
 _main D36C 0 CODE 0 text0 dist/default/production/Main_Robot.production.obj
-start 0 0 CODE 0 init /tmp/xczcnZ824.obj
+start 0 0 CODE 0 init /tmp/xczUfdTOh.obj
 __end_of_food_press DA74 0 CODE 0 text11 dist/default/production/Main_Robot.production.obj
 __size_of_main 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __size_of___lldiv 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
@@ -1130,12 +1131,12 @@ __Hpowerup 0 0 CODE 0 powerup dist/default/production/Main_Robot.production.obj
 printf@c 24 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 printf@f D 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 displayLogs@month 2B 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-__accesstop 80 0 ABS 0 - /tmp/xczcnZ824.obj
+__accesstop 80 0 ABS 0 - /tmp/xczUfdTOh.obj
 __end_of_LCD_LEFT FD5F 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
-intlevel0 0 0 CODE 0 text /tmp/xczcnZ824.obj
-intlevel1 0 0 CODE 0 text /tmp/xczcnZ824.obj
-intlevel2 0 0 CODE 0 text /tmp/xczcnZ824.obj
-intlevel3 0 0 CODE 0 text /tmp/xczcnZ824.obj
+intlevel0 0 0 CODE 0 text /tmp/xczUfdTOh.obj
+intlevel1 0 0 CODE 0 text /tmp/xczUfdTOh.obj
+intlevel2 0 0 CODE 0 text /tmp/xczUfdTOh.obj
+intlevel3 0 0 CODE 0 text /tmp/xczUfdTOh.obj
 standbyMode@keypress1 60 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production/Main_Robot.production.obj
 __LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production/Main_Robot.production.obj
@@ -1159,11 +1160,13 @@ _LCD_SIZE_HORZ FD61 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Rob
 _LCD_SIZE_VERT FD60 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
 _ADCON0 FC2 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 _ADCON1 FC1 0 ABS 0 - dist/default/production/Main_Robot.production.obj
+_ADRESH FC4 0 ABS 0 - dist/default/production/Main_Robot.production.obj
+_ADRESL FC3 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __size_of_diet_press 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __end_of_lcdInst D26A 0 CODE 0 text29 dist/default/production/Main_Robot.production.obj
-___inthi_sp 0 0 STACK 2 stack /tmp/xczcnZ824.obj
+___inthi_sp 0 0 STACK 2 stack /tmp/xczUfdTOh.obj
 printf@width 22 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-___intlo_sp 0 0 STACK 2 stack /tmp/xczcnZ824.obj
+___intlo_sp 0 0 STACK 2 stack /tmp/xczUfdTOh.obj
 _EECON1bits FA6 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 ?_which_drawer 25 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __size_of_initLCD 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
@@ -1221,7 +1224,6 @@ check_food@foodInput 3 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robo
 _hexpowers FD4F 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
 __size_of_food_press 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __end_of_printf E26A 0 CODE 0 text15 dist/default/production/Main_Robot.production.obj
-_isdigit$974 2 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __end_of_initLCD D432 0 CODE 0 text28 dist/default/production/Main_Robot.production.obj
 I2C_Master_Read@ackBit 2 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 diet_press@F3130 90 0 BANK0 1 bssBANK0 dist/default/production/Main_Robot.production.obj
@@ -1267,7 +1269,7 @@ __Hbank14 0 0 ABS 0 bank14 dist/default/production/Main_Robot.production.obj
 __Hbank15 0 0 ABS 0 bank15 dist/default/production/Main_Robot.production.obj
 __Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production/Main_Robot.production.obj
 __Hbigram 0 0 ABS 0 bigram dist/default/production/Main_Robot.production.obj
-__smallconst 0 0 SMALLCONST 0 smallconst /tmp/xczcnZ824.obj
+__smallconst 0 0 SMALLCONST 0 smallconst /tmp/xczUfdTOh.obj
 __Hcomram 0 0 ABS 0 comram dist/default/production/Main_Robot.production.obj
 __Hconfig 30000E 0 CONFIG 0 config dist/default/production/Main_Robot.production.obj
 __CFG_LPT1OSC$OFF 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
@@ -1439,8 +1441,8 @@ __Lfardata 0 0 FARRAM 0 fardata dist/default/production/Main_Robot.production.ob
 which_drawer@count 2E 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 I2C_Master_Write@byteToWrite 2 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 diet_press@keypress 33 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
-stackhi F7F 0 ABS 0 - /tmp/xczcnZ824.obj
-stacklo 98 0 ABS 0 - /tmp/xczcnZ824.obj
+stackhi F7F 0 ABS 0 - /tmp/xczUfdTOh.obj
+stacklo 98 0 ABS 0 - /tmp/xczUfdTOh.obj
 food_press@F3115 71 0 COMRAM 1 bssCOMRAM dist/default/production/Main_Robot.production.obj
 I2C_Master_Read@receivedByte 3 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __Lintcode 0 0 CODE 0 intcode dist/default/production/Main_Robot.production.obj
@@ -1453,6 +1455,7 @@ __end_of_I2C_Master_Read D2F6 0 CODE 0 text24 dist/default/production/Main_Robot
 __end_of_I2C_Master_Stop D23A 0 CODE 0 text22 dist/default/production/Main_Robot.production.obj
 __end_of_I2C_Master_Wait D256 0 CODE 0 text25 dist/default/production/Main_Robot.production.obj
 __Lirdata 0 0 CODE 0 irdata dist/default/production/Main_Robot.production.obj
+_ADCON0bits FC2 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 food_press@tally 2B 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 __CFG_LVP$OFF 0 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 _verifyKeypress D484 0 CODE 0 text5 dist/default/production/Main_Robot.production.obj
@@ -1531,7 +1534,7 @@ __Ltext27 0 0 ABS 0 text27 dist/default/production/Main_Robot.production.obj
 __Ltext28 0 0 ABS 0 text28 dist/default/production/Main_Robot.production.obj
 __Ltext29 0 0 ABS 0 text29 dist/default/production/Main_Robot.production.obj
 __Ltext30 0 0 ABS 0 text30 dist/default/production/Main_Robot.production.obj
-__ramtop 1000 0 RAM 0 ramtop /tmp/xczcnZ824.obj
+__ramtop 1000 0 RAM 0 ramtop /tmp/xczUfdTOh.obj
 __Lpowerup 0 0 CODE 0 powerup dist/default/production/Main_Robot.production.obj
 __Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production/Main_Robot.production.obj
 _I2C_Master_Init D4D6 0 CODE 0 text26 dist/default/production/Main_Robot.production.obj
@@ -1586,6 +1589,7 @@ printf@val 1F 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.product
 __end_of_dpowers FD4F 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
 _EEADR FA9 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 __end_of_input FD45 0 MEDIUMCONST 0 mediumconst dist/default/production/Main_Robot.production.obj
+_isdigit$1056 2 0 COMRAM 1 cstackCOMRAM dist/default/production/Main_Robot.production.obj
 _PORTB F81 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 _TRISA F92 0 ABS 0 - dist/default/production/Main_Robot.production.obj
 _TRISB F93 0 ABS 0 - dist/default/production/Main_Robot.production.obj

@@ -3873,7 +3873,7 @@ void RTC_setTime(void);
 void tick(unsigned int *hour, unsigned int *minute, unsigned int *second);
 signed int tock(unsigned int Hour, unsigned int Minute, unsigned int Second);
 
-# 15 "arduinoSetup.h"
+# 14 "arduinoSetup.h"
 void sendByteToArduino(unsigned char byte);
 
 void setArduinoToStandby(void);

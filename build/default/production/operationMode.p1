@@ -2789,14 +2789,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;operationMode.h: 27: unsigned int checkCount(unsigned int pieceType);
 [; ;operationMode.h: 28: unsigned int trapDoor(unsigned int type, unsigned int direction);
 [; ;operationMode.h: 29: void mainOperation(void);
-[; ;I2C.h: 22: void I2C_Master_Init(const unsigned long c);
-[; ;I2C.h: 23: void I2C_Master_Start(void);
-[; ;I2C.h: 24: void I2C_Master_RepeatedStart(void);
-[; ;I2C.h: 25: void I2C_Master_Stop(void);
-[; ;I2C.h: 26: void I2C_Master_Write(unsigned byteToWrite);
-[; ;I2C.h: 27: unsigned char I2C_Master_Read(unsigned char ackBit);
-[; ;arduinoSetup.h: 15: void sendByteToArduino(unsigned char byte);
-[; ;arduinoSetup.h: 17: void setArduinoToStandby(void);
+[; ;arduinoSetup.h: 14: void sendByteToArduino(unsigned char byte);
+[; ;arduinoSetup.h: 16: void setArduinoToStandby(void);
 "13 operationMode.c
 [v _configTimer `(v ~T0 @X0 1 ef1`ui ]
 {

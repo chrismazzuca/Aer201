@@ -3878,7 +3878,7 @@ ADCON1 = 0b00001111;
 
 initLCD();
 
-# 56
+# 52
 standbyMode();
 return;
 }

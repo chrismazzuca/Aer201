@@ -209,6 +209,42 @@
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
 "4527
 [v _ADCON0 ADCON0 `VEuc  1 e 1 @4034 ]
+[s S728 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_NOT_DONE 1 0 :1:1 
+]
+"4571
+[s S731 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :4:2 
+]
+[s S735 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+]
+[s S742 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 DONE 1 0 :1:1 
+]
+[s S745 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_DONE 1 0 :1:1 
+]
+[s S748 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S751 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+[s S754 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GODONE 1 0 :1:1 
+]
+[u S757 . 1 `S728 1 . 1 0 `S731 1 . 1 0 `S735 1 . 1 0 `S742 1 . 1 0 `S745 1 . 1 0 `S748 1 . 1 0 `S751 1 . 1 0 `S754 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES757  1 e 1 @4034 ]
+"4653
+[v _ADRESL ADRESL `VEuc  1 e 1 @4035 ]
+"4660
+[v _ADRESH ADRESH `VEuc  1 e 1 @4036 ]
 "4667
 [v _SSPCON2 SSPCON2 `VEuc  1 e 1 @4037 ]
 [s S638 . 1 `uc 1 SEN 1 0 :1:0 
@@ -270,6 +306,8 @@
 ]
 [u S147 . 1 `S125 1 . 1 0 `S134 1 . 1 0 `S143 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES147  1 e 1 @4082 ]
+"6757
+[v _ADON ADON `VEb  1 e 0 @32272 ]
 "354 /Applications/microchip/xc8/v1.45/sources/common/doprnt.c
 [v _dpowers dpowers `C[5]ui  1 s 10 dpowers ]
 "362
@@ -287,7 +325,7 @@
 "13 /Users/chrismazzuca/Desktop/Main Robot/main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"58
+"54
 } 0
 "951 /Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
 [v _standbyMode standbyMode `(v  1 e 1 0 ]

@@ -2754,14 +2754,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p x EBTR3=OFF ]
 "64
 [p x EBTRB=OFF ]
+[; ;arduinoSetup.h: 14: void sendByteToArduino(unsigned char byte);
+[; ;arduinoSetup.h: 16: void setArduinoToStandby(void);
 [; ;I2C.h: 22: void I2C_Master_Init(const unsigned long c);
 [; ;I2C.h: 23: void I2C_Master_Start(void);
 [; ;I2C.h: 24: void I2C_Master_RepeatedStart(void);
 [; ;I2C.h: 25: void I2C_Master_Stop(void);
 [; ;I2C.h: 26: void I2C_Master_Write(unsigned byteToWrite);
 [; ;I2C.h: 27: unsigned char I2C_Master_Read(unsigned char ackBit);
-[; ;arduinoSetup.h: 15: void sendByteToArduino(unsigned char byte);
-[; ;arduinoSetup.h: 17: void setArduinoToStandby(void);
 "11 arduinoSetup.c
 [v _sendByteToArduino `(v ~T0 @X0 1 ef1`uc ]
 {

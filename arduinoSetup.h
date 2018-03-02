@@ -10,7 +10,6 @@
 /********************************** Includes **********************************/
 #include <xc.h>
 #include "configBits.h"
-#include "I2C.h"
 
 void sendByteToArduino(unsigned char byte);
 
