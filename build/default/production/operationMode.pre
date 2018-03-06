@@ -3828,9 +3828,9 @@ unsigned int verticalStepper(unsigned int rotations, unsigned int direction);
 unsigned int horizontalStepper(unsigned int rotations, unsigned int direction);
 unsigned int detectTape(void);
 unsigned int configDrawer(unsigned int direction);
-unsigned int distributeRound(unsigned int count, unsigned int pieceType);
-unsigned int distributeFlat(unsigned int count, unsigned int pieceType);
-unsigned int distributeLong(unsigned int count, unsigned int pieceType);
+unsigned int distributeRound(unsigned int count);
+unsigned int distributeFlat(unsigned int count);
+unsigned int distributeLong(unsigned int count);
 unsigned int checkCount(unsigned int pieceType);
 unsigned int trapDoor(unsigned int type, unsigned int direction);
 void mainOperation(void);
@@ -3952,23 +3952,126 @@ return 1;
 }
 
 
-unsigned int distributeRound(unsigned int count, unsigned int pieceType){
+unsigned int distributeRound(unsigned int count){
 
+
+
+unsigned int i = 0;
+
+TRISCbits.TRISC5 = 0;
+TRISCbits.TRISC6 = 0;
+TRISCbits.TRISC7 = 0;
+TRISCbits.TRISC0 = 0;
+LATCbits.LATC5 = 0;
+LATCbits.LATC6 = 0;
+LATCbits.LATC7 = 0;
+LATCbits.LATC0 = 0;
+
+for (i=0; i<count; i++){
+LATCbits.LATC5 = 1;
+LATCbits.LATC6 = 0;
+LATCbits.LATC7 = 0;
+LATCbits.LATC0 = 0;
+_delay((unsigned long)((2)*(40000000/4000.0)));
+LATCbits.LATC5 = 0;
+LATCbits.LATC6 = 1;
+LATCbits.LATC7 = 0;
+LATCbits.LATC0 = 0;
+_delay((unsigned long)((2)*(40000000/4000.0)));
+LATCbits.LATC5 = 0;
+LATCbits.LATC6 = 0;
+LATCbits.LATC7 = 1;
+LATCbits.LATC0 = 0;
+_delay((unsigned long)((2)*(40000000/4000.0)));
+LATCbits.LATC5 = 0;
+LATCbits.LATC6 = 0;
+LATCbits.LATC7 = 0;
+LATCbits.LATC0 = 1;
+_delay((unsigned long)((2)*(40000000/4000.0)));
+}
 
 return count;
 }
 
 
-unsigned int distributeFlat(unsigned int count, unsigned int pieceType){
+unsigned int distributeFlat(unsigned int count){
 
 
+
+unsigned int i = 0;
+
+TRISCbits.TRISC5 = 0;
+TRISCbits.TRISC6 = 0;
+TRISCbits.TRISC7 = 0;
+TRISCbits.TRISC0 = 0;
+LATCbits.LATC5 = 0;
+LATCbits.LATC6 = 0;
+LATCbits.LATC7 = 0;
+LATCbits.LATC0 = 0;
+
+for (i=0; i<count; i++){
+LATCbits.LATC5 = 1;
+LATCbits.LATC6 = 0;
+LATCbits.LATC7 = 0;
+LATCbits.LATC0 = 0;
+_delay((unsigned long)((2)*(40000000/4000.0)));
+LATCbits.LATC5 = 0;
+LATCbits.LATC6 = 1;
+LATCbits.LATC7 = 0;
+LATCbits.LATC0 = 0;
+_delay((unsigned long)((2)*(40000000/4000.0)));
+LATCbits.LATC5 = 0;
+LATCbits.LATC6 = 0;
+LATCbits.LATC7 = 1;
+LATCbits.LATC0 = 0;
+_delay((unsigned long)((2)*(40000000/4000.0)));
+LATCbits.LATC5 = 0;
+LATCbits.LATC6 = 0;
+LATCbits.LATC7 = 0;
+LATCbits.LATC0 = 1;
+_delay((unsigned long)((2)*(40000000/4000.0)));
+}
 return count;
 }
 
 
-unsigned int distributeLong(unsigned int count, unsigned int pieceType){
+unsigned int distributeLong(unsigned int count){
 
 
+
+unsigned int i = 0;
+
+TRISCbits.TRISC5 = 0;
+TRISCbits.TRISC6 = 0;
+TRISCbits.TRISC7 = 0;
+TRISCbits.TRISC0 = 0;
+LATCbits.LATC5 = 0;
+LATCbits.LATC6 = 0;
+LATCbits.LATC7 = 0;
+LATCbits.LATC0 = 0;
+
+for (i=0; i<count; i++){
+LATCbits.LATC5 = 1;
+LATCbits.LATC6 = 0;
+LATCbits.LATC7 = 0;
+LATCbits.LATC0 = 0;
+_delay((unsigned long)((2)*(40000000/4000.0)));
+LATCbits.LATC5 = 0;
+LATCbits.LATC6 = 1;
+LATCbits.LATC7 = 0;
+LATCbits.LATC0 = 0;
+_delay((unsigned long)((2)*(40000000/4000.0)));
+LATCbits.LATC5 = 0;
+LATCbits.LATC6 = 0;
+LATCbits.LATC7 = 1;
+LATCbits.LATC0 = 0;
+_delay((unsigned long)((2)*(40000000/4000.0)));
+LATCbits.LATC5 = 0;
+LATCbits.LATC6 = 0;
+LATCbits.LATC7 = 0;
+LATCbits.LATC0 = 1;
+_delay((unsigned long)((2)*(40000000/4000.0)));
+}
 return count;
 }
 
@@ -3991,5 +4094,5 @@ void mainOperation(void){
 
 UART_Init(9600);
 
-# 138
+# 241
 }

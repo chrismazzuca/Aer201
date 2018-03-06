@@ -4,7 +4,33 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S266 . _dataTX _numBytesTX _numTransmits _dataRX _numBytesRX _numReceives _stateTX _stateRX _lastReceiveFERR _lastReceiveOERR ]
 "74
 [v _uartTransmitBlocking `(v ~T0 @X0 0 ef2`*uc`uc ]
-"80
+"1833 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
+[s S65 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S65 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
+"1843
+[s S66 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S66 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
+"1832
+[u S64 `S65 1 `S66 1 ]
+[n S64 . . . ]
+"1854
+[v _TRISCbits `VS64 ~T0 @X0 0 e@3988 ]
+"1108
+[s S44 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S44 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
+"1118
+[s S45 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S45 . LC0 LC1 LC2 LC3 LC4 LC5 LC6 LC7 ]
+"1107
+[u S43 `S44 1 `S45 1 ]
+[n S43 . . . ]
+"1129
+[v _LATCbits `VS43 ~T0 @X0 0 e@3979 ]
+[v F2882 `(v ~T0 @X0 1 tf1`ul ]
+"164 /Applications/microchip/xc8/v1.45/include/pic18.h
+[v __delay `JF2882 ~T0 @X0 0 e ]
+[p i __delay ]
+"80 UART_PIC.h
 [v _UART_Init `(v ~T0 @X0 0 ef1`l ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
@@ -2789,9 +2815,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;operationMode.h: 20: unsigned int horizontalStepper(unsigned int rotations, unsigned int direction);
 [; ;operationMode.h: 21: unsigned int detectTape(void);
 [; ;operationMode.h: 22: unsigned int configDrawer(unsigned int direction);
-[; ;operationMode.h: 23: unsigned int distributeRound(unsigned int count, unsigned int pieceType);
-[; ;operationMode.h: 24: unsigned int distributeFlat(unsigned int count, unsigned int pieceType);
-[; ;operationMode.h: 25: unsigned int distributeLong(unsigned int count, unsigned int pieceType);
+[; ;operationMode.h: 23: unsigned int distributeRound(unsigned int count);
+[; ;operationMode.h: 24: unsigned int distributeFlat(unsigned int count);
+[; ;operationMode.h: 25: unsigned int distributeLong(unsigned int count);
 [; ;operationMode.h: 26: unsigned int checkCount(unsigned int pieceType);
 [; ;operationMode.h: 27: unsigned int trapDoor(unsigned int type, unsigned int direction);
 [; ;operationMode.h: 28: void mainOperation(void);
@@ -3053,94 +3079,406 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 292 ]
 }
 "76
-[v _distributeRound `(ui ~T0 @X0 1 ef2`ui`ui ]
+[v _distributeRound `(ui ~T0 @X0 1 ef1`ui ]
 {
-[; ;operationMode.c: 76: unsigned int distributeRound(unsigned int count, unsigned int pieceType){
+[; ;operationMode.c: 76: unsigned int distributeRound(unsigned int count){
 [e :U _distributeRound ]
 [v _count `ui ~T0 @X0 1 r1 ]
-[v _pieceType `ui ~T0 @X0 1 r2 ]
 [f ]
-[; ;operationMode.c: 79: return count;
-"79
+"80
+[v _i `ui ~T0 @X0 1 a ]
+[; ;operationMode.c: 80: unsigned int i = 0;
+[e = _i -> -> 0 `i `ui ]
+[; ;operationMode.c: 82: TRISCbits.TRISC5 = 0;
+"82
+[e = . . _TRISCbits 0 5 -> -> 0 `i `uc ]
+[; ;operationMode.c: 83: TRISCbits.TRISC6 = 0;
+"83
+[e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
+[; ;operationMode.c: 84: TRISCbits.TRISC7 = 0;
+"84
+[e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
+[; ;operationMode.c: 85: TRISCbits.TRISC0 = 0;
+"85
+[e = . . _TRISCbits 0 0 -> -> 0 `i `uc ]
+[; ;operationMode.c: 86: LATCbits.LATC5 = 0;
+"86
+[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
+[; ;operationMode.c: 87: LATCbits.LATC6 = 0;
+"87
+[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
+[; ;operationMode.c: 88: LATCbits.LATC7 = 0;
+"88
+[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
+[; ;operationMode.c: 89: LATCbits.LATC0 = 0;
+"89
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+[; ;operationMode.c: 91: for (i=0; i<count; i++){
+"91
+{
+[e = _i -> -> 0 `i `ui ]
+[e $U 297  ]
+[e :U 294 ]
+{
+[; ;operationMode.c: 92: LATCbits.LATC5 = 1;
+"92
+[e = . . _LATCbits 0 5 -> -> 1 `i `uc ]
+[; ;operationMode.c: 93: LATCbits.LATC6 = 0;
+"93
+[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
+[; ;operationMode.c: 94: LATCbits.LATC7 = 0;
+"94
+[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
+[; ;operationMode.c: 95: LATCbits.LATC0 = 0;
+"95
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+[; ;operationMode.c: 96: _delay((unsigned long)((2)*(40000000/4000.0)));
+"96
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 97: LATCbits.LATC5 = 0;
+"97
+[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
+[; ;operationMode.c: 98: LATCbits.LATC6 = 1;
+"98
+[e = . . _LATCbits 0 6 -> -> 1 `i `uc ]
+[; ;operationMode.c: 99: LATCbits.LATC7 = 0;
+"99
+[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
+[; ;operationMode.c: 100: LATCbits.LATC0 = 0;
+"100
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+[; ;operationMode.c: 101: _delay((unsigned long)((2)*(40000000/4000.0)));
+"101
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 102: LATCbits.LATC5 = 0;
+"102
+[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
+[; ;operationMode.c: 103: LATCbits.LATC6 = 0;
+"103
+[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
+[; ;operationMode.c: 104: LATCbits.LATC7 = 1;
+"104
+[e = . . _LATCbits 0 7 -> -> 1 `i `uc ]
+[; ;operationMode.c: 105: LATCbits.LATC0 = 0;
+"105
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+[; ;operationMode.c: 106: _delay((unsigned long)((2)*(40000000/4000.0)));
+"106
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 107: LATCbits.LATC5 = 0;
+"107
+[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
+[; ;operationMode.c: 108: LATCbits.LATC6 = 0;
+"108
+[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
+[; ;operationMode.c: 109: LATCbits.LATC7 = 0;
+"109
+[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
+[; ;operationMode.c: 110: LATCbits.LATC0 = 1;
+"110
+[e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
+[; ;operationMode.c: 111: _delay((unsigned long)((2)*(40000000/4000.0)));
+"111
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+"112
+}
+"91
+[e ++ _i -> -> 1 `i `ui ]
+[e :U 297 ]
+[e $ < _i _count 294  ]
+[e :U 295 ]
+"112
+}
+[; ;operationMode.c: 112: }
+[; ;operationMode.c: 114: return count;
+"114
 [e ) _count ]
 [e $UE 293  ]
-[; ;operationMode.c: 80: }
-"80
+[; ;operationMode.c: 115: }
+"115
 [e :UE 293 ]
 }
-"83
-[v _distributeFlat `(ui ~T0 @X0 1 ef2`ui`ui ]
+"118
+[v _distributeFlat `(ui ~T0 @X0 1 ef1`ui ]
 {
-[; ;operationMode.c: 83: unsigned int distributeFlat(unsigned int count, unsigned int pieceType){
+[; ;operationMode.c: 118: unsigned int distributeFlat(unsigned int count){
 [e :U _distributeFlat ]
 [v _count `ui ~T0 @X0 1 r1 ]
-[v _pieceType `ui ~T0 @X0 1 r2 ]
 [f ]
-[; ;operationMode.c: 86: return count;
-"86
-[e ) _count ]
-[e $UE 294  ]
-[; ;operationMode.c: 87: }
-"87
-[e :UE 294 ]
-}
-"90
-[v _distributeLong `(ui ~T0 @X0 1 ef2`ui`ui ]
+"122
+[v _i `ui ~T0 @X0 1 a ]
+[; ;operationMode.c: 122: unsigned int i = 0;
+[e = _i -> -> 0 `i `ui ]
+[; ;operationMode.c: 124: TRISCbits.TRISC5 = 0;
+"124
+[e = . . _TRISCbits 0 5 -> -> 0 `i `uc ]
+[; ;operationMode.c: 125: TRISCbits.TRISC6 = 0;
+"125
+[e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
+[; ;operationMode.c: 126: TRISCbits.TRISC7 = 0;
+"126
+[e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
+[; ;operationMode.c: 127: TRISCbits.TRISC0 = 0;
+"127
+[e = . . _TRISCbits 0 0 -> -> 0 `i `uc ]
+[; ;operationMode.c: 128: LATCbits.LATC5 = 0;
+"128
+[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
+[; ;operationMode.c: 129: LATCbits.LATC6 = 0;
+"129
+[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
+[; ;operationMode.c: 130: LATCbits.LATC7 = 0;
+"130
+[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
+[; ;operationMode.c: 131: LATCbits.LATC0 = 0;
+"131
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+[; ;operationMode.c: 133: for (i=0; i<count; i++){
+"133
 {
-[; ;operationMode.c: 90: unsigned int distributeLong(unsigned int count, unsigned int pieceType){
+[e = _i -> -> 0 `i `ui ]
+[e $U 302  ]
+[e :U 299 ]
+{
+[; ;operationMode.c: 134: LATCbits.LATC5 = 1;
+"134
+[e = . . _LATCbits 0 5 -> -> 1 `i `uc ]
+[; ;operationMode.c: 135: LATCbits.LATC6 = 0;
+"135
+[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
+[; ;operationMode.c: 136: LATCbits.LATC7 = 0;
+"136
+[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
+[; ;operationMode.c: 137: LATCbits.LATC0 = 0;
+"137
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+[; ;operationMode.c: 138: _delay((unsigned long)((2)*(40000000/4000.0)));
+"138
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 139: LATCbits.LATC5 = 0;
+"139
+[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
+[; ;operationMode.c: 140: LATCbits.LATC6 = 1;
+"140
+[e = . . _LATCbits 0 6 -> -> 1 `i `uc ]
+[; ;operationMode.c: 141: LATCbits.LATC7 = 0;
+"141
+[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
+[; ;operationMode.c: 142: LATCbits.LATC0 = 0;
+"142
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+[; ;operationMode.c: 143: _delay((unsigned long)((2)*(40000000/4000.0)));
+"143
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 144: LATCbits.LATC5 = 0;
+"144
+[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
+[; ;operationMode.c: 145: LATCbits.LATC6 = 0;
+"145
+[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
+[; ;operationMode.c: 146: LATCbits.LATC7 = 1;
+"146
+[e = . . _LATCbits 0 7 -> -> 1 `i `uc ]
+[; ;operationMode.c: 147: LATCbits.LATC0 = 0;
+"147
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+[; ;operationMode.c: 148: _delay((unsigned long)((2)*(40000000/4000.0)));
+"148
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 149: LATCbits.LATC5 = 0;
+"149
+[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
+[; ;operationMode.c: 150: LATCbits.LATC6 = 0;
+"150
+[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
+[; ;operationMode.c: 151: LATCbits.LATC7 = 0;
+"151
+[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
+[; ;operationMode.c: 152: LATCbits.LATC0 = 1;
+"152
+[e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
+[; ;operationMode.c: 153: _delay((unsigned long)((2)*(40000000/4000.0)));
+"153
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+"154
+}
+"133
+[e ++ _i -> -> 1 `i `ui ]
+[e :U 302 ]
+[e $ < _i _count 299  ]
+[e :U 300 ]
+"154
+}
+[; ;operationMode.c: 154: }
+[; ;operationMode.c: 155: return count;
+"155
+[e ) _count ]
+[e $UE 298  ]
+[; ;operationMode.c: 156: }
+"156
+[e :UE 298 ]
+}
+"159
+[v _distributeLong `(ui ~T0 @X0 1 ef1`ui ]
+{
+[; ;operationMode.c: 159: unsigned int distributeLong(unsigned int count){
 [e :U _distributeLong ]
 [v _count `ui ~T0 @X0 1 r1 ]
-[v _pieceType `ui ~T0 @X0 1 r2 ]
 [f ]
-[; ;operationMode.c: 93: return count;
-"93
-[e ) _count ]
-[e $UE 295  ]
-[; ;operationMode.c: 94: }
-"94
-[e :UE 295 ]
+"163
+[v _i `ui ~T0 @X0 1 a ]
+[; ;operationMode.c: 163: unsigned int i = 0;
+[e = _i -> -> 0 `i `ui ]
+[; ;operationMode.c: 165: TRISCbits.TRISC5 = 0;
+"165
+[e = . . _TRISCbits 0 5 -> -> 0 `i `uc ]
+[; ;operationMode.c: 166: TRISCbits.TRISC6 = 0;
+"166
+[e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
+[; ;operationMode.c: 167: TRISCbits.TRISC7 = 0;
+"167
+[e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
+[; ;operationMode.c: 168: TRISCbits.TRISC0 = 0;
+"168
+[e = . . _TRISCbits 0 0 -> -> 0 `i `uc ]
+[; ;operationMode.c: 169: LATCbits.LATC5 = 0;
+"169
+[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
+[; ;operationMode.c: 170: LATCbits.LATC6 = 0;
+"170
+[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
+[; ;operationMode.c: 171: LATCbits.LATC7 = 0;
+"171
+[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
+[; ;operationMode.c: 172: LATCbits.LATC0 = 0;
+"172
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+[; ;operationMode.c: 174: for (i=0; i<count; i++){
+"174
+{
+[e = _i -> -> 0 `i `ui ]
+[e $U 307  ]
+[e :U 304 ]
+{
+[; ;operationMode.c: 175: LATCbits.LATC5 = 1;
+"175
+[e = . . _LATCbits 0 5 -> -> 1 `i `uc ]
+[; ;operationMode.c: 176: LATCbits.LATC6 = 0;
+"176
+[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
+[; ;operationMode.c: 177: LATCbits.LATC7 = 0;
+"177
+[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
+[; ;operationMode.c: 178: LATCbits.LATC0 = 0;
+"178
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+[; ;operationMode.c: 179: _delay((unsigned long)((2)*(40000000/4000.0)));
+"179
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 180: LATCbits.LATC5 = 0;
+"180
+[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
+[; ;operationMode.c: 181: LATCbits.LATC6 = 1;
+"181
+[e = . . _LATCbits 0 6 -> -> 1 `i `uc ]
+[; ;operationMode.c: 182: LATCbits.LATC7 = 0;
+"182
+[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
+[; ;operationMode.c: 183: LATCbits.LATC0 = 0;
+"183
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+[; ;operationMode.c: 184: _delay((unsigned long)((2)*(40000000/4000.0)));
+"184
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 185: LATCbits.LATC5 = 0;
+"185
+[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
+[; ;operationMode.c: 186: LATCbits.LATC6 = 0;
+"186
+[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
+[; ;operationMode.c: 187: LATCbits.LATC7 = 1;
+"187
+[e = . . _LATCbits 0 7 -> -> 1 `i `uc ]
+[; ;operationMode.c: 188: LATCbits.LATC0 = 0;
+"188
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+[; ;operationMode.c: 189: _delay((unsigned long)((2)*(40000000/4000.0)));
+"189
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 190: LATCbits.LATC5 = 0;
+"190
+[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
+[; ;operationMode.c: 191: LATCbits.LATC6 = 0;
+"191
+[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
+[; ;operationMode.c: 192: LATCbits.LATC7 = 0;
+"192
+[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
+[; ;operationMode.c: 193: LATCbits.LATC0 = 1;
+"193
+[e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
+[; ;operationMode.c: 194: _delay((unsigned long)((2)*(40000000/4000.0)));
+"194
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+"195
 }
-"97
+"174
+[e ++ _i -> -> 1 `i `ui ]
+[e :U 307 ]
+[e $ < _i _count 304  ]
+[e :U 305 ]
+"195
+}
+[; ;operationMode.c: 195: }
+[; ;operationMode.c: 196: return count;
+"196
+[e ) _count ]
+[e $UE 303  ]
+[; ;operationMode.c: 197: }
+"197
+[e :UE 303 ]
+}
+"200
 [v _checkCount `(ui ~T0 @X0 1 ef1`ui ]
 {
-[; ;operationMode.c: 97: unsigned int checkCount(unsigned int pieceType){
+[; ;operationMode.c: 200: unsigned int checkCount(unsigned int pieceType){
 [e :U _checkCount ]
 [v _pieceType `ui ~T0 @X0 1 r1 ]
 [f ]
-[; ;operationMode.c: 99: return 1;
-"99
+[; ;operationMode.c: 202: return 1;
+"202
 [e ) -> -> 1 `i `ui ]
-[e $UE 296  ]
-[; ;operationMode.c: 100: }
-"100
-[e :UE 296 ]
+[e $UE 308  ]
+[; ;operationMode.c: 203: }
+"203
+[e :UE 308 ]
 }
-"103
+"206
 [v _trapDoor `(ui ~T0 @X0 1 ef2`ui`ui ]
 {
-[; ;operationMode.c: 103: unsigned int trapDoor(unsigned int type, unsigned int direction){
+[; ;operationMode.c: 206: unsigned int trapDoor(unsigned int type, unsigned int direction){
 [e :U _trapDoor ]
 [v _type `ui ~T0 @X0 1 r1 ]
 [v _direction `ui ~T0 @X0 1 r2 ]
 [f ]
-[; ;operationMode.c: 107: return 1;
-"107
+[; ;operationMode.c: 210: return 1;
+"210
 [e ) -> -> 1 `i `ui ]
-[e $UE 297  ]
-[; ;operationMode.c: 108: }
-"108
-[e :UE 297 ]
+[e $UE 309  ]
+[; ;operationMode.c: 211: }
+"211
+[e :UE 309 ]
 }
-"111
+"214
 [v _mainOperation `(v ~T0 @X0 1 ef ]
 {
-[; ;operationMode.c: 111: void mainOperation(void){
+[; ;operationMode.c: 214: void mainOperation(void){
 [e :U _mainOperation ]
 [f ]
-[; ;operationMode.c: 113: UART_Init(9600);
-"113
+[; ;operationMode.c: 216: UART_Init(9600);
+"216
 [e ( _UART_Init (1 -> -> 9600 `i `l ]
-[; ;operationMode.c: 138: }
-"138
-[e :UE 298 ]
+[; ;operationMode.c: 241: }
+"241
+[e :UE 310 ]
 }

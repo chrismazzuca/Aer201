@@ -5,5 +5,4 @@ I2C.h  \
 EEPROMstorage.h  \
 RTC.h  \
 standbyMode.h  \
-arduinoSetup.h  \
 configBits.h 

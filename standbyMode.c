@@ -9,10 +9,11 @@
 #include "EEPROMstorage.h"
 #include "I2C.h"
 #include "RTC.h"
-#include "arduinoSetup.h"
+//#include "arduinoSetup.h"
 
 const char input[] = "123R456F789L*0#D";
 const char keys[] = "123A456B789C*0#D";
+const char* inputs[] = {"R", "F", "L", "RF", "RL", "FL", "RRF", "RRL", "RFF", "RLL", "RFL", "FFL", "FLL", "RRFL", "RFFL", "RFLL", "RLLL", "FLLL"};
 
 void lcdInst(char data){
     /* Sends a command to a display control register.
@@ -919,6 +920,12 @@ unsigned int displayLogs(unsigned int logNumber){
     unsigned int markedDrawer2 = readEEPROM(8+n);
     unsigned int markedDrawer3 = readEEPROM(9+n);
     unsigned int markedDrawer4 = readEEPROM(10+n);
+    unsigned int drawerNumber = readEEPROM(11+n);
+    unsigned int dietType = readEEPROM(12+n);
+    unsigned int round = readEEPROM(13+n);
+    unsigned int flat = readEEPROM(14+n);
+    unsigned int lng = readEEPROM(15+n);
+    unsigned int i = 0;
     
         __lcd_clear();
         printf("Date:");
@@ -987,11 +994,24 @@ unsigned int displayLogs(unsigned int logNumber){
             continue;   
         }
         
-        __lcd_clear();
-        printf("Drawer 1: RF12");
-        __lcd_newline();
-        printf("Drawer 2: L1");
-        __delay_ms(2000);
+        for (i=0; i<4; i++){
+            n = (logNumber-1)*51 + 5*i;
+            if (drawerNumber != 0){
+                __lcd_clear();
+                printf("Drawer %i: %s", drawerNumber, inputs[dietType]);
+                n += 5;
+                drawerNumber = readEEPROM(11+n);
+                dietType = readEEPROM(12+n);
+                round = readEEPROM(13+n);
+                flat = readEEPROM(14+n);
+                lng = readEEPROM(15+n);
+                if (drawerNumber != 0){
+                    __lcd_newline();
+                    printf("Drawer %i: %s", drawerNumber, inputs[dietType]);
+                    __delay_ms(2000);
+                }
+            }
+        }
         
         __lcd_clear();
         printf("Another log?");
@@ -1335,6 +1355,107 @@ unsigned int diet_press(unsigned int drawer){
 }
 
 
+unsigned int decode_diet(unsigned int dietType){
+    unsigned int returnValue = 100;
+    
+    switch(dietType){
+        /*L (12)*/
+        case 12:
+            returnValue = 2;
+            break;
+
+        /*R (3)*/
+        case 3:
+            returnValue = 0;
+            break;
+    
+        /*F (7)*/
+        case 7:
+            returnValue = 1;
+            break;
+    
+        /*RF (10)*/
+        case 10:
+            returnValue = 3;
+            break;
+    
+        /*RL (15)*/
+        case 15:
+            returnValue = 4;
+            break;
+    
+        /*FL (19)*/
+        case 19:
+            returnValue = 5;
+            break;
+    
+        /*RRF (13)*/
+        case 13:
+            returnValue = 6;
+            break;
+    
+        /*RRL (18)*/
+        case 18:
+            returnValue = 7;
+            break;
+    
+        /*RFF (17)*/
+        case 17:
+            returnValue = 8;
+            break;
+    
+        /*RLL (27)*/
+        case 27:
+            returnValue = 9;
+            break;
+    
+        /*RFL (22)*/
+        case 22:
+            returnValue = 10;
+            break;
+    
+        /*FFL (26)*/
+        case 26:
+            returnValue = 11;
+            break;
+    
+        /*FLL (31)*/
+        case 31:
+            returnValue = 12;
+            break;
+    
+        /*RRFL (25)*/
+        case 25:
+            returnValue = 13;
+            break;
+    
+        /*RFFL (29)*/
+        case 29:
+            returnValue = 14;
+            break;
+    
+        /*RFLL (34)*/
+        case 34:
+            returnValue = 15;
+            break;
+    
+        /*RLLL (39)*/
+        case 39:
+            returnValue = 16;
+            break;
+    
+        /*FLLL (43)*/
+        case 43:
+            returnValue = 17;
+            break;
+            
+        default:
+            break;
+    }
+    return returnValue;
+}
+
+
 /*Decodes the drawer number from the which_drawer() function*/
 unsigned int decode_drawer(unsigned int drawer){
     unsigned int returnValue;
@@ -1499,6 +1620,7 @@ unsigned int standbyMode(void){
     unsigned int round = 0;
     unsigned int flat = 0;
     unsigned int lng = 0;
+    unsigned int decodedDiet = 0;
     
     unsigned char time[7];             /*Create a byte array to hold time read from RTC*/
     unsigned int x = 0;
@@ -1508,7 +1630,7 @@ unsigned int standbyMode(void){
     __lcd_clear();
     __lcd_display_control(1, 0, 0);
     printf("Standby");
-    __delay_ms(2000);
+    __delay_ms(1000);
     __lcd_clear();
     printf("Press any key to");
     __lcd_newline();
@@ -1527,7 +1649,7 @@ unsigned int standbyMode(void){
     __delay_ms(1000);
     
     //initEEPROM();
-    writeEEPROM(250, 2);
+    writeEEPROM(250, 3);
     writeEEPROM(0, 18);
     writeEEPROM(1, 2);
     writeEEPROM(2, 28);
@@ -1704,7 +1826,8 @@ unsigned int standbyMode(void){
                         goto FOOD_BACK1;
                     }
                     drawerInformation[drawerCount] = drawer;
-                    dietType[drawerCount] = diet;
+                    decodedDiet = decode_diet(diet);
+                    dietType[drawerCount] = decodedDiet;
                     round = getRound(food);
                     flat = getFlat(food);
                     lng = getLong(food);
@@ -1776,7 +1899,8 @@ unsigned int standbyMode(void){
                         goto FOOD_BACK2;
                     }
                     drawerInformation[drawerCount] = drawer;
-                    dietType[drawerCount] = diet;
+                    decodedDiet = decode_diet(diet);
+                    dietType[drawerCount] = decodedDiet;
                     round = getRound(food);
                     flat = getFlat(food);
                     lng = getLong(food);

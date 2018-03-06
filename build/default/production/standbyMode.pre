@@ -3853,6 +3853,7 @@ unsigned int viewLogs(void);
 unsigned int get_digits(unsigned int sum);
 unsigned int food_press(unsigned int dietSum, unsigned int drawer);
 unsigned int diet_press(unsigned int drawer);
+unsigned int decode_diet(unsigned int dietType);
 unsigned int decode_drawer(unsigned int drawer);
 unsigned int which_drawer(void);
 unsigned int standbyMode(void);
@@ -3876,18 +3877,14 @@ void RTC_setTime(void);
 void tick(unsigned int *hour, unsigned int *minute, unsigned int *second);
 signed int tock(unsigned int Hour, unsigned int Minute, unsigned int Second);
 
-# 14 "arduinoSetup.h"
-void sendByteToArduino(unsigned char byte);
-
-void setArduinoToStandby(void);
-
 # 14 "standbyMode.c"
 const char input[] = "123R456F789L*0#D";
 const char keys[] = "123A456B789C*0#D";
+const char* inputs[] = {"R", "F", "L", "RF", "RL", "FL", "RRF", "RRL", "RFF", "RLL", "RFL", "FFL", "FLL", "RRFL", "RFFL", "RFLL", "RLLL", "FLLL"};
 
 void lcdInst(char data){
 
-# 25
+# 26
 LATDbits.LATD2 = 0;
 lcdNibble(data);
 _delay((unsigned long)((100)*(40000000/4000000.0)));
@@ -3896,7 +3893,7 @@ _delay((unsigned long)((100)*(40000000/4000000.0)));
 
 void initLCD(void){
 
-# 39
+# 40
 _delay((unsigned long)((15)*(40000000/4000.0)));
 lcdInst(0b00110011);
 lcdInst(0b00110010);
@@ -3912,7 +3909,7 @@ lcdInst(8 | (1 << 2) | (1 << 1)| 1);;
 
 void lcdNibble(char data){
 
-# 60
+# 61
 char temp = (unsigned char) (data & 0xF0);
 LATD = (unsigned char) (LATD & 0x0F);
 LATD = (unsigned char) (temp | LATD);
@@ -3931,7 +3928,7 @@ LATD = (unsigned char) (temp | LATD);
 
 void putch(char data){
 
-# 84
+# 85
 LATDbits.LATD2 = 1;
 lcdNibble(data);
 _delay((unsigned long)((100)*(40000000/4000000.0)));
@@ -4770,6 +4767,12 @@ unsigned int markedDrawer1 = readEEPROM(7+n);
 unsigned int markedDrawer2 = readEEPROM(8+n);
 unsigned int markedDrawer3 = readEEPROM(9+n);
 unsigned int markedDrawer4 = readEEPROM(10+n);
+unsigned int drawerNumber = readEEPROM(11+n);
+unsigned int dietType = readEEPROM(12+n);
+unsigned int round = readEEPROM(13+n);
+unsigned int flat = readEEPROM(14+n);
+unsigned int lng = readEEPROM(15+n);
+unsigned int i = 0;
 
 lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 printf("Date:");
@@ -4838,11 +4841,24 @@ while(PORTBbits.RB1 == 0){
 continue;
 }
 
+for (i=0; i<4; i++){
+n = (logNumber-1)*51 + 5*i;
+if (drawerNumber != 0){
 lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-printf("Drawer 1: RF12");
+printf("Drawer %i: %s", drawerNumber, inputs[dietType]);
+n += 5;
+drawerNumber = readEEPROM(11+n);
+dietType = readEEPROM(12+n);
+round = readEEPROM(13+n);
+flat = readEEPROM(14+n);
+lng = readEEPROM(15+n);
+if (drawerNumber != 0){
 lcdInst(0xC0);;
-printf("Drawer 2: L1");
+printf("Drawer %i: %s", drawerNumber, inputs[dietType]);
 _delay((unsigned long)((2000)*(40000000/4000.0)));
+}
+}
+}
 
 lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 printf("Another log?");
@@ -5186,6 +5202,107 @@ return sum;
 }
 
 
+unsigned int decode_diet(unsigned int dietType){
+unsigned int returnValue = 100;
+
+switch(dietType){
+
+case 12:
+returnValue = 2;
+break;
+
+
+case 3:
+returnValue = 0;
+break;
+
+
+case 7:
+returnValue = 1;
+break;
+
+
+case 10:
+returnValue = 3;
+break;
+
+
+case 15:
+returnValue = 4;
+break;
+
+
+case 19:
+returnValue = 5;
+break;
+
+
+case 13:
+returnValue = 6;
+break;
+
+
+case 18:
+returnValue = 7;
+break;
+
+
+case 17:
+returnValue = 8;
+break;
+
+
+case 27:
+returnValue = 9;
+break;
+
+
+case 22:
+returnValue = 10;
+break;
+
+
+case 26:
+returnValue = 11;
+break;
+
+
+case 31:
+returnValue = 12;
+break;
+
+
+case 25:
+returnValue = 13;
+break;
+
+
+case 29:
+returnValue = 14;
+break;
+
+
+case 34:
+returnValue = 15;
+break;
+
+
+case 39:
+returnValue = 16;
+break;
+
+
+case 43:
+returnValue = 17;
+break;
+
+default:
+break;
+}
+return returnValue;
+}
+
+
 
 unsigned int decode_drawer(unsigned int drawer){
 unsigned int returnValue;
@@ -5350,6 +5467,7 @@ unsigned int n = 0;
 unsigned int round = 0;
 unsigned int flat = 0;
 unsigned int lng = 0;
+unsigned int decodedDiet = 0;
 
 unsigned char time[7];
 unsigned int x = 0;
@@ -5359,7 +5477,7 @@ initEEPROM();
 lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
 printf("Standby");
-_delay((unsigned long)((2000)*(40000000/4000.0)));
+_delay((unsigned long)((1000)*(40000000/4000.0)));
 lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 printf("Press any key to");
 lcdInst(0xC0);;
@@ -5378,7 +5496,7 @@ printf("cabinet sorter!");
 _delay((unsigned long)((1000)*(40000000/4000.0)));
 
 
-writeEEPROM(250, 2);
+writeEEPROM(250, 3);
 writeEEPROM(0, 18);
 writeEEPROM(1, 2);
 writeEEPROM(2, 28);
@@ -5392,7 +5510,7 @@ writeEEPROM(9, 13);
 writeEEPROM(10, 0);
 shiftEEPROM();
 
-# 1551
+# 1673
 I2C_Master_Init(100000);
 I2C_Master_Start();
 I2C_Master_Write(0b11010001);
@@ -5431,7 +5549,7 @@ while(PORTBbits.RB1 == 1){ continue; }
 
 if (keypress == 15){
 
-# 1630
+# 1752
 while (1){
 if (firstIteration == 1){
 while (1){
@@ -5509,7 +5627,8 @@ food = 0;
 goto FOOD_BACK1;
 }
 drawerInformation[drawerCount] = drawer;
-dietType[drawerCount] = diet;
+decodedDiet = decode_diet(diet);
+dietType[drawerCount] = decodedDiet;
 round = getRound(food);
 flat = getFlat(food);
 lng = getLong(food);
@@ -5581,7 +5700,8 @@ food = 0;
 goto FOOD_BACK2;
 }
 drawerInformation[drawerCount] = drawer;
-dietType[drawerCount] = diet;
+decodedDiet = decode_diet(diet);
+dietType[drawerCount] = decodedDiet;
 round = getRound(food);
 flat = getFlat(food);
 lng = getLong(food);

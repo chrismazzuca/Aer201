@@ -83,6 +83,7 @@ unsigned int viewLogs(void);
 unsigned int get_digits(unsigned int sum);
 unsigned int food_press(unsigned int dietSum, unsigned int drawer);
 unsigned int diet_press(unsigned int drawer);
+unsigned int decode_diet(unsigned int dietType);
 unsigned int decode_drawer(unsigned int drawer);
 unsigned int which_drawer(void);
 unsigned int standbyMode(void);
