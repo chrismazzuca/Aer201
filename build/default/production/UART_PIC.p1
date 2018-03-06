@@ -1,43 +1,91 @@
 Version 3.2 HI-TECH Software Intermediate Code
-[p mainexit ]
-"878 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
-[v _LATA `Vuc ~T0 @X0 0 e@3977 ]
-"990
-[v _LATB `Vuc ~T0 @X0 0 e@3978 ]
-"1102
-[v _LATC `Vuc ~T0 @X0 0 e@3979 ]
-"1214
-[v _LATD `Vuc ~T0 @X0 0 e@3980 ]
-"1326
-[v _LATE `Vuc ~T0 @X0 0 e@3981 ]
-"1378
-[v _TRISA `Vuc ~T0 @X0 0 e@3986 ]
-"1600
-[v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
-"1822
-[v _TRISC `Vuc ~T0 @X0 0 e@3988 ]
-"2044
-[v _TRISD `Vuc ~T0 @X0 0 e@3989 ]
-"2266
-[v _TRISE `Vuc ~T0 @X0 0 e@3990 ]
-"4527
-[v _ADCON0 `Vuc ~T0 @X0 0 e@4034 ]
-"4442
-[v _ADCON1 `Vuc ~T0 @X0 0 e@4033 ]
-"71 standbyMode.h
-[v _initLCD `(v ~T0 @X0 0 ef ]
-"74
-[v _lcdInst `(v ~T0 @X0 0 ef1`uc ]
+"53 UART_PIC.h
+[s S265 `*uc 1 `uc 1 `Vuc 1 `*uc 1 `uc 1 `Vuc 1 `Vuc 1 `Vuc 1 `Vuc 1 `Vuc 1 ]
+[n S265 . _dataTX _numBytesTX _numTransmits _dataRX _numBytesRX _numReceives _stateTX _stateRX _lastReceiveFERR _lastReceiveOERR ]
+"33 UART_PIC.c
+[c E2889 0 1 .. ]
+[n E2889 . UART_STATE_BUSY UART_STATE_READY  ]
+"3239 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
+[s S121 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S121 . TX9D TRMT BRGH SENDB SYNC TXEN TX9 CSRC ]
+"3249
+[s S122 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S122 . TX9D1 TRMT1 BRGH1 SENDB1 SYNC1 TXEN1 TX91 CSRC1 ]
+"3259
+[s S123 :6 `uc 1 :1 `uc 1 ]
+[n S123 . . TX8_9 ]
+"3263
+[s S124 :1 `uc 1 ]
+[n S124 . TXD8 ]
+"3238
+[u S120 `S121 1 `S122 1 `S123 1 `S124 1 ]
+[n S120 . . . . . ]
+"3267
+[v _TXSTAbits `VS120 ~T0 @X0 0 e@4012 ]
 [v F2882 `(v ~T0 @X0 1 tf1`ul ]
 "164 /Applications/microchip/xc8/v1.45/include/pic18.h
 [v __delay `JF2882 ~T0 @X0 0 e ]
 [p i __delay ]
-"195 /Applications/microchip/xc8/v1.45/include/stdio.h
-[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
-"88 standbyMode.h
-[v _standbyMode `(ui ~T0 @X0 0 ef ]
-"28 operationMode.h
-[v _mainOperation `(v ~T0 @X0 0 ef ]
+"7835 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
+[v _TXIF `Vb ~T0 @X0 0 e@31988 ]
+"7793
+[v _TRMT `Vb ~T0 @X0 0 e@32097 ]
+"43 /Applications/microchip/xc8/v1.45/include/pic18.h
+[v ___nop `(v ~T0 @X0 0 ef ]
+[p i ___nop ]
+"6378 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
+[s S258 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S258 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+"6388
+[s S259 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S259 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"6398
+[s S260 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S260 . . GIEL GIEH ]
+"6377
+[u S257 `S258 1 `S259 1 `S260 1 ]
+[n S257 . . . . ]
+"6404
+[v _INTCONbits `VS257 ~T0 @X0 0 e@4082 ]
+"3484
+[v _TXREG `Vuc ~T0 @X0 0 e@4013 ]
+"7833
+[v _TXIE `Vb ~T0 @X0 0 e@31980 ]
+"3029
+[s S107 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S107 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
+"3039
+[s S108 :3 `uc 1 :1 `uc 1 ]
+[n S108 . . ADEN ]
+"3043
+[s S109 :5 `uc 1 :1 `uc 1 ]
+[n S109 . . SRENA ]
+"3047
+[s S110 :6 `uc 1 :1 `uc 1 ]
+[n S110 . . RC8_9 ]
+"3051
+[s S111 :6 `uc 1 :1 `uc 1 ]
+[n S111 . . RC9 ]
+"3055
+[s S112 :1 `uc 1 ]
+[n S112 . RCD8 ]
+"3028
+[u S106 `S107 1 `S108 1 `S109 1 `S110 1 `S111 1 `S112 1 ]
+[n S106 . . . . . . . ]
+"3059
+[v _RCSTAbits `VS106 ~T0 @X0 0 e@4011 ]
+"3496
+[v _RCREG `Vuc ~T0 @X0 0 e@4014 ]
+"7465
+[v _RCIF `Vb ~T0 @X0 0 e@31989 ]
+"7463
+[v _RCIE `Vb ~T0 @X0 0 e@31981 ]
+"3508
+[v _SPBRG `Vuc ~T0 @X0 0 e@4015 ]
+"7767
+[v _TRISC6 `Vb ~T0 @X0 0 e@31910 ]
+"7769
+[v _TRISC7 `Vb ~T0 @X0 0 e@31911 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -2787,184 +2835,383 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p x EBTR3=OFF ]
 "64
 [p x EBTRB=OFF ]
-[; ;__size_t.h: 4: typedef unsigned size_t;
-[; ;stdarg.h: 7: typedef void * va_list[1];
-[; ;stdarg.h: 10: extern void * __va_start(void);
-[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
-[; ;stdio.h: 43: struct __prbuf
-[; ;stdio.h: 44: {
-[; ;stdio.h: 45: char * ptr;
-[; ;stdio.h: 46: void (* func)(char);
-[; ;stdio.h: 47: };
-[; ;errno.h: 29: extern int errno;
-[; ;conio.h: 12: extern void init_uart(void);
-[; ;conio.h: 14: extern char getch(void);
-[; ;conio.h: 15: extern char getche(void);
-[; ;conio.h: 16: extern void putch(char);
-[; ;conio.h: 17: extern void ungetch(char);
-[; ;conio.h: 19: extern __bit kbhit(void);
-[; ;conio.h: 23: extern char * cgets(char *);
-[; ;conio.h: 24: extern void cputs(const char *);
-[; ;stdio.h: 88: extern int cprintf(char *, ...);
-[; ;stdio.h: 93: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-[; ;stdio.h: 183: extern char * gets(char *);
-[; ;stdio.h: 184: extern int puts(const char *);
-[; ;stdio.h: 185: extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-[; ;stdio.h: 186: extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-[; ;stdio.h: 187: extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-[; ;stdio.h: 188: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-[; ;stdio.h: 189: extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-[; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-[; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
-[; ;stdio.h: 195: extern int printf(const char *, ...);
-"57 standbyMode.h
-[v _LCD_HORZ_LIMIT `Cuc ~T0 @X0 1 e ]
-[i _LCD_HORZ_LIMIT
--> -> 40 `i `uc
+[; ;UART_PIC.h: 42: typedef enum{
+[; ;UART_PIC.h: 43: UART_STATE_BUSY = 0x00,
+[; ;UART_PIC.h: 44: UART_STATE_READY = 0x01,
+[; ;UART_PIC.h: 45: }UART_StateTypeDef;
+[; ;UART_PIC.h: 53: typedef struct{
+[; ;UART_PIC.h: 54: unsigned char* _dataTX;
+[; ;UART_PIC.h: 55: unsigned char _numBytesTX;
+[; ;UART_PIC.h: 56: volatile unsigned char _numTransmits;
+[; ;UART_PIC.h: 57: unsigned char* _dataRX;
+[; ;UART_PIC.h: 58: unsigned char _numBytesRX;
+[; ;UART_PIC.h: 59: volatile unsigned char _numReceives;
+[; ;UART_PIC.h: 60: volatile unsigned char _stateTX;
+[; ;UART_PIC.h: 61: volatile unsigned char _stateRX;
+[; ;UART_PIC.h: 62: volatile unsigned char _lastReceiveFERR;
+[; ;UART_PIC.h: 63: volatile unsigned char _lastReceiveOERR;
+[; ;UART_PIC.h: 64: }UART_t;
+"67 UART_PIC.h
+[v _UARTinterruptState `Vuc ~T0 @X0 1 e ]
+[; ;UART_PIC.h: 67: volatile unsigned char UARTinterruptState;
+"70
+[v _arr_dataRX `uc ~T0 @X0 -> 16 `i e ]
+[; ;UART_PIC.h: 70: unsigned char arr_dataRX[16];
+"71
+[v _UART `*S265 ~T0 @X0 1 e ]
+[; ;UART_PIC.h: 71: UART_t* UART;
+[; ;UART_PIC.h: 74: void uartTransmitBlocking(unsigned char* data, unsigned char numBytes);
+[; ;UART_PIC.h: 75: void uartTransmitIT(unsigned char* data, unsigned char numBytes);
+[; ;UART_PIC.h: 76: void uartReceiveBlocking(unsigned char numBytes);
+[; ;UART_PIC.h: 77: void uartReceiveIT(unsigned char numBytes);
+[; ;UART_PIC.h: 80: void UART_Init(long baud);
+"15 UART_PIC.c
+[v _uart `S265 ~T0 @X0 1 e ]
+[i _uart
+:U ..
+:U ..
+-> -> 0 `i `*uc
+..
+..
 ]
-[; ;standbyMode.h: 57: const unsigned char LCD_HORZ_LIMIT = 40;
-"58
-[v _LCD_VERT_LIMIT `Cuc ~T0 @X0 1 e ]
-[i _LCD_VERT_LIMIT
--> -> 2 `i `uc
+[; ;UART_PIC.c: 15: UART_t uart = {0};
+"71 UART_PIC.h
+[i _UART
+"16 UART_PIC.c
+&U _uart
 ]
-[; ;standbyMode.h: 58: const unsigned char LCD_VERT_LIMIT = 2;
-"61
-[v _LCD_SIZE_HORZ `Cuc ~T0 @X0 1 e ]
-[i _LCD_SIZE_HORZ
--> -> 16 `i `uc
-]
-[; ;standbyMode.h: 61: const unsigned char LCD_SIZE_HORZ = 16;
-"62
-[v _LCD_SIZE_VERT `Cuc ~T0 @X0 1 e ]
-[i _LCD_SIZE_VERT
--> -> 2 `i `uc
-]
-[; ;standbyMode.h: 62: const unsigned char LCD_SIZE_VERT = 2;
-"64
-[v _LCD_RIGHT `Cuc ~T0 @X0 1 e ]
-[i _LCD_RIGHT
--> -> 1 `i `uc
-]
-[; ;standbyMode.h: 64: const unsigned char LCD_RIGHT = 1;
-"65
-[v _LCD_LEFT `Cuc ~T0 @X0 1 e ]
-[i _LCD_LEFT
--> -> 0 `i `uc
-]
-[; ;standbyMode.h: 65: const unsigned char LCD_LEFT = 0;
-"68
-[v _LCDinterruptState `uc ~T0 @X0 1 s ]
-[; ;standbyMode.h: 68: static unsigned char LCDinterruptState;
-[; ;standbyMode.h: 71: void initLCD(void);
-[; ;standbyMode.h: 72: void putch(char data);
-[; ;standbyMode.h: 73: void lcdNibble(char data);
-[; ;standbyMode.h: 74: void lcdInst(char data);
-[; ;standbyMode.h: 75: void RTC_setTime(void);
-[; ;standbyMode.h: 76: unsigned int getRound(unsigned int code);
-[; ;standbyMode.h: 77: unsigned int getFlat(unsigned int code);
-[; ;standbyMode.h: 78: unsigned int getLong(unsigned int code);
-[; ;standbyMode.h: 79: unsigned int check_food(unsigned int sum, unsigned int foodInput[4]);
-[; ;standbyMode.h: 80: unsigned int verifyKeypress(unsigned char logNumber, unsigned int keypress);
-[; ;standbyMode.h: 81: unsigned int displayLogs(unsigned int logNumber);
-[; ;standbyMode.h: 82: unsigned int viewLogs(void);
-[; ;standbyMode.h: 83: unsigned int get_digits(unsigned int sum);
-[; ;standbyMode.h: 84: unsigned int food_press(unsigned int dietSum, unsigned int drawer);
-[; ;standbyMode.h: 85: unsigned int diet_press(unsigned int drawer);
-[; ;standbyMode.h: 86: unsigned int decode_drawer(unsigned int drawer);
-[; ;standbyMode.h: 87: unsigned int which_drawer(void);
-[; ;standbyMode.h: 88: unsigned int standbyMode(void);
-[; ;operationMode.h: 19: unsigned int verticalStepper(unsigned int rotations, unsigned int direction);
-[; ;operationMode.h: 20: unsigned int horizontalStepper(unsigned int rotations, unsigned int direction);
-[; ;operationMode.h: 21: unsigned int detectTape(void);
-[; ;operationMode.h: 22: unsigned int configDrawer(unsigned int direction);
-[; ;operationMode.h: 23: unsigned int distributeRound(unsigned int count, unsigned int pieceType);
-[; ;operationMode.h: 24: unsigned int distributeFlat(unsigned int count, unsigned int pieceType);
-[; ;operationMode.h: 25: unsigned int distributeLong(unsigned int count, unsigned int pieceType);
-[; ;operationMode.h: 26: unsigned int checkCount(unsigned int pieceType);
-[; ;operationMode.h: 27: unsigned int trapDoor(unsigned int type, unsigned int direction);
-[; ;operationMode.h: 28: void mainOperation(void);
-[v $root$_main `(v ~T0 @X0 0 e ]
-"14 main.c
-[v _main `(v ~T0 @X0 1 ef ]
+[; ;UART_PIC.c: 16: UART_t* UART = &uart;
+"19
+[v _uartTransmitBlocking `(v ~T0 @X0 1 ef2`*uc`uc ]
 {
-[; ;main.c: 14: void main(void) {
-[e :U _main ]
+[; ;UART_PIC.c: 19: void uartTransmitBlocking(unsigned char* data, unsigned char numBytes){
+[e :U _uartTransmitBlocking ]
+[v _data `*uc ~T0 @X0 1 r1 ]
+[v _numBytes `uc ~T0 @X0 1 r2 ]
 [f ]
-[; ;main.c: 20: LATA = 0x00;
-"20
-[e = _LATA -> -> 0 `i `uc ]
-[; ;main.c: 21: LATB = 0x00;
-"21
-[e = _LATB -> -> 0 `i `uc ]
-[; ;main.c: 22: LATC = 0x00;
-"22
-[e = _LATC -> -> 0 `i `uc ]
-[; ;main.c: 23: LATD = 0x00;
-"23
-[e = _LATD -> -> 0 `i `uc ]
-[; ;main.c: 24: LATE = 0x00;
-"24
-[e = _LATE -> -> 0 `i `uc ]
-[; ;main.c: 28: TRISA = 0xFF;
-"28
-[e = _TRISA -> -> 255 `i `uc ]
-[; ;main.c: 29: TRISB = 0xFF;
-"29
-[e = _TRISB -> -> 255 `i `uc ]
-[; ;main.c: 30: TRISC = 0x00;
-"30
-[e = _TRISC -> -> 0 `i `uc ]
-[; ;main.c: 31: TRISD = 0x00;
-"31
-[e = _TRISD -> -> 0 `i `uc ]
-[; ;main.c: 32: TRISE = 0x00;
-"32
-[e = _TRISE -> -> 0 `i `uc ]
-[; ;main.c: 35: ADCON0 = 0x00;
-"35
-[e = _ADCON0 -> -> 0 `i `uc ]
-[; ;main.c: 36: ADCON1 = 0b00001111;
-"36
-[e = _ADCON1 -> -> 15 `i `uc ]
-[; ;main.c: 39: initLCD();
-"39
-[e ( _initLCD ..  ]
-[; ;main.c: 40: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"40
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;main.c: 41: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
-"41
-[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;main.c: 42: printf("Standby");
-"42
-[e ( _printf :s 1C ]
-"44
-[v _operationMode `ui ~T0 @X0 1 a ]
-[; ;main.c: 44: unsigned int operationMode = 0;
-[e = _operationMode -> -> 0 `i `ui ]
-[; ;main.c: 89: operationMode = standbyMode();
-"89
-[e = _operationMode ( _standbyMode ..  ]
-[; ;main.c: 91: if (operationMode == 1){
-"91
-[e $ ! == _operationMode -> -> 1 `i `ui 267  ]
+[; ;UART_PIC.c: 33: while(UART -> _stateTX == UART_STATE_BUSY){ continue; }
+"33
+[e $U 267  ]
+[e :U 268 ]
 {
-[; ;main.c: 92: mainOperation();
-"92
-[e ( _mainOperation ..  ]
-"93
+[e $U 267  ]
 }
 [e :U 267 ]
-[; ;main.c: 93: }
-[; ;main.c: 94: return;
-"94
-[e $UE 266  ]
-[; ;main.c: 95: }
-"95
+[e $ == -> . *U _UART 6 `i -> . `E2889 0 `i 268  ]
+[e :U 269 ]
+[; ;UART_PIC.c: 36: UART -> _stateTX = UART_STATE_BUSY;
+"36
+[e = . *U _UART 6 -> . `E2889 0 `uc ]
+"39
+[v _numTransmits `uc ~T0 @X0 1 a ]
+[; ;UART_PIC.c: 39: unsigned char numTransmits = 0;
+[e = _numTransmits -> -> 0 `i `uc ]
+[; ;UART_PIC.c: 42: TXSTAbits.TXEN = 1; _delay((unsigned long)((5)*(40000000/4000.0)));;
+"42
+[e = . . _TXSTAbits 0 5 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;UART_PIC.c: 45: while(numTransmits < numBytes){
+"45
+[e $U 270  ]
+[e :U 271 ]
+{
+[; ;UART_PIC.c: 49: while(!TXIF | !TRMT){ continue; }
+"49
+[e $U 273  ]
+[e :U 274 ]
+{
+[e $U 273  ]
+}
+[e :U 273 ]
+[e $ | ! _TXIF ! _TRMT 274  ]
+[e :U 275 ]
+[; ;UART_PIC.c: 50: __nop();
+"50
+[e ( ___nop ..  ]
+[; ;UART_PIC.c: 53: UARTinterruptState = INTCONbits.GIE;
+"53
+[e = _UARTinterruptState . . _INTCONbits 1 7 ]
+[; ;UART_PIC.c: 54: (INTCONbits.GIE = 0);
+"54
+[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
+[; ;UART_PIC.c: 55: TXREG = data[numTransmits];
+"55
+[e = _TXREG *U + _data * -> _numTransmits `ux -> -> # *U _data `ui `ux ]
+[; ;UART_PIC.c: 56: INTCONbits.GIE = UARTinterruptState;
+"56
+[e = . . _INTCONbits 1 7 _UARTinterruptState ]
+[; ;UART_PIC.c: 58: numTransmits++;
+"58
+[e ++ _numTransmits -> -> 1 `i `uc ]
+"62
+}
+[e :U 270 ]
+"45
+[e $ < -> _numTransmits `i -> _numBytes `i 271  ]
+[e :U 272 ]
+[; ;UART_PIC.c: 62: }
+[; ;UART_PIC.c: 65: UART -> _stateTX = UART_STATE_READY;
+"65
+[e = . *U _UART 6 -> . `E2889 1 `uc ]
+[; ;UART_PIC.c: 66: }
+"66
 [e :UE 266 ]
 }
-[p f _printf 8388608 ]
-[a 1C 83 116 97 110 100 98 121 0 ]
-
+"68
+[v _uartTransmitIT `(v ~T0 @X0 1 ef2`*uc`uc ]
+{
+[; ;UART_PIC.c: 68: void uartTransmitIT(unsigned char* data, unsigned char numBytes){
+[e :U _uartTransmitIT ]
+[v _data `*uc ~T0 @X0 1 r1 ]
+[v _numBytes `uc ~T0 @X0 1 r2 ]
+[f ]
+[; ;UART_PIC.c: 83: while(UART -> _stateTX == UART_STATE_BUSY){ continue; }
+"83
+[e $U 277  ]
+[e :U 278 ]
+{
+[e $U 277  ]
+}
+[e :U 277 ]
+[e $ == -> . *U _UART 6 `i -> . `E2889 0 `i 278  ]
+[e :U 279 ]
+[; ;UART_PIC.c: 86: UART -> _stateTX = UART_STATE_BUSY;
+"86
+[e = . *U _UART 6 -> . `E2889 0 `uc ]
+[; ;UART_PIC.c: 89: UART -> _dataTX = data;
+"89
+[e = . *U _UART 0 _data ]
+[; ;UART_PIC.c: 90: UART -> _numBytesTX = numBytes;
+"90
+[e = . *U _UART 1 _numBytes ]
+[; ;UART_PIC.c: 91: UART -> _numTransmits = 0;
+"91
+[e = . *U _UART 2 -> -> 0 `i `uc ]
+[; ;UART_PIC.c: 94: TXSTAbits.TXEN = 1; _delay((unsigned long)((5)*(40000000/4000.0)));;
+"94
+[e = . . _TXSTAbits 0 5 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;UART_PIC.c: 95: TXIE = 1;
+"95
+[e = _TXIE -> -> 1 `i `b ]
+[; ;UART_PIC.c: 98: }
+"98
+[e :UE 276 ]
+}
+"100
+[v _uartReceiveBlocking `(v ~T0 @X0 1 ef1`uc ]
+{
+[; ;UART_PIC.c: 100: void uartReceiveBlocking(unsigned char numBytes){
+[e :U _uartReceiveBlocking ]
+[v _numBytes `uc ~T0 @X0 1 r1 ]
+[f ]
+[; ;UART_PIC.c: 111: while(UART -> _stateRX == UART_STATE_BUSY){ continue; }
+"111
+[e $U 281  ]
+[e :U 282 ]
+{
+[e $U 281  ]
+}
+[e :U 281 ]
+[e $ == -> . *U _UART 7 `i -> . `E2889 0 `i 282  ]
+[e :U 283 ]
+[; ;UART_PIC.c: 114: UART -> _stateRX = UART_STATE_BUSY;
+"114
+[e = . *U _UART 7 -> . `E2889 0 `uc ]
+"117
+[v _numReceives `uc ~T0 @X0 1 a ]
+[; ;UART_PIC.c: 117: unsigned char numReceives = 0;
+[e = _numReceives -> -> 0 `i `uc ]
+[; ;UART_PIC.c: 118: UART -> _lastReceiveFERR = 1;
+"118
+[e = . *U _UART 8 -> -> 1 `i `uc ]
+[; ;UART_PIC.c: 119: UART -> _lastReceiveOERR = 1;
+"119
+[e = . *U _UART 9 -> -> 1 `i `uc ]
+[; ;UART_PIC.c: 122: RCSTAbits.CREN = 1;
+"122
+[e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
+"123
+[v _temp `uc ~T0 @X0 1 a ]
+[; ;UART_PIC.c: 123: unsigned char temp = RCREG;
+[e = _temp _RCREG ]
+[; ;UART_PIC.c: 126: while(numReceives < numBytes){
+"126
+[e $U 284  ]
+[e :U 285 ]
+{
+[; ;UART_PIC.c: 128: while(!RCIF){ continue; }
+"128
+[e $U 287  ]
+[e :U 288 ]
+{
+[e $U 287  ]
+}
+[e :U 287 ]
+[e $ ! _RCIF 288  ]
+[e :U 289 ]
+[; ;UART_PIC.c: 132: if(RCSTAbits.FERR){
+"132
+[e $ ! != -> . . _RCSTAbits 0 2 `i -> -> -> 0 `i `Vuc `i 290  ]
+{
+[; ;UART_PIC.c: 136: UART -> _lastReceiveFERR = 1;
+"136
+[e = . *U _UART 8 -> -> 1 `i `uc ]
+"137
+}
+[; ;UART_PIC.c: 137: }
+[e $U 291  ]
+"138
+[e :U 290 ]
+[; ;UART_PIC.c: 138: else{
+{
+[; ;UART_PIC.c: 139: UART -> _lastReceiveFERR = 0;
+"139
+[e = . *U _UART 8 -> -> 0 `i `uc ]
+"140
+}
+[e :U 291 ]
+[; ;UART_PIC.c: 140: }
+[; ;UART_PIC.c: 143: UARTinterruptState = INTCONbits.GIE;
+"143
+[e = _UARTinterruptState . . _INTCONbits 1 7 ]
+[; ;UART_PIC.c: 144: (INTCONbits.GIE = 0);
+"144
+[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
+[; ;UART_PIC.c: 145: UART -> _dataRX[numReceives] = RCREG;
+"145
+[e = *U + . *U _UART 3 * -> _numReceives `ux -> -> # *U . *U _UART 3 `ui `ux _RCREG ]
+[; ;UART_PIC.c: 146: INTCONbits.GIE = UARTinterruptState;
+"146
+[e = . . _INTCONbits 1 7 _UARTinterruptState ]
+[; ;UART_PIC.c: 150: if(RCSTAbits.OERR){
+"150
+[e $ ! != -> . . _RCSTAbits 0 1 `i -> -> -> 0 `i `Vuc `i 292  ]
+{
+[; ;UART_PIC.c: 152: RCSTAbits.CREN = 0;
+"152
+[e = . . _RCSTAbits 0 4 -> -> 0 `i `uc ]
+[; ;UART_PIC.c: 153: RCSTAbits.CREN = 1;
+"153
+[e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
+"154
+}
+[; ;UART_PIC.c: 154: }
+[e $U 293  ]
+"155
+[e :U 292 ]
+[; ;UART_PIC.c: 155: else{
+{
+[; ;UART_PIC.c: 156: UART -> _lastReceiveOERR = 0;
+"156
+[e = . *U _UART 9 -> -> 0 `i `uc ]
+"157
+}
+[e :U 293 ]
+[; ;UART_PIC.c: 157: }
+[; ;UART_PIC.c: 159: numReceives++;
+"159
+[e ++ _numReceives -> -> 1 `i `uc ]
+"160
+}
+[e :U 284 ]
+"126
+[e $ < -> _numReceives `i -> _numBytes `i 285  ]
+[e :U 286 ]
+[; ;UART_PIC.c: 160: }
+[; ;UART_PIC.c: 163: UART -> _stateRX = UART_STATE_READY;
+"163
+[e = . *U _UART 7 -> . `E2889 1 `uc ]
+[; ;UART_PIC.c: 164: }
+"164
+[e :UE 280 ]
+}
+"166
+[v _uartReceiveIT `(v ~T0 @X0 1 ef1`uc ]
+{
+[; ;UART_PIC.c: 166: void uartReceiveIT(unsigned char numBytes){
+[e :U _uartReceiveIT ]
+[v _numBytes `uc ~T0 @X0 1 r1 ]
+[f ]
+[; ;UART_PIC.c: 179: while(UART -> _stateRX == UART_STATE_BUSY){ continue; }
+"179
+[e $U 295  ]
+[e :U 296 ]
+{
+[e $U 295  ]
+}
+[e :U 295 ]
+[e $ == -> . *U _UART 7 `i -> . `E2889 0 `i 296  ]
+[e :U 297 ]
+[; ;UART_PIC.c: 182: UART -> _stateRX = UART_STATE_BUSY;
+"182
+[e = . *U _UART 7 -> . `E2889 0 `uc ]
+[; ;UART_PIC.c: 185: UART -> _numBytesRX = numBytes;
+"185
+[e = . *U _UART 4 _numBytes ]
+[; ;UART_PIC.c: 186: UART -> _numReceives = 0;
+"186
+[e = . *U _UART 5 -> -> 0 `i `uc ]
+[; ;UART_PIC.c: 187: UART -> _lastReceiveFERR = 1;
+"187
+[e = . *U _UART 8 -> -> 1 `i `uc ]
+[; ;UART_PIC.c: 188: UART -> _lastReceiveOERR = 1;
+"188
+[e = . *U _UART 9 -> -> 1 `i `uc ]
+[; ;UART_PIC.c: 191: RCSTAbits.CREN = 1;
+"191
+[e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
+[; ;UART_PIC.c: 192: RCIE = 1;
+"192
+[e = _RCIE -> -> 1 `i `b ]
+[; ;UART_PIC.c: 195: }
+"195
+[e :UE 294 ]
+}
+"197
+[v _UART_Init `(v ~T0 @X0 1 ef1`l ]
+{
+[; ;UART_PIC.c: 197: void UART_Init(long baud){
+[e :U _UART_Init ]
+[v _baud `l ~T0 @X0 1 r1 ]
+[f ]
+[; ;UART_PIC.c: 210: SPBRG = (unsigned char)((40000000 / (64 * baud)) - 1);
+"210
+[e = _SPBRG -> - / -> 40000000 `l * -> -> 64 `i `l _baud -> -> 1 `i `l `uc ]
+[; ;UART_PIC.c: 213: TXSTAbits.TX9 = 0;
+"213
+[e = . . _TXSTAbits 0 6 -> -> 0 `i `uc ]
+[; ;UART_PIC.c: 214: TXSTAbits.SYNC = 0;
+"214
+[e = . . _TXSTAbits 0 4 -> -> 0 `i `uc ]
+[; ;UART_PIC.c: 215: TXSTAbits.TXEN = 1;
+"215
+[e = . . _TXSTAbits 0 5 -> -> 1 `i `uc ]
+[; ;UART_PIC.c: 218: RCSTAbits.RX9 = 0;
+"218
+[e = . . _RCSTAbits 0 6 -> -> 0 `i `uc ]
+[; ;UART_PIC.c: 219: RCSTAbits.CREN = 1;
+"219
+[e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
+[; ;UART_PIC.c: 222: UART -> _stateTX = UART_STATE_READY;
+"222
+[e = . *U _UART 6 -> . `E2889 1 `uc ]
+[; ;UART_PIC.c: 223: UART -> _stateRX = UART_STATE_READY;
+"223
+[e = . *U _UART 7 -> . `E2889 1 `uc ]
+[; ;UART_PIC.c: 226: uart._dataRX = arr_dataRX;
+"226
+[e = . _uart 3 &U _arr_dataRX ]
+[; ;UART_PIC.c: 229: TRISC6 = 0;
+"229
+[e = _TRISC6 -> -> 0 `i `b ]
+[; ;UART_PIC.c: 230: TRISC7 = 1;
+"230
+[e = _TRISC7 -> -> 1 `i `b ]
+[; ;UART_PIC.c: 233: RCSTAbits.SPEN = 1;
+"233
+[e = . . _RCSTAbits 0 7 -> -> 1 `i `uc ]
+[; ;UART_PIC.c: 234: }
+"234
+[e :UE 298 ]
+}

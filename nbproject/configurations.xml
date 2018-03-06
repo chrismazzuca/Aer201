@@ -12,6 +12,7 @@
       <itemPath>RTC.h</itemPath>
       <itemPath>arduinoSetup.h</itemPath>
       <itemPath>ADC.h</itemPath>
+      <itemPath>UART_PIC.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -28,6 +29,7 @@
       <itemPath>RTC.c</itemPath>
       <itemPath>arduinoSetup.c</itemPath>
       <itemPath>ADC.c</itemPath>
+      <itemPath>UART_PIC.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

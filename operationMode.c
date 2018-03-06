@@ -7,23 +7,55 @@
 
 #include "operationMode.h"
 #include "arduinoSetup.h"
-//#include "EEPROMstorage.h"
+#include "UART_PIC.h"
+#include "EEPROMstorage.h"
+#include "RTC.h"
+#include "ADC.h"
 
-/*Function will start/stop the timer whenever required*/
-void configTimer(unsigned int configure){
-    /*Function will take in an integer "configure" which will determine if the timer is to be started or stopped*/
-}
+unsigned char rowUp[1] = {'1'};
+unsigned char rowDown[1] = {'2'};
+unsigned char columnLeft[1] = {'3'};
+unsigned char columnRight[1] = {'4'};
+
 
 /*This function will control the arm vertical steppers (connected to the threaded rods)*/
-void verticalStepper(unsigned int rotations, unsigned int direction){
+unsigned int verticalStepper(unsigned int rotations, unsigned int direction){
     /*Function will control the steppers by the inputted "rotations" variable, and will determine its direction with the input "direction"*/
     /*Will return 1 when finished*/
+    
+    int i = 0;
+    
+    if (direction == 1){
+        for (i=0; i<rotations; i++){
+            uartTransmitBlocking(rowUp, 1);
+        }
+    }
+    else if (direction == 0){
+        for (i=0; i<rotations; i++){
+            uartTransmitBlocking(rowDown, 1);
+        }
+    }
+    return 1;
 }
 
 /*This function will control the arm horizontal stepper (connected to the belt)*/
 unsigned int horizontalStepper(unsigned int rotations, unsigned int direction){
     /*Function will control the steppers by the inputted "rotations" variable, and will determine its direction with the input "direction"*/
     /*Will return 1 when finished*/
+    
+    int i = 0;
+    
+    if (direction == 1){
+        for (i=0; i<rotations; i++){
+            uartTransmitBlocking(columnLeft, 1);
+        }
+    }
+    else if (direction == 0){
+        for (i=0; i<rotations; i++){
+            uartTransmitBlocking(columnRight, 1);
+        }
+    }
+    
     return 1;
 }
 
@@ -40,8 +72,22 @@ unsigned int configDrawer(unsigned int direction){
     return 1;
 }
 
-/*This function distributes the specified number of each food type*/
-unsigned int distributePieces(unsigned int count, unsigned int pieceType){
+/*This function distributes the specified number of round pieces*/
+unsigned int distributeRound(unsigned int count, unsigned int pieceType){
+    /*"Count" specifies how many pieces, and will determine how long the motor will turn for*/
+    /*"Type" specifies which food type, and specifies which DC motor needs to be turned on*/
+    return count;
+}
+
+/*This function distributes the specified number of flat pieces*/
+unsigned int distributeFlat(unsigned int count, unsigned int pieceType){
+    /*"Count" specifies how many pieces, and will determine how long the motor will turn for*/
+    /*"Type" specifies which food type, and specifies which DC motor needs to be turned on*/
+    return count;
+}
+
+/*This function distributes the specified number of long pieces*/
+unsigned int distributeLong(unsigned int count, unsigned int pieceType){
     /*"Count" specifies how many pieces, and will determine how long the motor will turn for*/
     /*"Type" specifies which food type, and specifies which DC motor needs to be turned on*/
     return count;
@@ -63,8 +109,11 @@ unsigned int trapDoor(unsigned int type, unsigned int direction){
 
 /*This function will be called in main.c, and holds the code for the entire operation*/
 void mainOperation(void){
-    /* writeEEPROM(address, data);               Loop through and store data from the inputs, date and time
-     * configTimer(1);                            Start the timer
+    /* Initialize UART. */
+    UART_Init(9600);
+    
+    /* writeEEPROM(address, data);                Loop through and store data from the inputs, date and time
+     * tick();                                    Start the timer
      * 
      * 
      * First initialize arm to (0,0), or drawer 1:
@@ -82,8 +131,8 @@ void mainOperation(void){
      * 
      * 
      * Continue this loop until the drawers are properly filled:
-     * configTimer(0);                            Stop the timer
-     * writeEEPROM(address, data);               Store duration and remaining pieces in EEPROM
+     * tock()       ;                             Stop the timer
+     * writeEEPROM(address, data);                Store duration and remaining pieces in EEPROM
      * trapDoor(type, direction);                 Release all pieces to the reservoirs
      */
 }

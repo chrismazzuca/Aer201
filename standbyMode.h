@@ -73,6 +73,9 @@ void putch(char data);
 void lcdNibble(char data);
 void lcdInst(char data);
 void RTC_setTime(void);
+unsigned int getRound(unsigned int code);
+unsigned int getFlat(unsigned int code);
+unsigned int getLong(unsigned int code);
 unsigned int check_food(unsigned int sum, unsigned int foodInput[4]);
 unsigned int verifyKeypress(unsigned char logNumber, unsigned int keypress);
 unsigned int displayLogs(unsigned int logNumber);
@@ -82,7 +85,7 @@ unsigned int food_press(unsigned int dietSum, unsigned int drawer);
 unsigned int diet_press(unsigned int drawer);
 unsigned int decode_drawer(unsigned int drawer);
 unsigned int which_drawer(void);
-void standbyMode(void);
+unsigned int standbyMode(void);
 
 #endif	/* STANDBY_MODE_H */
 

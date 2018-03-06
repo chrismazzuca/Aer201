@@ -13,7 +13,6 @@
 
 const char input[] = "123R456F789L*0#D";
 const char keys[] = "123A456B789C*0#D";
-unsigned int drawerInformation[8] = {0,0,0,0,0,0,0,0};
 
 void lcdInst(char data){
     /* Sends a command to a display control register.
@@ -89,183 +88,716 @@ void putch(char data){
 
 
 unsigned int check_food(unsigned int sum, unsigned int foodInput[4]){
-    
     unsigned int returnValue = 0; /*Used to return if input is valid or not*/
     
     switch(sum){
         /*Diet R*/
         case 3:
-            if (foodInput[0] == 1 || foodInput[0] == 2){
+            if (foodInput[0] == 1){
                 returnValue = 1;
+            }
+            else if (foodInput[0] == 2){
+                returnValue = 2;
             }
             break;
             
         /*Diet F*/
         case 7:
-            if (foodInput[0] == 1 || foodInput[0] == 2){
-                returnValue = 2;
+            if (foodInput[0] == 1){
+                returnValue = 3;
+            }
+            else if (foodInput[0] == 2){
+                returnValue = 4;
             }
             break;
             
         /*Diet L*/
         case 12:
-            if (foodInput[0] == 1 || foodInput[0] == 2 || foodInput[0] == 3){
-                returnValue = 3;
+            if (foodInput[0] == 1){
+                returnValue = 5;
+            }
+            else if (foodInput[0] == 2){
+                returnValue = 6;
+            }
+            else if (foodInput[0] == 3){
+                returnValue = 7;
             }
             break;
             
         /*Diet RF*/
         case 10:
-            if (foodInput[0] != 3 && foodInput[1] != 3 && foodInput[0] != 0 && foodInput[1] != 0){
-                returnValue = 4;
+            if (foodInput[0] == 1 && foodInput[1] == 1){
+                returnValue = 8;
+            }
+            else if (foodInput[0] == 1 && foodInput[1] == 2){
+                returnValue = 9;
+            }
+            else if (foodInput[0] == 2 && foodInput[1] == 1){
+                returnValue = 10;
+            }
+            else if (foodInput[0] == 2 && foodInput[1] == 2){
+                returnValue = 11;
             }
             break;
             
         /*Diet RL*/
         case 15:
-            if (foodInput[1] == 3){
-                if (foodInput[0] == 1){
-                    returnValue = 5;
-                }
+            if (foodInput[0] == 1 && foodInput[1] == 1){
+                returnValue = 12;
             }
-            else if (foodInput[0] != 3 && foodInput[0] != 0){
-                returnValue = 6;
+            else if (foodInput[0] == 1 && foodInput[1] == 2){
+                returnValue = 13;
+            }
+            else if (foodInput[0] == 1 && foodInput[1] == 3){
+                returnValue = 14;
+            }
+            else if (foodInput[0] == 2 && foodInput[1] == 1){
+                returnValue = 15;
+            }
+            else if (foodInput[0] == 2 && foodInput[1] == 2){
+                returnValue = 16;
             }
             break;
             
         /*Diet FL*/
         case 19:
-            if (foodInput[1] == 3){
-                if (foodInput[0] == 1){
-                    returnValue = 7;
-                }
+            if (foodInput[0] == 1 && foodInput[1] == 1){
+                returnValue = 17;
             }
-            else if (foodInput[0] != 3 && foodInput[0] != 0){
-                returnValue = 8;
+            else if (foodInput[0] == 1 && foodInput[1] == 2){
+                returnValue = 18;
+            }
+            else if (foodInput[0] == 1 && foodInput[1] == 3){
+                returnValue = 19;
+            }
+            else if (foodInput[0] == 2 && foodInput[1] == 1){
+                returnValue = 20;
+            }
+            else if (foodInput[0] == 2 && foodInput[1] == 2){
+                returnValue = 21;
             }
             break;
         
         /*Diet RRF*/
         case 13:
-            if (foodInput[0] == 1 && foodInput[1] == 1){
-                if (foodInput[2] == 1 || foodInput[2] == 2){
-                    returnValue = 9;
-                }
+            if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 1){
+                returnValue = 22;
+            }
+            else if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 2){
+                returnValue = 23;
             }
             break;
             
         /*Diet RRL*/
         case 18:
-            if (foodInput[0] == 1 && foodInput[1] == 1){
-                if (foodInput[2] == 1 || foodInput[2] == 2){
-                    returnValue = 10;
-                }
+            if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 1){
+                returnValue = 24;
+            }
+            else if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 2){
+                returnValue = 25;
             }
             break;
             
         /*Diet RFF*/
         case 17:
-            if (foodInput[1] == 1 && foodInput[2] == 1){
-                if (foodInput[0] == 1 || foodInput[0] == 2){
-                    returnValue = 11;
-                }
+            if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 1){
+                returnValue = 26;
+            }
+            else if (foodInput[0] == 2 && foodInput[1] == 1 && foodInput[2] == 1){
+                returnValue = 27;
             }
             break;
             
         /*Diet RLL*/
         case 27:
             if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 1){
-                returnValue = 12;
-            }
-            else if (foodInput[0] == 2 && foodInput[1] == 1 && foodInput[2] == 1){
-                returnValue = 13;
-            }
-            else if (foodInput[0] == 1 && foodInput[1] == 2 && foodInput[2] == 1){
-                returnValue = 14;
+                returnValue = 28;
             }
             else if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 2){
-                returnValue = 15;
+                returnValue = 29;
+            }
+            else if (foodInput[0] == 1 && foodInput[1] == 2 && foodInput[2] == 1){
+                returnValue = 30;
+            }
+            else if (foodInput[0] == 2 && foodInput[1] == 1 && foodInput[2] == 1){
+                returnValue = 31;
             }
             break;
             
         /*Diet RFL*/
         case 22:
             if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 1){
-                returnValue = 16;
-            }
-            else if (foodInput[0] == 2 && foodInput[1] == 1 && foodInput[2] == 1){
-                returnValue = 17;
-            }
-            else if (foodInput[0] == 1 && foodInput[1] == 2 && foodInput[2] == 1){
-                returnValue = 18;
+                returnValue = 32;
             }
             else if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 2){
-                returnValue = 19;
+                returnValue = 33;
+            }
+            else if (foodInput[0] == 1 && foodInput[1] == 2 && foodInput[2] == 1){
+                returnValue = 34;
+            }
+            else if (foodInput[0] == 2 && foodInput[1] == 1 && foodInput[2] == 1){
+                returnValue = 35;
             }
             break;
             
         /*Diet FFL*/
         case 26:
-            if (foodInput[0] == 1 && foodInput[1] == 1){
-                if (foodInput[2] == 1 || foodInput[2] == 2){
-                    returnValue = 20;
-                }
+            if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 1){
+                returnValue = 36;
+            }
+            else if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 2){
+                returnValue = 37;
             }
             break;
             
         /*Diet FLL*/
         case 31:
             if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 1){
-                returnValue = 21;
-            }
-            else if (foodInput[0] == 2 && foodInput[1] == 1 && foodInput[2] == 1){
-                returnValue = 22;
-            }
-            else if (foodInput[0] == 1 && foodInput[1] == 2 && foodInput[2] == 1){
-                returnValue = 23;
+                returnValue = 38;
             }
             else if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 2){
-                returnValue = 24;
+                returnValue = 39;
+            }
+            else if (foodInput[0] == 1 && foodInput[1] == 2 && foodInput[2] == 1){
+                returnValue = 40;
+            }
+            else if (foodInput[0] == 2 && foodInput[1] == 1 && foodInput[2] == 1){
+                returnValue = 41;
             }
             break;
             
         /*Diet RRFL*/
         case 25:
             if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 1 && foodInput[3] == 1){
-                returnValue = 25;
+                returnValue = 42;
             }
             break;
             
         /*Diet RFFL*/
         case 29:
             if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 1 && foodInput[3] == 1){
-                returnValue = 26;
+                returnValue = 43;
             }
             break;
             
         /*Diet RFLL*/
         case 34:
             if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 1 && foodInput[3] == 1){
-                returnValue = 27;
+                returnValue = 44;
             }
             break;
             
         /*Diet RLLL*/
         case 39:
             if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 1 && foodInput[3] == 1){
-                returnValue = 28;
+                returnValue = 45;
             }
             break;
             
         /*Diet FLLL*/
         case 43:
             if (foodInput[0] == 1 && foodInput[1] == 1 && foodInput[2] == 1 && foodInput[3] == 1){
-                returnValue = 29;
+                returnValue = 46;
             }
             break;
             
         /* # Button pressed (no food for this drawer)*/
         default:
+            break;
+    }
+    return returnValue;
+}
+
+
+unsigned int getRound(unsigned int code){
+    unsigned int returnValue = 0;
+    switch(code){
+        /*Diet R1*/
+        case 1:
+            returnValue = 1;
+            break;
+            
+        /*Diet R2*/
+        case 2:
+            returnValue = 2;
+            break;
+            
+        /*Diet RF11*/
+        case 8:
+            returnValue = 1;
+            break;
+            
+        /*Diet RF12*/
+        case 9:
+            returnValue = 1;
+            break;
+            
+        /*Diet RF21*/
+        case 10:
+            returnValue = 2;
+            break;
+            
+        /*Diet RF22*/
+        case 11:
+            returnValue = 2;
+            break;
+            
+        /*Diet RL11*/
+        case 12:
+            returnValue = 1;
+            break;
+            
+        /*Diet RL12*/
+        case 13:
+            returnValue = 1;
+            break;
+            
+        /*Diet RL13*/
+        case 14:
+            returnValue = 1;
+            break;
+            
+        /*Diet RL21*/
+        case 15:
+            returnValue = 2;
+            break;
+            
+        /*Diet RL22*/
+        case 16:
+            returnValue = 2;
+            break;
+            
+        /*Diet RRF111*/
+        case 22:
+            returnValue = 2;
+            break;
+            
+        /*Diet RRF112*/
+        case 23:
+            returnValue = 2;
+            break;
+            
+        /*Diet RRL111*/
+        case 24:
+            returnValue = 2;
+            break;
+            
+        /*Diet RRL112*/
+        case 25:
+            returnValue = 2;
+            break;
+            
+        /*Diet RFF111*/
+        case 26:
+            returnValue = 1;
+            break;
+            
+        /*Diet RFF211*/
+        case 27:
+            returnValue = 2;
+            break;
+            
+        /*Diet RLL111*/
+        case 28:
+            returnValue = 1;
+            break;
+            
+        /*Diet RLL112*/
+        case 29:
+            returnValue = 1;
+            break;
+            
+        /*Diet RLL121*/
+        case 30:
+            returnValue = 1;
+            break;
+            
+        /*Diet RLL211*/
+        case 31:
+            returnValue = 2;
+            break;
+            
+        /*Diet RFL111*/
+        case 32:
+            returnValue = 1;
+            break;
+            
+        /*Diet RFL112*/
+        case 33:
+            returnValue = 1;
+            break;
+            
+        /*Diet RFL121*/
+        case 34:
+            returnValue = 1;
+            break;
+            
+        /*Diet RFL211*/
+        case 35:
+            returnValue = 2;
+            break;
+            
+        /*Diet RRFL1111*/
+        case 42:
+            returnValue = 2;
+            break;
+        
+        /*Diet RFFL1111*/
+        case 43:
+            returnValue = 1;
+            break;
+            
+        /*Diet RFLL1111*/
+        case 44:
+            returnValue = 1;
+            break;
+            
+        /*Diet RLLL1111*/
+        case 45:
+            returnValue = 1;
+            break;
+            
+        default:
+            returnValue = 0;
+            break;
+    }
+    return returnValue;
+}
+
+
+unsigned int getFlat(unsigned int code){
+    unsigned int returnValue = 0;
+    
+    switch(code){
+        /*Diet F1*/
+        case 3:
+            returnValue = 1;
+            break;
+            
+        /*Diet F2*/
+        case 4:
+            returnValue = 2;
+            break;
+            
+        /*Diet RF11*/
+        case 8:
+            returnValue = 1;
+            break;
+            
+        /*Diet RF12*/
+        case 9:
+            returnValue = 2;
+            break;
+            
+        /*Diet RF21*/
+        case 10:
+            returnValue = 1;
+            break;
+            
+        /*Diet RF22*/
+        case 11:
+            returnValue = 2;
+            break;
+            
+        /*Diet FL11*/
+        case 17:
+            returnValue = 1;
+            break;
+            
+        /*Diet FL12*/
+        case 18:
+            returnValue = 1;
+            break;
+            
+        /*Diet FL13*/
+        case 19:
+            returnValue = 1;
+            break;
+            
+        /*Diet FL21*/
+        case 20:
+            returnValue = 2;
+            break;
+            
+        /*Diet FL22*/
+        case 21:
+            returnValue = 2;
+            break;
+            
+        /*Diet RRF111*/
+        case 22:
+            returnValue = 1;
+            break;
+            
+        /*Diet RRF112*/
+        case 23:
+            returnValue = 2;
+            break;
+            
+        /*Diet RFF111*/
+        case 26:
+            returnValue = 2;
+            break;
+            
+        /*Diet RFF211*/
+        case 27:
+            returnValue = 2;
+            break;
+
+        /*Diet RFL111*/
+        case 32:
+            returnValue = 1;
+            break;
+            
+        /*Diet RFL112*/
+        case 33:
+            returnValue = 1;
+            break;
+            
+        /*Diet RFL121*/
+        case 34:
+            returnValue = 2;
+            break;
+            
+        /*Diet RFL211*/
+        case 35:
+            returnValue = 1;
+            break;
+            
+        /*Diet FFL111*/
+        case 36:
+            returnValue = 2;
+            break;
+            
+        /*Diet FFL112*/
+        case 37:
+            returnValue = 2;
+            break;
+            
+        /*Diet FLL111*/
+        case 38:
+            returnValue = 1;
+            break;
+            
+        /*Diet FLL112*/
+        case 39:
+            returnValue = 1;
+            break;
+            
+        /*Diet FLL121*/
+        case 40:
+            returnValue = 1;
+            break;
+            
+        /*Diet FLL211*/
+        case 41:
+            returnValue = 2;
+            break;
+            
+        /*Diet RRFL1111*/
+        case 42:
+            returnValue = 1;
+            break;
+        
+        /*Diet RFFL1111*/
+        case 43:
+            returnValue = 2;
+            break;
+            
+        /*Diet RFLL1111*/
+        case 44:
+            returnValue = 1;
+            break;
+
+        /*Diet FLLL1111*/
+        case 46:
+            returnValue = 1;
+            break;
+            
+        default:
+            returnValue = 0;
+            break;
+    }
+    return returnValue;
+}
+
+
+unsigned int getLong(unsigned int code){
+    unsigned int returnValue = 0;
+    
+    switch(code){
+        /*Diet L1*/
+        case 5:
+            returnValue = 1;
+            break;
+            
+        /*Diet L2*/
+        case 6:
+            returnValue = 2;
+            break;
+            
+        /*Diet L3*/
+        case 7:
+            returnValue = 3;
+            break;
+            
+        /*Diet RL11*/
+        case 12:
+            returnValue = 1;
+            break;
+            
+        /*Diet RL12*/
+        case 13:
+            returnValue = 2;
+            break;
+            
+        /*Diet RL13*/
+        case 14:
+            returnValue = 3;
+            break;
+            
+        /*Diet RL21*/
+        case 15:
+            returnValue = 1;
+            break;
+            
+        /*Diet RL22*/
+        case 16:
+            returnValue = 2;
+            break;
+            
+        /*Diet FL11*/
+        case 17:
+            returnValue = 1;
+            break;
+            
+        /*Diet FL12*/
+        case 18:
+            returnValue = 2;
+            break;
+            
+        /*Diet FL13*/
+        case 19:
+            returnValue = 3;
+            break;
+            
+        /*Diet FL21*/
+        case 20:
+            returnValue = 1;
+            break;
+            
+        /*Diet FL22*/
+        case 21:
+            returnValue = 2;
+            break;
+            
+        /*Diet RRL111*/
+        case 24:
+            returnValue = 1;
+            break;
+            
+        /*Diet RRL112*/
+        case 25:
+            returnValue = 2;
+            break;
+            
+        /*Diet RLL111*/
+        case 28:
+            returnValue = 2;
+            break;
+            
+        /*Diet RLL112*/
+        case 29:
+            returnValue = 3;
+            break;
+            
+        /*Diet RLL121*/
+        case 30:
+            returnValue = 3;
+            break;
+            
+        /*Diet RLL211*/
+        case 31:
+            returnValue = 2;
+            break;
+            
+        /*Diet RFL111*/
+        case 32:
+            returnValue = 1;
+            break;
+            
+        /*Diet RFL112*/
+        case 33:
+            returnValue = 2;
+            break;
+            
+        /*Diet RFL121*/
+        case 34:
+            returnValue = 1;
+            break;
+            
+        /*Diet RFL211*/
+        case 35:
+            returnValue = 1;
+            break;
+            
+        /*Diet FFL111*/
+        case 36:
+            returnValue = 1;
+            break;
+            
+        /*Diet FFL112*/
+        case 37:
+            returnValue = 2;
+            break;
+            
+        /*Diet FLL111*/
+        case 38:
+            returnValue = 2;
+            break;
+            
+        /*Diet FLL112*/
+        case 39:
+            returnValue = 3;
+            break;
+            
+        /*Diet FLL121*/
+        case 40:
+            returnValue = 3;
+            break;
+            
+        /*Diet FLL211*/
+        case 41:
+            returnValue = 2;
+            break;
+            
+        /*Diet RRFL1111*/
+        case 42:
+            returnValue = 1;
+            break;
+        
+        /*Diet RFFL1111*/
+        case 43:
+            returnValue = 1;
+            break;
+            
+        /*Diet RFLL1111*/
+        case 44:
+            returnValue = 2;
+            break;
+            
+        /*Diet RLLL1111*/
+        case 45:
+            returnValue = 3;
+            break;
+            
+        /*Diet FLLL1111*/
+        case 46:
+            returnValue = 3;
+            break;
+            
+        default:
+            returnValue = 0;
             break;
     }
     return returnValue;
@@ -948,8 +1480,25 @@ unsigned int which_drawer(void){
     }
 }
 
-void standbyMode(void){
-    //setArduinoToStandby();
+unsigned int standbyMode(void){
+    unsigned int drawerInformation[8] = {0,0,0,0,0,0,0,0};
+    unsigned int roundPieces[8] = {0,0,0,0,0,0,0,0};
+    unsigned int flatPieces[8] = {0,0,0,0,0,0,0,0};
+    unsigned int longPieces[8] = {0,0,0,0,0,0,0,0};
+    unsigned int dietType[8] = {0,0,0,0,0,0,0,0};
+    unsigned int drawerCount = 0;      /*Keeps track of the number of drawers inputted*/
+    unsigned int i = 0;                /*Random variable used in the for loop*/
+    unsigned int validDrawer = 0;      /*Checks if the drawer is valid*/
+    unsigned int zero = 0;             /*Checks if no drawer number was pressed*/
+    unsigned int firstIteration = 0;   /*Checks to see if it is the first drawer*/
+    unsigned int drawer = 0;           /*Used to determine which drawer is requested*/
+    unsigned int diet = 0;             /*Used to keep track of diet*/
+    unsigned int food = 0;             /*Used to keep track of the food type*/
+    unsigned char logNumber = 0;
+    unsigned int n = 0;
+    unsigned int round = 0;
+    unsigned int flat = 0;
+    unsigned int lng = 0;
     
     unsigned char time[7];             /*Create a byte array to hold time read from RTC*/
     unsigned int x = 0;
@@ -1077,14 +1626,6 @@ void standbyMode(void){
     printf("go back.");
     __delay_ms(3000);*/
     
-    unsigned int drawerCount = 0;      /*Keeps track of the number of drawers inputted*/
-    unsigned int i = 0;                /*Random variable used in the for loop*/
-    unsigned int validDrawer = 0;      /*Checks if the drawer is valid*/
-    unsigned int zero = 0;             /*Checks if no drawer number was pressed*/
-    unsigned int firstIteration = 0;   /*Checks to see if it is the first drawer*/
-    unsigned int drawer = 0;           /*Used to determine which drawer is requested*/
-    unsigned int diet = 0;             /*Used to keep track of diet*/
-    unsigned int food = 0;             /*Used to keep track of the food type*/
     
     while (1){
         if (firstIteration == 1){
@@ -1163,6 +1704,13 @@ void standbyMode(void){
                         goto FOOD_BACK1;
                     }
                     drawerInformation[drawerCount] = drawer;
+                    dietType[drawerCount] = diet;
+                    round = getRound(food);
+                    flat = getFlat(food);
+                    lng = getLong(food);
+                    roundPieces[drawerCount] = round;
+                    flatPieces[drawerCount] = flat;
+                    longPieces[drawerCount] = lng;
                     drawerCount += 1;
                 }
             }
@@ -1228,9 +1776,40 @@ void standbyMode(void){
                         goto FOOD_BACK2;
                     }
                     drawerInformation[drawerCount] = drawer;
+                    dietType[drawerCount] = diet;
+                    round = getRound(food);
+                    flat = getFlat(food);
+                    lng = getLong(food);
+                    roundPieces[drawerCount] = round;
+                    flatPieces[drawerCount] = flat;
+                    longPieces[drawerCount] = lng;
                     drawerCount += 1;
                 }
             }
+    }
+    
+    if (drawerCount == 0){
+        return 0;
+    }
+    else{
+        logNumber = readEEPROM(250);
+        if (logNumber == 4){
+            shiftEEPROM();
+        }
+        for (i=0; i<8; i++){
+            if (logNumber == 0 || logNumber == 4){
+                n = 5*i;
+            }
+            else{
+                n = (logNumber)*51 + 5*i;
+            }
+            writeEEPROM(11+n, drawerInformation[i]);
+            writeEEPROM(12+n, dietType[i]);
+            writeEEPROM(13+n, roundPieces[i]);
+            writeEEPROM(14+n, flatPieces[i]);
+            writeEEPROM(15+n, longPieces[i]);
+        }
+        return 1;
     }
 }
     else if (keypress == 14){
@@ -1256,6 +1835,7 @@ void standbyMode(void){
                 break;
             }
         }
+        return 0;
     }
     
     else {
@@ -1265,5 +1845,6 @@ void standbyMode(void){
         __lcd_newline();
         printf("Rebooting.");
         __delay_ms(2000);
+        return 0;
     }
 }

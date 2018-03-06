@@ -3843,6 +3843,9 @@ void putch(char data);
 void lcdNibble(char data);
 void lcdInst(char data);
 void RTC_setTime(void);
+unsigned int getRound(unsigned int code);
+unsigned int getFlat(unsigned int code);
+unsigned int getLong(unsigned int code);
 unsigned int check_food(unsigned int sum, unsigned int foodInput[4]);
 unsigned int verifyKeypress(unsigned char logNumber, unsigned int keypress);
 unsigned int displayLogs(unsigned int logNumber);
@@ -3852,19 +3855,31 @@ unsigned int food_press(unsigned int dietSum, unsigned int drawer);
 unsigned int diet_press(unsigned int drawer);
 unsigned int decode_drawer(unsigned int drawer);
 unsigned int which_drawer(void);
-void standbyMode(void);
+unsigned int standbyMode(void);
 
-# 13 "main.c"
+# 19 "operationMode.h"
+unsigned int verticalStepper(unsigned int rotations, unsigned int direction);
+unsigned int horizontalStepper(unsigned int rotations, unsigned int direction);
+unsigned int detectTape(void);
+unsigned int configDrawer(unsigned int direction);
+unsigned int distributeRound(unsigned int count, unsigned int pieceType);
+unsigned int distributeFlat(unsigned int count, unsigned int pieceType);
+unsigned int distributeLong(unsigned int count, unsigned int pieceType);
+unsigned int checkCount(unsigned int pieceType);
+unsigned int trapDoor(unsigned int type, unsigned int direction);
+void mainOperation(void);
+
+# 14 "main.c"
 void main(void) {
 
-# 19
+# 20
 LATA = 0x00;
 LATB = 0x00;
 LATC = 0x00;
 LATD = 0x00;
 LATE = 0x00;
 
-# 27
+# 28
 TRISA = 0xFF;
 TRISB = 0xFF;
 TRISC = 0x00;
@@ -3877,8 +3892,17 @@ ADCON1 = 0b00001111;
 
 
 initLCD();
+lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
+printf("Standby");
 
-# 52
-standbyMode();
+unsigned int operationMode = 0;
+
+# 89
+operationMode = standbyMode();
+
+if (operationMode == 1){
+mainOperation();
+}
 return;
 }

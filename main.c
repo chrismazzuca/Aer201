@@ -9,6 +9,7 @@
 #include <xc.h>
 #include "configBits.h"
 #include "standbyMode.h"
+#include "operationMode.h"
 
 void main(void) {
     
@@ -36,8 +37,12 @@ void main(void) {
     // </editor-fold>
     
     initLCD();
+    __lcd_clear();
+    __lcd_display_control(1, 0, 0);
+    printf("Standby");
     
-
+    unsigned int operationMode = 0;
+    
     /*TRISCbits.TRISC0 = 0;
     LATCbits.LATC0 = 0;
     
@@ -48,7 +53,43 @@ void main(void) {
         __delay_ms(2000);
     }*/
     
+    /*TRISCbits.TRISC5 = 0;
+    TRISCbits.TRISC6 = 0;
+    TRISCbits.TRISC7 = 0;
+    TRISCbits.TRISC0 = 0;
+    LATCbits.LATC5 = 0;
+    LATCbits.LATC6 = 0;
+    LATCbits.LATC7 = 0;
+    LATCbits.LATC0 = 0;
+    
+    while(1){
+        LATCbits.LATC5 = 1;
+        LATCbits.LATC6 = 0;
+        LATCbits.LATC7 = 0;
+        LATCbits.LATC0 = 0;
+        __delay_ms(2);
+        LATCbits.LATC5 = 0;
+        LATCbits.LATC6 = 1;
+        LATCbits.LATC7 = 0;
+        LATCbits.LATC0 = 0;
+        __delay_ms(2);
+        LATCbits.LATC5 = 0;
+        LATCbits.LATC6 = 0;
+        LATCbits.LATC7 = 1;
+        LATCbits.LATC0 = 0;
+        __delay_ms(2);
+        LATCbits.LATC5 = 0;
+        LATCbits.LATC6 = 0;
+        LATCbits.LATC7 = 0;
+        LATCbits.LATC0 = 1;
+        __delay_ms(2);
+    }*/
+    
     /* Standby Mode */
-    standbyMode();
+    operationMode = standbyMode();
+    
+    if (operationMode == 1){
+        mainOperation();
+    }
     return;
 }

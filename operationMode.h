@@ -16,14 +16,13 @@
 #include "configBits.h" 
 
 /****************************** Public Interfaces *****************************/
-void updateEEPROM(unsigned int data);
-unsigned int readEEPROM(void);
-void configTimer(unsigned int configure);
-void verticalStepper(unsigned int rotations, unsigned int direction);
+unsigned int verticalStepper(unsigned int rotations, unsigned int direction);
 unsigned int horizontalStepper(unsigned int rotations, unsigned int direction);
 unsigned int detectTape(void);
 unsigned int configDrawer(unsigned int direction);
-unsigned int distributePieces(unsigned int count, unsigned int pieceType);
+unsigned int distributeRound(unsigned int count, unsigned int pieceType);
+unsigned int distributeFlat(unsigned int count, unsigned int pieceType);
+unsigned int distributeLong(unsigned int count, unsigned int pieceType);
 unsigned int checkCount(unsigned int pieceType);
 unsigned int trapDoor(unsigned int type, unsigned int direction);
 void mainOperation(void);
