@@ -34,7 +34,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p i __delay ]
 "195 /Applications/microchip/xc8/v1.45/include/stdio.h
 [v _printf `(i ~T0 @X0 0 ev`*Cuc ]
-"89 standbyMode.h
+"15 EEPROMstorage.h
+[v _readEEPROM `(uc ~T0 @X0 0 ef1`uc ]
+"16
+[v _initEEPROM `(v ~T0 @X0 0 ef ]
+"90 standbyMode.h
 [v _standbyMode `(ui ~T0 @X0 0 ef ]
 "28 operationMode.h
 [v _mainOperation `(v ~T0 @X0 0 ef ]
@@ -2866,15 +2870,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;standbyMode.h: 78: unsigned int getLong(unsigned int code);
 [; ;standbyMode.h: 79: unsigned int check_food(unsigned int sum, unsigned int foodInput[4]);
 [; ;standbyMode.h: 80: unsigned int verifyKeypress(unsigned char logNumber, unsigned int keypress);
-[; ;standbyMode.h: 81: unsigned int displayLogs(unsigned int logNumber);
-[; ;standbyMode.h: 82: unsigned int viewLogs(void);
-[; ;standbyMode.h: 83: unsigned int get_digits(unsigned int sum);
-[; ;standbyMode.h: 84: unsigned int food_press(unsigned int dietSum, unsigned int drawer);
-[; ;standbyMode.h: 85: unsigned int diet_press(unsigned int drawer);
-[; ;standbyMode.h: 86: unsigned int decode_diet(unsigned int dietType);
-[; ;standbyMode.h: 87: unsigned int decode_drawer(unsigned int drawer);
-[; ;standbyMode.h: 88: unsigned int which_drawer(void);
-[; ;standbyMode.h: 89: unsigned int standbyMode(void);
+[; ;standbyMode.h: 81: unsigned int printFoodInput(unsigned int food);
+[; ;standbyMode.h: 82: unsigned int displayLogs(unsigned int logNumber);
+[; ;standbyMode.h: 83: unsigned int viewLogs(void);
+[; ;standbyMode.h: 84: unsigned int get_digits(unsigned int sum);
+[; ;standbyMode.h: 85: unsigned int food_press(unsigned int dietSum, unsigned int drawer);
+[; ;standbyMode.h: 86: unsigned int diet_press(unsigned int drawer);
+[; ;standbyMode.h: 87: unsigned int decode_diet(unsigned int dietType);
+[; ;standbyMode.h: 88: unsigned int decode_drawer(unsigned int drawer);
+[; ;standbyMode.h: 89: unsigned int which_drawer(void);
+[; ;standbyMode.h: 90: unsigned int standbyMode(void);
 [; ;operationMode.h: 19: unsigned int verticalStepper(unsigned int rotations, unsigned int direction);
 [; ;operationMode.h: 20: unsigned int horizontalStepper(unsigned int rotations, unsigned int direction);
 [; ;operationMode.h: 21: unsigned int detectTape(void);
@@ -2885,87 +2890,128 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;operationMode.h: 26: unsigned int checkCount(unsigned int pieceType);
 [; ;operationMode.h: 27: unsigned int trapDoor(unsigned int type, unsigned int direction);
 [; ;operationMode.h: 28: void mainOperation(void);
+[; ;EEPROMstorage.h: 14: void writeEEPROM(unsigned char address, unsigned char data);
+[; ;EEPROMstorage.h: 15: unsigned char readEEPROM(unsigned char address);
+[; ;EEPROMstorage.h: 16: void initEEPROM(void);
+[; ;EEPROMstorage.h: 17: void shiftEEPROM(void);
+"15 main.c
+[v _firstIteration `ui ~T0 @X0 1 e ]
+[i _firstIteration
+-> -> 0 `i `ui
+]
+[; ;main.c: 15: unsigned int firstIteration = 0;
 [v $root$_main `(v ~T0 @X0 0 e ]
-"14 main.c
+"17
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 14: void main(void) {
+[; ;main.c: 17: void main(void) {
 [e :U _main ]
 [f ]
-[; ;main.c: 20: LATA = 0x00;
-"20
-[e = _LATA -> -> 0 `i `uc ]
-[; ;main.c: 21: LATB = 0x00;
-"21
-[e = _LATB -> -> 0 `i `uc ]
-[; ;main.c: 22: LATC = 0x00;
-"22
-[e = _LATC -> -> 0 `i `uc ]
-[; ;main.c: 23: LATD = 0x00;
+[; ;main.c: 23: LATA = 0x00;
 "23
-[e = _LATD -> -> 0 `i `uc ]
-[; ;main.c: 24: LATE = 0x00;
+[e = _LATA -> -> 0 `i `uc ]
+[; ;main.c: 24: LATB = 0x00;
 "24
+[e = _LATB -> -> 0 `i `uc ]
+[; ;main.c: 25: LATC = 0x00;
+"25
+[e = _LATC -> -> 0 `i `uc ]
+[; ;main.c: 26: LATD = 0x00;
+"26
+[e = _LATD -> -> 0 `i `uc ]
+[; ;main.c: 27: LATE = 0x00;
+"27
 [e = _LATE -> -> 0 `i `uc ]
-[; ;main.c: 28: TRISA = 0xFF;
-"28
-[e = _TRISA -> -> 255 `i `uc ]
-[; ;main.c: 29: TRISB = 0xFF;
-"29
-[e = _TRISB -> -> 255 `i `uc ]
-[; ;main.c: 30: TRISC = 0x00;
-"30
-[e = _TRISC -> -> 0 `i `uc ]
-[; ;main.c: 31: TRISD = 0x00;
+[; ;main.c: 31: TRISA = 0xFF;
 "31
-[e = _TRISD -> -> 0 `i `uc ]
-[; ;main.c: 32: TRISE = 0x00;
+[e = _TRISA -> -> 255 `i `uc ]
+[; ;main.c: 32: TRISB = 0xFF;
 "32
-[e = _TRISE -> -> 0 `i `uc ]
-[; ;main.c: 35: ADCON0 = 0x00;
+[e = _TRISB -> -> 255 `i `uc ]
+[; ;main.c: 33: TRISC = 0x00;
+"33
+[e = _TRISC -> -> 0 `i `uc ]
+[; ;main.c: 34: TRISD = 0x00;
+"34
+[e = _TRISD -> -> 0 `i `uc ]
+[; ;main.c: 35: TRISE = 0x00;
 "35
+[e = _TRISE -> -> 0 `i `uc ]
+[; ;main.c: 38: ADCON0 = 0x00;
+"38
 [e = _ADCON0 -> -> 0 `i `uc ]
-[; ;main.c: 36: ADCON1 = 0b00001111;
-"36
-[e = _ADCON1 -> -> 15 `i `uc ]
-[; ;main.c: 39: initLCD();
+[; ;main.c: 39: ADCON1 = 0b00001111;
 "39
+[e = _ADCON1 -> -> 15 `i `uc ]
+[; ;main.c: 42: initLCD();
+"42
 [e ( _initLCD ..  ]
-[; ;main.c: 40: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"40
+[; ;main.c: 43: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"43
 [e ( _lcdInst (1 -> -> 1 `i `uc ]
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;main.c: 41: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
-"41
-[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;main.c: 42: printf("Standby");
-"42
-[e ( _printf :s 1C ]
+[; ;main.c: 44: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
 "44
+[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
+[; ;main.c: 45: printf("Standby");
+"45
+[e ( _printf :s 1C ]
+"47
 [v _operationMode `ui ~T0 @X0 1 a ]
-[; ;main.c: 44: unsigned int operationMode = 0;
+[; ;main.c: 47: unsigned int operationMode = 0;
 [e = _operationMode -> -> 0 `i `ui ]
-[; ;main.c: 89: operationMode = standbyMode();
-"89
-[e = _operationMode ( _standbyMode ..  ]
-[; ;main.c: 91: if (operationMode == 1){
-"91
-[e $ ! == _operationMode -> -> 1 `i `ui 267  ]
+"59
+[v _checkEEPROM `ui ~T0 @X0 1 a ]
+[; ;main.c: 59: unsigned int checkEEPROM = 0;
+[e = _checkEEPROM -> -> 0 `i `ui ]
+[; ;main.c: 61: checkEEPROM = readEEPROM(251);
+"61
+[e = _checkEEPROM -> ( _readEEPROM (1 -> -> 251 `i `uc `ui ]
+[; ;main.c: 63: if (checkEEPROM == 255){
+"63
+[e $ ! == _checkEEPROM -> -> 255 `i `ui 267  ]
 {
-[; ;main.c: 92: mainOperation();
-"92
-[e ( _mainOperation ..  ]
-"93
+[; ;main.c: 64: initEEPROM();
+"64
+[e ( _initEEPROM ..  ]
+[; ;main.c: 65: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"65
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;main.c: 66: printf("Clearing EEPROM");
+"66
+[e ( _printf :s 2C ]
+[; ;main.c: 67: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"67
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+"68
 }
 [e :U 267 ]
-[; ;main.c: 93: }
-[; ;main.c: 94: return;
-"94
+[; ;main.c: 68: }
+[; ;main.c: 71: operationMode = standbyMode();
+"71
+[e = _operationMode ( _standbyMode ..  ]
+[; ;main.c: 73: if (operationMode == 1){
+"73
+[e $ ! == _operationMode -> -> 1 `i `ui 268  ]
+{
+[; ;main.c: 74: mainOperation();
+"74
+[e ( _mainOperation ..  ]
+"75
+}
+[e :U 268 ]
+[; ;main.c: 75: }
+[; ;main.c: 77: firstIteration += 1;
+"77
+[e =+ _firstIteration -> -> 1 `i `ui ]
+[; ;main.c: 78: return;
+"78
 [e $UE 266  ]
-[; ;main.c: 95: }
-"95
+[; ;main.c: 79: }
+"79
 [e :UE 266 ]
 }
 [p f _printf 8388608 ]
 [a 1C 83 116 97 110 100 98 121 0 ]
-
+[a 2C 67 108 101 97 114 105 110 103 32 69 69 80 82 79 77 0 ]

@@ -50,7 +50,7 @@ UART_STATE_READY 1
 [v _readEEPROM readEEPROM `(uc  1 e 1 0 ]
 "40
 [v _initEEPROM initEEPROM `(v  1 e 1 0 ]
-"48
+"68
 [v _shiftEEPROM shiftEEPROM `(v  1 e 1 0 ]
 "14 /Users/chrismazzuca/Desktop/Main Robot/I2C.c
 [v _I2C_Master_Init I2C_Master_Init `(v  1 e 1 0 ]
@@ -64,45 +64,47 @@ UART_STATE_READY 1
 [v _I2C_Master_Write I2C_Master_Write `(v  1 e 1 0 ]
 "120
 [v _I2C_Master_Read I2C_Master_Read `(uc  1 e 1 0 ]
-"14 /Users/chrismazzuca/Desktop/Main Robot/main.c
+"17 /Users/chrismazzuca/Desktop/Main Robot/main.c
 [v _main main `(v  1 e 1 0 ]
 "214 /Users/chrismazzuca/Desktop/Main Robot/operationMode.c
 [v _mainOperation mainOperation `(v  1 e 1 0 ]
-"18 /Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+"19 /Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
 [v _lcdInst lcdInst `(v  1 e 1 0 ]
-"32
+"33
 [v _initLCD initLCD `(v  1 e 1 0 ]
-"53
+"54
 [v _lcdNibble lcdNibble `(v  1 e 1 0 ]
-"77
+"78
 [v _putch putch `(v  1 e 1 0 ]
-"91
+"92
 [v _check_food check_food `(ui  1 e 2 0 ]
-"313
+"314
 [v _getRound getRound `(ui  1 e 2 0 ]
-"469
+"470
 [v _getFlat getFlat `(ui  1 e 2 0 ]
-"626
+"627
 [v _getLong getLong `(ui  1 e 2 0 ]
-"809
+"810
 [v _verifyKeypress verifyKeypress `(ui  1 e 2 0 ]
-"823
+"824
 [v _viewLogs viewLogs `(ui  1 e 2 0 ]
 "910
+[v _printFoodInput printFoodInput `(ui  1 e 2 0 ]
+"985
 [v _displayLogs displayLogs `(ui  1 e 2 0 ]
-"1029
+"1101
 [v _get_digits get_digits `(ui  1 e 2 0 ]
-"1134
+"1206
 [v _food_press food_press `(ui  1 e 2 0 ]
-"1200
+"1272
 [v _diet_press diet_press `(ui  1 e 2 0 ]
-"1358
+"1430
 [v _decode_diet decode_diet `(ui  1 e 2 0 ]
-"1460
+"1532
 [v _decode_drawer decode_drawer `(ui  1 e 2 0 ]
-"1538
+"1610
 [v _which_drawer which_drawer `(ui  1 e 2 0 ]
-"1604
+"1676
 [v _standbyMode standbyMode `(ui  1 e 2 0 ]
 "19 /Users/chrismazzuca/Desktop/Main Robot/UART_PIC.c
 [v _uartTransmitBlocking uartTransmitBlocking `(v  1 e 1 0 ]
@@ -110,7 +112,7 @@ UART_STATE_READY 1
 [v _UART_Init UART_Init `(v  1 e 1 0 ]
 "187 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
 [v _PORTB PORTB `VEuc  1 e 1 @3969 ]
-[s S331 . 1 `uc 1 RB0 1 0 :1:0 
+[s S339 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -120,7 +122,7 @@ UART_STATE_READY 1
 `uc 1 RB7 1 0 :1:7 
 ]
 "228
-[s S340 . 1 `uc 1 INT0 1 0 :1:0 
+[s S348 . 1 `uc 1 INT0 1 0 :1:0 
 `uc 1 INT1 1 0 :1:1 
 `uc 1 INT2 1 0 :1:2 
 `uc 1 CCP2 1 0 :1:3 
@@ -129,7 +131,7 @@ UART_STATE_READY 1
 `uc 1 KBI2 1 0 :1:6 
 `uc 1 KBI3 1 0 :1:7 
 ]
-[s S349 . 1 `uc 1 AN12 1 0 :1:0 
+[s S357 . 1 `uc 1 AN12 1 0 :1:0 
 `uc 1 AN10 1 0 :1:1 
 `uc 1 AN8 1 0 :1:2 
 `uc 1 AN9 1 0 :1:3 
@@ -138,18 +140,18 @@ UART_STATE_READY 1
 `uc 1 PGC 1 0 :1:6 
 `uc 1 PGD 1 0 :1:7 
 ]
-[s S358 . 1 `uc 1 . 1 0 :3:0 
+[s S366 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CCP2_PA2 1 0 :1:3 
 ]
-[u S361 . 1 `S331 1 . 1 0 `S340 1 . 1 0 `S349 1 . 1 0 `S358 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES361  1 e 1 @3969 ]
+[u S369 . 1 `S339 1 . 1 0 `S348 1 . 1 0 `S357 1 . 1 0 `S366 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES369  1 e 1 @3969 ]
 "878
 [v _LATA LATA `VEuc  1 e 1 @3977 ]
 "990
 [v _LATB LATB `VEuc  1 e 1 @3978 ]
 "1102
 [v _LATC LATC `VEuc  1 e 1 @3979 ]
-[s S132 . 1 `uc 1 LATC0 1 0 :1:0 
+[s S144 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
 `uc 1 LATC3 1 0 :1:3 
@@ -159,7 +161,7 @@ UART_STATE_READY 1
 `uc 1 LATC7 1 0 :1:7 
 ]
 "1129
-[s S141 . 1 `uc 1 LC0 1 0 :1:0 
+[s S153 . 1 `uc 1 LC0 1 0 :1:0 
 `uc 1 LC1 1 0 :1:1 
 `uc 1 LC2 1 0 :1:2 
 `uc 1 LC3 1 0 :1:3 
@@ -168,11 +170,11 @@ UART_STATE_READY 1
 `uc 1 LC6 1 0 :1:6 
 `uc 1 LC7 1 0 :1:7 
 ]
-[u S150 . 1 `S132 1 . 1 0 `S141 1 . 1 0 ]
-[v _LATCbits LATCbits `VES150  1 e 1 @3979 ]
+[u S162 . 1 `S144 1 . 1 0 `S153 1 . 1 0 ]
+[v _LATCbits LATCbits `VES162  1 e 1 @3979 ]
 "1214
 [v _LATD LATD `VEuc  1 e 1 @3980 ]
-[s S228 . 1 `uc 1 LATD0 1 0 :1:0 
+[s S240 . 1 `uc 1 LATD0 1 0 :1:0 
 `uc 1 LATD1 1 0 :1:1 
 `uc 1 LATD2 1 0 :1:2 
 `uc 1 LATD3 1 0 :1:3 
@@ -182,7 +184,7 @@ UART_STATE_READY 1
 `uc 1 LATD7 1 0 :1:7 
 ]
 "1241
-[s S237 . 1 `uc 1 LD0 1 0 :1:0 
+[s S249 . 1 `uc 1 LD0 1 0 :1:0 
 `uc 1 LD1 1 0 :1:1 
 `uc 1 LD2 1 0 :1:2 
 `uc 1 LD3 1 0 :1:3 
@@ -191,8 +193,8 @@ UART_STATE_READY 1
 `uc 1 LD6 1 0 :1:6 
 `uc 1 LD7 1 0 :1:7 
 ]
-[u S246 . 1 `S228 1 . 1 0 `S237 1 . 1 0 ]
-[v _LATDbits LATDbits `VES246  1 e 1 @3980 ]
+[u S258 . 1 `S240 1 . 1 0 `S249 1 . 1 0 ]
+[v _LATDbits LATDbits `VES258  1 e 1 @3980 ]
 "1326
 [v _LATE LATE `VEuc  1 e 1 @3981 ]
 "1378
@@ -201,7 +203,7 @@ UART_STATE_READY 1
 [v _TRISB TRISB `VEuc  1 e 1 @3987 ]
 "1822
 [v _TRISC TRISC `VEuc  1 e 1 @3988 ]
-[s S92 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S104 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -211,7 +213,7 @@ UART_STATE_READY 1
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "1854
-[s S101 . 1 `uc 1 RC0 1 0 :1:0 
+[s S113 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -220,13 +222,13 @@ UART_STATE_READY 1
 `uc 1 RC6 1 0 :1:6 
 `uc 1 RC7 1 0 :1:7 
 ]
-[u S110 . 1 `S92 1 . 1 0 `S101 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES110  1 e 1 @3988 ]
+[u S122 . 1 `S104 1 . 1 0 `S113 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES122  1 e 1 @3988 ]
 "2044
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
 "2266
 [v _TRISE TRISE `VEuc  1 e 1 @3990 ]
-[s S694 . 1 `uc 1 RD 1 0 :1:0 
+[s S716 . 1 `uc 1 RD 1 0 :1:0 
 `uc 1 WR 1 0 :1:1 
 `uc 1 WREN 1 0 :1:2 
 `uc 1 WRERR 1 0 :1:3 
@@ -236,18 +238,18 @@ UART_STATE_READY 1
 `uc 1 EEPGD 1 0 :1:7 
 ]
 "2945
-[s S703 . 1 `uc 1 . 1 0 :6:0 
+[s S725 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 EEFS 1 0 :1:6 
 ]
-[u S706 . 1 `S694 1 . 1 0 `S703 1 . 1 0 ]
-[v _EECON1bits EECON1bits `VES706  1 e 1 @4006 ]
+[u S728 . 1 `S716 1 . 1 0 `S725 1 . 1 0 ]
+[v _EECON1bits EECON1bits `VES728  1 e 1 @4006 ]
 "2990
 [v _EECON2 EECON2 `VEuc  1 e 1 @4007 ]
 "2997
 [v _EEDATA EEDATA `VEuc  1 e 1 @4008 ]
 "3004
 [v _EEADR EEADR `VEuc  1 e 1 @4009 ]
-[s S1087 . 1 `uc 1 RX9D 1 0 :1:0 
+[s S1109 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -257,23 +259,23 @@ UART_STATE_READY 1
 `uc 1 SPEN 1 0 :1:7 
 ]
 "3059
-[s S1096 . 1 `uc 1 . 1 0 :3:0 
+[s S1118 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 ADEN 1 0 :1:3 
 ]
-[s S1099 . 1 `uc 1 . 1 0 :5:0 
+[s S1121 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 SRENA 1 0 :1:5 
 ]
-[s S1102 . 1 `uc 1 . 1 0 :6:0 
+[s S1124 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC8_9 1 0 :1:6 
 ]
-[s S1105 . 1 `uc 1 . 1 0 :6:0 
+[s S1127 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC9 1 0 :1:6 
 ]
-[s S1108 . 1 `uc 1 RCD8 1 0 :1:0 
+[s S1130 . 1 `uc 1 RCD8 1 0 :1:0 
 ]
-[u S1110 . 1 `S1087 1 . 1 0 `S1096 1 . 1 0 `S1099 1 . 1 0 `S1102 1 . 1 0 `S1105 1 . 1 0 `S1108 1 . 1 0 ]
-[v _RCSTAbits RCSTAbits `VES1110  1 e 1 @4011 ]
-[s S998 . 1 `uc 1 TX9D 1 0 :1:0 
+[u S1132 . 1 `S1109 1 . 1 0 `S1118 1 . 1 0 `S1121 1 . 1 0 `S1124 1 . 1 0 `S1127 1 . 1 0 `S1130 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES1132  1 e 1 @4011 ]
+[s S1020 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 SENDB 1 0 :1:3 
@@ -283,7 +285,7 @@ UART_STATE_READY 1
 `uc 1 CSRC 1 0 :1:7 
 ]
 "3267
-[s S1007 . 1 `uc 1 TX9D1 1 0 :1:0 
+[s S1029 . 1 `uc 1 TX9D1 1 0 :1:0 
 `uc 1 TRMT1 1 0 :1:1 
 `uc 1 BRGH1 1 0 :1:2 
 `uc 1 SENDB1 1 0 :1:3 
@@ -292,13 +294,13 @@ UART_STATE_READY 1
 `uc 1 TX91 1 0 :1:6 
 `uc 1 CSRC1 1 0 :1:7 
 ]
-[s S1016 . 1 `uc 1 . 1 0 :6:0 
+[s S1038 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 TX8_9 1 0 :1:6 
 ]
-[s S1019 . 1 `uc 1 TXD8 1 0 :1:0 
+[s S1041 . 1 `uc 1 TXD8 1 0 :1:0 
 ]
-[u S1021 . 1 `S998 1 . 1 0 `S1007 1 . 1 0 `S1016 1 . 1 0 `S1019 1 . 1 0 ]
-[v _TXSTAbits TXSTAbits `VES1021  1 e 1 @4012 ]
+[u S1043 . 1 `S1020 1 . 1 0 `S1029 1 . 1 0 `S1038 1 . 1 0 `S1041 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES1043  1 e 1 @4012 ]
 "3484
 [v _TXREG TXREG `VEuc  1 e 1 @4013 ]
 "3496
@@ -309,45 +311,45 @@ UART_STATE_READY 1
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
 "4527
 [v _ADCON0 ADCON0 `VEuc  1 e 1 @4034 ]
-[s S904 . 1 `uc 1 . 1 0 :1:0 
+[s S926 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_NOT_DONE 1 0 :1:1 
 ]
 "4571
-[s S907 . 1 `uc 1 ADON 1 0 :1:0 
+[s S929 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS 1 0 :4:2 
 ]
-[s S911 . 1 `uc 1 . 1 0 :1:0 
+[s S933 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
 `uc 1 CHS2 1 0 :1:4 
 `uc 1 CHS3 1 0 :1:5 
 ]
-[s S918 . 1 `uc 1 . 1 0 :1:0 
+[s S940 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 DONE 1 0 :1:1 
 ]
-[s S921 . 1 `uc 1 . 1 0 :1:0 
+[s S943 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 NOT_DONE 1 0 :1:1 
 ]
-[s S924 . 1 `uc 1 . 1 0 :1:0 
+[s S946 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 nDONE 1 0 :1:1 
 ]
-[s S927 . 1 `uc 1 . 1 0 :1:0 
+[s S949 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_DONE 1 0 :1:1 
 ]
-[s S930 . 1 `uc 1 . 1 0 :1:0 
+[s S952 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GODONE 1 0 :1:1 
 ]
-[u S933 . 1 `S904 1 . 1 0 `S907 1 . 1 0 `S911 1 . 1 0 `S918 1 . 1 0 `S921 1 . 1 0 `S924 1 . 1 0 `S927 1 . 1 0 `S930 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES933  1 e 1 @4034 ]
+[u S955 . 1 `S926 1 . 1 0 `S929 1 . 1 0 `S933 1 . 1 0 `S940 1 . 1 0 `S943 1 . 1 0 `S946 1 . 1 0 `S949 1 . 1 0 `S952 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES955  1 e 1 @4034 ]
 "4653
 [v _ADRESL ADRESL `VEuc  1 e 1 @4035 ]
 "4660
 [v _ADRESH ADRESH `VEuc  1 e 1 @4036 ]
 "4667
 [v _SSPCON2 SSPCON2 `VEuc  1 e 1 @4037 ]
-[s S822 . 1 `uc 1 SEN 1 0 :1:0 
+[s S844 . 1 `uc 1 SEN 1 0 :1:0 
 `uc 1 RSEN 1 0 :1:1 
 `uc 1 PEN 1 0 :1:2 
 `uc 1 RCEN 1 0 :1:3 
@@ -357,31 +359,31 @@ UART_STATE_READY 1
 `uc 1 GCEN 1 0 :1:7 
 ]
 "4684
-[u S831 . 1 `S822 1 . 1 0 ]
-[v _SSPCON2bits SSPCON2bits `VES831  1 e 1 @4037 ]
+[u S853 . 1 `S844 1 . 1 0 ]
+[v _SSPCON2bits SSPCON2bits `VES853  1 e 1 @4037 ]
 "4729
 [v _SSPCON1 SSPCON1 `VEuc  1 e 1 @4038 ]
-[s S770 . 1 `uc 1 SSPM 1 0 :4:0 
+[s S792 . 1 `uc 1 SSPM 1 0 :4:0 
 `uc 1 CKP 1 0 :1:4 
 `uc 1 SSPEN 1 0 :1:5 
 `uc 1 SSPOV 1 0 :1:6 
 `uc 1 WCOL 1 0 :1:7 
 ]
 "4749
-[s S776 . 1 `uc 1 SSPM0 1 0 :1:0 
+[s S798 . 1 `uc 1 SSPM0 1 0 :1:0 
 `uc 1 SSPM1 1 0 :1:1 
 `uc 1 SSPM2 1 0 :1:2 
 `uc 1 SSPM3 1 0 :1:3 
 ]
-[u S781 . 1 `S770 1 . 1 0 `S776 1 . 1 0 ]
-[v _SSPCON1bits SSPCON1bits `VES781  1 e 1 @4038 ]
+[u S803 . 1 `S792 1 . 1 0 `S798 1 . 1 0 ]
+[v _SSPCON1bits SSPCON1bits `VES803  1 e 1 @4038 ]
 "4799
 [v _SSPSTAT SSPSTAT `VEuc  1 e 1 @4039 ]
 "5020
 [v _SSPADD SSPADD `VEuc  1 e 1 @4040 ]
 "5027
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
-[s S276 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S288 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -391,7 +393,7 @@ UART_STATE_READY 1
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "6404
-[s S285 . 1 `uc 1 . 1 0 :1:0 
+[s S297 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -400,12 +402,12 @@ UART_STATE_READY 1
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S294 . 1 `uc 1 . 1 0 :6:0 
+[s S306 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S298 . 1 `S276 1 . 1 0 `S285 1 . 1 0 `S294 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES298  1 e 1 @4082 ]
+[u S310 . 1 `S288 1 . 1 0 `S297 1 . 1 0 `S306 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES310  1 e 1 @4082 ]
 "6757
 [v _ADON ADON `VEb  1 e 0 @32272 ]
 "7463
@@ -426,6 +428,8 @@ UART_STATE_READY 1
 [v _dpowers dpowers `C[5]ui  1 s 10 dpowers ]
 "362
 [v _hexpowers hexpowers `C[4]ui  1 s 8 hexpowers ]
+"15 /Users/chrismazzuca/Desktop/Main Robot/main.c
+[v _firstIteration firstIteration `ui  1 e 2 0 ]
 "15 /Users/chrismazzuca/Desktop/Main Robot/operationMode.c
 [v _rowUp rowUp `[1]uc  1 e 1 0 ]
 "16
@@ -442,197 +446,203 @@ UART_STATE_READY 1
 [v _keys keys `C[17]uc  1 e 17 0 ]
 "16
 [v _inputs inputs `[18]*.32Cuc  1 e 36 0 ]
+"17
+[v _foodInputs foodInputs `[13]*.32Cuc  1 e 26 0 ]
 "68 /Users/chrismazzuca/Desktop/Main Robot/standbyMode.h
 [v standbyMode@LCDinterruptState LCDinterruptState `uc  1 s 1 LCDinterruptState ]
-[s S75 . 12 `*.2uc 1 _dataTX 2 0 `uc 1 _numBytesTX 1 2 `VEuc 1 _numTransmits 1 3 `*.39uc 1 _dataRX 2 4 `uc 1 _numBytesRX 1 6 `VEuc 1 _numReceives 1 7 `VEuc 1 _stateTX 1 8 `VEuc 1 _stateRX 1 9 `VEuc 1 _lastReceiveFERR 1 10 `VEuc 1 _lastReceiveOERR 1 11 ]
+[s S87 . 12 `*.2uc 1 _dataTX 2 0 `uc 1 _numBytesTX 1 2 `VEuc 1 _numTransmits 1 3 `*.39uc 1 _dataRX 2 4 `uc 1 _numBytesRX 1 6 `VEuc 1 _numReceives 1 7 `VEuc 1 _stateTX 1 8 `VEuc 1 _stateRX 1 9 `VEuc 1 _lastReceiveFERR 1 10 `VEuc 1 _lastReceiveOERR 1 11 ]
 "15 /Users/chrismazzuca/Desktop/Main Robot/UART_PIC.c
-[v _uart uart `VES75  1 e 12 0 ]
+[v _uart uart `VES87  1 e 12 0 ]
 "67 /Users/chrismazzuca/Desktop/Main Robot/UART_PIC.h
 [v _UARTinterruptState UARTinterruptState `VEuc  1 e 1 0 ]
 "70
 [v _arr_dataRX arr_dataRX `[16]uc  1 e 16 0 ]
 "71
-[v _UART UART `*.39VES75  1 e 2 0 ]
-"14 /Users/chrismazzuca/Desktop/Main Robot/main.c
+[v _UART UART `*.39VES87  1 e 2 0 ]
+"17 /Users/chrismazzuca/Desktop/Main Robot/main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"44
-[v main@operationMode operationMode `ui  1 a 2 102 ]
-"95
+"59
+[v main@checkEEPROM checkEEPROM `ui  1 a 2 101 ]
+"47
+[v main@operationMode operationMode `ui  1 a 2 99 ]
+"79
 } 0
-"1604 /Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+"1676 /Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
 [v _standbyMode standbyMode `(ui  1 e 2 0 ]
 {
-"1773
-[v standbyMode@keypress1 keypress1 `uc  1 a 1 100 ]
-"1941
-[v standbyMode@whichKey whichKey `ui  1 a 2 89 ]
-"1605
-[v standbyMode@drawerInformation drawerInformation `[8]ui  1 a 16 64 ]
-"1609
+"1846
+[v standbyMode@keypress1 keypress1 `uc  1 a 1 118 ]
+"2022
+[v standbyMode@whichKey whichKey `ui  1 a 2 105 ]
+"1677
+[v standbyMode@drawerInformation drawerInformation `[8]ui  1 a 16 80 ]
+"1682
+[v standbyMode@foodType foodType `[8]ui  1 a 16 64 ]
+"1681
 [v standbyMode@dietType dietType `[8]ui  1 a 16 48 ]
-"1608
+"1680
 [v standbyMode@longPieces longPieces `[8]ui  1 a 16 32 ]
-"1607
+"1679
 [v standbyMode@flatPieces flatPieces `[8]ui  1 a 16 16 ]
-"1606
+"1678
 [v standbyMode@roundPieces roundPieces `[8]ui  1 a 16 0 ]
-"1625
-[v standbyMode@time time `[7]uc  1 a 7 80 ]
-"1611
-[v standbyMode@i i `ui  1 a 2 118 ]
-"1610
-[v standbyMode@drawerCount drawerCount `ui  1 a 2 116 ]
-"1615
-[v standbyMode@drawer drawer `ui  1 a 2 114 ]
-"1617
-[v standbyMode@food food `ui  1 a 2 112 ]
-"1616
-[v standbyMode@diet diet `ui  1 a 2 110 ]
-"1619
-[v standbyMode@n n `ui  1 a 2 108 ]
-"1626
-[v standbyMode@x x `ui  1 a 2 105 ]
-"1613
-[v standbyMode@zero zero `ui  1 a 2 103 ]
-"1612
-[v standbyMode@validDrawer validDrawer `ui  1 a 2 101 ]
-"1623
-[v standbyMode@decodedDiet decodedDiet `ui  1 a 2 98 ]
-"1622
-[v standbyMode@lng lng `ui  1 a 2 96 ]
-"1621
-[v standbyMode@flat flat `ui  1 a 2 94 ]
-"1620
-[v standbyMode@round round `ui  1 a 2 92 ]
-"1614
-[v standbyMode@firstIteration firstIteration `ui  1 a 2 87 ]
-"1618
-[v standbyMode@logNumber logNumber `uc  1 a 1 107 ]
-"1706
-[v standbyMode@keypress keypress `uc  1 a 1 91 ]
-"1604
-[v standbyMode@F3166 F3166 `[8]ui  1 s 16 F3166 ]
-"1605
-[v standbyMode@F3168 F3168 `[8]ui  1 s 16 F3168 ]
-"1606
-[v standbyMode@F3170 F3170 `[8]ui  1 s 16 F3170 ]
-"1607
-[v standbyMode@F3172 F3172 `[8]ui  1 s 16 F3172 ]
-"1608
-[v standbyMode@F3174 F3174 `[8]ui  1 s 16 F3174 ]
-"1974
+"1699
+[v standbyMode@time time `[7]uc  1 a 7 96 ]
+"1684
+[v standbyMode@i i `ui  1 a 2 136 ]
+"1683
+[v standbyMode@drawerCount drawerCount `ui  1 a 2 134 ]
+"1690
+[v standbyMode@food food `ui  1 a 2 132 ]
+"1688
+[v standbyMode@drawer drawer `ui  1 a 2 130 ]
+"1689
+[v standbyMode@diet diet `ui  1 a 2 128 ]
+"1700
+[v standbyMode@x x `ui  1 a 2 125 ]
+"1692
+[v standbyMode@n n `ui  1 a 2 123 ]
+"1686
+[v standbyMode@zero zero `ui  1 a 2 121 ]
+"1685
+[v standbyMode@validDrawer validDrawer `ui  1 a 2 119 ]
+"1697
+[v standbyMode@storedFoodType storedFoodType `ui  1 a 2 116 ]
+"1696
+[v standbyMode@decodedDiet decodedDiet `ui  1 a 2 114 ]
+"1695
+[v standbyMode@lng lng `ui  1 a 2 112 ]
+"1694
+[v standbyMode@flat flat `ui  1 a 2 110 ]
+"1693
+[v standbyMode@round round `ui  1 a 2 108 ]
+"1687
+[v standbyMode@firstIteration firstIteration `ui  1 a 2 103 ]
+"1691
+[v standbyMode@logNumber logNumber `uc  1 a 1 127 ]
+"1779
+[v standbyMode@keypress keypress `uc  1 a 1 107 ]
+"1676
+[v standbyMode@F3169 F3169 `[8]ui  1 s 16 F3169 ]
+"1677
+[v standbyMode@F3171 F3171 `[8]ui  1 s 16 F3171 ]
+"1678
+[v standbyMode@F3173 F3173 `[8]ui  1 s 16 F3173 ]
+"1679
+[v standbyMode@F3175 F3175 `[8]ui  1 s 16 F3175 ]
+"1680
+[v standbyMode@F3177 F3177 `[8]ui  1 s 16 F3177 ]
+"1681
+[v standbyMode@F3179 F3179 `[8]ui  1 s 16 F3179 ]
+"2055
 } 0
-"1538
+"1610
 [v _which_drawer which_drawer `(ui  1 e 2 0 ]
 {
-"1599
+"1671
 [v which_drawer@rand rand `ui  1 a 2 43 ]
-"1550
+"1622
 [v which_drawer@keypress keypress `uc  1 a 1 51 ]
-"1544
+"1616
 [v which_drawer@count count `ui  1 a 2 49 ]
-"1546
+"1618
 [v which_drawer@backCheck backCheck `ui  1 a 2 47 ]
-"1545
+"1617
 [v which_drawer@sum sum `ui  1 a 2 45 ]
-"1602
+"1674
 } 0
-"1460
+"1532
 [v _decode_drawer decode_drawer `(ui  1 e 2 0 ]
 {
-"1461
+"1533
 [v decode_drawer@returnValue returnValue `ui  1 a 2 4 ]
-"1460
+"1532
 [v decode_drawer@drawer drawer `ui  1 p 2 0 ]
-"1534
+"1606
 } 0
-"823
+"824
 [v _viewLogs viewLogs `(ui  1 e 2 0 ]
 {
-"871
-[v viewLogs@keypress2 keypress2 `uc  1 a 1 96 ]
-"826
-[v viewLogs@logView logView `ui  1 a 2 93 ]
-"828
-[v viewLogs@returnVal returnVal `ui  1 a 2 91 ]
+"872
+[v viewLogs@keypress2 keypress2 `uc  1 a 1 92 ]
 "827
-[v viewLogs@checkLog checkLog `ui  1 a 2 89 ]
-"825
-[v viewLogs@logNumber logNumber `uc  1 a 1 95 ]
-"906
+[v viewLogs@logView logView `ui  1 a 2 89 ]
+"829
+[v viewLogs@returnVal returnVal `ui  1 a 2 87 ]
+"828
+[v viewLogs@checkLog checkLog `ui  1 a 2 85 ]
+"826
+[v viewLogs@logNumber logNumber `uc  1 a 1 91 ]
+"907
 } 0
-"809
+"810
 [v _verifyKeypress verifyKeypress `(ui  1 e 2 0 ]
 {
 [v verifyKeypress@logNumber logNumber `uc  1 a 1 wreg ]
-"810
-[v verifyKeypress@i i `ui  1 a 2 7 ]
 "811
+[v verifyKeypress@i i `ui  1 a 2 7 ]
+"812
 [v verifyKeypress@returnVal returnVal `ui  1 a 2 5 ]
-"809
+"810
 [v verifyKeypress@logNumber logNumber `uc  1 a 1 wreg ]
 [v verifyKeypress@keypress keypress `ui  1 p 2 0 ]
 [v verifyKeypress@logNumber logNumber `uc  1 a 1 4 ]
-"819
+"820
 } 0
-"910
+"985
 [v _displayLogs displayLogs `(ui  1 e 2 0 ]
 {
-"911
-[v displayLogs@n n `ui  1 a 2 83 ]
-"923
-[v displayLogs@drawerNumber drawerNumber `ui  1 a 2 81 ]
-"922
-[v displayLogs@markedDrawer4 markedDrawer4 `ui  1 a 2 79 ]
-"921
-[v displayLogs@markedDrawer3 markedDrawer3 `ui  1 a 2 77 ]
-"920
-[v displayLogs@markedDrawer2 markedDrawer2 `ui  1 a 2 75 ]
-"919
-[v displayLogs@markedDrawer1 markedDrawer1 `ui  1 a 2 73 ]
-"928
-[v displayLogs@i i `ui  1 a 2 71 ]
-"924
-[v displayLogs@dietType dietType `ui  1 a 2 69 ]
-"915
-[v displayLogs@operationTime operationTime `ui  1 a 2 67 ]
-"940
-[v displayLogs@seconds seconds `ui  1 a 2 64 ]
-"939
-[v displayLogs@minutes minutes `ui  1 a 2 62 ]
-"918
-[v displayLogs@longPieces longPieces `ui  1 a 2 60 ]
-"917
-[v displayLogs@flatPieces flatPieces `ui  1 a 2 58 ]
-"916
-[v displayLogs@roundPieces roundPieces `ui  1 a 2 56 ]
-"914
-[v displayLogs@day day `ui  1 a 2 54 ]
-"913
-[v displayLogs@month month `ui  1 a 2 52 ]
-"912
-[v displayLogs@year year `ui  1 a 2 50 ]
-"927
-[v displayLogs@lng lng `ui  1 a 2 48 ]
-"926
-[v displayLogs@flat flat `ui  1 a 2 46 ]
-"925
-[v displayLogs@round round `ui  1 a 2 44 ]
-"1022
-[v displayLogs@keypress3 keypress3 `uc  1 a 1 66 ]
-"910
+"986
+[v displayLogs@n n `ui  1 a 2 79 ]
+"997
+[v displayLogs@markedDrawer4 markedDrawer4 `ui  1 a 2 77 ]
+"996
+[v displayLogs@markedDrawer3 markedDrawer3 `ui  1 a 2 75 ]
+"995
+[v displayLogs@markedDrawer2 markedDrawer2 `ui  1 a 2 73 ]
+"994
+[v displayLogs@markedDrawer1 markedDrawer1 `ui  1 a 2 71 ]
+"1001
+[v displayLogs@i i `ui  1 a 2 69 ]
+"998
+[v displayLogs@drawerNumber drawerNumber `ui  1 a 2 67 ]
+"990
+[v displayLogs@operationTime operationTime `ui  1 a 2 65 ]
+"1000
+[v displayLogs@foodType foodType `ui  1 a 2 62 ]
+"999
+[v displayLogs@dietType dietType `ui  1 a 2 60 ]
+"1013
+[v displayLogs@seconds seconds `ui  1 a 2 58 ]
+"1012
+[v displayLogs@minutes minutes `ui  1 a 2 56 ]
+"993
+[v displayLogs@longPieces longPieces `ui  1 a 2 54 ]
+"992
+[v displayLogs@flatPieces flatPieces `ui  1 a 2 52 ]
+"991
+[v displayLogs@roundPieces roundPieces `ui  1 a 2 50 ]
+"989
+[v displayLogs@day day `ui  1 a 2 48 ]
+"988
+[v displayLogs@month month `ui  1 a 2 46 ]
+"987
+[v displayLogs@year year `ui  1 a 2 44 ]
+"1094
+[v displayLogs@keypress3 keypress3 `uc  1 a 1 64 ]
+"985
 [v displayLogs@logNumber logNumber `ui  1 p 2 40 ]
-"1025
+"1097
 } 0
-"48 /Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
+"68 /Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
 [v _shiftEEPROM shiftEEPROM `(v  1 e 1 0 ]
 {
-"49
+"69
 [v shiftEEPROM@i i `ui  1 a 2 5 ]
-"50
+"70
 [v shiftEEPROM@temp temp `ui  1 a 2 3 ]
-"65
+"85
 } 0
 "29
 [v _readEEPROM readEEPROM `(uc  1 e 1 0 ]
@@ -642,112 +652,102 @@ UART_STATE_READY 1
 [v readEEPROM@address address `uc  1 a 1 0 ]
 "37
 } 0
-"40
-[v _initEEPROM initEEPROM `(v  1 e 1 0 ]
+"910 /Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+[v _printFoodInput printFoodInput `(ui  1 e 2 0 ]
 {
-"41
-[v initEEPROM@i i `ui  1 a 2 2 ]
-"45
+[v printFoodInput@food food `ui  1 p 2 0 ]
+"981
 } 0
-"10
-[v _writeEEPROM writeEEPROM `(v  1 e 1 0 ]
-{
-[v writeEEPROM@address address `uc  1 a 1 wreg ]
-[v writeEEPROM@address address `uc  1 a 1 wreg ]
-[v writeEEPROM@data data `uc  1 p 1 0 ]
-[v writeEEPROM@address address `uc  1 a 1 1 ]
-"27
-} 0
-"313 /Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+"314
 [v _getRound getRound `(ui  1 e 2 0 ]
 {
-"314
+"315
 [v getRound@returnValue returnValue `ui  1 a 2 4 ]
-"313
+"314
 [v getRound@code code `ui  1 p 2 0 ]
-"466
+"467
 } 0
-"626
+"627
 [v _getLong getLong `(ui  1 e 2 0 ]
 {
-"627
+"628
 [v getLong@returnValue returnValue `ui  1 a 2 4 ]
-"626
+"627
 [v getLong@code code `ui  1 p 2 0 ]
-"805
+"806
 } 0
-"469
+"470
 [v _getFlat getFlat `(ui  1 e 2 0 ]
 {
-"470
+"471
 [v getFlat@returnValue returnValue `ui  1 a 2 4 ]
-"469
+"470
 [v getFlat@code code `ui  1 p 2 0 ]
-"623
+"624
 } 0
-"1134
+"1206
 [v _food_press food_press `(ui  1 e 2 0 ]
 {
-"1149
+"1221
 [v food_press@keypress keypress `uc  1 a 1 54 ]
-"1142
+"1214
 [v food_press@foodTable foodTable `[4]ui  1 a 8 55 ]
-"1141
+"1213
 [v food_press@count count `ui  1 a 2 52 ]
-"1143
+"1215
 [v food_press@isValid isValid `ui  1 a 2 50 ]
-"1144
+"1216
 [v food_press@backCheck backCheck `ui  1 a 2 48 ]
-"1140
+"1212
 [v food_press@tally tally `ui  1 a 2 46 ]
-"1134
+"1206
 [v food_press@dietSum dietSum `ui  1 p 2 40 ]
 [v food_press@drawer drawer `ui  1 p 2 42 ]
-"1141
-[v food_press@F3131 F3131 `[4]ui  1 s 8 F3131 ]
-"1196
+"1213
+[v food_press@F3134 F3134 `[4]ui  1 s 8 F3134 ]
+"1268
 } 0
-"1029
+"1101
 [v _get_digits get_digits `(ui  1 e 2 0 ]
 {
-"1031
+"1103
 [v get_digits@count count `ui  1 a 2 4 ]
-"1029
+"1101
 [v get_digits@sum sum `ui  1 p 2 0 ]
-"1130
+"1202
 } 0
-"91
+"92
 [v _check_food check_food `(ui  1 e 2 0 ]
 {
-"92
+"93
 [v check_food@returnValue returnValue `ui  1 a 2 6 ]
-"91
+"92
 [v check_food@sum sum `ui  1 p 2 0 ]
 [v check_food@foodInput foodInput `*.39ui  1 p 2 2 ]
-"310
+"311
 } 0
-"1200
+"1272
 [v _diet_press diet_press `(ui  1 e 2 0 ]
 {
-"1216
+"1288
 [v diet_press@keypress keypress `uc  1 a 1 54 ]
-"1211
+"1283
 [v diet_press@dietTable dietTable `[4]ui  1 a 8 55 ]
-"1209
+"1281
 [v diet_press@sum sum `ui  1 a 2 52 ]
-"1207
+"1279
 [v diet_press@count count `ui  1 a 2 50 ]
-"1212
+"1284
 [v diet_press@backCheck backCheck `ui  1 a 2 48 ]
-"1210
+"1282
 [v diet_press@i i `ui  1 a 2 46 ]
-"1208
+"1280
 [v diet_press@previous previous `ui  1 a 2 44 ]
-"1200
+"1272
 [v diet_press@drawer drawer `ui  1 p 2 40 ]
-"1210
-[v diet_press@F3146 F3146 `[4]ui  1 s 8 F3146 ]
-"1355
+"1282
+[v diet_press@F3149 F3149 `[4]ui  1 s 8 F3149 ]
+"1427
 } 0
 "464 /Applications/microchip/xc8/v1.45/sources/common/doprnt.c
 [v _printf printf `(i  1 e 2 0 ]
@@ -774,14 +774,14 @@ UART_STATE_READY 1
 [v printf@f f `*.32Cuc  1 p 2 12 ]
 "1541
 } 0
-"77 /Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+"78 /Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
 [v _putch putch `(v  1 e 1 0 ]
 {
 [v putch@data data `uc  1 a 1 wreg ]
 [v putch@data data `uc  1 a 1 wreg ]
-"85
+"86
 [v putch@data data `uc  1 a 1 2 ]
-"88
+"89
 } 0
 "8 /Applications/microchip/xc8/v1.45/sources/common/isdigit.c
 [v _isdigit isdigit `(b  1 e 0 0 ]
@@ -824,14 +824,14 @@ UART_STATE_READY 1
 [v ___lwdiv@divisor divisor `ui  1 p 2 2 ]
 "31
 } 0
-"1358 /Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+"1430 /Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
 [v _decode_diet decode_diet `(ui  1 e 2 0 ]
 {
-"1359
+"1431
 [v decode_diet@returnValue returnValue `ui  1 a 2 4 ]
-"1358
+"1430
 [v decode_diet@dietType dietType `ui  1 p 2 0 ]
-"1456
+"1528
 } 0
 "108 /Users/chrismazzuca/Desktop/Main Robot/I2C.c
 [v _I2C_Master_Write I2C_Master_Write `(v  1 e 1 0 ]
@@ -908,29 +908,45 @@ UART_STATE_READY 1
 [v ___aldiv@divisor divisor `l  1 p 4 4 ]
 "42
 } 0
-"32 /Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
+"33 /Users/chrismazzuca/Desktop/Main Robot/standbyMode.c
 [v _initLCD initLCD `(v  1 e 1 0 ]
 {
-"50
+"51
 } 0
-"18
+"19
 [v _lcdInst lcdInst `(v  1 e 1 0 ]
 {
 [v lcdInst@data data `uc  1 a 1 wreg ]
 [v lcdInst@data data `uc  1 a 1 wreg ]
-"26
+"27
 [v lcdInst@data data `uc  1 a 1 2 ]
-"29
+"30
 } 0
-"53
+"54
 [v _lcdNibble lcdNibble `(v  1 e 1 0 ]
 {
 [v lcdNibble@data data `uc  1 a 1 wreg ]
-"61
+"62
 [v lcdNibble@temp temp `uc  1 a 1 0 ]
-"53
+"54
 [v lcdNibble@data data `uc  1 a 1 wreg ]
-"61
+"62
 [v lcdNibble@data data `uc  1 a 1 1 ]
-"74
+"75
+} 0
+"40 /Users/chrismazzuca/Desktop/Main Robot/EEPROMstorage.c
+[v _initEEPROM initEEPROM `(v  1 e 1 0 ]
+{
+"41
+[v initEEPROM@i i `ui  1 a 2 2 ]
+"45
+} 0
+"10
+[v _writeEEPROM writeEEPROM `(v  1 e 1 0 ]
+{
+[v writeEEPROM@address address `uc  1 a 1 wreg ]
+[v writeEEPROM@address address `uc  1 a 1 wreg ]
+[v writeEEPROM@data data `uc  1 p 1 0 ]
+[v writeEEPROM@address address `uc  1 a 1 1 ]
+"27
 } 0

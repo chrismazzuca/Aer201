@@ -3848,6 +3848,7 @@ unsigned int getFlat(unsigned int code);
 unsigned int getLong(unsigned int code);
 unsigned int check_food(unsigned int sum, unsigned int foodInput[4]);
 unsigned int verifyKeypress(unsigned char logNumber, unsigned int keypress);
+unsigned int printFoodInput(unsigned int food);
 unsigned int displayLogs(unsigned int logNumber);
 unsigned int viewLogs(void);
 unsigned int get_digits(unsigned int sum);
@@ -3870,17 +3871,25 @@ unsigned int checkCount(unsigned int pieceType);
 unsigned int trapDoor(unsigned int type, unsigned int direction);
 void mainOperation(void);
 
-# 14 "main.c"
+# 14 "EEPROMstorage.h"
+void writeEEPROM(unsigned char address, unsigned char data);
+unsigned char readEEPROM(unsigned char address);
+void initEEPROM(void);
+void shiftEEPROM(void);
+
+# 15 "main.c"
+unsigned int firstIteration = 0;
+
 void main(void) {
 
-# 20
+# 23
 LATA = 0x00;
 LATB = 0x00;
 LATC = 0x00;
 LATD = 0x00;
 LATE = 0x00;
 
-# 28
+# 31
 TRISA = 0xFF;
 TRISB = 0xFF;
 TRISC = 0x00;
@@ -3899,11 +3908,25 @@ printf("Standby");
 
 unsigned int operationMode = 0;
 
-# 89
+# 59
+unsigned int checkEEPROM = 0;
+
+checkEEPROM = readEEPROM(251);
+
+if (checkEEPROM == 255){
+initEEPROM();
+lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+printf("Clearing EEPROM");
+_delay((unsigned long)((2000)*(40000000/4000.0)));
+}
+
+
 operationMode = standbyMode();
 
 if (operationMode == 1){
 mainOperation();
 }
+
+firstIteration += 1;
 return;
 }

@@ -14,6 +14,7 @@
 const char input[] = "123R456F789L*0#D";
 const char keys[] = "123A456B789C*0#D";
 const char* inputs[] = {"R", "F", "L", "RF", "RL", "FL", "RRF", "RRL", "RFF", "RLL", "RFL", "FFL", "FLL", "RRFL", "RFFL", "RFLL", "RLLL", "FLLL"};
+const char* foodInputs[] = {"1", "2", "3", "11", "12", "13", "21", "22", "111", "112", "121", "211", "1111"};
 
 void lcdInst(char data){
     /* Sends a command to a display control register.
@@ -905,10 +906,84 @@ unsigned int viewLogs(void){
     }
 }
 
+/*Returns the single digit that will be stored in EEPROM to minimize data used*/
+unsigned int printFoodInput(unsigned int food){
+
+    /*1*/
+    if (food == 1 || food == 3 || food == 5){
+        return 0;
+    }
+    
+    /*2*/
+    else if (food == 2 || food == 4 || food == 6){
+        return 1;
+    }
+    
+    /*3*/
+    else if (food == 7){
+        return 2;
+    }
+    
+    /*11*/
+    else if (food == 8 || food == 12 || food == 17){
+        return 3;
+    }
+    
+    /*12*/
+    else if (food == 9 || food == 13 || food == 18){
+        return 4;
+    }
+    
+    /*13*/
+    else if (food == 14 || food == 19){
+        return 5;
+    }
+    
+    /*21*/
+    else if (food == 10 || food == 15 || food == 20){
+        return 6;
+    }
+    
+    /*22*/
+    else if (food == 11 || food == 16 || food == 21){
+        return 7;
+    }
+    
+    /*111*/
+    else if (food == 22 || food == 24 || food == 26 || food == 28 || food == 32 || food == 36 || food == 38){
+        return 8;
+    }
+    
+    /*112*/
+    else if (food == 23 || food == 25 || food == 29 || food == 33 || food == 37 || food == 39){
+        return 9;
+    }
+    
+    /*121*/
+    else if (food == 30 || food == 34 || food == 40){
+        return 10;
+    }
+    
+    /*211*/
+    else if (food == 27 || food == 31 || food == 35 || food == 41){
+        return 11;
+    }
+    
+    
+    /*1111*/
+    else if (food == 42 || food == 43 || food == 44 || food == 45 || food == 46){
+        return 12;
+    }
+    
+    else{
+        return 0;
+    }
+}
+
 
 /*Takes in the log number, and displays information gathered from EEPROM*/
 unsigned int displayLogs(unsigned int logNumber){
-    unsigned int n = (logNumber-1)*51;
+    unsigned int n = (logNumber-1)*35;
     unsigned int year = readEEPROM(n);
     unsigned int month = readEEPROM(1+n);
     unsigned int day = readEEPROM(2+n);
@@ -922,9 +997,7 @@ unsigned int displayLogs(unsigned int logNumber){
     unsigned int markedDrawer4 = readEEPROM(10+n);
     unsigned int drawerNumber = readEEPROM(11+n);
     unsigned int dietType = readEEPROM(12+n);
-    unsigned int round = readEEPROM(13+n);
-    unsigned int flat = readEEPROM(14+n);
-    unsigned int lng = readEEPROM(15+n);
+    unsigned int foodType = readEEPROM(13+n);
     unsigned int i = 0;
     
         __lcd_clear();
@@ -994,21 +1067,19 @@ unsigned int displayLogs(unsigned int logNumber){
             continue;   
         }
         
-        for (i=0; i<4; i++){
-            n = (logNumber-1)*51 + 5*i;
+        for (i=0; i<8; i++){
+            __lcd_clear();
+            n = (logNumber-1)*35 + 3*i;
+            drawerNumber = readEEPROM(11+n);
+            dietType = readEEPROM(12+n);
+            foodType = readEEPROM(13+n);
             if (drawerNumber != 0){
-                __lcd_clear();
-                printf("Drawer %i: %s", drawerNumber, inputs[dietType]);
-                n += 5;
-                drawerNumber = readEEPROM(11+n);
-                dietType = readEEPROM(12+n);
-                round = readEEPROM(13+n);
-                flat = readEEPROM(14+n);
-                lng = readEEPROM(15+n);
-                if (drawerNumber != 0){
-                    __lcd_newline();
-                    printf("Drawer %i: %s", drawerNumber, inputs[dietType]);
-                    __delay_ms(2000);
+                printf("Drawer %i:", drawerNumber);
+                __lcd_newline();
+                printf("%s%s",inputs[dietType], foodInputs[foodType]);
+                __delay_ms(500);
+                while(PORTBbits.RB1 == 0){  
+                    continue;   
                 }
             }
         }
@@ -1017,6 +1088,7 @@ unsigned int displayLogs(unsigned int logNumber){
         printf("Another log?");
         __lcd_newline();
         printf("# = No, D = Yes");
+        __delay_ms(500);
             
         while(PORTBbits.RB1 == 0){  continue;   }
         unsigned char keypress3 = (PORTB & 0xF0) >> 4;
@@ -1607,6 +1679,7 @@ unsigned int standbyMode(void){
     unsigned int flatPieces[8] = {0,0,0,0,0,0,0,0};
     unsigned int longPieces[8] = {0,0,0,0,0,0,0,0};
     unsigned int dietType[8] = {0,0,0,0,0,0,0,0};
+    unsigned int foodType[8] = {0,0,0,0,0,0,0,0};
     unsigned int drawerCount = 0;      /*Keeps track of the number of drawers inputted*/
     unsigned int i = 0;                /*Random variable used in the for loop*/
     unsigned int validDrawer = 0;      /*Checks if the drawer is valid*/
@@ -1621,16 +1694,16 @@ unsigned int standbyMode(void){
     unsigned int flat = 0;
     unsigned int lng = 0;
     unsigned int decodedDiet = 0;
+    unsigned int storedFoodType = 0;
     
     unsigned char time[7];             /*Create a byte array to hold time read from RTC*/
     unsigned int x = 0;
-    initEEPROM();
     //RTC_setTime();
     
     __lcd_clear();
     __lcd_display_control(1, 0, 0);
     printf("Standby");
-    __delay_ms(1000);
+    __delay_ms(2000);
     __lcd_clear();
     printf("Press any key to");
     __lcd_newline();
@@ -1661,7 +1734,7 @@ unsigned int standbyMode(void){
     writeEEPROM(8, 1);
     writeEEPROM(9, 13);
     writeEEPROM(10, 0);
-    shiftEEPROM();
+    //shiftEEPROM();
     
     /* Print current time */
     //I2C_Master_Start(); // Start condition
@@ -1825,9 +1898,14 @@ unsigned int standbyMode(void){
                         food = 0;
                         goto FOOD_BACK1;
                     }
+                    /*To be stored in EEPROM*/
                     drawerInformation[drawerCount] = drawer;
                     decodedDiet = decode_diet(diet);
                     dietType[drawerCount] = decodedDiet;
+                    storedFoodType = printFoodInput(food);
+                    foodType[drawerCount] = storedFoodType;
+                    
+                    /*Stored in list for now*/
                     round = getRound(food);
                     flat = getFlat(food);
                     lng = getLong(food);
@@ -1898,9 +1976,14 @@ unsigned int standbyMode(void){
                         food = 0;
                         goto FOOD_BACK2;
                     }
+                    /*To be stored in EEPROM*/
                     drawerInformation[drawerCount] = drawer;
                     decodedDiet = decode_diet(diet);
                     dietType[drawerCount] = decodedDiet;
+                    storedFoodType = printFoodInput(food);
+                    foodType[drawerCount] = storedFoodType;
+                    
+                    /*Stored in list for now*/
                     round = getRound(food);
                     flat = getFlat(food);
                     lng = getLong(food);
@@ -1922,16 +2005,14 @@ unsigned int standbyMode(void){
         }
         for (i=0; i<8; i++){
             if (logNumber == 0 || logNumber == 4){
-                n = 5*i;
+                n = 3*i;
             }
             else{
-                n = (logNumber)*51 + 5*i;
+                n = (logNumber-1)*35 + 3*i;
             }
             writeEEPROM(11+n, drawerInformation[i]);
             writeEEPROM(12+n, dietType[i]);
-            writeEEPROM(13+n, roundPieces[i]);
-            writeEEPROM(14+n, flatPieces[i]);
-            writeEEPROM(15+n, longPieces[i]);
+            writeEEPROM(13+n, foodType[i]);
         }
         return 1;
     }

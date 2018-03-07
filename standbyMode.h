@@ -78,6 +78,7 @@ unsigned int getFlat(unsigned int code);
 unsigned int getLong(unsigned int code);
 unsigned int check_food(unsigned int sum, unsigned int foodInput[4]);
 unsigned int verifyKeypress(unsigned char logNumber, unsigned int keypress);
+unsigned int printFoodInput(unsigned int food);
 unsigned int displayLogs(unsigned int logNumber);
 unsigned int viewLogs(void);
 unsigned int get_digits(unsigned int sum);

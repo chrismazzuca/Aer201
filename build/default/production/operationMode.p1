@@ -3190,9 +3190,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "112
 }
 [; ;operationMode.c: 112: }
-[; ;operationMode.c: 114: return count;
+[; ;operationMode.c: 114: return 1;
 "114
-[e ) _count ]
+[e ) -> -> 1 `i `ui ]
 [e $UE 293  ]
 [; ;operationMode.c: 115: }
 "115
@@ -3310,9 +3310,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "154
 }
 [; ;operationMode.c: 154: }
-[; ;operationMode.c: 155: return count;
+[; ;operationMode.c: 155: return 1;
 "155
-[e ) _count ]
+[e ) -> -> 1 `i `ui ]
 [e $UE 298  ]
 [; ;operationMode.c: 156: }
 "156
@@ -3430,9 +3430,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "195
 }
 [; ;operationMode.c: 195: }
-[; ;operationMode.c: 196: return count;
+[; ;operationMode.c: 196: return 1;
 "196
-[e ) _count ]
+[e ) -> -> 1 `i `ui ]
 [e $UE 303  ]
 [; ;operationMode.c: 197: }
 "197

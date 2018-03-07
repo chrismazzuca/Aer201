@@ -45,7 +45,7 @@ void initEEPROM(void){
 }
 
 
-void shiftEEPROM(void){
+/*void shiftEEPROM(void){
     unsigned int i = 0;
     unsigned int temp = 0;
     for (i=102; i<153; i++){
@@ -61,5 +61,25 @@ void shiftEEPROM(void){
     for (i=0; i<51; i++){
         temp = readEEPROM(i);
         writeEEPROM(i+51, temp);
+    }
+}*/
+
+
+void shiftEEPROM(void){
+    unsigned int i = 0;
+    unsigned int temp = 0;
+    for (i=70; i<105; i++){
+        temp = readEEPROM(i);
+        writeEEPROM(i+35, temp);
+    }
+    
+    for (i=35; i<70; i++){
+        temp = readEEPROM(i);
+        writeEEPROM(i+35, temp);
+    }
+    
+    for (i=0; i<35; i++){
+        temp = readEEPROM(i);
+        writeEEPROM(i+35, temp);
     }
 }

@@ -10,6 +10,9 @@
 #include "configBits.h"
 #include "standbyMode.h"
 #include "operationMode.h"
+#include "EEPROMstorage.h"
+
+unsigned int firstIteration = 0;
 
 void main(void) {
     
@@ -53,37 +56,16 @@ void main(void) {
         __delay_ms(2000);
     }*/
     
-    /*TRISCbits.TRISC5 = 0;
-    TRISCbits.TRISC6 = 0;
-    TRISCbits.TRISC7 = 0;
-    TRISCbits.TRISC0 = 0;
-    LATCbits.LATC5 = 0;
-    LATCbits.LATC6 = 0;
-    LATCbits.LATC7 = 0;
-    LATCbits.LATC0 = 0;
+    unsigned int checkEEPROM = 0;
     
-    while(1){
-        LATCbits.LATC5 = 1;
-        LATCbits.LATC6 = 0;
-        LATCbits.LATC7 = 0;
-        LATCbits.LATC0 = 0;
-        __delay_ms(2);
-        LATCbits.LATC5 = 0;
-        LATCbits.LATC6 = 1;
-        LATCbits.LATC7 = 0;
-        LATCbits.LATC0 = 0;
-        __delay_ms(2);
-        LATCbits.LATC5 = 0;
-        LATCbits.LATC6 = 0;
-        LATCbits.LATC7 = 1;
-        LATCbits.LATC0 = 0;
-        __delay_ms(2);
-        LATCbits.LATC5 = 0;
-        LATCbits.LATC6 = 0;
-        LATCbits.LATC7 = 0;
-        LATCbits.LATC0 = 1;
-        __delay_ms(2);
-    }*/
+    checkEEPROM = readEEPROM(251);
+    
+    if (checkEEPROM == 255){
+        initEEPROM();
+        __lcd_clear();
+        printf("Clearing EEPROM");
+        __delay_ms(2000);
+    }
     
     /* Standby Mode */
     operationMode = standbyMode();
@@ -91,5 +73,7 @@ void main(void) {
     if (operationMode == 1){
         mainOperation();
     }
+    
+    firstIteration += 1;
     return;
 }
