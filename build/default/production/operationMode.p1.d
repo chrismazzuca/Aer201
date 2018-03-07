@@ -6,5 +6,6 @@ EEPROMstorage.h  \
 RTC.h  \
 operationMode.h  \
 arduinoSetup.h  \
+LCD.h  \
 configBits.h  \
 ADC.h 

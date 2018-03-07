@@ -5,4 +5,5 @@ I2C.h  \
 EEPROMstorage.h  \
 RTC.h  \
 standbyMode.h  \
+LCD.h  \
 configBits.h 

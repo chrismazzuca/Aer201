@@ -11,19 +11,75 @@
 #include "EEPROMstorage.h"
 #include "RTC.h"
 #include "ADC.h"
+#include "LCD.h"
 
 unsigned char rowUp[1] = {'1'};
 unsigned char rowDown[1] = {'2'};
 unsigned char columnLeft[1] = {'3'};
 unsigned char columnRight[1] = {'4'};
 
+unsigned int drawerTable[8] = {0,0,0,0,0,0,0,0};
+unsigned int sortedDrawerTable[8] = {0,0,0,0,0,0,0,0};
+unsigned int dietTable[8] = {0,0,0,0,0,0,0,0};
+unsigned int foodTable[8] = {0,0,0,0,0,0,0,0};
+
+
+/*Gets the inputs (drawer, diet, food) from EEPROM and stores in a global list*/
+void getUserInputs(void){
+    unsigned int data = 0;
+    unsigned int i = 0;
+    unsigned int logNumber = 0;
+    unsigned int n = 0;
+    unsigned int count = 0;
+    
+    logNumber = readEEPROM(250);
+    
+    if (logNumber == 0 || logNumber == 4){
+        n = 0;
+    }
+    else{
+        n = (logNumber)*35;
+    }
+    
+    for (i=11; i<35; i+=3){
+        data = readEEPROM(i+n);
+        drawerTable[count] = data;
+        data = readEEPROM(i+1+n);
+        dietTable[count] = data;
+        data = readEEPROM(i+2+n);
+        foodTable[count] = data;
+        count += 1;
+    }
+}
+
+
+/*Sorts the drawer list so that we can visit drawers in order (regardless of user input)*/
+void sortDrawerList(void){
+    unsigned int i = 0;
+    unsigned int j = 0;
+    unsigned int temp = 0;
+    
+    for (i=0; i<8; i++){
+        sortedDrawerTable[i] = drawerTable[i];
+    }
+    
+    for (i=0; i<8; i++){
+		for (j=0; j<8; j++){
+			if (sortedDrawerTable[j] > sortedDrawerTable[i]){
+				temp = sortedDrawerTable[i];
+				sortedDrawerTable[i] = sortedDrawerTable[j];
+				sortedDrawerTable[j] = temp;   
+			}  
+		}
+	}
+}
+
 
 /*This function will control the arm vertical steppers (connected to the threaded rods)*/
-unsigned int verticalStepper(unsigned int rotations, unsigned int direction){
+void verticalStepper(unsigned int rotations, unsigned int direction){
     /*Function will control the steppers by the inputted "rotations" variable, and will determine its direction with the input "direction"*/
-    /*Will return 1 when finished*/
     
-    int i = 0;
+    unsigned int i = 0;
     
     if (direction == 1){
         for (i=0; i<rotations; i++){
@@ -35,15 +91,13 @@ unsigned int verticalStepper(unsigned int rotations, unsigned int direction){
             uartTransmitBlocking(rowDown, 1);
         }
     }
-    return 1;
 }
 
 /*This function will control the arm horizontal stepper (connected to the belt)*/
-unsigned int horizontalStepper(unsigned int rotations, unsigned int direction){
+void horizontalStepper(unsigned int rotations, unsigned int direction){
     /*Function will control the steppers by the inputted "rotations" variable, and will determine its direction with the input "direction"*/
-    /*Will return 1 when finished*/
     
-    int i = 0;
+    unsigned int i = 0;
     
     if (direction == 1){
         for (i=0; i<rotations; i++){
@@ -55,8 +109,6 @@ unsigned int horizontalStepper(unsigned int rotations, unsigned int direction){
             uartTransmitBlocking(columnRight, 1);
         }
     }
-    
-    return 1;
 }
 
 /*This function will detect the tape at a given drawer, and return the results*/
@@ -119,7 +171,7 @@ unsigned int distributeFlat(unsigned int count){
     /*"Count" specifies how many pieces, and will determine how long the motor will turn for*/
     /*"Type" specifies which food type, and specifies which DC motor needs to be turned on*/
     
-        unsigned int i = 0;
+    unsigned int i = 0;
     
     TRISCbits.TRISC5 = 0;
     TRISCbits.TRISC6 = 0;
@@ -212,8 +264,34 @@ unsigned int trapDoor(unsigned int type, unsigned int direction){
 
 /*This function will be called in main.c, and holds the code for the entire operation*/
 void mainOperation(void){
+    unsigned int i = 0;
+    unsigned int currentDrawer = 1;
+    unsigned int nextDrawer = 0;
+    
     /* Initialize UART. */
     UART_Init(9600);
+    
+    getUserInputs();
+    sortDrawerList();
+    
+    for (i=0; i<7; i++){
+        if (sortedDrawerTable[i] != 0){
+            if (currentDrawer != sortedDrawerTable[i]){
+                __lcd_clear();
+                printf("Filling");
+                __lcd_newline();
+                printf("drawer %i", sortedDrawerTable[i]);
+                __delay_ms(1000);
+            }
+            else{
+                __lcd_clear();
+                printf("Moving to");
+                __lcd_newline();
+                printf("drawer %i", sortedDrawerTable[i]);
+                __delay_ms(1000);
+            }
+        }
+    }
     
     /* writeEEPROM(address, data);                Loop through and store data from the inputs, date and time
      * tick();                                    Start the timer

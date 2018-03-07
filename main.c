@@ -11,6 +11,7 @@
 #include "standbyMode.h"
 #include "operationMode.h"
 #include "EEPROMstorage.h"
+#include "LCD.h"
 
 unsigned int firstIteration = 0;
 
@@ -43,6 +44,8 @@ void main(void) {
     __lcd_clear();
     __lcd_display_control(1, 0, 0);
     printf("Standby");
+    
+    //verticalStepper(1,1);
     
     unsigned int operationMode = 0;
     

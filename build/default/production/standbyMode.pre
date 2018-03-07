@@ -3823,21 +3823,7 @@ extern int printf(const char *, ...);
 
 #pragma config EBTRB = OFF
 
-# 57 "standbyMode.h"
-const unsigned char LCD_HORZ_LIMIT = 40;
-const unsigned char LCD_VERT_LIMIT = 2;
-
-
-const unsigned char LCD_SIZE_HORZ = 16;
-const unsigned char LCD_SIZE_VERT = 2;
-
-const unsigned char LCD_RIGHT = 1;
-const unsigned char LCD_LEFT = 0;
-
-
-static unsigned char LCDinterruptState;
-
-
+# 19 "standbyMode.h"
 void initLCD(void);
 void putch(char data);
 void lcdNibble(char data);
@@ -3878,63 +3864,31 @@ void RTC_setTime(void);
 void tick(unsigned int *hour, unsigned int *minute, unsigned int *second);
 signed int tock(unsigned int Hour, unsigned int Minute, unsigned int Second);
 
-# 14 "standbyMode.c"
+# 53 "LCD.h"
+const unsigned char LCD_HORZ_LIMIT = 40;
+const unsigned char LCD_VERT_LIMIT = 2;
+
+
+const unsigned char LCD_SIZE_HORZ = 16;
+const unsigned char LCD_SIZE_VERT = 2;
+
+const unsigned char LCD_RIGHT = 1;
+const unsigned char LCD_LEFT = 0;
+
+
+
+void lcdInst(char data);
+void initLCD(void);
+void lcdNibble(char data);
+void putch(char data);
+
+# 15 "standbyMode.c"
 const char input[] = "123R456F789L*0#D";
 const char keys[] = "123A456B789C*0#D";
 const char* inputs[] = {"R", "F", "L", "RF", "RL", "FL", "RRF", "RRL", "RFF", "RLL", "RFL", "FFL", "FLL", "RRFL", "RFFL", "RFLL", "RLLL", "FLLL"};
 const char* foodInputs[] = {"1", "2", "3", "11", "12", "13", "21", "22", "111", "112", "121", "211", "1111"};
 
-void lcdInst(char data){
 
-# 27
-LATDbits.LATD2 = 0;
-lcdNibble(data);
-_delay((unsigned long)((100)*(40000000/4000000.0)));
-}
-
-
-void initLCD(void){
-
-# 41
-_delay((unsigned long)((15)*(40000000/4000.0)));
-lcdInst(0b00110011);
-lcdInst(0b00110010);
-lcdInst(0b00101000);
-lcdInst(0b00001111);
-lcdInst(0b00000110);
-lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-
-
-lcdInst(8 | (1 << 2) | (1 << 1)| 1);;
-}
-
-
-void lcdNibble(char data){
-
-# 62
-char temp = (unsigned char) (data & 0xF0);
-LATD = (unsigned char) (LATD & 0x0F);
-LATD = (unsigned char) (temp | LATD);
-
-{ LCDinterruptState = INTCONbits.GIE; (INTCONbits.GIE = 0); LATDbits.LATD3 = 1; _delay((unsigned long)((25)*(40000000/4000000.0))); LATDbits.LATD3 = 0; _delay((unsigned long)((100)*(40000000/4000000.0))); INTCONbits.GIE = LCDinterruptState;};
-
-
-data = (unsigned char) (data << 4);
-temp = (unsigned char) (data & 0xF0);
-LATD = (unsigned char) (LATD & 0x0F);
-LATD = (unsigned char) (temp | LATD);
-
-{ LCDinterruptState = INTCONbits.GIE; (INTCONbits.GIE = 0); LATDbits.LATD3 = 1; _delay((unsigned long)((25)*(40000000/4000000.0))); LATDbits.LATD3 = 0; _delay((unsigned long)((100)*(40000000/4000000.0))); INTCONbits.GIE = LCDinterruptState;};
-}
-
-
-void putch(char data){
-
-# 86
-LATDbits.LATD2 = 1;
-lcdNibble(data);
-_delay((unsigned long)((100)*(40000000/4000000.0)));
-}
 
 
 unsigned int check_food(unsigned int sum, unsigned int foodInput[4]){
@@ -4852,7 +4806,7 @@ lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 printf("Date:");
 lcdInst(0xC0);;
 printf("%02i/%02i/%02i", year, month, day);
-_delay((unsigned long)((500)*(40000000/4000.0)));
+_delay((unsigned long)((700)*(40000000/4000.0)));
 while(PORTBbits.RB1 == 0){
 continue;
 }
@@ -4863,7 +4817,7 @@ lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 printf("Operation time:");
 lcdInst(0xC0);;
 printf("%i:%02i", minutes, seconds);
-_delay((unsigned long)((500)*(40000000/4000.0)));
+_delay((unsigned long)((700)*(40000000/4000.0)));
 
 while(PORTBbits.RB1 == 0){
 continue;
@@ -4875,22 +4829,22 @@ lcdInst(0xC0);;
 
 if (markedDrawer4 == 0 && markedDrawer3 == 0 && markedDrawer2 == 0){
 printf("%i", markedDrawer1);
-_delay((unsigned long)((500)*(40000000/4000.0)));
+_delay((unsigned long)((700)*(40000000/4000.0)));
 }
 
 else if (markedDrawer4 == 0 && markedDrawer3 == 0){
 printf("%i, %i", markedDrawer1, markedDrawer2);
-_delay((unsigned long)((500)*(40000000/4000.0)));
+_delay((unsigned long)((700)*(40000000/4000.0)));
 }
 
 else if (markedDrawer4 == 0){
 printf("%i, %i, %i", markedDrawer1, markedDrawer2, markedDrawer3);
-_delay((unsigned long)((500)*(40000000/4000.0)));
+_delay((unsigned long)((700)*(40000000/4000.0)));
 }
 
 else {
 printf("%i, %i, %i, %i", markedDrawer1, markedDrawer2, markedDrawer3, markedDrawer4);
-_delay((unsigned long)((500)*(40000000/4000.0)));
+_delay((unsigned long)((700)*(40000000/4000.0)));
 }
 
 while(PORTBbits.RB1 == 0){
@@ -4901,7 +4855,7 @@ lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 printf("Remaining pieces:");
 lcdInst(0xC0);;
 printf("R:%i  F:%i  L:%i", roundPieces, flatPieces, longPieces);
-_delay((unsigned long)((500)*(40000000/4000.0)));
+_delay((unsigned long)((700)*(40000000/4000.0)));
 
 while(PORTBbits.RB1 == 0){
 continue;
@@ -4909,7 +4863,7 @@ continue;
 
 lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 printf("Input Summary:");
-_delay((unsigned long)((500)*(40000000/4000.0)));
+_delay((unsigned long)((700)*(40000000/4000.0)));
 
 while(PORTBbits.RB1 == 0){
 continue;
@@ -4925,7 +4879,7 @@ if (drawerNumber != 0){
 printf("Drawer %i:", drawerNumber);
 lcdInst(0xC0);;
 printf("%s%s",inputs[dietType], foodInputs[foodType]);
-_delay((unsigned long)((500)*(40000000/4000.0)));
+_delay((unsigned long)((700)*(40000000/4000.0)));
 while(PORTBbits.RB1 == 0){
 continue;
 }
@@ -4936,7 +4890,7 @@ lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 printf("Another log?");
 lcdInst(0xC0);;
 printf("# = No, D = Yes");
-_delay((unsigned long)((500)*(40000000/4000.0)));
+_delay((unsigned long)((700)*(40000000/4000.0)));
 
 while(PORTBbits.RB1 == 0){ continue; }
 unsigned char keypress3 = (PORTB & 0xF0) >> 4;
@@ -5583,7 +5537,7 @@ writeEEPROM(8, 1);
 writeEEPROM(9, 13);
 writeEEPROM(10, 0);
 
-# 1746
+# 1677
 I2C_Master_Init(100000);
 I2C_Master_Start();
 I2C_Master_Write(0b11010001);
@@ -5622,7 +5576,7 @@ while(PORTBbits.RB1 == 1){ continue; }
 
 if (keypress == 15){
 
-# 1825
+# 1756
 while (1){
 if (firstIteration == 1){
 while (1){

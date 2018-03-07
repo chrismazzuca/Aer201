@@ -1,5 +1,5 @@
 
-# 1 "lcd.c"
+# 1 "LCD.c"
 
 # 26 "/Applications/microchip/xc8/v1.45/include/htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -3704,69 +3704,6 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 4 "/Applications/microchip/xc8/v1.45/include/__size_t.h"
-typedef unsigned size_t;
-
-# 7 "/Applications/microchip/xc8/v1.45/include/stdarg.h"
-typedef void * va_list[1];
-
-#pragma intrinsic(__va_start)
-extern void * __va_start(void);
-
-#pragma intrinsic(__va_arg)
-extern void * __va_arg(void *, ...);
-
-# 43 "/Applications/microchip/xc8/v1.45/include/stdio.h"
-struct __prbuf
-{
-char * ptr;
-void (* func)(char);
-};
-
-# 29 "/Applications/microchip/xc8/v1.45/include/errno.h"
-extern int errno;
-
-# 12 "/Applications/microchip/xc8/v1.45/include/conio.h"
-extern void init_uart(void);
-
-extern char getch(void);
-extern char getche(void);
-extern void putch(char);
-extern void ungetch(char);
-
-extern __bit kbhit(void);
-
-# 23
-extern char * cgets(char *);
-extern void cputs(const char *);
-
-# 88 "/Applications/microchip/xc8/v1.45/include/stdio.h"
-extern int cprintf(char *, ...);
-#pragma printf_check(cprintf)
-
-
-
-extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-
-
-# 180
-#pragma printf_check(vprintf) const
-#pragma printf_check(vsprintf) const
-
-extern char * gets(char *);
-extern int puts(const char *);
-extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-
-#pragma printf_check(printf) const
-#pragma printf_check(sprintf) const
-extern int sprintf(char *, const char *, ...);
-extern int printf(const char *, ...);
-
 
 # 12 "configBits.h"
 #pragma config OSC = HSPLL
@@ -3823,7 +3760,7 @@ extern int printf(const char *, ...);
 
 #pragma config EBTRB = OFF
 
-# 55 "lcd.h"
+# 53 "LCD.h"
 const unsigned char LCD_HORZ_LIMIT = 40;
 const unsigned char LCD_VERT_LIMIT = 2;
 
@@ -3835,37 +3772,43 @@ const unsigned char LCD_RIGHT = 1;
 const unsigned char LCD_LEFT = 0;
 
 
-static unsigned char LCDinterruptState;
-
 
 void lcdInst(char data);
-void putch(char data);
-void lcdNibble(char data);
 void initLCD(void);
-void lcd_set_cursor(unsigned char x, unsigned char y);
-void lcd_shift_cursor(unsigned char numChars, unsigned char direction);
-void lcd_shift_display(unsigned char numChars, unsigned char direction);
+void lcdNibble(char data);
+void putch(char data);
 
-# 11 "lcd.c"
+# 11 "LCD.c"
+static unsigned char LCDinterruptState;
+
 void lcdInst(char data){
 
-# 19
+# 21
 LATDbits.LATD2 = 0;
 lcdNibble(data);
 _delay((unsigned long)((100)*(40000000/4000000.0)));
 }
 
-void putch(char data){
 
-# 32
-LATDbits.LATD2 = 1;
-lcdNibble(data);
-_delay((unsigned long)((100)*(40000000/4000000.0)));
+void initLCD(void){
+
+# 35
+_delay((unsigned long)((15)*(40000000/4000.0)));
+lcdInst(0b00110011);
+lcdInst(0b00110010);
+lcdInst(0b00101000);
+lcdInst(0b00001111);
+lcdInst(0b00000110);
+lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+
+
+lcdInst(8 | (1 << 2) | (1 << 1)| 1);;
 }
+
 
 void lcdNibble(char data){
 
-# 45
+# 56
 char temp = (unsigned char) (data & 0xF0);
 LATD = (unsigned char) (LATD & 0x0F);
 LATD = (unsigned char) (temp | LATD);
@@ -3881,45 +3824,11 @@ LATD = (unsigned char) (temp | LATD);
 { LCDinterruptState = INTCONbits.GIE; (INTCONbits.GIE = 0); LATDbits.LATD3 = 1; _delay((unsigned long)((25)*(40000000/4000000.0))); LATDbits.LATD3 = 0; _delay((unsigned long)((100)*(40000000/4000000.0))); INTCONbits.GIE = LCDinterruptState;};
 }
 
-void initLCD(void){
 
-# 68
-_delay((unsigned long)((15)*(40000000/4000.0)));
-lcdInst(0b00110011);
-lcdInst(0b00110010);
-lcdInst(0b00101000);
-lcdInst(0b00001111);
-lcdInst(0b00000110);
-lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+void putch(char data){
 
-
-lcdInst(8 | (1 << 2) | (1 << 1)| 1);;
-}
-
-void lcd_set_cursor(unsigned char x, unsigned char y){
-
-# 90
-lcdInst(0x80);_delay((unsigned long)((5)*(40000000/4000.0)));;
-for(unsigned char i = 0; i < y; i++){lcdInst(0xC0);;}
-lcd_shift_cursor(x, 1);
-}
-
-void lcd_shift_cursor(unsigned char numChars, unsigned char direction){
-
-# 107
-for(unsigned char n = numChars; n > 0; n--){
-
-# 110
-lcdInst((unsigned char)(0x10 | (direction << 2)));
-}
-}
-
-void lcd_shift_display(unsigned char numChars, unsigned char direction){
-
-# 126
-for(unsigned char n = numChars; n > 0; n--){
-
-# 129
-lcdInst((unsigned char)(0x18 | (direction << 2)));
-}
+# 80
+LATDbits.LATD2 = 1;
+lcdNibble(data);
+_delay((unsigned long)((100)*(40000000/4000000.0)));
 }

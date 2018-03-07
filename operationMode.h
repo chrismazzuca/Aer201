@@ -16,8 +16,10 @@
 #include "configBits.h" 
 
 /****************************** Public Interfaces *****************************/
-unsigned int verticalStepper(unsigned int rotations, unsigned int direction);
-unsigned int horizontalStepper(unsigned int rotations, unsigned int direction);
+void getUserInputs(void);
+void sortDrawerList(void);
+void verticalStepper(unsigned int rotations, unsigned int direction);
+void horizontalStepper(unsigned int rotations, unsigned int direction);
 unsigned int detectTape(void);
 unsigned int configDrawer(unsigned int direction);
 unsigned int distributeRound(unsigned int count);

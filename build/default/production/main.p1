@@ -24,9 +24,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ADCON0 `Vuc ~T0 @X0 0 e@4034 ]
 "4442
 [v _ADCON1 `Vuc ~T0 @X0 0 e@4033 ]
-"71 standbyMode.h
+"19 standbyMode.h
 [v _initLCD `(v ~T0 @X0 0 ef ]
-"74
+"22
 [v _lcdInst `(v ~T0 @X0 0 ef1`uc ]
 [v F2882 `(v ~T0 @X0 1 tf1`ul ]
 "164 /Applications/microchip/xc8/v1.45/include/pic18.h
@@ -38,9 +38,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _readEEPROM `(uc ~T0 @X0 0 ef1`uc ]
 "16
 [v _initEEPROM `(v ~T0 @X0 0 ef ]
-"90 standbyMode.h
+"38 standbyMode.h
 [v _standbyMode `(ui ~T0 @X0 0 ef ]
-"28 operationMode.h
+"30 operationMode.h
 [v _mainOperation `(v ~T0 @X0 0 ef ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
@@ -2821,195 +2821,198 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 195: extern int printf(const char *, ...);
-"57 standbyMode.h
-[v _LCD_HORZ_LIMIT `Cuc ~T0 @X0 1 e ]
-[i _LCD_HORZ_LIMIT
--> -> 40 `i `uc
-]
-[; ;standbyMode.h: 57: const unsigned char LCD_HORZ_LIMIT = 40;
-"58
-[v _LCD_VERT_LIMIT `Cuc ~T0 @X0 1 e ]
-[i _LCD_VERT_LIMIT
--> -> 2 `i `uc
-]
-[; ;standbyMode.h: 58: const unsigned char LCD_VERT_LIMIT = 2;
-"61
-[v _LCD_SIZE_HORZ `Cuc ~T0 @X0 1 e ]
-[i _LCD_SIZE_HORZ
--> -> 16 `i `uc
-]
-[; ;standbyMode.h: 61: const unsigned char LCD_SIZE_HORZ = 16;
-"62
-[v _LCD_SIZE_VERT `Cuc ~T0 @X0 1 e ]
-[i _LCD_SIZE_VERT
--> -> 2 `i `uc
-]
-[; ;standbyMode.h: 62: const unsigned char LCD_SIZE_VERT = 2;
-"64
-[v _LCD_RIGHT `Cuc ~T0 @X0 1 e ]
-[i _LCD_RIGHT
--> -> 1 `i `uc
-]
-[; ;standbyMode.h: 64: const unsigned char LCD_RIGHT = 1;
-"65
-[v _LCD_LEFT `Cuc ~T0 @X0 1 e ]
-[i _LCD_LEFT
--> -> 0 `i `uc
-]
-[; ;standbyMode.h: 65: const unsigned char LCD_LEFT = 0;
-"68
-[v _LCDinterruptState `uc ~T0 @X0 1 s ]
-[; ;standbyMode.h: 68: static unsigned char LCDinterruptState;
-[; ;standbyMode.h: 71: void initLCD(void);
-[; ;standbyMode.h: 72: void putch(char data);
-[; ;standbyMode.h: 73: void lcdNibble(char data);
-[; ;standbyMode.h: 74: void lcdInst(char data);
-[; ;standbyMode.h: 75: void RTC_setTime(void);
-[; ;standbyMode.h: 76: unsigned int getRound(unsigned int code);
-[; ;standbyMode.h: 77: unsigned int getFlat(unsigned int code);
-[; ;standbyMode.h: 78: unsigned int getLong(unsigned int code);
-[; ;standbyMode.h: 79: unsigned int check_food(unsigned int sum, unsigned int foodInput[4]);
-[; ;standbyMode.h: 80: unsigned int verifyKeypress(unsigned char logNumber, unsigned int keypress);
-[; ;standbyMode.h: 81: unsigned int printFoodInput(unsigned int food);
-[; ;standbyMode.h: 82: unsigned int displayLogs(unsigned int logNumber);
-[; ;standbyMode.h: 83: unsigned int viewLogs(void);
-[; ;standbyMode.h: 84: unsigned int get_digits(unsigned int sum);
-[; ;standbyMode.h: 85: unsigned int food_press(unsigned int dietSum, unsigned int drawer);
-[; ;standbyMode.h: 86: unsigned int diet_press(unsigned int drawer);
-[; ;standbyMode.h: 87: unsigned int decode_diet(unsigned int dietType);
-[; ;standbyMode.h: 88: unsigned int decode_drawer(unsigned int drawer);
-[; ;standbyMode.h: 89: unsigned int which_drawer(void);
-[; ;standbyMode.h: 90: unsigned int standbyMode(void);
-[; ;operationMode.h: 19: unsigned int verticalStepper(unsigned int rotations, unsigned int direction);
-[; ;operationMode.h: 20: unsigned int horizontalStepper(unsigned int rotations, unsigned int direction);
-[; ;operationMode.h: 21: unsigned int detectTape(void);
-[; ;operationMode.h: 22: unsigned int configDrawer(unsigned int direction);
-[; ;operationMode.h: 23: unsigned int distributeRound(unsigned int count);
-[; ;operationMode.h: 24: unsigned int distributeFlat(unsigned int count);
-[; ;operationMode.h: 25: unsigned int distributeLong(unsigned int count);
-[; ;operationMode.h: 26: unsigned int checkCount(unsigned int pieceType);
-[; ;operationMode.h: 27: unsigned int trapDoor(unsigned int type, unsigned int direction);
-[; ;operationMode.h: 28: void mainOperation(void);
+[; ;standbyMode.h: 19: void initLCD(void);
+[; ;standbyMode.h: 20: void putch(char data);
+[; ;standbyMode.h: 21: void lcdNibble(char data);
+[; ;standbyMode.h: 22: void lcdInst(char data);
+[; ;standbyMode.h: 23: void RTC_setTime(void);
+[; ;standbyMode.h: 24: unsigned int getRound(unsigned int code);
+[; ;standbyMode.h: 25: unsigned int getFlat(unsigned int code);
+[; ;standbyMode.h: 26: unsigned int getLong(unsigned int code);
+[; ;standbyMode.h: 27: unsigned int check_food(unsigned int sum, unsigned int foodInput[4]);
+[; ;standbyMode.h: 28: unsigned int verifyKeypress(unsigned char logNumber, unsigned int keypress);
+[; ;standbyMode.h: 29: unsigned int printFoodInput(unsigned int food);
+[; ;standbyMode.h: 30: unsigned int displayLogs(unsigned int logNumber);
+[; ;standbyMode.h: 31: unsigned int viewLogs(void);
+[; ;standbyMode.h: 32: unsigned int get_digits(unsigned int sum);
+[; ;standbyMode.h: 33: unsigned int food_press(unsigned int dietSum, unsigned int drawer);
+[; ;standbyMode.h: 34: unsigned int diet_press(unsigned int drawer);
+[; ;standbyMode.h: 35: unsigned int decode_diet(unsigned int dietType);
+[; ;standbyMode.h: 36: unsigned int decode_drawer(unsigned int drawer);
+[; ;standbyMode.h: 37: unsigned int which_drawer(void);
+[; ;standbyMode.h: 38: unsigned int standbyMode(void);
+[; ;operationMode.h: 19: void getUserInputs(void);
+[; ;operationMode.h: 20: void sortDrawerList(void);
+[; ;operationMode.h: 21: void verticalStepper(unsigned int rotations, unsigned int direction);
+[; ;operationMode.h: 22: void horizontalStepper(unsigned int rotations, unsigned int direction);
+[; ;operationMode.h: 23: unsigned int detectTape(void);
+[; ;operationMode.h: 24: unsigned int configDrawer(unsigned int direction);
+[; ;operationMode.h: 25: unsigned int distributeRound(unsigned int count);
+[; ;operationMode.h: 26: unsigned int distributeFlat(unsigned int count);
+[; ;operationMode.h: 27: unsigned int distributeLong(unsigned int count);
+[; ;operationMode.h: 28: unsigned int checkCount(unsigned int pieceType);
+[; ;operationMode.h: 29: unsigned int trapDoor(unsigned int type, unsigned int direction);
+[; ;operationMode.h: 30: void mainOperation(void);
 [; ;EEPROMstorage.h: 14: void writeEEPROM(unsigned char address, unsigned char data);
 [; ;EEPROMstorage.h: 15: unsigned char readEEPROM(unsigned char address);
 [; ;EEPROMstorage.h: 16: void initEEPROM(void);
 [; ;EEPROMstorage.h: 17: void shiftEEPROM(void);
-"15 main.c
+"53 LCD.h
+[v _LCD_HORZ_LIMIT `Cuc ~T0 @X0 1 e ]
+[i _LCD_HORZ_LIMIT
+-> -> 40 `i `uc
+]
+[; ;LCD.h: 53: const unsigned char LCD_HORZ_LIMIT = 40;
+"54
+[v _LCD_VERT_LIMIT `Cuc ~T0 @X0 1 e ]
+[i _LCD_VERT_LIMIT
+-> -> 2 `i `uc
+]
+[; ;LCD.h: 54: const unsigned char LCD_VERT_LIMIT = 2;
+"57
+[v _LCD_SIZE_HORZ `Cuc ~T0 @X0 1 e ]
+[i _LCD_SIZE_HORZ
+-> -> 16 `i `uc
+]
+[; ;LCD.h: 57: const unsigned char LCD_SIZE_HORZ = 16;
+"58
+[v _LCD_SIZE_VERT `Cuc ~T0 @X0 1 e ]
+[i _LCD_SIZE_VERT
+-> -> 2 `i `uc
+]
+[; ;LCD.h: 58: const unsigned char LCD_SIZE_VERT = 2;
+"60
+[v _LCD_RIGHT `Cuc ~T0 @X0 1 e ]
+[i _LCD_RIGHT
+-> -> 1 `i `uc
+]
+[; ;LCD.h: 60: const unsigned char LCD_RIGHT = 1;
+"61
+[v _LCD_LEFT `Cuc ~T0 @X0 1 e ]
+[i _LCD_LEFT
+-> -> 0 `i `uc
+]
+[; ;LCD.h: 61: const unsigned char LCD_LEFT = 0;
+[; ;LCD.h: 65: void lcdInst(char data);
+[; ;LCD.h: 66: void initLCD(void);
+[; ;LCD.h: 67: void lcdNibble(char data);
+[; ;LCD.h: 68: void putch(char data);
+"16 main.c
 [v _firstIteration `ui ~T0 @X0 1 e ]
 [i _firstIteration
 -> -> 0 `i `ui
 ]
-[; ;main.c: 15: unsigned int firstIteration = 0;
+[; ;main.c: 16: unsigned int firstIteration = 0;
 [v $root$_main `(v ~T0 @X0 0 e ]
-"17
+"18
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 17: void main(void) {
+[; ;main.c: 18: void main(void) {
 [e :U _main ]
 [f ]
-[; ;main.c: 23: LATA = 0x00;
-"23
-[e = _LATA -> -> 0 `i `uc ]
-[; ;main.c: 24: LATB = 0x00;
+[; ;main.c: 24: LATA = 0x00;
 "24
-[e = _LATB -> -> 0 `i `uc ]
-[; ;main.c: 25: LATC = 0x00;
+[e = _LATA -> -> 0 `i `uc ]
+[; ;main.c: 25: LATB = 0x00;
 "25
-[e = _LATC -> -> 0 `i `uc ]
-[; ;main.c: 26: LATD = 0x00;
+[e = _LATB -> -> 0 `i `uc ]
+[; ;main.c: 26: LATC = 0x00;
 "26
-[e = _LATD -> -> 0 `i `uc ]
-[; ;main.c: 27: LATE = 0x00;
+[e = _LATC -> -> 0 `i `uc ]
+[; ;main.c: 27: LATD = 0x00;
 "27
+[e = _LATD -> -> 0 `i `uc ]
+[; ;main.c: 28: LATE = 0x00;
+"28
 [e = _LATE -> -> 0 `i `uc ]
-[; ;main.c: 31: TRISA = 0xFF;
-"31
-[e = _TRISA -> -> 255 `i `uc ]
-[; ;main.c: 32: TRISB = 0xFF;
+[; ;main.c: 32: TRISA = 0xFF;
 "32
-[e = _TRISB -> -> 255 `i `uc ]
-[; ;main.c: 33: TRISC = 0x00;
+[e = _TRISA -> -> 255 `i `uc ]
+[; ;main.c: 33: TRISB = 0xFF;
 "33
-[e = _TRISC -> -> 0 `i `uc ]
-[; ;main.c: 34: TRISD = 0x00;
+[e = _TRISB -> -> 255 `i `uc ]
+[; ;main.c: 34: TRISC = 0x00;
 "34
-[e = _TRISD -> -> 0 `i `uc ]
-[; ;main.c: 35: TRISE = 0x00;
+[e = _TRISC -> -> 0 `i `uc ]
+[; ;main.c: 35: TRISD = 0x00;
 "35
+[e = _TRISD -> -> 0 `i `uc ]
+[; ;main.c: 36: TRISE = 0x00;
+"36
 [e = _TRISE -> -> 0 `i `uc ]
-[; ;main.c: 38: ADCON0 = 0x00;
-"38
-[e = _ADCON0 -> -> 0 `i `uc ]
-[; ;main.c: 39: ADCON1 = 0b00001111;
+[; ;main.c: 39: ADCON0 = 0x00;
 "39
+[e = _ADCON0 -> -> 0 `i `uc ]
+[; ;main.c: 40: ADCON1 = 0b00001111;
+"40
 [e = _ADCON1 -> -> 15 `i `uc ]
-[; ;main.c: 42: initLCD();
-"42
-[e ( _initLCD ..  ]
-[; ;main.c: 43: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+[; ;main.c: 43: initLCD();
 "43
+[e ( _initLCD ..  ]
+[; ;main.c: 44: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"44
 [e ( _lcdInst (1 -> -> 1 `i `uc ]
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;main.c: 44: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
-"44
-[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;main.c: 45: printf("Standby");
+[; ;main.c: 45: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
 "45
+[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
+[; ;main.c: 46: printf("Standby");
+"46
 [e ( _printf :s 1C ]
-"47
+"50
 [v _operationMode `ui ~T0 @X0 1 a ]
-[; ;main.c: 47: unsigned int operationMode = 0;
+[; ;main.c: 50: unsigned int operationMode = 0;
 [e = _operationMode -> -> 0 `i `ui ]
-"59
+"62
 [v _checkEEPROM `ui ~T0 @X0 1 a ]
-[; ;main.c: 59: unsigned int checkEEPROM = 0;
+[; ;main.c: 62: unsigned int checkEEPROM = 0;
 [e = _checkEEPROM -> -> 0 `i `ui ]
-[; ;main.c: 61: checkEEPROM = readEEPROM(251);
-"61
+[; ;main.c: 64: checkEEPROM = readEEPROM(251);
+"64
 [e = _checkEEPROM -> ( _readEEPROM (1 -> -> 251 `i `uc `ui ]
-[; ;main.c: 63: if (checkEEPROM == 255){
-"63
+[; ;main.c: 66: if (checkEEPROM == 255){
+"66
 [e $ ! == _checkEEPROM -> -> 255 `i `ui 267  ]
 {
-[; ;main.c: 64: initEEPROM();
-"64
+[; ;main.c: 67: initEEPROM();
+"67
 [e ( _initEEPROM ..  ]
-[; ;main.c: 65: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"65
+[; ;main.c: 68: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"68
 [e ( _lcdInst (1 -> -> 1 `i `uc ]
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;main.c: 66: printf("Clearing EEPROM");
-"66
+[; ;main.c: 69: printf("Clearing EEPROM");
+"69
 [e ( _printf :s 2C ]
-[; ;main.c: 67: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"67
+[; ;main.c: 70: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"70
 [e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-"68
+"71
 }
 [e :U 267 ]
-[; ;main.c: 68: }
-[; ;main.c: 71: operationMode = standbyMode();
-"71
+[; ;main.c: 71: }
+[; ;main.c: 74: operationMode = standbyMode();
+"74
 [e = _operationMode ( _standbyMode ..  ]
-[; ;main.c: 73: if (operationMode == 1){
-"73
+[; ;main.c: 76: if (operationMode == 1){
+"76
 [e $ ! == _operationMode -> -> 1 `i `ui 268  ]
 {
-[; ;main.c: 74: mainOperation();
-"74
+[; ;main.c: 77: mainOperation();
+"77
 [e ( _mainOperation ..  ]
-"75
+"78
 }
 [e :U 268 ]
-[; ;main.c: 75: }
-[; ;main.c: 77: firstIteration += 1;
-"77
+[; ;main.c: 78: }
+[; ;main.c: 80: firstIteration += 1;
+"80
 [e =+ _firstIteration -> -> 1 `i `ui ]
-[; ;main.c: 78: return;
-"78
+[; ;main.c: 81: return;
+"81
 [e $UE 266  ]
-[; ;main.c: 79: }
-"79
+[; ;main.c: 82: }
+"82
 [e :UE 266 ]
 }
 [p f _printf 8388608 ]

@@ -13,6 +13,7 @@
       <itemPath>arduinoSetup.h</itemPath>
       <itemPath>ADC.h</itemPath>
       <itemPath>UART_PIC.h</itemPath>
+      <itemPath>LCD.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -30,6 +31,7 @@
       <itemPath>arduinoSetup.c</itemPath>
       <itemPath>ADC.c</itemPath>
       <itemPath>UART_PIC.c</itemPath>
+      <itemPath>LCD.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

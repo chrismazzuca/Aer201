@@ -4,4 +4,5 @@
 EEPROMstorage.h  \
 operationMode.h  \
 standbyMode.h  \
+LCD.h  \
 configBits.h 

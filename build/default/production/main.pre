@@ -3823,21 +3823,7 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 57 "standbyMode.h"
-const unsigned char LCD_HORZ_LIMIT = 40;
-const unsigned char LCD_VERT_LIMIT = 2;
-
-
-const unsigned char LCD_SIZE_HORZ = 16;
-const unsigned char LCD_SIZE_VERT = 2;
-
-const unsigned char LCD_RIGHT = 1;
-const unsigned char LCD_LEFT = 0;
-
-
-static unsigned char LCDinterruptState;
-
-
+# 19 "standbyMode.h"
 void initLCD(void);
 void putch(char data);
 void lcdNibble(char data);
@@ -3860,8 +3846,10 @@ unsigned int which_drawer(void);
 unsigned int standbyMode(void);
 
 # 19 "operationMode.h"
-unsigned int verticalStepper(unsigned int rotations, unsigned int direction);
-unsigned int horizontalStepper(unsigned int rotations, unsigned int direction);
+void getUserInputs(void);
+void sortDrawerList(void);
+void verticalStepper(unsigned int rotations, unsigned int direction);
+void horizontalStepper(unsigned int rotations, unsigned int direction);
 unsigned int detectTape(void);
 unsigned int configDrawer(unsigned int direction);
 unsigned int distributeRound(unsigned int count);
@@ -3877,19 +3865,37 @@ unsigned char readEEPROM(unsigned char address);
 void initEEPROM(void);
 void shiftEEPROM(void);
 
-# 15 "main.c"
+# 53 "LCD.h"
+const unsigned char LCD_HORZ_LIMIT = 40;
+const unsigned char LCD_VERT_LIMIT = 2;
+
+
+const unsigned char LCD_SIZE_HORZ = 16;
+const unsigned char LCD_SIZE_VERT = 2;
+
+const unsigned char LCD_RIGHT = 1;
+const unsigned char LCD_LEFT = 0;
+
+
+
+void lcdInst(char data);
+void initLCD(void);
+void lcdNibble(char data);
+void putch(char data);
+
+# 16 "main.c"
 unsigned int firstIteration = 0;
 
 void main(void) {
 
-# 23
+# 24
 LATA = 0x00;
 LATB = 0x00;
 LATC = 0x00;
 LATD = 0x00;
 LATE = 0x00;
 
-# 31
+# 32
 TRISA = 0xFF;
 TRISB = 0xFF;
 TRISC = 0x00;
@@ -3906,9 +3912,11 @@ lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
 printf("Standby");
 
+
+
 unsigned int operationMode = 0;
 
-# 59
+# 62
 unsigned int checkEEPROM = 0;
 
 checkEEPROM = readEEPROM(251);

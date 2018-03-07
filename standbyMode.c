@@ -9,84 +9,13 @@
 #include "EEPROMstorage.h"
 #include "I2C.h"
 #include "RTC.h"
+#include "LCD.h"
 //#include "arduinoSetup.h"
 
 const char input[] = "123R456F789L*0#D";
 const char keys[] = "123A456B789C*0#D";
 const char* inputs[] = {"R", "F", "L", "RF", "RL", "FL", "RRF", "RRL", "RFF", "RLL", "RFL", "FFL", "FLL", "RRFL", "RFFL", "RFLL", "RLLL", "FLLL"};
 const char* foodInputs[] = {"1", "2", "3", "11", "12", "13", "21", "22", "111", "112", "121", "211", "1111"};
-
-void lcdInst(char data){
-    /* Sends a command to a display control register.
-     * 
-     * Arguments: data, the command byte for the Hitachi controller
-     * 
-     * Returns: none
-     */
-    
-    RS = 0;
-    lcdNibble(data);
-    __delay_us(100);
-}
-
-
-void initLCD(void){
-    /* Initializes the character LCD.
-     *
-     * Arguments: none
-     *
-     * Returns: none
-     */
-    
-    __delay_ms(15);
-    lcdInst(0b00110011);
-    lcdInst(0b00110010);
-    lcdInst(0b00101000);
-    lcdInst(0b00001111);
-    lcdInst(0b00000110);
-    __lcd_clear();
-    
-    /* Enforce on: display, cursor, and cursor blinking. */
-    __lcd_display_control(1, 1, 1);
-}
-
-
-void lcdNibble(char data){
-    /* Low-level byte-sending implementation.
-     * 
-     * Arguments: data, the byte to be sent
-     * 
-     * Returns: none
-     */
-    
-    char temp = (unsigned char) (data & 0xF0);
-    LATD = (unsigned char) (LATD & 0x0F);
-    LATD = (unsigned char) (temp | LATD);
-
-    __PULSE_E();
-    
-    /* Send the 4 most significant bits (MSb). */
-    data = (unsigned char) (data << 4);
-    temp = (unsigned char) (data & 0xF0);
-    LATD = (unsigned char) (LATD & 0x0F);
-    LATD = (unsigned char) (temp | LATD);
-
-    __PULSE_E();
-}
-
-
-void putch(char data){
-    /* Sends a character to the display RAM for printing.
-     * 
-     * Arguments data, the character (byte) to be sent
-     * 
-     * Returns: none
-     */
-    
-    RS = 1;
-    lcdNibble(data);
-    __delay_us(100);
-}
 
 
 unsigned int check_food(unsigned int sum, unsigned int foodInput[4]){
@@ -1004,7 +933,7 @@ unsigned int displayLogs(unsigned int logNumber){
         printf("Date:");
         __lcd_newline();
         printf("%02i/%02i/%02i", year, month, day);
-        __delay_ms(500);
+        __delay_ms(700);
         while(PORTBbits.RB1 == 0){  
             continue;   
         }
@@ -1015,7 +944,7 @@ unsigned int displayLogs(unsigned int logNumber){
         printf("Operation time:");
         __lcd_newline();
         printf("%i:%02i", minutes, seconds);
-        __delay_ms(500);
+        __delay_ms(700);
         
         while(PORTBbits.RB1 == 0){  
             continue;   
@@ -1027,22 +956,22 @@ unsigned int displayLogs(unsigned int logNumber){
         
         if (markedDrawer4 == 0 && markedDrawer3 == 0 && markedDrawer2 == 0){
             printf("%i", markedDrawer1);
-            __delay_ms(500);
+            __delay_ms(700);
         }
         
         else if (markedDrawer4 == 0 && markedDrawer3 == 0){
             printf("%i, %i", markedDrawer1, markedDrawer2);
-            __delay_ms(500);
+            __delay_ms(700);
         }
         
         else if (markedDrawer4 == 0){
             printf("%i, %i, %i", markedDrawer1, markedDrawer2, markedDrawer3);
-            __delay_ms(500);
+            __delay_ms(700);
         }
         
         else {
             printf("%i, %i, %i, %i", markedDrawer1, markedDrawer2, markedDrawer3, markedDrawer4);
-            __delay_ms(500);
+            __delay_ms(700);
         }
         
         while(PORTBbits.RB1 == 0){  
@@ -1053,7 +982,7 @@ unsigned int displayLogs(unsigned int logNumber){
         printf("Remaining pieces:");
         __lcd_newline();
         printf("R:%i  F:%i  L:%i", roundPieces, flatPieces, longPieces);
-        __delay_ms(500);
+        __delay_ms(700);
         
         while(PORTBbits.RB1 == 0){  
             continue;   
@@ -1061,7 +990,7 @@ unsigned int displayLogs(unsigned int logNumber){
         
         __lcd_clear();
         printf("Input Summary:");
-        __delay_ms(500);
+        __delay_ms(700);
         
         while(PORTBbits.RB1 == 0){  
             continue;   
@@ -1077,7 +1006,7 @@ unsigned int displayLogs(unsigned int logNumber){
                 printf("Drawer %i:", drawerNumber);
                 __lcd_newline();
                 printf("%s%s",inputs[dietType], foodInputs[foodType]);
-                __delay_ms(500);
+                __delay_ms(700);
                 while(PORTBbits.RB1 == 0){  
                     continue;   
                 }
@@ -1088,7 +1017,7 @@ unsigned int displayLogs(unsigned int logNumber){
         printf("Another log?");
         __lcd_newline();
         printf("# = No, D = Yes");
-        __delay_ms(500);
+        __delay_ms(700);
             
         while(PORTBbits.RB1 == 0){  continue;   }
         unsigned char keypress3 = (PORTB & 0xF0) >> 4;
