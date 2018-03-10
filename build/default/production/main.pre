@@ -3846,17 +3846,19 @@ unsigned int which_drawer(void);
 unsigned int standbyMode(void);
 
 # 19 "operationMode.h"
-void getUserInputs(void);
-void sortDrawerList(void);
+void getUserInputs(unsigned int drawerTable[8], unsigned int dietTable[8], unsigned int foodTable[8]);
+void sortDrawerList(unsigned int drawerTable[8], unsigned int sortedDrawerTable[8]);
 void verticalStepper(unsigned int rotations, unsigned int direction);
 void horizontalStepper(unsigned int rotations, unsigned int direction);
+unsigned int moveVertically(unsigned int currentDrawer, unsigned int nextDrawer);
+void moveHorizontally(unsigned int currentDrawer, unsigned int nextDrawer);
 unsigned int detectTape(void);
 unsigned int configDrawer(unsigned int direction);
 unsigned int distributeRound(unsigned int count);
 unsigned int distributeFlat(unsigned int count);
 unsigned int distributeLong(unsigned int count);
 unsigned int checkCount(unsigned int pieceType);
-unsigned int trapDoor(unsigned int type, unsigned int direction);
+unsigned int trapDoor(unsigned int direction);
 void mainOperation(void);
 
 # 14 "EEPROMstorage.h"
@@ -3883,19 +3885,55 @@ void initLCD(void);
 void lcdNibble(char data);
 void putch(char data);
 
-# 16 "main.c"
+# 42 "UART_PIC.h"
+typedef enum{
+UART_STATE_BUSY = 0x00,
+UART_STATE_READY = 0x01,
+}UART_StateTypeDef;
+
+# 53
+typedef struct{
+unsigned char* _dataTX;
+unsigned char _numBytesTX;
+volatile unsigned char _numTransmits;
+unsigned char* _dataRX;
+unsigned char _numBytesRX;
+volatile unsigned char _numReceives;
+volatile unsigned char _stateTX;
+volatile unsigned char _stateRX;
+volatile unsigned char _lastReceiveFERR;
+volatile unsigned char _lastReceiveOERR;
+}UART_t;
+
+
+volatile unsigned char UARTinterruptState;
+
+
+unsigned char arr_dataRX[16];
+UART_t* UART;
+
+
+void uartTransmitBlocking(unsigned char* data, unsigned char numBytes);
+void uartTransmitIT(unsigned char* data, unsigned char numBytes);
+void uartReceiveBlocking(unsigned char numBytes);
+void uartReceiveIT(unsigned char numBytes);
+
+
+void UART_Init(long baud);
+
+# 17 "main.c"
 unsigned int firstIteration = 0;
 
 void main(void) {
 
-# 24
+# 25
 LATA = 0x00;
 LATB = 0x00;
 LATC = 0x00;
 LATD = 0x00;
 LATE = 0x00;
 
-# 32
+# 33
 TRISA = 0xFF;
 TRISB = 0xFF;
 TRISC = 0x00;
@@ -3913,10 +3951,70 @@ lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
 printf("Standby");
 
 
+UART_Init(9600);
+
+
 
 unsigned int operationMode = 0;
+unsigned int i = 0;
 
-# 62
+TRISCbits.TRISC5 = 0;
+TRISCbits.TRISC6 = 0;
+TRISCbits.TRISC7 = 0;
+TRISCbits.TRISC0 = 0;
+LATCbits.LATC5 = 1;
+LATCbits.LATC6 = 1;
+LATCbits.LATC7 = 1;
+LATCbits.LATC0 = 0;
+
+while(1){
+for (i=0; i<523; i++){
+LATCbits.LATC5 = 1;
+LATCbits.LATC6 = 0;
+LATCbits.LATC7 = 0;
+LATCbits.LATC0 = 0;
+_delay((unsigned long)((2)*(40000000/4000.0)));
+LATCbits.LATC5 = 0;
+LATCbits.LATC6 = 1;
+LATCbits.LATC7 = 0;
+LATCbits.LATC0 = 0;
+_delay((unsigned long)((2)*(40000000/4000.0)));
+LATCbits.LATC5 = 0;
+LATCbits.LATC6 = 0;
+LATCbits.LATC7 = 1;
+LATCbits.LATC0 = 0;
+_delay((unsigned long)((2)*(40000000/4000.0)));
+LATCbits.LATC5 = 0;
+LATCbits.LATC6 = 0;
+LATCbits.LATC7 = 0;
+LATCbits.LATC0 = 1;
+_delay((unsigned long)((2)*(40000000/4000.0)));
+}
+for (i=0; i<523; i++){
+LATCbits.LATC5 = 0;
+LATCbits.LATC6 = 0;
+LATCbits.LATC7 = 1;
+LATCbits.LATC0 = 0;
+_delay((unsigned long)((2)*(40000000/4000.0)));
+LATCbits.LATC5 = 0;
+LATCbits.LATC6 = 1;
+LATCbits.LATC7 = 0;
+LATCbits.LATC0 = 0;
+_delay((unsigned long)((2)*(40000000/4000.0)));
+LATCbits.LATC5 = 1;
+LATCbits.LATC6 = 0;
+LATCbits.LATC7 = 0;
+LATCbits.LATC0 = 0;
+_delay((unsigned long)((2)*(40000000/4000.0)));
+LATCbits.LATC5 = 0;
+LATCbits.LATC6 = 0;
+LATCbits.LATC7 = 0;
+LATCbits.LATC0 = 1;
+_delay((unsigned long)((2)*(40000000/4000.0)));
+}
+}
+
+# 128
 unsigned int checkEEPROM = 0;
 
 checkEEPROM = readEEPROM(251);

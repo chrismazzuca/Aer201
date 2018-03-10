@@ -12,6 +12,7 @@
 #include "operationMode.h"
 #include "EEPROMstorage.h"
 #include "LCD.h"
+#include "UART_PIC.h"
 
 unsigned int firstIteration = 0;
 
@@ -45,19 +46,84 @@ void main(void) {
     __lcd_display_control(1, 0, 0);
     printf("Standby");
     
+    /* Initialize UART. */
+    UART_Init(9600);
+    
     //verticalStepper(1,1);
     
     unsigned int operationMode = 0;
+    unsigned int i = 0;
     
-    /*TRISCbits.TRISC0 = 0;
+    TRISCbits.TRISC5 = 0;
+    TRISCbits.TRISC6 = 0;
+    TRISCbits.TRISC7 = 0;
+    TRISCbits.TRISC0 = 0;
+    LATCbits.LATC5 = 1;
+    LATCbits.LATC6 = 1;
+    LATCbits.LATC7 = 1;
     LATCbits.LATC0 = 0;
     
     while(1){
-        LATCbits.LATC0 = 1;
-        __delay_ms(115);
+    for (i=0; i<523; i++){
+        LATCbits.LATC5 = 1;
+        LATCbits.LATC6 = 0;
+        LATCbits.LATC7 = 0;
         LATCbits.LATC0 = 0;
-        __delay_ms(2000);
-    }*/
+        __delay_ms(2);
+        LATCbits.LATC5 = 0;
+        LATCbits.LATC6 = 1;
+        LATCbits.LATC7 = 0;
+        LATCbits.LATC0 = 0;
+        __delay_ms(2);
+        LATCbits.LATC5 = 0;
+        LATCbits.LATC6 = 0;
+        LATCbits.LATC7 = 1;
+        LATCbits.LATC0 = 0;
+        __delay_ms(2);
+        LATCbits.LATC5 = 0;
+        LATCbits.LATC6 = 0;
+        LATCbits.LATC7 = 0;
+        LATCbits.LATC0 = 1;
+        __delay_ms(2);
+    }
+    for (i=0; i<523; i++){
+        LATCbits.LATC5 = 0;
+        LATCbits.LATC6 = 0;
+        LATCbits.LATC7 = 1;
+        LATCbits.LATC0 = 0;
+        __delay_ms(2);
+        LATCbits.LATC5 = 0;
+        LATCbits.LATC6 = 1;
+        LATCbits.LATC7 = 0;
+        LATCbits.LATC0 = 0;
+        __delay_ms(2);
+        LATCbits.LATC5 = 1;
+        LATCbits.LATC6 = 0;
+        LATCbits.LATC7 = 0;
+        LATCbits.LATC0 = 0;
+        __delay_ms(2);
+        LATCbits.LATC5 = 0;
+        LATCbits.LATC6 = 0;
+        LATCbits.LATC7 = 0;
+        LATCbits.LATC0 = 1;
+        __delay_ms(2);
+    }
+    }
+    
+//    while(1){
+//        LATCbits.LATC5 = 1;
+//        LATCbits.LATC6 = 0;
+//        __delay_ms(500);
+//        LATCbits.LATC5 = 0;
+//        LATCbits.LATC6 = 1;
+//        __delay_ms(500);
+//        LATCbits.LATC5 = 1;
+//        LATCbits.LATC6 = 1;
+//        __delay_ms(1);
+//        LATCbits.LATC5 = 0;
+//        LATCbits.LATC6 = 0;
+//        __delay_ms(1000);
+//    }
     
     unsigned int checkEEPROM = 0;
     

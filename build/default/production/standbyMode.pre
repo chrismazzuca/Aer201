@@ -3889,8 +3889,6 @@ const char* inputs[] = {"R", "F", "L", "RF", "RL", "FL", "RRF", "RRL", "RFF", "R
 const char* foodInputs[] = {"1", "2", "3", "11", "12", "13", "21", "22", "111", "112", "121", "211", "1111"};
 
 
-
-
 unsigned int check_food(unsigned int sum, unsigned int foodInput[4]){
 unsigned int returnValue = 0;
 
@@ -5537,7 +5535,7 @@ writeEEPROM(8, 1);
 writeEEPROM(9, 13);
 writeEEPROM(10, 0);
 
-# 1677
+# 1675
 I2C_Master_Init(100000);
 I2C_Master_Start();
 I2C_Master_Write(0b11010001);
@@ -5576,7 +5574,7 @@ while(PORTBbits.RB1 == 1){ continue; }
 
 if (keypress == 15){
 
-# 1756
+# 1754
 while (1){
 if (firstIteration == 1){
 while (1){

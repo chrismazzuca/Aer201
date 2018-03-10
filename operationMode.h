@@ -16,17 +16,19 @@
 #include "configBits.h" 
 
 /****************************** Public Interfaces *****************************/
-void getUserInputs(void);
-void sortDrawerList(void);
+void getUserInputs(unsigned int drawerTable[8], unsigned int dietTable[8], unsigned int foodTable[8]);
+void sortDrawerList(unsigned int drawerTable[8], unsigned int sortedDrawerTable[8]);
 void verticalStepper(unsigned int rotations, unsigned int direction);
 void horizontalStepper(unsigned int rotations, unsigned int direction);
+unsigned int moveVertically(unsigned int currentDrawer, unsigned int nextDrawer);
+void moveHorizontally(unsigned int currentDrawer, unsigned int nextDrawer);
 unsigned int detectTape(void);
 unsigned int configDrawer(unsigned int direction);
 unsigned int distributeRound(unsigned int count);
 unsigned int distributeFlat(unsigned int count);
 unsigned int distributeLong(unsigned int count);
 unsigned int checkCount(unsigned int pieceType);
-unsigned int trapDoor(unsigned int type, unsigned int direction);
+unsigned int trapDoor(unsigned int direction);
 void mainOperation(void);
 
 #endif	/* OPERATION_MODE_H */

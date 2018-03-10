@@ -30,6 +30,11 @@ const char columnLeft = '3';
 const char columnRight = '4';
 
 void setup() {
+    /* Configure pin modes for tx and rx. */
+    pinMode(rxPin, INPUT);
+    pinMode(txPin, OUTPUT);
+    picConnection.begin(9600);
+  
     verticalStepper.begin(RPM, MICROSTEPS);
     pinMode(SLEEP_UP, OUTPUT);
     digitalWrite(SLEEP_UP, HIGH);
@@ -37,11 +42,6 @@ void setup() {
     horizontalStepper.begin(RPM, MICROSTEPS);
     pinMode(SLEEP_SIDE, OUTPUT);
     digitalWrite(SLEEP_SIDE, HIGH);
-
-    /* Configure pin modes for tx and rx. */
-    pinMode(rxPin, INPUT);
-    pinMode(txPin, OUTPUT);
-    picConnection.begin(9600);
 }
 
 void loop() {
@@ -53,27 +53,33 @@ void loop() {
     switch(receivedData){
       case rowUp:
         digitalWrite(SLEEP_UP, HIGH);
-        verticalStepper.rotate(400);
+        delay(1);
+        verticalStepper.rotate(1800);
         digitalWrite(SLEEP_UP, LOW);
         delay(1);
         break;
       case rowDown:
         digitalWrite(SLEEP_UP, HIGH);
-        verticalStepper.rotate(-400);
+        delay(1);
+        verticalStepper.rotate(-1800);
         digitalWrite(SLEEP_UP, LOW);
         delay(1);
         break;
       case columnLeft:
         digitalWrite(SLEEP_SIDE, HIGH);
+        delay(1);
         horizontalStepper.rotate(600);
         digitalWrite(SLEEP_SIDE, LOW);
         delay(1);
         break;
       case columnRight:
         digitalWrite(SLEEP_SIDE, HIGH);
+        delay(1);
         horizontalStepper.rotate(-600);
         digitalWrite(SLEEP_SIDE, LOW);
         delay(1);
+        break;
+      default:
         break;
     }
 }

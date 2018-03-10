@@ -23,22 +23,28 @@
 // All the wires needed for full functionality
 #define DIR 8
 #define STEP 9
+#define DIR2 10
+#define STEP2 11
 //Uncomment line to use enable/disable functionality
 //#define ENABLE 13
 
 // 2-wire basic config, microstepping is hardwired on the driver
 BasicStepperDriver stepper(MOTOR_STEPS, DIR, STEP);
+BasicStepperDriver stepper2(MOTOR_STEPS, DIR2, STEP2);
 
 //Uncomment line to use enable/disable functionality
 //BasicStepperDriver stepper(MOTOR_STEPS, DIR, STEP, ENABLE);
 
 void setup() {
     stepper.begin(RPM, MICROSTEPS);
+    stepper2.begin(RPM, MICROSTEPS);
     pinMode(5, OUTPUT);
+    pinMode(12, OUTPUT);
 }
 
 void loop() {
     digitalWrite(5, HIGH);
+    digitalWrite(12, HIGH);
     // energize coils - the motor will hold position
     // stepper.enable();
   
@@ -46,11 +52,27 @@ void loop() {
      * Moving motor one full revolution using the degree notation
      */
     for (int x=0; x<3; x++){
+      digitalWrite(5, HIGH);
+      delay(1);
       stepper.rotate(400);
+      digitalWrite(5, LOW);
+      delay(1000);
+      digitalWrite(12, HIGH);
+      delay(1);
+      stepper2.rotate(1800);
+      digitalWrite(12, LOW);
       delay(1000);
     }
     for (int x=0; x<3; x++){
+      digitalWrite(5, HIGH);
+      delay(1);
       stepper.rotate(-400);
+      digitalWrite(5, LOW);
+      delay(1000);
+      digitalWrite(12, HIGH);
+      delay(1);
+      stepper2.rotate(-1800);
+      digitalWrite(12, LOW);
       delay(1000);
     }
 
