@@ -3848,8 +3848,13 @@ unsigned int standbyMode(void);
 # 19 "operationMode.h"
 void getUserInputs(unsigned int drawerTable[8], unsigned int dietTable[8], unsigned int foodTable[8]);
 void sortDrawerList(unsigned int drawerTable[8], unsigned int sortedDrawerTable[8]);
+unsigned int findDrawerIndex(unsigned int drawerTable[8], unsigned int sortedDrawerValue);
+unsigned int getRoundPieces(unsigned int dietType, unsigned int foodType);
+unsigned int getFlatPieces(unsigned int dietType, unsigned int foodType);
+unsigned int getLongPieces(unsigned int dietType, unsigned int foodType);
 void verticalStepper(unsigned int rotations, unsigned int direction);
 void horizontalStepper(unsigned int rotations, unsigned int direction);
+void drawerStepper(unsigned int direction);
 unsigned int moveVertically(unsigned int currentDrawer, unsigned int nextDrawer);
 void moveHorizontally(unsigned int currentDrawer, unsigned int nextDrawer);
 unsigned int detectTape(void);
@@ -3957,64 +3962,9 @@ UART_Init(9600);
 
 unsigned int operationMode = 0;
 unsigned int i = 0;
+unsigned int l = 0;
 
-TRISCbits.TRISC5 = 0;
-TRISCbits.TRISC6 = 0;
-TRISCbits.TRISC7 = 0;
-TRISCbits.TRISC0 = 0;
-LATCbits.LATC5 = 1;
-LATCbits.LATC6 = 1;
-LATCbits.LATC7 = 1;
-LATCbits.LATC0 = 0;
-
-while(1){
-for (i=0; i<523; i++){
-LATCbits.LATC5 = 1;
-LATCbits.LATC6 = 0;
-LATCbits.LATC7 = 0;
-LATCbits.LATC0 = 0;
-_delay((unsigned long)((2)*(40000000/4000.0)));
-LATCbits.LATC5 = 0;
-LATCbits.LATC6 = 1;
-LATCbits.LATC7 = 0;
-LATCbits.LATC0 = 0;
-_delay((unsigned long)((2)*(40000000/4000.0)));
-LATCbits.LATC5 = 0;
-LATCbits.LATC6 = 0;
-LATCbits.LATC7 = 1;
-LATCbits.LATC0 = 0;
-_delay((unsigned long)((2)*(40000000/4000.0)));
-LATCbits.LATC5 = 0;
-LATCbits.LATC6 = 0;
-LATCbits.LATC7 = 0;
-LATCbits.LATC0 = 1;
-_delay((unsigned long)((2)*(40000000/4000.0)));
-}
-for (i=0; i<523; i++){
-LATCbits.LATC5 = 0;
-LATCbits.LATC6 = 0;
-LATCbits.LATC7 = 1;
-LATCbits.LATC0 = 0;
-_delay((unsigned long)((2)*(40000000/4000.0)));
-LATCbits.LATC5 = 0;
-LATCbits.LATC6 = 1;
-LATCbits.LATC7 = 0;
-LATCbits.LATC0 = 0;
-_delay((unsigned long)((2)*(40000000/4000.0)));
-LATCbits.LATC5 = 1;
-LATCbits.LATC6 = 0;
-LATCbits.LATC7 = 0;
-LATCbits.LATC0 = 0;
-_delay((unsigned long)((2)*(40000000/4000.0)));
-LATCbits.LATC5 = 0;
-LATCbits.LATC6 = 0;
-LATCbits.LATC7 = 0;
-LATCbits.LATC0 = 1;
-_delay((unsigned long)((2)*(40000000/4000.0)));
-}
-}
-
-# 128
+# 73
 unsigned int checkEEPROM = 0;
 
 checkEEPROM = readEEPROM(251);

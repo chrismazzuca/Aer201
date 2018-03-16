@@ -28,6 +28,8 @@ const char rowUp = '1';
 const char rowDown = '2';
 const char columnLeft = '3';
 const char columnRight = '4';
+const char drawerUp = '5';
+const char drawerDown = '6';
 
 void setup() {
     /* Configure pin modes for tx and rx. */
@@ -77,6 +79,20 @@ void loop() {
         delay(1);
         horizontalStepper.rotate(-600);
         digitalWrite(SLEEP_SIDE, LOW);
+        delay(1);
+        break;
+      case drawerUp:
+        digitalWrite(SLEEP_UP, HIGH);
+        delay(1);
+        verticalStepper.rotate(400);
+        digitalWrite(SLEEP_UP, LOW);
+        delay(1);
+        break;
+      case drawerDown:
+        digitalWrite(SLEEP_UP, HIGH);
+        delay(1);
+        verticalStepper.rotate(-400);
+        digitalWrite(SLEEP_UP, LOW);
         delay(1);
         break;
       default:

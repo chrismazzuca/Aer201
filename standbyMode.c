@@ -1928,6 +1928,34 @@ unsigned int standbyMode(void){
         return 0;
     }
     else{
+        __lcd_clear();
+        printf("Inputs submitted");
+        __lcd_newline();
+        printf("successfully!");
+        __delay_ms(1000);
+        
+        __lcd_clear();
+        printf("Summary of");
+        __lcd_newline();
+        printf("inputs:");
+        __delay_ms(1000);
+        
+        for (i=0; i<8; i++){
+            if (drawerInformation[i] != 0){
+                __lcd_clear();
+                printf("Drawer %i:", drawerInformation[i]);
+                __lcd_newline();
+                printf("%s%s",inputs[dietType[i]], foodInputs[foodType[i]]);
+                __delay_ms(1500);
+            }
+        }
+        
+        __lcd_clear();
+        printf("Operation will");
+        __lcd_newline();
+        printf("begin shortly.");
+        __delay_ms(1000);
+        
         logNumber = readEEPROM(250);
         if (logNumber == 4){
             shiftEEPROM();

@@ -53,62 +53,7 @@ void main(void) {
     
     unsigned int operationMode = 0;
     unsigned int i = 0;
-    
-    TRISCbits.TRISC5 = 0;
-    TRISCbits.TRISC6 = 0;
-    TRISCbits.TRISC7 = 0;
-    TRISCbits.TRISC0 = 0;
-    LATCbits.LATC5 = 1;
-    LATCbits.LATC6 = 1;
-    LATCbits.LATC7 = 1;
-    LATCbits.LATC0 = 0;
-    
-    while(1){
-    for (i=0; i<523; i++){
-        LATCbits.LATC5 = 1;
-        LATCbits.LATC6 = 0;
-        LATCbits.LATC7 = 0;
-        LATCbits.LATC0 = 0;
-        __delay_ms(2);
-        LATCbits.LATC5 = 0;
-        LATCbits.LATC6 = 1;
-        LATCbits.LATC7 = 0;
-        LATCbits.LATC0 = 0;
-        __delay_ms(2);
-        LATCbits.LATC5 = 0;
-        LATCbits.LATC6 = 0;
-        LATCbits.LATC7 = 1;
-        LATCbits.LATC0 = 0;
-        __delay_ms(2);
-        LATCbits.LATC5 = 0;
-        LATCbits.LATC6 = 0;
-        LATCbits.LATC7 = 0;
-        LATCbits.LATC0 = 1;
-        __delay_ms(2);
-    }
-    for (i=0; i<523; i++){
-        LATCbits.LATC5 = 0;
-        LATCbits.LATC6 = 0;
-        LATCbits.LATC7 = 1;
-        LATCbits.LATC0 = 0;
-        __delay_ms(2);
-        LATCbits.LATC5 = 0;
-        LATCbits.LATC6 = 1;
-        LATCbits.LATC7 = 0;
-        LATCbits.LATC0 = 0;
-        __delay_ms(2);
-        LATCbits.LATC5 = 1;
-        LATCbits.LATC6 = 0;
-        LATCbits.LATC7 = 0;
-        LATCbits.LATC0 = 0;
-        __delay_ms(2);
-        LATCbits.LATC5 = 0;
-        LATCbits.LATC6 = 0;
-        LATCbits.LATC7 = 0;
-        LATCbits.LATC0 = 1;
-        __delay_ms(2);
-    }
-    }
+    unsigned int l = 0;
     
 //    while(1){
 //        LATCbits.LATC5 = 1;

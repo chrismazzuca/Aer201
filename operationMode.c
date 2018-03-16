@@ -6,7 +6,7 @@
  */
 
 #include "operationMode.h"
-#include "arduinoSetup.h"
+//#include "arduinoSetup.h"
 #include "UART_PIC.h"
 #include "EEPROMstorage.h"
 #include "RTC.h"
@@ -17,6 +17,11 @@ unsigned char rowUp[1] = {'1'};
 unsigned char rowDown[1] = {'2'};
 unsigned char columnLeft[1] = {'3'};
 unsigned char columnRight[1] = {'4'};
+unsigned char drawerUp[1] = {'5'};
+unsigned char drawerDown[1] = {'6'};
+
+const char* inputs[] = {"R", "F", "L", "RF", "RL", "FL", "RRF", "RRL", "RFF", "RLL", "RFL", "FFL", "FLL", "RRFL", "RFFL", "RFLL", "RLLL", "FLLL"};
+const char* foodInputs[] = {"1", "2", "3", "11", "12", "13", "21", "22", "111", "112", "121", "211", "1111"};
 
 
 /*Gets the inputs (drawer, diet, food) from EEPROM and stores in a global list*/
@@ -33,7 +38,7 @@ void getUserInputs(unsigned int drawerTable[8], unsigned int dietTable[8], unsig
         n = 0;
     }
     else{
-        n = (logNumber)*35;
+        n = (logNumber-1)*35;
     }
     
     for (i=11; i<35; i+=3){
@@ -69,19 +74,19 @@ void sortDrawerList(unsigned int drawerTable[8], unsigned int sortedDrawerTable[
     for(i=0; i<8; i++){
       if (sortedDrawerTable[i] == 1 || sortedDrawerTable[i] == 2 || sortedDrawerTable[i] == 3 || sortedDrawerTable[i] == 4){
         sublist1[count1]=sortedDrawerTable[i];
-        count1 ++;
+        count1 += 1;
       }
       else if (sortedDrawerTable[i] == 5 || sortedDrawerTable[i] == 6 || sortedDrawerTable[i] == 7 || sortedDrawerTable[i] == 8){
         sublist2[count2]=sortedDrawerTable[i];
-        count2+=1;
+        count2 += 1;
       }
       else if (sortedDrawerTable[i] == 9 || sortedDrawerTable[i] == 10 || sortedDrawerTable[i] == 11 || sortedDrawerTable[i] == 12){
         sublist3[count3]=sortedDrawerTable[i];
-        count3+=1;
+        count3 += 1;
       }
       else if (sortedDrawerTable[i] == 13 || sortedDrawerTable[i] == 14 || sortedDrawerTable[i] == 15 || sortedDrawerTable[i] == 16){
         sublist4[count4]=sortedDrawerTable[i];
-        count4+=1;
+        count4 += 1;
       }
     }
     
@@ -124,7 +129,43 @@ void sortDrawerList(unsigned int drawerTable[8], unsigned int sortedDrawerTable[
 			}  
 		}
 	}
-	
+    
+    if (sublist3[count3 - 1] == 10 || sublist3[count3 - 1] == 9){
+        for (i=0; i<count4; i++){
+            for (j=0; j<count4; j++){
+                if (sublist4[j] > sublist4[i]){
+                    temp = sublist4[i];
+                    sublist4[i] = sublist4[j];
+                    sublist4[j] = temp;   
+                }  
+            }
+        }
+    }
+    
+    if (sublist2[0] == 7 || sublist2[0] == 8){
+        for (i=0; i<count3; i++){
+            for (j=0; j<count3; j++){
+                if (sublist3[j] < sublist3[i]){
+                    temp = sublist3[i];
+                    sublist3[i] = sublist3[j];
+                    sublist3[j] = temp;   
+                }  
+            }
+        }
+    }
+
+    if (sublist1[count1 - 1] == 1 || sublist1[count1 - 1] == 2){
+        for (i=0; i<count2; i++){
+            for (j=0; j<count2; j++){
+                if (sublist2[j] > sublist2[i]){
+                    temp = sublist2[i];
+                    sublist2[i] = sublist2[j];
+                    sublist2[j] = temp;   
+                }  
+            }
+        }
+    }
+    
 	for (i=0; i<count1; i++){
 	  sortedDrawerTable[i] = sublist1[i];
 	}
@@ -137,6 +178,444 @@ void sortDrawerList(unsigned int drawerTable[8], unsigned int sortedDrawerTable[
 	for (i=0; i<count4; i++){
 	  sortedDrawerTable[i+count1+count2+count3] = sublist4[i];
 	}
+}
+
+
+/*Get the index of the sorted list in the drawer list*/
+unsigned int findDrawerIndex(unsigned int drawerTable[8], unsigned int sortedDrawerValue){
+    unsigned int returnValue = 0;
+    unsigned int i = 0;
+    
+    for (i=0; i<8; i++){
+        if(drawerTable[i] == sortedDrawerValue){
+            returnValue = i;
+        }
+    }
+    return returnValue;
+}
+
+/*Function returns the number of round pieces required in the drawer*/
+unsigned int getRoundPieces(unsigned int dietType, unsigned int foodType){
+    unsigned int returnValue = 0;
+    
+    switch(dietType){
+        /*R*/
+        case 0:
+            if (foodType == 0){
+                returnValue = 1;
+            }
+            else if (foodType == 1){
+                returnValue = 2;
+            }
+            break;
+        /*RF*/
+        case 3:
+            if (foodType == 3){
+                returnValue = 1;
+            }
+            else if (foodType == 4){
+                returnValue = 1;
+            }
+            else if (foodType == 6){
+                returnValue = 2;
+            }
+            else if (foodType == 7){
+                returnValue = 2;
+            }
+            break;
+        /*RL*/
+        case 4:
+            if (foodType == 3){
+                returnValue = 1;
+            }
+            else if (foodType == 4){
+                returnValue = 1;
+            }
+            else if (foodType == 5){
+                returnValue = 1;
+            }
+            else if (foodType == 6){
+                returnValue = 2;
+            }
+            else if (foodType == 7){
+                returnValue = 2;
+            }
+            break;
+        /*RRF*/
+        case 6:
+            if (foodType == 8){
+                returnValue = 2;
+            }
+            else if (foodType == 9){
+                returnValue = 2;
+            }
+            break;
+        /*RRL*/
+        case 7:
+            if (foodType == 8){
+                returnValue = 2;
+            }
+            else if (foodType == 9){
+                returnValue = 2;
+            }
+            break;
+        /*RFF*/
+        case 8:
+            if (foodType == 8){
+                returnValue = 1;
+            }
+            else if (foodType == 11){
+                returnValue = 2;
+            }
+            break;
+        /*RLL*/
+        case 9:
+            if (foodType == 8){
+                returnValue = 1;
+            }
+            else if (foodType == 9){
+                returnValue = 1;
+            }
+            else if (foodType == 10){
+                returnValue = 1;
+            }
+            else if (foodType == 11){
+                returnValue = 2;
+            }
+            break;
+        /*RFL*/
+        case 10:
+            if (foodType == 8){
+                returnValue = 1;
+            }
+            else if (foodType == 9){
+                returnValue = 1;
+            }
+            else if (foodType == 10){
+                returnValue = 1;
+            }
+            else if (foodType == 11){
+                returnValue = 2;
+            }
+            break;
+        /*RRFL*/
+        case 13:
+            if (foodType == 12){
+                returnValue = 2;
+            }
+            break;
+        /*RFFL*/
+        case 14:
+            if (foodType == 12){
+                returnValue = 1;
+            }
+            break;
+        /*RFLL*/
+        case 15:
+            if (foodType == 12){
+                returnValue = 1;
+            }
+            break;
+        /*RLLL*/
+        case 16:
+            if (foodType == 12){
+                returnValue = 1;
+            }
+            break;
+        default:
+            returnValue = 0;
+            break;
+    }
+    return returnValue;
+}
+
+
+/*Function returns the number of round pieces required in the drawer*/
+unsigned int getFlatPieces(unsigned int dietType, unsigned int foodType){
+    unsigned int returnValue = 0;
+    
+    switch(dietType){
+        /*F*/
+        case 1:
+            if (foodType == 0){
+                returnValue = 1;
+            }
+            else if (foodType == 1){
+                returnValue = 2;
+            }
+            break;
+        /*RF*/
+        case 3:
+            if (foodType == 3){
+                returnValue = 1;
+            }
+            else if (foodType == 4){
+                returnValue = 2;
+            }
+            else if (foodType == 6){
+                returnValue = 1;
+            }
+            else if (foodType == 7){
+                returnValue = 2;
+            }
+            break;
+        /*FL*/
+        case 5:
+            if (foodType == 3){
+                returnValue = 1;
+            }
+            else if (foodType == 4){
+                returnValue = 1;
+            }
+            else if (foodType == 5){
+                returnValue = 1;
+            }
+            else if (foodType == 6){
+                returnValue = 2;
+            }
+            else if (foodType == 7){
+                returnValue = 2;
+            }
+            break;
+        /*RRF*/
+        case 6:
+            if (foodType == 8){
+                returnValue = 1;
+            }
+            else if (foodType == 9){
+                returnValue = 2;
+            }
+            break;
+        /*RFF*/
+        case 8:
+            if (foodType == 8){
+                returnValue = 2;
+            }
+            else if (foodType == 11){
+                returnValue = 2;
+            }
+            break;
+        /*RFL*/
+        case 10:
+            if (foodType == 8){
+                returnValue = 1;
+            }
+            else if (foodType == 9){
+                returnValue = 1;
+            }
+            else if (foodType == 10){
+                returnValue = 2;
+            }
+            else if (foodType == 11){
+                returnValue = 1;
+            }
+            break;
+        /*FFL*/
+        case 11:
+            if (foodType == 8){
+                returnValue = 2;
+            }
+            else if (foodType == 9){
+                returnValue = 2;
+            }
+            break;
+        /*FLL*/
+        case 12:
+            if (foodType == 8){
+                returnValue = 1;
+            }
+            else if (foodType == 9){
+                returnValue = 1;
+            }
+            else if (foodType == 10){
+                returnValue = 1;
+            }
+            else if (foodType == 11){
+                returnValue = 2;
+            }
+            break;
+        /*RRFL*/
+        case 13:
+            if (foodType == 12){
+                returnValue = 1;
+            }
+            break;
+        /*RFFL*/
+        case 14:
+            if (foodType == 12){
+                returnValue = 2;
+            }
+            break;
+        /*RFLL*/
+        case 15:
+            if (foodType == 12){
+                returnValue = 1;
+            }
+            break;
+        /*FLLL*/
+        case 17:
+            if (foodType == 12){
+                returnValue = 1;
+            }
+            break;
+        default:
+            returnValue = 0;
+            break;
+    }
+    return returnValue;
+}
+
+
+/*Function returns the number of round pieces required in the drawer*/
+unsigned int getLongPieces(unsigned int dietType, unsigned int foodType){
+    unsigned int returnValue = 0;
+    switch(dietType){
+        /*L*/
+        case 2:
+            if (foodType == 0){
+                returnValue = 1;
+            }
+            else if (foodType == 1){
+                returnValue = 2;
+            }
+            else if (foodType == 2){
+                returnValue = 3;
+            }
+            break;
+        /*RL*/
+        case 4:
+            if (foodType == 3){
+                returnValue = 1;
+            }
+            else if (foodType == 4){
+                returnValue = 2;
+            }
+            else if (foodType == 5){
+                returnValue = 3;
+            }
+            else if (foodType == 6){
+                returnValue = 1;
+            }
+            else if (foodType == 7){
+                returnValue = 2;
+            }
+            break;
+        /*FL*/
+        case 5:
+            if (foodType == 3){
+                returnValue = 1;
+            }
+            else if (foodType == 4){
+                returnValue = 2;
+            }
+            else if (foodType == 5){
+                returnValue = 3;
+            }
+            else if (foodType == 6){
+                returnValue = 1;
+            }
+            else if (foodType == 7){
+                returnValue = 2;
+            }
+            break;
+        /*RRL*/
+        case 7:
+            if (foodType == 8){
+                returnValue = 1;
+            }
+            else if (foodType == 9){
+                returnValue = 2;
+            }
+            break;
+        /*RLL*/
+        case 9:
+            if (foodType == 8){
+                returnValue = 2;
+            }
+            else if (foodType == 9){
+                returnValue = 3;
+            }
+            else if (foodType == 10){
+                returnValue = 3;
+            }
+            else if (foodType == 11){
+                returnValue = 2;
+            }
+            break;
+        /*RFL*/
+        case 10:
+            if (foodType == 8){
+                returnValue = 1;
+            }
+            else if (foodType == 9){
+                returnValue = 2;
+            }
+            else if (foodType == 10){
+                returnValue = 1;
+            }
+            else if (foodType == 11){
+                returnValue = 1;
+            }
+            break;
+        /*FFL*/
+        case 11:
+            if (foodType == 8){
+                returnValue = 1;
+            }
+            else if (foodType == 9){
+                returnValue = 2;
+            }
+            break;
+        /*FLL*/
+        case 12:
+            if (foodType == 8){
+                returnValue = 2;
+            }
+            else if (foodType == 9){
+                returnValue = 3;
+            }
+            else if (foodType == 10){
+                returnValue = 3;
+            }
+            else if (foodType == 11){
+                returnValue = 2;
+            }
+            break;
+        /*RRFL*/
+        case 13:
+            if (foodType == 12){
+                returnValue = 1;
+            }
+            break;
+        /*RFFL*/
+        case 14:
+            if (foodType == 12){
+                returnValue = 1;
+            }
+            break;
+        /*RFLL*/
+        case 15:
+            if (foodType == 12){
+                returnValue = 2;
+            }
+            break;
+        /*RLLL*/
+        case 16:
+            if (foodType == 12){
+                returnValue = 3;
+            }
+            break;
+        /*FLLL*/
+        case 17:
+            if (foodType == 12){
+                returnValue = 3;
+            }
+            break;
+        default:
+            returnValue = 0;
+            break;
+    }
+    return returnValue;
 }
 
 
@@ -179,6 +658,20 @@ void horizontalStepper(unsigned int rotations, unsigned int direction){
             uartTransmitBlocking(columnRight, 1);
         }
     }
+}
+
+/*This function will control the arm vertical stepper to hook onto the drawer*/
+void drawerStepper(unsigned int direction){
+    
+    /*Move up*/
+    if (direction == 1){
+        uartTransmitBlocking(drawerUp, 1);
+    }
+    /*Move down*/
+    else if (direction == 0){
+        uartTransmitBlocking(drawerDown, 1);
+    }
+    
 }
 
 
@@ -441,6 +934,10 @@ void mainOperation(void){
     unsigned int currentDrawer = 0;
     unsigned int temp = 0;
     unsigned int nextDrawer = 0;
+    unsigned int trueValue = 0;
+    unsigned int roundPieces = 0;
+    unsigned int flatPieces = 0;
+    unsigned int longPieces = 0;
     
     unsigned int drawerTable[8] = {0,0,0,0,0,0,0,0};
     unsigned int sortedDrawerTable[8] = {0,0,0,0,0,0,0,0};
@@ -453,7 +950,7 @@ void mainOperation(void){
     getUserInputs(drawerTable, dietTable, foodTable);
     sortDrawerList(drawerTable, sortedDrawerTable);
     
-    for (i=0; i<7; i++){
+    for (i=0; i<8; i++){
         if (sortedDrawerTable[i] != 0){
             currentDrawer = sortedDrawerTable[i];
             nextDrawer = sortedDrawerTable[i+1];
@@ -461,11 +958,23 @@ void mainOperation(void){
             printf("Moving to");
             __lcd_newline();
             printf("drawer %i", sortedDrawerTable[i]);
-            __delay_ms(1000);
+            __delay_ms(2000);
+            trueValue = findDrawerIndex(drawerTable, sortedDrawerTable[i]);
+            __lcd_clear();
+            printf("diet: %s", inputs[dietTable[trueValue]]);
+            __lcd_newline();
+            printf("food: %s", foodInputs[foodTable[trueValue]]);
+            __delay_ms(2000);
+            roundPieces = getRoundPieces(dietTable[trueValue], foodTable[trueValue]);
+            flatPieces = getFlatPieces(dietTable[trueValue], foodTable[trueValue]);
+            longPieces = getLongPieces(dietTable[trueValue], foodTable[trueValue]);
+            __lcd_clear();
+            printf("R:%i F:%i L:%i", roundPieces, flatPieces, longPieces);
+            __delay_ms(2000);
             
-            temp = moveVertically(currentDrawer, nextDrawer);
-            currentDrawer = temp;
-            moveHorizontally(currentDrawer, nextDrawer);
+//            temp = moveVertically(currentDrawer, nextDrawer);
+//            currentDrawer = temp;
+//            moveHorizontally(currentDrawer, nextDrawer);
         }
     }
     

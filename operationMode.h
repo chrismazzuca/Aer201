@@ -18,8 +18,13 @@
 /****************************** Public Interfaces *****************************/
 void getUserInputs(unsigned int drawerTable[8], unsigned int dietTable[8], unsigned int foodTable[8]);
 void sortDrawerList(unsigned int drawerTable[8], unsigned int sortedDrawerTable[8]);
+unsigned int findDrawerIndex(unsigned int drawerTable[8], unsigned int sortedDrawerValue);
+unsigned int getRoundPieces(unsigned int dietType, unsigned int foodType);
+unsigned int getFlatPieces(unsigned int dietType, unsigned int foodType);
+unsigned int getLongPieces(unsigned int dietType, unsigned int foodType);
 void verticalStepper(unsigned int rotations, unsigned int direction);
 void horizontalStepper(unsigned int rotations, unsigned int direction);
+void drawerStepper(unsigned int direction);
 unsigned int moveVertically(unsigned int currentDrawer, unsigned int nextDrawer);
 void moveHorizontally(unsigned int currentDrawer, unsigned int nextDrawer);
 unsigned int detectTape(void);

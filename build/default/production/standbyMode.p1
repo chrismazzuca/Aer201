@@ -8271,209 +8271,298 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 790 ]
 [; ;standbyMode.c: 1930: else{
 {
-[; ;standbyMode.c: 1931: logNumber = readEEPROM(250);
+[; ;standbyMode.c: 1931: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 "1931
-[e = _logNumber ( _readEEPROM (1 -> -> 250 `i `uc ]
-[; ;standbyMode.c: 1932: if (logNumber == 4){
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1932: printf("Inputs submitted");
 "1932
-[e $ ! == -> _logNumber `i -> 4 `i 792  ]
-{
-[; ;standbyMode.c: 1933: shiftEEPROM();
+[e ( _printf :s 96C ]
+[; ;standbyMode.c: 1933: lcdInst(0xC0);;
 "1933
-[e ( _shiftEEPROM ..  ]
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 1934: printf("successfully!");
 "1934
-}
-[e :U 792 ]
-[; ;standbyMode.c: 1934: }
-[; ;standbyMode.c: 1935: for (i=0; i<8; i++){
+[e ( _printf :s 97C ]
+[; ;standbyMode.c: 1935: _delay((unsigned long)((1000)*(40000000/4000.0)));
 "1935
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1937: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"1937
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1938: printf("Summary of");
+"1938
+[e ( _printf :s 98C ]
+[; ;standbyMode.c: 1939: lcdInst(0xC0);;
+"1939
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 1940: printf("inputs:");
+"1940
+[e ( _printf :s 99C ]
+[; ;standbyMode.c: 1941: _delay((unsigned long)((1000)*(40000000/4000.0)));
+"1941
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1943: for (i=0; i<8; i++){
+"1943
 {
 [e = _i -> -> 0 `i `ui ]
-[e $ < _i -> -> 8 `i `ui 793  ]
-[e $U 794  ]
-[e :U 793 ]
+[e $ < _i -> -> 8 `i `ui 792  ]
+[e $U 793  ]
+[e :U 792 ]
 {
-[; ;standbyMode.c: 1936: if (logNumber == 0 || logNumber == 4){
-"1936
-[e $ ! || == -> _logNumber `i -> 0 `i == -> _logNumber `i -> 4 `i 796  ]
-{
-[; ;standbyMode.c: 1937: n = 3*i;
-"1937
-[e = _n * -> -> 3 `i `ui _i ]
-"1938
-}
-[; ;standbyMode.c: 1938: }
-[e $U 797  ]
-"1939
-[e :U 796 ]
-[; ;standbyMode.c: 1939: else{
-{
-[; ;standbyMode.c: 1940: n = (logNumber-1)*35 + 3*i;
-"1940
-[e = _n + -> * - -> _logNumber `i -> 1 `i -> 35 `i `ui * -> -> 3 `i `ui _i ]
-"1941
-}
-[e :U 797 ]
-[; ;standbyMode.c: 1941: }
-[; ;standbyMode.c: 1942: writeEEPROM(11+n, drawerInformation[i]);
-"1942
-[e ( _writeEEPROM (2 , -> + -> -> 11 `i `ui _n `uc -> *U + &U _drawerInformation * -> _i `ux -> -> # *U &U _drawerInformation `ui `ux `uc ]
-[; ;standbyMode.c: 1943: writeEEPROM(12+n, dietType[i]);
-"1943
-[e ( _writeEEPROM (2 , -> + -> -> 12 `i `ui _n `uc -> *U + &U _dietType * -> _i `ux -> -> # *U &U _dietType `ui `ux `uc ]
-[; ;standbyMode.c: 1944: writeEEPROM(13+n, foodType[i]);
+[; ;standbyMode.c: 1944: if (drawerInformation[i] != 0){
 "1944
-[e ( _writeEEPROM (2 , -> + -> -> 13 `i `ui _n `uc -> *U + &U _foodType * -> _i `ux -> -> # *U &U _foodType `ui `ux `uc ]
+[e $ ! != *U + &U _drawerInformation * -> _i `ux -> -> # *U &U _drawerInformation `ui `ux -> -> 0 `i `ui 795  ]
+{
+[; ;standbyMode.c: 1945: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 "1945
-}
-"1935
-[e ++ _i -> -> 1 `i `ui ]
-[e $ < _i -> -> 8 `i `ui 793  ]
-[e :U 794 ]
-"1945
-}
-[; ;standbyMode.c: 1945: }
-[; ;standbyMode.c: 1946: return 1;
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1946: printf("Drawer %i:", drawerInformation[i]);
 "1946
-[e ) -> -> 1 `i `ui ]
-[e $UE 729  ]
+[e ( _printf , (. :s 100C *U + &U _drawerInformation * -> _i `ux -> -> # *U &U _drawerInformation `ui `ux ]
+[; ;standbyMode.c: 1947: lcdInst(0xC0);;
 "1947
-}
-[e :U 791 ]
-"1948
-}
-[; ;standbyMode.c: 1947: }
-[; ;standbyMode.c: 1948: }
-[e $U 798  ]
-"1949
-[e :U 742 ]
-[; ;standbyMode.c: 1949: else if (keypress == 14){
-[e $ ! == -> _keypress `i -> 14 `i 799  ]
-{
-[; ;standbyMode.c: 1950: while (1){
-"1950
-[e :U 801 ]
-{
-"1951
-[v _whichKey `ui ~T0 @X0 1 a ]
-[; ;standbyMode.c: 1951: unsigned int whichKey = viewLogs();
-[e = _whichKey ( _viewLogs ..  ]
-[; ;standbyMode.c: 1952: if (whichKey == 15){
-"1952
-[e $ ! == _whichKey -> -> 15 `i `ui 803  ]
-{
-[; ;standbyMode.c: 1953: continue;
-"1953
-[e $U 800  ]
-"1954
-}
-[; ;standbyMode.c: 1954: }
-[e $U 804  ]
-"1955
-[e :U 803 ]
-[; ;standbyMode.c: 1955: else if (whichKey == 14){
-[e $ ! == _whichKey -> -> 14 `i `ui 805  ]
-{
-[; ;standbyMode.c: 1956: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"1956
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 1957: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
-"1957
-[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;standbyMode.c: 1958: printf("Rebooting.");
-"1958
-[e ( _printf :s 96C ]
-[; ;standbyMode.c: 1959: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"1959
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 1960: break;
-"1960
-[e $U 802  ]
-"1961
-}
-[; ;standbyMode.c: 1961: }
-[e $U 806  ]
-"1962
-[e :U 805 ]
-[; ;standbyMode.c: 1962: else{
-{
-[; ;standbyMode.c: 1963: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"1963
-[e ( _lcdInst (1 -> -> 1 `i `uc ]
-[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 1964: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
-"1964
-[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;standbyMode.c: 1965: printf("Invalid key!");
-"1965
-[e ( _printf :s 97C ]
-[; ;standbyMode.c: 1966: lcdInst(0xC0);;
-"1966
 [e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 1967: printf("Rebooting.");
-"1967
-[e ( _printf :s 98C ]
-[; ;standbyMode.c: 1968: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"1968
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 1969: break;
-"1969
-[e $U 802  ]
-"1970
-}
-[e :U 806 ]
-[e :U 804 ]
-"1971
-}
-[e :U 800 ]
+[; ;standbyMode.c: 1948: printf("%s%s",inputs[dietType[i]], foodInputs[foodType[i]]);
+"1948
+[e ( _printf , , (. :s 101C *U + &U _inputs * -> *U + &U _dietType * -> _i `ux -> -> # *U &U _dietType `ui `ux `ux -> -> # *U &U _inputs `ui `ux *U + &U _foodInputs * -> *U + &U _foodType * -> _i `ux -> -> # *U &U _foodType `ui `ux `ux -> -> # *U &U _foodInputs `ui `ux ]
+[; ;standbyMode.c: 1949: _delay((unsigned long)((1500)*(40000000/4000.0)));
+"1949
+[e ( __delay (1 -> * -> -> 1500 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
 "1950
+}
+[e :U 795 ]
+"1951
+}
+"1943
+[e ++ _i -> -> 1 `i `ui ]
+[e $ < _i -> -> 8 `i `ui 792  ]
+[e :U 793 ]
+"1951
+}
+[; ;standbyMode.c: 1950: }
+[; ;standbyMode.c: 1951: }
+[; ;standbyMode.c: 1953: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"1953
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1954: printf("Operation will");
+"1954
+[e ( _printf :s 102C ]
+[; ;standbyMode.c: 1955: lcdInst(0xC0);;
+"1955
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 1956: printf("begin shortly.");
+"1956
+[e ( _printf :s 103C ]
+[; ;standbyMode.c: 1957: _delay((unsigned long)((1000)*(40000000/4000.0)));
+"1957
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1959: logNumber = readEEPROM(250);
+"1959
+[e = _logNumber ( _readEEPROM (1 -> -> 250 `i `uc ]
+[; ;standbyMode.c: 1960: if (logNumber == 4){
+"1960
+[e $ ! == -> _logNumber `i -> 4 `i 796  ]
+{
+[; ;standbyMode.c: 1961: shiftEEPROM();
+"1961
+[e ( _shiftEEPROM ..  ]
+"1962
+}
+[e :U 796 ]
+[; ;standbyMode.c: 1962: }
+[; ;standbyMode.c: 1963: for (i=0; i<8; i++){
+"1963
+{
+[e = _i -> -> 0 `i `ui ]
+[e $ < _i -> -> 8 `i `ui 797  ]
+[e $U 798  ]
+[e :U 797 ]
+{
+[; ;standbyMode.c: 1964: if (logNumber == 0 || logNumber == 4){
+"1964
+[e $ ! || == -> _logNumber `i -> 0 `i == -> _logNumber `i -> 4 `i 800  ]
+{
+[; ;standbyMode.c: 1965: n = 3*i;
+"1965
+[e = _n * -> -> 3 `i `ui _i ]
+"1966
+}
+[; ;standbyMode.c: 1966: }
 [e $U 801  ]
-[e :U 802 ]
-[; ;standbyMode.c: 1970: }
-[; ;standbyMode.c: 1971: }
-[; ;standbyMode.c: 1972: return 0;
+"1967
+[e :U 800 ]
+[; ;standbyMode.c: 1967: else{
+{
+[; ;standbyMode.c: 1968: n = (logNumber-1)*35 + 3*i;
+"1968
+[e = _n + -> * - -> _logNumber `i -> 1 `i -> 35 `i `ui * -> -> 3 `i `ui _i ]
+"1969
+}
+[e :U 801 ]
+[; ;standbyMode.c: 1969: }
+[; ;standbyMode.c: 1970: writeEEPROM(11+n, drawerInformation[i]);
+"1970
+[e ( _writeEEPROM (2 , -> + -> -> 11 `i `ui _n `uc -> *U + &U _drawerInformation * -> _i `ux -> -> # *U &U _drawerInformation `ui `ux `uc ]
+[; ;standbyMode.c: 1971: writeEEPROM(12+n, dietType[i]);
+"1971
+[e ( _writeEEPROM (2 , -> + -> -> 12 `i `ui _n `uc -> *U + &U _dietType * -> _i `ux -> -> # *U &U _dietType `ui `ux `uc ]
+[; ;standbyMode.c: 1972: writeEEPROM(13+n, foodType[i]);
 "1972
-[e ) -> -> 0 `i `ui ]
-[e $UE 729  ]
+[e ( _writeEEPROM (2 , -> + -> -> 13 `i `ui _n `uc -> *U + &U _foodType * -> _i `ux -> -> # *U &U _foodType `ui `ux `uc ]
+"1973
+}
+"1963
+[e ++ _i -> -> 1 `i `ui ]
+[e $ < _i -> -> 8 `i `ui 797  ]
+[e :U 798 ]
 "1973
 }
 [; ;standbyMode.c: 1973: }
-[e $U 807  ]
+[; ;standbyMode.c: 1974: return 1;
+"1974
+[e ) -> -> 1 `i `ui ]
+[e $UE 729  ]
 "1975
-[e :U 799 ]
-[; ;standbyMode.c: 1975: else {
-{
-[; ;standbyMode.c: 1976: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+}
+[e :U 791 ]
 "1976
+}
+[; ;standbyMode.c: 1975: }
+[; ;standbyMode.c: 1976: }
+[e $U 802  ]
+"1977
+[e :U 742 ]
+[; ;standbyMode.c: 1977: else if (keypress == 14){
+[e $ ! == -> _keypress `i -> 14 `i 803  ]
+{
+[; ;standbyMode.c: 1978: while (1){
+"1978
+[e :U 805 ]
+{
+"1979
+[v _whichKey `ui ~T0 @X0 1 a ]
+[; ;standbyMode.c: 1979: unsigned int whichKey = viewLogs();
+[e = _whichKey ( _viewLogs ..  ]
+[; ;standbyMode.c: 1980: if (whichKey == 15){
+"1980
+[e $ ! == _whichKey -> -> 15 `i `ui 807  ]
+{
+[; ;standbyMode.c: 1981: continue;
+"1981
+[e $U 804  ]
+"1982
+}
+[; ;standbyMode.c: 1982: }
+[e $U 808  ]
+"1983
+[e :U 807 ]
+[; ;standbyMode.c: 1983: else if (whichKey == 14){
+[e $ ! == _whichKey -> -> 14 `i `ui 809  ]
+{
+[; ;standbyMode.c: 1984: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"1984
 [e ( _lcdInst (1 -> -> 1 `i `uc ]
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 1977: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
-"1977
+[; ;standbyMode.c: 1985: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
+"1985
 [e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;standbyMode.c: 1978: printf("Invalid key!");
-"1978
-[e ( _printf :s 99C ]
-[; ;standbyMode.c: 1979: lcdInst(0xC0);;
-"1979
-[e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;standbyMode.c: 1980: printf("Rebooting.");
-"1980
-[e ( _printf :s 100C ]
-[; ;standbyMode.c: 1981: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"1981
+[; ;standbyMode.c: 1986: printf("Rebooting.");
+"1986
+[e ( _printf :s 104C ]
+[; ;standbyMode.c: 1987: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"1987
 [e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;standbyMode.c: 1982: return 0;
-"1982
+[; ;standbyMode.c: 1988: break;
+"1988
+[e $U 806  ]
+"1989
+}
+[; ;standbyMode.c: 1989: }
+[e $U 810  ]
+"1990
+[e :U 809 ]
+[; ;standbyMode.c: 1990: else{
+{
+[; ;standbyMode.c: 1991: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"1991
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1992: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
+"1992
+[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
+[; ;standbyMode.c: 1993: printf("Invalid key!");
+"1993
+[e ( _printf :s 105C ]
+[; ;standbyMode.c: 1994: lcdInst(0xC0);;
+"1994
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 1995: printf("Rebooting.");
+"1995
+[e ( _printf :s 106C ]
+[; ;standbyMode.c: 1996: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"1996
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 1997: break;
+"1997
+[e $U 806  ]
+"1998
+}
+[e :U 810 ]
+[e :U 808 ]
+"1999
+}
+[e :U 804 ]
+"1978
+[e $U 805  ]
+[e :U 806 ]
+[; ;standbyMode.c: 1998: }
+[; ;standbyMode.c: 1999: }
+[; ;standbyMode.c: 2000: return 0;
+"2000
 [e ) -> -> 0 `i `ui ]
 [e $UE 729  ]
-"1983
+"2001
 }
-[e :U 807 ]
-[e :U 798 ]
-[; ;standbyMode.c: 1983: }
-[; ;standbyMode.c: 1984: }
-"1984
+[; ;standbyMode.c: 2001: }
+[e $U 811  ]
+"2003
+[e :U 803 ]
+[; ;standbyMode.c: 2003: else {
+{
+[; ;standbyMode.c: 2004: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"2004
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 2005: lcdInst(8 | (1 << 2) | (0 << 1)| 0);;
+"2005
+[e ( _lcdInst (1 -> | | | -> 8 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i -> 0 `i `uc ]
+[; ;standbyMode.c: 2006: printf("Invalid key!");
+"2006
+[e ( _printf :s 107C ]
+[; ;standbyMode.c: 2007: lcdInst(0xC0);;
+"2007
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;standbyMode.c: 2008: printf("Rebooting.");
+"2008
+[e ( _printf :s 108C ]
+[; ;standbyMode.c: 2009: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"2009
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;standbyMode.c: 2010: return 0;
+"2010
+[e ) -> -> 0 `i `ui ]
+[e $UE 729  ]
+"2011
+}
+[e :U 811 ]
+[e :U 802 ]
+[; ;standbyMode.c: 2011: }
+[; ;standbyMode.c: 2012: }
+"2012
 [e :UE 729 ]
 }
 [p f _printf 12877956 ]
@@ -8487,6 +8576,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [a 60C 35 32 61 32 78 111 44 32 68 32 61 32 89 101 115 0 ]
 [a 87C 35 32 61 32 78 111 44 32 68 32 61 32 89 101 115 0 ]
 [a 58C 37 115 37 115 0 ]
+[a 101C 37 115 37 115 0 ]
 [a 74C 87 101 108 99 111 109 101 32 116 111 32 121 111 117 114 0 ]
 [a 88C 78 111 32 100 114 97 119 101 114 0 ]
 [a 92C 78 111 32 100 114 97 119 101 114 0 ]
@@ -8495,6 +8585,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [a 72C 80 114 101 115 115 32 97 110 121 32 107 101 121 32 116 111 0 ]
 [a 82C 111 114 32 112 114 101 115 115 32 68 32 116 111 0 ]
 [a 80C 80 114 101 115 115 32 35 32 116 111 0 ]
+[a 102C 79 112 101 114 97 116 105 111 110 32 119 105 108 108 0 ]
 [a 48C 37 105 58 37 48 50 105 0 ]
 [a 46C 37 48 50 105 47 37 48 50 105 47 37 48 50 105 0 ]
 [a 55C 82 58 37 105 32 32 70 58 37 105 32 32 76 58 37 105 0 ]
@@ -8504,7 +8595,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [a 50C 37 105 0 ]
 [a 40C 80 108 101 97 115 101 32 105 110 112 117 116 32 108 111 103 0 ]
 [a 34C 49 32 112 114 101 118 105 111 117 115 32 108 111 103 0 ]
+[a 98C 83 117 109 109 97 114 121 32 111 102 0 ]
 [a 76C 67 117 114 114 101 110 116 32 100 97 116 101 0 ]
+[a 96C 73 110 112 117 116 115 32 115 117 98 109 105 116 116 101 100 0 ]
 [a 1C 82 0 ]
 [a 8C 82 82 76 0 ]
 [a 5C 82 76 0 ]
@@ -8528,11 +8621,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [a 56C 73 110 112 117 116 32 83 117 109 109 97 114 121 58 0 ]
 [a 65C 68 114 97 119 101 114 32 37 105 32 100 105 101 116 58 0 ]
 [a 66C 68 114 97 119 101 114 32 37 105 32 100 105 101 116 58 0 ]
+[a 99C 105 110 112 117 116 115 58 0 ]
 [a 49C 77 97 114 107 101 100 32 100 114 97 119 101 114 115 58 0 ]
 [a 54C 82 101 109 97 105 110 105 110 103 32 112 105 101 99 101 115 58 0 ]
 [a 69C 68 114 97 119 101 114 32 110 117 109 98 101 114 58 0 ]
 [a 70C 68 114 97 119 101 114 32 110 117 109 98 101 114 58 0 ]
 [a 57C 68 114 97 119 101 114 32 37 105 58 0 ]
+[a 100C 68 114 97 119 101 114 32 37 105 58 0 ]
 [a 45C 68 97 116 101 58 0 ]
 [a 47C 79 112 101 114 97 116 105 111 110 32 116 105 109 101 58 0 ]
 [a 77C 97 110 100 32 116 105 109 101 58 0 ]
@@ -8552,13 +8647,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [a 27C 49 49 49 0 ]
 [a 22C 49 49 0 ]
 [a 19C 49 0 ]
+[a 103C 98 101 103 105 110 32 115 104 111 114 116 108 121 46 0 ]
 [a 73C 98 101 103 105 110 32 111 112 101 114 97 116 105 111 110 46 0 ]
 [a 83C 98 101 103 105 110 32 111 112 101 114 97 116 105 111 110 46 0 ]
 [a 64C 84 114 121 32 97 103 97 105 110 46 0 ]
 [a 68C 84 114 121 32 97 103 97 105 110 46 0 ]
-[a 96C 82 101 98 111 111 116 105 110 103 46 0 ]
-[a 98C 82 101 98 111 111 116 105 110 103 46 0 ]
-[a 100C 82 101 98 111 111 116 105 110 103 46 0 ]
+[a 104C 82 101 98 111 111 116 105 110 103 46 0 ]
+[a 106C 82 101 98 111 111 116 105 110 103 46 0 ]
+[a 108C 82 101 98 111 111 116 105 110 103 46 0 ]
 [a 33C 97 118 97 105 108 97 98 108 101 46 0 ]
 [a 35C 97 118 97 105 108 97 98 108 101 46 0 ]
 [a 39C 97 118 97 105 108 97 98 108 101 46 0 ]
@@ -8567,8 +8663,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [a 89C 110 117 109 98 101 114 32 112 114 101 115 115 101 100 46 0 ]
 [a 93C 110 117 109 98 101 114 32 112 114 101 115 115 101 100 46 0 ]
 [a 81C 118 105 101 119 32 108 111 103 115 44 0 ]
-[a 97C 73 110 118 97 108 105 100 32 107 101 121 33 0 ]
-[a 99C 73 110 118 97 108 105 100 32 107 101 121 33 0 ]
+[a 97C 115 117 99 99 101 115 115 102 117 108 108 121 33 0 ]
+[a 105C 73 110 118 97 108 105 100 32 107 101 121 33 0 ]
+[a 107C 73 110 118 97 108 105 100 32 107 101 121 33 0 ]
 [a 67C 73 110 118 97 108 105 100 32 100 105 101 116 33 0 ]
 [a 42C 71 114 101 97 116 33 0 ]
 [a 75C 99 97 98 105 110 101 116 32 115 111 114 116 101 114 33 0 ]
