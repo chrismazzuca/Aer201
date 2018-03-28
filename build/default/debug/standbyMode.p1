@@ -8328,9 +8328,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;standbyMode.c: 1948: printf("%s%s",inputs[dietType[i]], foodInputs[foodType[i]]);
 "1948
 [e ( _printf , , (. :s 101C *U + &U _inputs * -> *U + &U _dietType * -> _i `ux -> -> # *U &U _dietType `ui `ux `ux -> -> # *U &U _inputs `ui `ux *U + &U _foodInputs * -> *U + &U _foodType * -> _i `ux -> -> # *U &U _foodType `ui `ux `ux -> -> # *U &U _foodInputs `ui `ux ]
-[; ;standbyMode.c: 1949: _delay((unsigned long)((1000)*(40000000/4000.0)));
+[; ;standbyMode.c: 1949: _delay((unsigned long)((1500)*(40000000/4000.0)));
 "1949
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 1500 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
 "1950
 }
 [e :U 795 ]

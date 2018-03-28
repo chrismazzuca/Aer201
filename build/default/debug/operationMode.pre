@@ -3826,18 +3826,24 @@ extern int printf(const char *, ...);
 # 19 "operationMode.h"
 void getUserInputs(unsigned int drawerTable[8], unsigned int dietTable[8], unsigned int foodTable[8]);
 void sortDrawerList(unsigned int drawerTable[8], unsigned int sortedDrawerTable[8]);
+unsigned int findDrawerIndex(unsigned int drawerTable[8], unsigned int sortedDrawerValue);
+unsigned int getRoundPieces(unsigned int dietType, unsigned int foodType);
+unsigned int getFlatPieces(unsigned int dietType, unsigned int foodType);
+unsigned int getLongPieces(unsigned int dietType, unsigned int foodType);
 void verticalStepper(unsigned int rotations, unsigned int direction);
 void horizontalStepper(unsigned int rotations, unsigned int direction);
 void drawerStepper(unsigned int direction);
 unsigned int moveVertically(unsigned int currentDrawer, unsigned int nextDrawer);
 void moveHorizontally(unsigned int currentDrawer, unsigned int nextDrawer);
+void initArm(unsigned int currentDrawer);
 unsigned int detectTape(void);
-unsigned int configDrawer(unsigned int direction);
-unsigned int distributeRound(unsigned int count);
-unsigned int distributeFlat(unsigned int count);
-unsigned int distributeLong(unsigned int count);
+void configDrawer(unsigned int direction);
+void distributeRound(unsigned int count);
+void distributeFlat(unsigned int count);
+void distributeLong(unsigned int count);
+void distributePieces(unsigned int roundPieces, unsigned int flatPieces, unsigned int longPieces);
 unsigned int checkCount(unsigned int pieceType);
-unsigned int trapDoor(unsigned int direction);
+void trapDoor(unsigned int direction);
 void mainOperation(void);
 
 # 42 "UART_PIC.h"
@@ -3915,6 +3921,11 @@ unsigned char columnLeft[1] = {'3'};
 unsigned char columnRight[1] = {'4'};
 unsigned char drawerUp[1] = {'5'};
 unsigned char drawerDown[1] = {'6'};
+unsigned char drawerOpen[1] = {'7'};
+unsigned char drawerClose[1] = {'8'};
+
+const char* inputs[] = {"R", "F", "L", "RF", "RL", "FL", "RRF", "RRL", "RFF", "RLL", "RFL", "FFL", "FLL", "RRFL", "RFFL", "RFLL", "RLLL", "FLLL"};
+const char* foodInputs[] = {"1", "2", "3", "11", "12", "13", "21", "22", "111", "112", "121", "211", "1111"};
 
 
 
@@ -4023,31 +4034,7 @@ sublist4[j] = temp;
 }
 }
 
-if (sublist1[count1] == 1 || sublist1[count1] == 2){
-for (i=0; i<count2; i++){
-for (j=0; j<count2; j++){
-if (sublist2[j] > sublist2[i]){
-temp = sublist2[i];
-sublist2[i] = sublist2[j];
-sublist2[j] = temp;
-}
-}
-}
-}
-
-else if (sublist2[count2] == 7 || sublist2[count2] == 8){
-for (i=0; i<count3; i++){
-for (j=0; j<count3; j++){
-if (sublist3[j] < sublist3[i]){
-temp = sublist3[i];
-sublist3[i] = sublist3[j];
-sublist3[j] = temp;
-}
-}
-}
-}
-
-else if (sublist3[count3] == 10 || sublist3[count3] == 9){
+if (sublist3[count3 - 1] == 10 || sublist3[count3 - 1] == 9){
 for (i=0; i<count4; i++){
 for (j=0; j<count4; j++){
 if (sublist4[j] > sublist4[i]){
@@ -4059,6 +4046,29 @@ sublist4[j] = temp;
 }
 }
 
+if (sublist2[0] == 7 || sublist2[0] == 8){
+for (i=0; i<count3; i++){
+for (j=0; j<count3; j++){
+if (sublist3[j] < sublist3[i]){
+temp = sublist3[i];
+sublist3[i] = sublist3[j];
+sublist3[j] = temp;
+}
+}
+}
+}
+
+if (sublist1[count1 - 1] == 1 || sublist1[count1 - 1] == 2){
+for (i=0; i<count2; i++){
+for (j=0; j<count2; j++){
+if (sublist2[j] > sublist2[i]){
+temp = sublist2[i];
+sublist2[i] = sublist2[j];
+sublist2[j] = temp;
+}
+}
+}
+}
 
 for (i=0; i<count1; i++){
 sortedDrawerTable[i] = sublist1[i];
@@ -4072,6 +4082,444 @@ sortedDrawerTable[i+count1+count2] = sublist3[i];
 for (i=0; i<count4; i++){
 sortedDrawerTable[i+count1+count2+count3] = sublist4[i];
 }
+}
+
+
+
+unsigned int findDrawerIndex(unsigned int drawerTable[8], unsigned int sortedDrawerValue){
+unsigned int returnValue = 0;
+unsigned int i = 0;
+
+for (i=0; i<8; i++){
+if(drawerTable[i] == sortedDrawerValue){
+returnValue = i;
+}
+}
+return returnValue;
+}
+
+
+unsigned int getRoundPieces(unsigned int dietType, unsigned int foodType){
+unsigned int returnValue = 0;
+
+switch(dietType){
+
+case 0:
+if (foodType == 0){
+returnValue = 1;
+}
+else if (foodType == 1){
+returnValue = 2;
+}
+break;
+
+case 3:
+if (foodType == 3){
+returnValue = 1;
+}
+else if (foodType == 4){
+returnValue = 1;
+}
+else if (foodType == 6){
+returnValue = 2;
+}
+else if (foodType == 7){
+returnValue = 2;
+}
+break;
+
+case 4:
+if (foodType == 3){
+returnValue = 1;
+}
+else if (foodType == 4){
+returnValue = 1;
+}
+else if (foodType == 5){
+returnValue = 1;
+}
+else if (foodType == 6){
+returnValue = 2;
+}
+else if (foodType == 7){
+returnValue = 2;
+}
+break;
+
+case 6:
+if (foodType == 8){
+returnValue = 2;
+}
+else if (foodType == 9){
+returnValue = 2;
+}
+break;
+
+case 7:
+if (foodType == 8){
+returnValue = 2;
+}
+else if (foodType == 9){
+returnValue = 2;
+}
+break;
+
+case 8:
+if (foodType == 8){
+returnValue = 1;
+}
+else if (foodType == 11){
+returnValue = 2;
+}
+break;
+
+case 9:
+if (foodType == 8){
+returnValue = 1;
+}
+else if (foodType == 9){
+returnValue = 1;
+}
+else if (foodType == 10){
+returnValue = 1;
+}
+else if (foodType == 11){
+returnValue = 2;
+}
+break;
+
+case 10:
+if (foodType == 8){
+returnValue = 1;
+}
+else if (foodType == 9){
+returnValue = 1;
+}
+else if (foodType == 10){
+returnValue = 1;
+}
+else if (foodType == 11){
+returnValue = 2;
+}
+break;
+
+case 13:
+if (foodType == 12){
+returnValue = 2;
+}
+break;
+
+case 14:
+if (foodType == 12){
+returnValue = 1;
+}
+break;
+
+case 15:
+if (foodType == 12){
+returnValue = 1;
+}
+break;
+
+case 16:
+if (foodType == 12){
+returnValue = 1;
+}
+break;
+default:
+returnValue = 0;
+break;
+}
+return returnValue;
+}
+
+
+
+unsigned int getFlatPieces(unsigned int dietType, unsigned int foodType){
+unsigned int returnValue = 0;
+
+switch(dietType){
+
+case 1:
+if (foodType == 0){
+returnValue = 1;
+}
+else if (foodType == 1){
+returnValue = 2;
+}
+break;
+
+case 3:
+if (foodType == 3){
+returnValue = 1;
+}
+else if (foodType == 4){
+returnValue = 2;
+}
+else if (foodType == 6){
+returnValue = 1;
+}
+else if (foodType == 7){
+returnValue = 2;
+}
+break;
+
+case 5:
+if (foodType == 3){
+returnValue = 1;
+}
+else if (foodType == 4){
+returnValue = 1;
+}
+else if (foodType == 5){
+returnValue = 1;
+}
+else if (foodType == 6){
+returnValue = 2;
+}
+else if (foodType == 7){
+returnValue = 2;
+}
+break;
+
+case 6:
+if (foodType == 8){
+returnValue = 1;
+}
+else if (foodType == 9){
+returnValue = 2;
+}
+break;
+
+case 8:
+if (foodType == 8){
+returnValue = 2;
+}
+else if (foodType == 11){
+returnValue = 2;
+}
+break;
+
+case 10:
+if (foodType == 8){
+returnValue = 1;
+}
+else if (foodType == 9){
+returnValue = 1;
+}
+else if (foodType == 10){
+returnValue = 2;
+}
+else if (foodType == 11){
+returnValue = 1;
+}
+break;
+
+case 11:
+if (foodType == 8){
+returnValue = 2;
+}
+else if (foodType == 9){
+returnValue = 2;
+}
+break;
+
+case 12:
+if (foodType == 8){
+returnValue = 1;
+}
+else if (foodType == 9){
+returnValue = 1;
+}
+else if (foodType == 10){
+returnValue = 1;
+}
+else if (foodType == 11){
+returnValue = 2;
+}
+break;
+
+case 13:
+if (foodType == 12){
+returnValue = 1;
+}
+break;
+
+case 14:
+if (foodType == 12){
+returnValue = 2;
+}
+break;
+
+case 15:
+if (foodType == 12){
+returnValue = 1;
+}
+break;
+
+case 17:
+if (foodType == 12){
+returnValue = 1;
+}
+break;
+default:
+returnValue = 0;
+break;
+}
+return returnValue;
+}
+
+
+
+unsigned int getLongPieces(unsigned int dietType, unsigned int foodType){
+unsigned int returnValue = 0;
+switch(dietType){
+
+case 2:
+if (foodType == 0){
+returnValue = 1;
+}
+else if (foodType == 1){
+returnValue = 2;
+}
+else if (foodType == 2){
+returnValue = 3;
+}
+break;
+
+case 4:
+if (foodType == 3){
+returnValue = 1;
+}
+else if (foodType == 4){
+returnValue = 2;
+}
+else if (foodType == 5){
+returnValue = 3;
+}
+else if (foodType == 6){
+returnValue = 1;
+}
+else if (foodType == 7){
+returnValue = 2;
+}
+break;
+
+case 5:
+if (foodType == 3){
+returnValue = 1;
+}
+else if (foodType == 4){
+returnValue = 2;
+}
+else if (foodType == 5){
+returnValue = 3;
+}
+else if (foodType == 6){
+returnValue = 1;
+}
+else if (foodType == 7){
+returnValue = 2;
+}
+break;
+
+case 7:
+if (foodType == 8){
+returnValue = 1;
+}
+else if (foodType == 9){
+returnValue = 2;
+}
+break;
+
+case 9:
+if (foodType == 8){
+returnValue = 2;
+}
+else if (foodType == 9){
+returnValue = 3;
+}
+else if (foodType == 10){
+returnValue = 3;
+}
+else if (foodType == 11){
+returnValue = 2;
+}
+break;
+
+case 10:
+if (foodType == 8){
+returnValue = 1;
+}
+else if (foodType == 9){
+returnValue = 2;
+}
+else if (foodType == 10){
+returnValue = 1;
+}
+else if (foodType == 11){
+returnValue = 1;
+}
+break;
+
+case 11:
+if (foodType == 8){
+returnValue = 1;
+}
+else if (foodType == 9){
+returnValue = 2;
+}
+break;
+
+case 12:
+if (foodType == 8){
+returnValue = 2;
+}
+else if (foodType == 9){
+returnValue = 3;
+}
+else if (foodType == 10){
+returnValue = 3;
+}
+else if (foodType == 11){
+returnValue = 2;
+}
+break;
+
+case 13:
+if (foodType == 12){
+returnValue = 1;
+}
+break;
+
+case 14:
+if (foodType == 12){
+returnValue = 1;
+}
+break;
+
+case 15:
+if (foodType == 12){
+returnValue = 2;
+}
+break;
+
+case 16:
+if (foodType == 12){
+returnValue = 3;
+}
+break;
+
+case 17:
+if (foodType == 12){
+returnValue = 3;
+}
+break;
+default:
+returnValue = 0;
+break;
+}
+return returnValue;
 }
 
 
@@ -4203,6 +4651,59 @@ horizontalStepper(3, 1);
 }
 
 
+void initArm(unsigned int currentDrawer){
+if (currentDrawer != 0){
+if (currentDrawer == 1 || currentDrawer == 2 || currentDrawer == 3 || currentDrawer == 4){
+if (currentDrawer == 4){
+horizontalStepper(3, 1);
+}
+else if (currentDrawer == 3){
+horizontalStepper(2, 1);
+}
+else if (currentDrawer == 2){
+horizontalStepper(1, 1);
+}
+}
+else if (currentDrawer == 5 || currentDrawer == 6 || currentDrawer == 7 || currentDrawer == 8){
+verticalStepper(1, 1);
+if (currentDrawer == 8){
+horizontalStepper(3, 1);
+}
+else if (currentDrawer == 7){
+horizontalStepper(2, 1);
+}
+else if (currentDrawer == 6){
+horizontalStepper(1, 1);
+}
+}
+else if (currentDrawer == 9 || currentDrawer == 10 || currentDrawer == 11 || currentDrawer == 12){
+verticalStepper(2, 1);
+if (currentDrawer == 12){
+horizontalStepper(3, 1);
+}
+else if (currentDrawer == 11){
+horizontalStepper(2, 1);
+}
+else if (currentDrawer == 10){
+horizontalStepper(1, 1);
+}
+}
+else if (currentDrawer == 13 || currentDrawer == 14 || currentDrawer == 15 || currentDrawer == 16){
+verticalStepper(3, 1);
+if (currentDrawer == 16){
+horizontalStepper(3, 1);
+}
+else if (currentDrawer == 15){
+horizontalStepper(2, 1);
+}
+else if (currentDrawer == 14){
+horizontalStepper(1, 1);
+}
+}
+}
+}
+
+
 
 unsigned int detectTape(void){
 
@@ -4210,135 +4711,172 @@ return 1;
 }
 
 
-unsigned int configDrawer(unsigned int direction){
+void configDrawer(unsigned int direction){
 
 
-return 1;
+
+if (direction == 1){
+uartTransmitBlocking(drawerOpen, 1);
+}
+
+else if (direction == 0){
+uartTransmitBlocking(drawerClose, 1);
+}
 }
 
 
-unsigned int distributeRound(unsigned int count){
+void distributeRound(unsigned int count){
 
 
 
 unsigned int i = 0;
 
-TRISCbits.TRISC5 = 0;
-TRISCbits.TRISC6 = 0;
-TRISCbits.TRISC7 = 0;
-TRISCbits.TRISC0 = 0;
-LATCbits.LATC5 = 0;
-LATCbits.LATC6 = 0;
-LATCbits.LATC7 = 0;
-LATCbits.LATC0 = 0;
-
-for (i=0; i<count; i++){
-LATCbits.LATC5 = 1;
-LATCbits.LATC6 = 0;
-LATCbits.LATC7 = 0;
-LATCbits.LATC0 = 0;
+for (i=0; i<count*523; i++){
+LATDbits.LATD4 = 0;
+LATDbits.LATD5 = 0;
+LATDbits.LATD6 = 1;
+LATDbits.LATD7 = 0;
 _delay((unsigned long)((2)*(40000000/4000.0)));
-LATCbits.LATC5 = 0;
-LATCbits.LATC6 = 1;
-LATCbits.LATC7 = 0;
-LATCbits.LATC0 = 0;
+LATDbits.LATD4 = 0;
+LATDbits.LATD5 = 1;
+LATDbits.LATD6 = 0;
+LATDbits.LATD7 = 0;
 _delay((unsigned long)((2)*(40000000/4000.0)));
-LATCbits.LATC5 = 0;
-LATCbits.LATC6 = 0;
-LATCbits.LATC7 = 1;
-LATCbits.LATC0 = 0;
+LATDbits.LATD4 = 1;
+LATDbits.LATD5 = 0;
+LATDbits.LATD6 = 0;
+LATDbits.LATD7 = 0;
 _delay((unsigned long)((2)*(40000000/4000.0)));
-LATCbits.LATC5 = 0;
-LATCbits.LATC6 = 0;
-LATCbits.LATC7 = 0;
-LATCbits.LATC0 = 1;
+LATDbits.LATD4 = 0;
+LATDbits.LATD5 = 0;
+LATDbits.LATD6 = 0;
+LATDbits.LATD7 = 1;
 _delay((unsigned long)((2)*(40000000/4000.0)));
 }
 
-return 1;
+LATDbits.LATD4 = 0;
+LATDbits.LATD5 = 0;
+LATDbits.LATD6 = 0;
+LATDbits.LATD7 = 0;
 }
 
 
-unsigned int distributeFlat(unsigned int count){
+void distributeFlat(unsigned int count){
 
 
 
 unsigned int i = 0;
 
-TRISCbits.TRISC5 = 0;
-TRISCbits.TRISC6 = 0;
-TRISCbits.TRISC7 = 0;
-TRISCbits.TRISC0 = 0;
-LATCbits.LATC5 = 0;
-LATCbits.LATC6 = 0;
-LATCbits.LATC7 = 0;
-LATCbits.LATC0 = 0;
-
-for (i=0; i<count; i++){
-LATCbits.LATC5 = 1;
-LATCbits.LATC6 = 0;
-LATCbits.LATC7 = 0;
-LATCbits.LATC0 = 0;
+for (i=0; i<count*523; i++){
+LATDbits.LATD0 = 1;
+LATDbits.LATD1 = 0;
+LATDbits.LATD2 = 0;
+LATDbits.LATD3 = 0;
 _delay((unsigned long)((2)*(40000000/4000.0)));
-LATCbits.LATC5 = 0;
-LATCbits.LATC6 = 1;
-LATCbits.LATC7 = 0;
-LATCbits.LATC0 = 0;
+LATDbits.LATD0 = 0;
+LATDbits.LATD1 = 1;
+LATDbits.LATD2 = 0;
+LATDbits.LATD3 = 0;
 _delay((unsigned long)((2)*(40000000/4000.0)));
-LATCbits.LATC5 = 0;
-LATCbits.LATC6 = 0;
-LATCbits.LATC7 = 1;
-LATCbits.LATC0 = 0;
+LATDbits.LATD0 = 0;
+LATDbits.LATD1 = 0;
+LATDbits.LATD2 = 1;
+LATDbits.LATD3 = 0;
 _delay((unsigned long)((2)*(40000000/4000.0)));
-LATCbits.LATC5 = 0;
-LATCbits.LATC6 = 0;
-LATCbits.LATC7 = 0;
-LATCbits.LATC0 = 1;
+LATDbits.LATD0 = 0;
+LATDbits.LATD1 = 0;
+LATDbits.LATD2 = 0;
+LATDbits.LATD3 = 1;
 _delay((unsigned long)((2)*(40000000/4000.0)));
 }
-return 1;
+
+LATDbits.LATD0 = 0;
+LATDbits.LATD1 = 0;
+LATDbits.LATD2 = 0;
+LATDbits.LATD3 = 0;
 }
 
 
-unsigned int distributeLong(unsigned int count){
+void distributeLong(unsigned int count){
 
 
 
 unsigned int i = 0;
 
-TRISCbits.TRISC5 = 0;
-TRISCbits.TRISC6 = 0;
-TRISCbits.TRISC7 = 0;
-TRISCbits.TRISC0 = 0;
-LATCbits.LATC5 = 0;
-LATCbits.LATC6 = 0;
-LATCbits.LATC7 = 0;
+for (i=0; i<count*523; i++){
 LATCbits.LATC0 = 0;
-
-for (i=0; i<count; i++){
-LATCbits.LATC5 = 1;
-LATCbits.LATC6 = 0;
-LATCbits.LATC7 = 0;
-LATCbits.LATC0 = 0;
+LATCbits.LATC1 = 0;
+LATCbits.LATC2 = 1;
+LATEbits.LATE2 = 0;
 _delay((unsigned long)((2)*(40000000/4000.0)));
-LATCbits.LATC5 = 0;
-LATCbits.LATC6 = 1;
-LATCbits.LATC7 = 0;
 LATCbits.LATC0 = 0;
+LATCbits.LATC1 = 1;
+LATCbits.LATC2 = 0;
+LATEbits.LATE2 = 0;
 _delay((unsigned long)((2)*(40000000/4000.0)));
-LATCbits.LATC5 = 0;
-LATCbits.LATC6 = 0;
-LATCbits.LATC7 = 1;
-LATCbits.LATC0 = 0;
-_delay((unsigned long)((2)*(40000000/4000.0)));
-LATCbits.LATC5 = 0;
-LATCbits.LATC6 = 0;
-LATCbits.LATC7 = 0;
 LATCbits.LATC0 = 1;
+LATCbits.LATC1 = 0;
+LATCbits.LATC2 = 0;
+LATEbits.LATE2 = 0;
+_delay((unsigned long)((2)*(40000000/4000.0)));
+LATCbits.LATC0 = 0;
+LATCbits.LATC1 = 0;
+LATCbits.LATC2 = 0;
+LATEbits.LATE2 = 1;
 _delay((unsigned long)((2)*(40000000/4000.0)));
 }
-return 1;
+
+LATCbits.LATC0 = 0;
+LATCbits.LATC1 = 0;
+LATCbits.LATC2 = 0;
+LATEbits.LATE2 = 0;
 }
+
+
+
+void distributePieces(unsigned int roundPieces, unsigned int flatPieces, unsigned int longPieces){
+switch(roundPieces){
+case 1:
+distributeRound(1);
+_delay((unsigned long)((2000)*(40000000/4000.0)));
+break;
+case 2:
+distributeRound(2);
+_delay((unsigned long)((2000)*(40000000/4000.0)));
+break;
+default:
+break;
+}
+switch(flatPieces){
+case 1:
+distributeFlat(1);
+_delay((unsigned long)((2000)*(40000000/4000.0)));
+break;
+case 2:
+distributeFlat(2);
+_delay((unsigned long)((2000)*(40000000/4000.0)));
+break;
+default:
+break;
+}
+switch(longPieces){
+case 1:
+distributeLong(1);
+_delay((unsigned long)((2000)*(40000000/4000.0)));
+break;
+case 2:
+distributeLong(2);
+_delay((unsigned long)((2000)*(40000000/4000.0)));
+break;
+case 3:
+distributeLong(3);
+_delay((unsigned long)((2000)*(40000000/4000.0)));
+break;
+default:
+break;
+}
+}
+
 
 
 unsigned int checkCount(unsigned int pieceType){
@@ -4347,41 +4885,33 @@ return 1;
 }
 
 
-unsigned int trapDoor(unsigned int direction){
+
+void trapDoor(unsigned int direction){
 
 
 
 
-TRISCbits.TRISC5 = 0;
-TRISCbits.TRISC6 = 0;
-TRISCbits.TRISC7 = 0;
+unsigned int i = 0;
 
-LATCbits.LATC5 = 1;
-LATCbits.LATC6 = 1;
-LATCbits.LATC7 = 1;
 
 if (direction == 1){
-LATCbits.LATC5 = 1;
-LATCbits.LATC6 = 0;
-_delay((unsigned long)((1000)*(40000000/4000.0)));
-LATCbits.LATC5 = 1;
-LATCbits.LATC6 = 1;
-_delay((unsigned long)((1)*(40000000/4000.0)));
-LATCbits.LATC5 = 0;
-LATCbits.LATC6 = 0;
-}
-else if (direction == 0){
-LATCbits.LATC5 = 0;
-LATCbits.LATC6 = 1;
-_delay((unsigned long)((1000)*(40000000/4000.0)));
-LATCbits.LATC5 = 1;
-LATCbits.LATC6 = 1;
-_delay((unsigned long)((1)*(40000000/4000.0)));
-LATCbits.LATC5 = 0;
-LATCbits.LATC6 = 0;
+LATAbits.LATA4 = 1;
+LATAbits.LATA5 = 0;
+LATEbits.LATE1 = 1;
+_delay((unsigned long)((500)*(40000000/4000.0)));
 }
 
-return 1;
+
+else if (direction == 1){
+LATAbits.LATA4 = 0;
+LATAbits.LATA5 = 1;
+LATEbits.LATE1 = 1;
+_delay((unsigned long)((500)*(40000000/4000.0)));
+}
+
+LATAbits.LATA4 = 0;
+LATAbits.LATA5 = 0;
+LATEbits.LATE1 = 0;
 }
 
 
@@ -4390,6 +4920,10 @@ unsigned int i = 0;
 unsigned int currentDrawer = 0;
 unsigned int temp = 0;
 unsigned int nextDrawer = 0;
+unsigned int trueValue = 0;
+unsigned int roundPieces = 0;
+unsigned int flatPieces = 0;
+unsigned int longPieces = 0;
 
 unsigned int drawerTable[8] = {0,0,0,0,0,0,0,0};
 unsigned int sortedDrawerTable[8] = {0,0,0,0,0,0,0,0};
@@ -4406,17 +4940,74 @@ for (i=0; i<8; i++){
 if (sortedDrawerTable[i] != 0){
 currentDrawer = sortedDrawerTable[i];
 nextDrawer = sortedDrawerTable[i+1];
+
+if (currentDrawer != 1 && i == 0){
 lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 printf("Moving to");
 lcdInst(0xC0);;
 printf("drawer %i", sortedDrawerTable[i]);
+temp = moveVertically(currentDrawer, nextDrawer);
+currentDrawer = temp;
+moveHorizontally(currentDrawer, nextDrawer);
+_delay((unsigned long)((2000)*(40000000/4000.0)));
+}
+
+uartTransmitBlocking(drawerDown, 1);
+_delay((unsigned long)((1000)*(40000000/4000.0)));
+configDrawer(0);
+_delay((unsigned long)((1000)*(40000000/4000.0)));
+uartTransmitBlocking(drawerUp, 1);
+_delay((unsigned long)((1000)*(40000000/4000.0)));
+configDrawer(1);
 _delay((unsigned long)((1000)*(40000000/4000.0)));
 
+trueValue = findDrawerIndex(drawerTable, sortedDrawerTable[i]);
+lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+printf("Diet: %s", inputs[dietTable[trueValue]]);
+lcdInst(0xC0);;
+printf("Food: %s", foodInputs[foodTable[trueValue]]);
+_delay((unsigned long)((2000)*(40000000/4000.0)));
+roundPieces = getRoundPieces(dietTable[trueValue], foodTable[trueValue]);
+flatPieces = getFlatPieces(dietTable[trueValue], foodTable[trueValue]);
+longPieces = getLongPieces(dietTable[trueValue], foodTable[trueValue]);
+lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+printf("R:%i F:%i L:%i", roundPieces, flatPieces, longPieces);
+_delay((unsigned long)((2000)*(40000000/4000.0)));
+distributePieces(roundPieces, flatPieces, longPieces);
+_delay((unsigned long)((5000)*(40000000/4000.0)));
 
+configDrawer(0);
+_delay((unsigned long)((1000)*(40000000/4000.0)));
+uartTransmitBlocking(drawerDown, 1);
+_delay((unsigned long)((1000)*(40000000/4000.0)));
+configDrawer(1);
+_delay((unsigned long)((1000)*(40000000/4000.0)));
 
-
+lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+printf("Moving to");
+lcdInst(0xC0);;
+printf("drawer %i", sortedDrawerTable[i+1]);
+temp = moveVertically(currentDrawer, nextDrawer);
+currentDrawer = temp;
+moveHorizontally(currentDrawer, nextDrawer);
+_delay((unsigned long)((2000)*(40000000/4000.0)));
 }
 }
+initArm(currentDrawer);
+lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+printf("Initializing");
+lcdInst(0xC0);;
+printf("Arm");
+_delay((unsigned long)((2000)*(40000000/4000.0)));
 
-# 548
+
+trapDoor(1);
+lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+printf("Distributing to");
+lcdInst(0xC0);;
+printf("reservoir.");
+_delay((unsigned long)((2000)*(40000000/4000.0)));
+trapDoor(0);
+
+# 1133
 }

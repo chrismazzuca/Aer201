@@ -51,30 +51,30 @@ void loop() {
     /*
      * Moving motor one full revolution using the degree notation
      */
-     for (int i=0; i<2; i++){
+     for (int i=0; i<3; i++){
     for (int x=0; x<3; x++){
       digitalWrite(5, HIGH);
       delay(1);
-      stepper.rotate(400);
+      stepper.rotate(-600);
       digitalWrite(5, LOW);
       delay(1000);
     }
       digitalWrite(12, HIGH);
       delay(1);
-      stepper2.rotate(-1800);
+      stepper2.rotate(1800);
       digitalWrite(12, LOW);
       delay(1000);
     for (int x=0; x<3; x++){
       digitalWrite(5, HIGH);
       delay(1);
-      stepper.rotate(-400);
+      stepper.rotate(600);
       digitalWrite(5, LOW);
       delay(1000);
     }
      }
      digitalWrite(12, HIGH);
       delay(1);
-      stepper2.rotate(5400);
+      stepper2.rotate(-5400);
       digitalWrite(12, LOW);
       delay(1000);
 }

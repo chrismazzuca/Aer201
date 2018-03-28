@@ -27,13 +27,15 @@ void horizontalStepper(unsigned int rotations, unsigned int direction);
 void drawerStepper(unsigned int direction);
 unsigned int moveVertically(unsigned int currentDrawer, unsigned int nextDrawer);
 void moveHorizontally(unsigned int currentDrawer, unsigned int nextDrawer);
+void initArm(unsigned int currentDrawer);
 unsigned int detectTape(void);
-unsigned int configDrawer(unsigned int direction);
-unsigned int distributeRound(unsigned int count);
-unsigned int distributeFlat(unsigned int count);
-unsigned int distributeLong(unsigned int count);
+void configDrawer(unsigned int direction);
+void distributeRound(unsigned int count);
+void distributeFlat(unsigned int count);
+void distributeLong(unsigned int count);
+void distributePieces(unsigned int roundPieces, unsigned int flatPieces, unsigned int longPieces);
 unsigned int checkCount(unsigned int pieceType);
-unsigned int trapDoor(unsigned int direction);
+void trapDoor(unsigned int direction);
 void mainOperation(void);
 
 #endif	/* OPERATION_MODE_H */

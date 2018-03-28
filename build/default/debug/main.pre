@@ -3848,18 +3848,24 @@ unsigned int standbyMode(void);
 # 19 "operationMode.h"
 void getUserInputs(unsigned int drawerTable[8], unsigned int dietTable[8], unsigned int foodTable[8]);
 void sortDrawerList(unsigned int drawerTable[8], unsigned int sortedDrawerTable[8]);
+unsigned int findDrawerIndex(unsigned int drawerTable[8], unsigned int sortedDrawerValue);
+unsigned int getRoundPieces(unsigned int dietType, unsigned int foodType);
+unsigned int getFlatPieces(unsigned int dietType, unsigned int foodType);
+unsigned int getLongPieces(unsigned int dietType, unsigned int foodType);
 void verticalStepper(unsigned int rotations, unsigned int direction);
 void horizontalStepper(unsigned int rotations, unsigned int direction);
 void drawerStepper(unsigned int direction);
 unsigned int moveVertically(unsigned int currentDrawer, unsigned int nextDrawer);
 void moveHorizontally(unsigned int currentDrawer, unsigned int nextDrawer);
+void initArm(unsigned int currentDrawer);
 unsigned int detectTape(void);
-unsigned int configDrawer(unsigned int direction);
-unsigned int distributeRound(unsigned int count);
-unsigned int distributeFlat(unsigned int count);
-unsigned int distributeLong(unsigned int count);
+void configDrawer(unsigned int direction);
+void distributeRound(unsigned int count);
+void distributeFlat(unsigned int count);
+void distributeLong(unsigned int count);
+void distributePieces(unsigned int roundPieces, unsigned int flatPieces, unsigned int longPieces);
 unsigned int checkCount(unsigned int pieceType);
-unsigned int trapDoor(unsigned int direction);
+void trapDoor(unsigned int direction);
 void mainOperation(void);
 
 # 14 "EEPROMstorage.h"
@@ -3954,12 +3960,45 @@ printf("Standby");
 
 UART_Init(9600);
 
-
-
+# 75
 unsigned int operationMode = 0;
 unsigned int i = 0;
+unsigned int l = 0;
 
-# 72
+TRISDbits.TRISD0 = 0;
+TRISDbits.TRISD1 = 0;
+TRISDbits.TRISD2 = 0;
+TRISDbits.TRISD3 = 0;
+TRISDbits.TRISD4 = 0;
+TRISDbits.TRISD5 = 0;
+TRISDbits.TRISD6 = 0;
+TRISDbits.TRISD7 = 0;
+TRISCbits.TRISC2 = 0;
+TRISCbits.TRISC1 = 0;
+TRISCbits.TRISC0 = 0;
+TRISEbits.TRISE2 = 0;
+TRISAbits.TRISA4 = 0;
+TRISAbits.TRISA5 = 0;
+TRISEbits.TRISE0 = 0;
+TRISEbits.TRISE1 = 0;
+LATEbits.LATE2 = 0;
+LATCbits.LATC2 = 0;
+LATCbits.LATC1 = 0;
+LATCbits.LATC0 = 0;
+LATDbits.LATD3 = 0;
+LATDbits.LATD2 = 0;
+LATDbits.LATD1 = 0;
+LATDbits.LATD0 = 0;
+LATDbits.LATD4 = 0;
+LATDbits.LATD5 = 0;
+LATDbits.LATD6 = 0;
+LATDbits.LATD7 = 0;
+LATEbits.LATE1 = 0;
+LATEbits.LATE0 = 0;
+LATAbits.LATA4 = 0;
+LATAbits.LATA5 = 0;
+
+# 175
 unsigned int checkEEPROM = 0;
 
 checkEEPROM = readEEPROM(251);

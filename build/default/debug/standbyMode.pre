@@ -5770,7 +5770,7 @@ lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
 printf("Drawer %i:", drawerInformation[i]);
 lcdInst(0xC0);;
 printf("%s%s",inputs[dietType[i]], foodInputs[foodType[i]]);
-_delay((unsigned long)((1000)*(40000000/4000.0)));
+_delay((unsigned long)((1500)*(40000000/4000.0)));
 }
 }
 

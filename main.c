@@ -51,22 +51,124 @@ void main(void) {
     
     //verticalStepper(1,1);
     
+//    unsigned char arr1[1] = {'7'};
+//    unsigned char arr2[1] = {'8'};
+//    unsigned char arr3[1] = {'3'};
+//    unsigned char arr4[1] = {'4'};
+//    uartTransmitBlocking(arr1, 1);
+//    __lcd_clear();
+//    printf("Opening drawer");
+//    __delay_ms(1000);
+//    uartTransmitBlocking(arr2, 1);
+//    __lcd_clear();
+//    printf("Closing drawer");
+//    __delay_ms(1000);
+//    uartTransmitBlocking(arr3, 1);
+//    __lcd_clear();
+//    printf("Moving left");
+//    __delay_ms(1000);
+//    uartTransmitBlocking(arr4, 1);
+//    __lcd_clear();
+//    printf("Moving right");
+//    __delay_ms(1000);
+    
     unsigned int operationMode = 0;
     unsigned int i = 0;
     unsigned int l = 0;
     
+    TRISDbits.TRISD0 = 0;
+    TRISDbits.TRISD1 = 0;
+    TRISDbits.TRISD2 = 0;
+    TRISDbits.TRISD3 = 0;
+    TRISDbits.TRISD4 = 0;
+    TRISDbits.TRISD5 = 0;
+    TRISDbits.TRISD6 = 0;
+    TRISDbits.TRISD7 = 0;
+    TRISCbits.TRISC2 = 0;
+    TRISCbits.TRISC1 = 0;
+    TRISCbits.TRISC0 = 0;
+    TRISEbits.TRISE2 = 0;
+    TRISAbits.TRISA4 = 0;
+    TRISAbits.TRISA5 = 0;
+    TRISEbits.TRISE0 = 0;
+    TRISEbits.TRISE1 = 0;
+    LATEbits.LATE2 = 0;
+    LATCbits.LATC2 = 0;
+    LATCbits.LATC1 = 0;
+    LATCbits.LATC0 = 0;
+    LATDbits.LATD3 = 0;
+    LATDbits.LATD2 = 0;
+    LATDbits.LATD1 = 0;
+    LATDbits.LATD0 = 0;
+    LATDbits.LATD4 = 0;
+    LATDbits.LATD5 = 0;
+    LATDbits.LATD6 = 0;
+    LATDbits.LATD7 = 0;
+    LATEbits.LATE1 = 0;
+    LATEbits.LATE0 = 0;
+    LATAbits.LATA4 = 0;
+    LATAbits.LATA5 = 0;
+//    
+//    while(1){
+//    for (i=0; i<500; i++){
+//        LATCbits.LATC5 = 0;
+//        LATCbits.LATC2 = 0;
+//        LATCbits.LATC1 = 1;
+//        LATCbits.LATC0 = 0;
+//        __delay_ms(2);
+//        LATCbits.LATC5 = 0;
+//        LATCbits.LATC2 = 1;
+//        LATCbits.LATC1 = 0;
+//        LATCbits.LATC0 = 0;
+//        __delay_ms(2);
+//        LATCbits.LATC5 = 1;
+//        LATCbits.LATC2 = 0;
+//        LATCbits.LATC1 = 0;
+//        LATCbits.LATC0 = 0;
+//        __delay_ms(2);
+//        LATCbits.LATC5 = 0;
+//        LATCbits.LATC2 = 0;
+//        LATCbits.LATC1 = 0;
+//        LATCbits.LATC0 = 1;
+//        __delay_ms(2);
+//    }
+//    
+//    for (i=0; i<500; i++){
+//        LATCbits.LATC5 = 1;
+//        LATCbits.LATC2 = 0;
+//        LATCbits.LATC1 = 0;
+//        LATCbits.LATC0 = 0;
+//        __delay_ms(2);
+//        LATCbits.LATC5 = 0;
+//        LATCbits.LATC2 = 1;
+//        LATCbits.LATC1 = 0;
+//        LATCbits.LATC0 = 0;
+//        __delay_ms(2);
+//        LATCbits.LATC5 = 0;
+//        LATCbits.LATC2 = 0;
+//        LATCbits.LATC1 = 1;
+//        LATCbits.LATC0 = 0;
+//        __delay_ms(2);
+//        LATCbits.LATC5 = 0;
+//        LATCbits.LATC2 = 0;
+//        LATCbits.LATC1 = 0;
+//        LATCbits.LATC0 = 1;
+//        __delay_ms(2);
+//    }
+//    }
+    
 //    while(1){
 //        LATCbits.LATC5 = 1;
-//        LATCbits.LATC6 = 0;
+//        LATCbits.LATC2 = 0;
 //        __delay_ms(500);
 //        LATCbits.LATC5 = 0;
-//        LATCbits.LATC6 = 1;
+//        LATCbits.LATC2 = 1;
 //        __delay_ms(500);
 //        LATCbits.LATC5 = 1;
-//        LATCbits.LATC6 = 1;
+//        LATCbits.LATC2 = 1;
 //        __delay_ms(1);
 //        LATCbits.LATC5 = 0;
-//        LATCbits.LATC6 = 0;
+//        LATCbits.LATC2 = 0;
 //        __delay_ms(1000);
 //    }
     

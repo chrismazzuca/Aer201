@@ -19,6 +19,8 @@ unsigned char columnLeft[1] = {'3'};
 unsigned char columnRight[1] = {'4'};
 unsigned char drawerUp[1] = {'5'};
 unsigned char drawerDown[1] = {'6'};
+unsigned char drawerOpen[1] = {'7'};
+unsigned char drawerClose[1] = {'8'};
 
 const char* inputs[] = {"R", "F", "L", "RF", "RL", "FL", "RRF", "RRL", "RFF", "RLL", "RFL", "FFL", "FLL", "RRFL", "RFFL", "RFLL", "RLLL", "FLLL"};
 const char* foodInputs[] = {"1", "2", "3", "11", "12", "13", "21", "22", "111", "112", "121", "211", "1111"};
@@ -692,6 +694,9 @@ unsigned int moveVertically(unsigned int currentDrawer, unsigned int nextDrawer)
                 verticalStepper(3, 0);
                 return (currentDrawer + 12);
             }
+            else if (nextDrawer == 1 || nextDrawer == 2 || nextDrawer == 3 || nextDrawer == 4){
+                return currentDrawer;
+            }
         }
         else if (currentDrawer == 5 || currentDrawer == 6 || currentDrawer == 7 || currentDrawer == 8){
             if (nextDrawer == 9 || nextDrawer == 10 || nextDrawer == 11 || nextDrawer == 12){
@@ -746,6 +751,59 @@ void moveHorizontally(unsigned int currentDrawer, unsigned int nextDrawer){
     }
 }
 
+/*Initialize the arm back to drawer 1*/
+void initArm(unsigned int currentDrawer){
+    if (currentDrawer != 0){
+        if (currentDrawer == 1 || currentDrawer == 2 || currentDrawer == 3 || currentDrawer == 4){
+            if (currentDrawer == 4){
+                horizontalStepper(3, 1);
+            }
+            else if (currentDrawer == 3){
+                horizontalStepper(2, 1);
+            }
+            else if (currentDrawer == 2){
+                horizontalStepper(1, 1);
+            }
+        }
+        else if (currentDrawer == 5 || currentDrawer == 6 || currentDrawer == 7 || currentDrawer == 8){
+            verticalStepper(1, 1);
+            if (currentDrawer == 8){
+                horizontalStepper(3, 1);
+            }
+            else if (currentDrawer == 7){
+                horizontalStepper(2, 1);
+            }
+            else if (currentDrawer == 6){
+                horizontalStepper(1, 1);
+            }
+        }
+        else if (currentDrawer == 9 || currentDrawer == 10 || currentDrawer == 11 || currentDrawer == 12){
+            verticalStepper(2, 1);
+            if (currentDrawer == 12){
+                horizontalStepper(3, 1);
+            }
+            else if (currentDrawer == 11){
+                horizontalStepper(2, 1);
+            }
+            else if (currentDrawer == 10){
+                horizontalStepper(1, 1);
+            }
+        }
+        else if (currentDrawer == 13 || currentDrawer == 14 || currentDrawer == 15 || currentDrawer == 16){
+            verticalStepper(3, 1);
+            if (currentDrawer == 16){
+                horizontalStepper(3, 1);
+            }
+            else if (currentDrawer == 15){
+                horizontalStepper(2, 1);
+            }
+            else if (currentDrawer == 14){
+                horizontalStepper(1, 1);
+            }
+        }
+    }
+}
+
 
 /*This function will detect the tape at a given drawer, and return the results*/
 unsigned int detectTape(void){
@@ -754,135 +812,172 @@ unsigned int detectTape(void){
 }
 
 /*This function will tell the stepper motor to open or close the drawer*/
-unsigned int configDrawer(unsigned int direction){
+void configDrawer(unsigned int direction){
     /*"Direction" specifies whether to open or close the drawer*/
-    /*Function will return 1 when finished*/
-    return 1;
+    
+    /*Open drawer*/
+    if (direction == 1){
+        uartTransmitBlocking(drawerOpen, 1);
+    }
+    /*Close drawer*/
+    else if (direction == 0){
+        uartTransmitBlocking(drawerClose, 1);
+    }
 }
 
 /*This function distributes the specified number of round pieces*/
-unsigned int distributeRound(unsigned int count){
+void distributeRound(unsigned int count){
     /*"Count" specifies how many pieces, and will determine how long the motor will turn for*/
     /*"Type" specifies which food type, and specifies which DC motor needs to be turned on*/
     
     unsigned int i = 0;
     
-    TRISCbits.TRISC5 = 0;
-    TRISCbits.TRISC6 = 0;
-    TRISCbits.TRISC7 = 0;
-    TRISCbits.TRISC0 = 0;
-    LATCbits.LATC5 = 0;
-    LATCbits.LATC6 = 0;
-    LATCbits.LATC7 = 0;
-    LATCbits.LATC0 = 0;
-    
-    for (i=0; i<count; i++){
-        LATCbits.LATC5 = 1;
-        LATCbits.LATC6 = 0;
-        LATCbits.LATC7 = 0;
-        LATCbits.LATC0 = 0;
+    for (i=0; i<count*523; i++){
+        LATDbits.LATD4 = 0;
+        LATDbits.LATD5 = 0;
+        LATDbits.LATD6 = 1;
+        LATDbits.LATD7 = 0;
         __delay_ms(2);
-        LATCbits.LATC5 = 0;
-        LATCbits.LATC6 = 1;
-        LATCbits.LATC7 = 0;
-        LATCbits.LATC0 = 0;
+        LATDbits.LATD4 = 0;
+        LATDbits.LATD5 = 1;
+        LATDbits.LATD6 = 0;
+        LATDbits.LATD7 = 0;
         __delay_ms(2);
-        LATCbits.LATC5 = 0;
-        LATCbits.LATC6 = 0;
-        LATCbits.LATC7 = 1;
-        LATCbits.LATC0 = 0;
+        LATDbits.LATD4 = 1;
+        LATDbits.LATD5 = 0;
+        LATDbits.LATD6 = 0;
+        LATDbits.LATD7 = 0;
         __delay_ms(2);
-        LATCbits.LATC5 = 0;
-        LATCbits.LATC6 = 0;
-        LATCbits.LATC7 = 0;
-        LATCbits.LATC0 = 1;
+        LATDbits.LATD4 = 0;
+        LATDbits.LATD5 = 0;
+        LATDbits.LATD6 = 0;
+        LATDbits.LATD7 = 1;
         __delay_ms(2);
     }
     
-    return 1;
+    LATDbits.LATD4 = 0;
+    LATDbits.LATD5 = 0;
+    LATDbits.LATD6 = 0;
+    LATDbits.LATD7 = 0;
 }
 
 /*This function distributes the specified number of flat pieces*/
-unsigned int distributeFlat(unsigned int count){
+void distributeFlat(unsigned int count){
     /*"Count" specifies how many pieces, and will determine how long the motor will turn for*/
     /*"Type" specifies which food type, and specifies which DC motor needs to be turned on*/
     
     unsigned int i = 0;
     
-    TRISCbits.TRISC5 = 0;
-    TRISCbits.TRISC6 = 0;
-    TRISCbits.TRISC7 = 0;
-    TRISCbits.TRISC0 = 0;
-    LATCbits.LATC5 = 0;
-    LATCbits.LATC6 = 0;
-    LATCbits.LATC7 = 0;
-    LATCbits.LATC0 = 0;
-    
-    for (i=0; i<count; i++){
-        LATCbits.LATC5 = 1;
-        LATCbits.LATC6 = 0;
-        LATCbits.LATC7 = 0;
-        LATCbits.LATC0 = 0;
+    for (i=0; i<count*523; i++){
+        LATDbits.LATD0 = 1;
+        LATDbits.LATD1 = 0;
+        LATDbits.LATD2 = 0;
+        LATDbits.LATD3 = 0;
         __delay_ms(2);
-        LATCbits.LATC5 = 0;
-        LATCbits.LATC6 = 1;
-        LATCbits.LATC7 = 0;
-        LATCbits.LATC0 = 0;
+        LATDbits.LATD0 = 0;
+        LATDbits.LATD1 = 1;
+        LATDbits.LATD2 = 0;
+        LATDbits.LATD3 = 0;
         __delay_ms(2);
-        LATCbits.LATC5 = 0;
-        LATCbits.LATC6 = 0;
-        LATCbits.LATC7 = 1;
-        LATCbits.LATC0 = 0;
+        LATDbits.LATD0 = 0;
+        LATDbits.LATD1 = 0;
+        LATDbits.LATD2 = 1;
+        LATDbits.LATD3 = 0;
         __delay_ms(2);
-        LATCbits.LATC5 = 0;
-        LATCbits.LATC6 = 0;
-        LATCbits.LATC7 = 0;
-        LATCbits.LATC0 = 1;
+        LATDbits.LATD0 = 0;
+        LATDbits.LATD1 = 0;
+        LATDbits.LATD2 = 0;
+        LATDbits.LATD3 = 1;
         __delay_ms(2);
     }
-    return 1;
+    
+    LATDbits.LATD0 = 0;
+    LATDbits.LATD1 = 0;
+    LATDbits.LATD2 = 0;
+    LATDbits.LATD3 = 0;
 }
 
 /*This function distributes the specified number of long pieces*/
-unsigned int distributeLong(unsigned int count){
+void distributeLong(unsigned int count){
     /*"Count" specifies how many pieces, and will determine how long the motor will turn for*/
     /*"Type" specifies which food type, and specifies which DC motor needs to be turned on*/
     
     unsigned int i = 0;
     
-    TRISCbits.TRISC5 = 0;
-    TRISCbits.TRISC6 = 0;
-    TRISCbits.TRISC7 = 0;
-    TRISCbits.TRISC0 = 0;
-    LATCbits.LATC5 = 0;
-    LATCbits.LATC6 = 0;
-    LATCbits.LATC7 = 0;
-    LATCbits.LATC0 = 0;
-    
-    for (i=0; i<count; i++){
-        LATCbits.LATC5 = 1;
-        LATCbits.LATC6 = 0;
-        LATCbits.LATC7 = 0;
+    for (i=0; i<count*523; i++){
         LATCbits.LATC0 = 0;
+        LATCbits.LATC1 = 0;
+        LATCbits.LATC2 = 1;
+        LATEbits.LATE2 = 0;
         __delay_ms(2);
-        LATCbits.LATC5 = 0;
-        LATCbits.LATC6 = 1;
-        LATCbits.LATC7 = 0;
         LATCbits.LATC0 = 0;
+        LATCbits.LATC1 = 1;
+        LATCbits.LATC2 = 0;
+        LATEbits.LATE2 = 0;
         __delay_ms(2);
-        LATCbits.LATC5 = 0;
-        LATCbits.LATC6 = 0;
-        LATCbits.LATC7 = 1;
-        LATCbits.LATC0 = 0;
-        __delay_ms(2);
-        LATCbits.LATC5 = 0;
-        LATCbits.LATC6 = 0;
-        LATCbits.LATC7 = 0;
         LATCbits.LATC0 = 1;
+        LATCbits.LATC1 = 0;
+        LATCbits.LATC2 = 0;
+        LATEbits.LATE2 = 0;
+        __delay_ms(2);
+        LATCbits.LATC0 = 0;
+        LATCbits.LATC1 = 0;
+        LATCbits.LATC2 = 0;
+        LATEbits.LATE2 = 1;
         __delay_ms(2);
     }
-    return 1;
+    
+    LATCbits.LATC0 = 0;
+    LATCbits.LATC1 = 0;
+    LATCbits.LATC2 = 0;
+    LATEbits.LATE2 = 0;
 }
+
+
+/*Controls the main piece distribution*/
+void distributePieces(unsigned int roundPieces, unsigned int flatPieces, unsigned int longPieces){
+    switch(roundPieces){
+        case 1:
+            distributeRound(1);
+            __delay_ms(2000);
+            break;
+        case 2:
+            distributeRound(2);
+            __delay_ms(2000);
+            break;
+        default:
+            break;
+    }
+    switch(flatPieces){
+        case 1:
+            distributeFlat(1);
+            __delay_ms(2000);
+            break;
+        case 2:
+            distributeFlat(2);
+            __delay_ms(2000);
+            break;
+        default:
+            break;
+    }
+    switch(longPieces){
+        case 1:
+            distributeLong(1);
+            __delay_ms(2000);
+            break;
+        case 2:
+            distributeLong(2);
+            __delay_ms(2000);
+            break;
+        case 3:
+            distributeLong(3);
+            __delay_ms(2000);
+            break;
+        default:
+            break;
+    }
+}
+
 
 /*Counts the number of pieces distributed (through contact sensor), by food type*/
 unsigned int checkCount(unsigned int pieceType){
@@ -890,42 +985,34 @@ unsigned int checkCount(unsigned int pieceType){
     return 1;
 }
 
+
 /*This function will release the pieces into the reservoirs*/
-unsigned int trapDoor(unsigned int direction){
+void trapDoor(unsigned int direction){
     /*"type" specifies which food type is to be released*/
     /*"direction" specifies which direction the trapDoor needs to turn*/
     /*This function will return 1 when finished*/
     
-    TRISCbits.TRISC5 = 0;
-    TRISCbits.TRISC6 = 0;
-    TRISCbits.TRISC7 = 0;
+    unsigned int i = 0;
     
-    LATCbits.LATC5 = 1;
-    LATCbits.LATC6 = 1;
-    LATCbits.LATC7 = 1;
-    
+    /*Open trap door*/
     if (direction == 1){
-        LATCbits.LATC5 = 1;
-        LATCbits.LATC6 = 0;
-        __delay_ms(1000);
-        LATCbits.LATC5 = 1;
-        LATCbits.LATC6 = 1;
-        __delay_ms(1);
-        LATCbits.LATC5 = 0;
-        LATCbits.LATC6 = 0;
-    }
-    else if (direction == 0){
-        LATCbits.LATC5 = 0;
-        LATCbits.LATC6 = 1;
-        __delay_ms(1000);
-        LATCbits.LATC5 = 1;
-        LATCbits.LATC6 = 1;
-        __delay_ms(1);
-        LATCbits.LATC5 = 0;
-        LATCbits.LATC6 = 0;
+        LATAbits.LATA4 = 1;
+        LATAbits.LATA5 = 0;
+        LATEbits.LATE1 = 1;
+        __delay_ms(500);
     }
     
-    return 1;
+    /*Close trap door*/
+    else if (direction == 1){
+        LATAbits.LATA4 = 0;
+        LATAbits.LATA5 = 1;
+        LATEbits.LATE1 = 1;
+        __delay_ms(500);
+    }
+    
+    LATAbits.LATA4 = 0;
+    LATAbits.LATA5 = 0;
+    LATEbits.LATE1 = 0;
 }
 
 /*This function will be called in main.c, and holds the code for the entire operation*/
@@ -954,16 +1041,32 @@ void mainOperation(void){
         if (sortedDrawerTable[i] != 0){
             currentDrawer = sortedDrawerTable[i];
             nextDrawer = sortedDrawerTable[i+1];
-            __lcd_clear();
-            printf("Moving to");
-            __lcd_newline();
-            printf("drawer %i", sortedDrawerTable[i]);
-            __delay_ms(2000);
+            
+            if (currentDrawer != 1 && i == 0){
+                __lcd_clear();
+                printf("Moving to");
+                __lcd_newline();
+                printf("drawer %i", sortedDrawerTable[i]);
+                __delay_ms(2000);
+                temp = moveVertically(1, sortedDrawerTable[i]);
+                moveHorizontally(1, sortedDrawerTable[i]);
+                currentDrawer = sortedDrawerTable[i];
+            }
+            
+            uartTransmitBlocking(drawerDown, 1);
+            __delay_ms(1000);
+            configDrawer(0);
+            __delay_ms(1000);
+            uartTransmitBlocking(drawerUp, 1);
+            __delay_ms(1000);
+            configDrawer(1);
+            __delay_ms(1000);
+            
             trueValue = findDrawerIndex(drawerTable, sortedDrawerTable[i]);
             __lcd_clear();
-            printf("diet: %s", inputs[dietTable[trueValue]]);
+            printf("Diet: %s", inputs[dietTable[trueValue]]);
             __lcd_newline();
-            printf("food: %s", foodInputs[foodTable[trueValue]]);
+            printf("Food: %s", foodInputs[foodTable[trueValue]]);
             __delay_ms(2000);
             roundPieces = getRoundPieces(dietTable[trueValue], foodTable[trueValue]);
             flatPieces = getFlatPieces(dietTable[trueValue], foodTable[trueValue]);
@@ -971,12 +1074,43 @@ void mainOperation(void){
             __lcd_clear();
             printf("R:%i F:%i L:%i", roundPieces, flatPieces, longPieces);
             __delay_ms(2000);
+            distributePieces(roundPieces, flatPieces, longPieces);
+            __delay_ms(5000);
             
-//            temp = moveVertically(currentDrawer, nextDrawer);
-//            currentDrawer = temp;
-//            moveHorizontally(currentDrawer, nextDrawer);
+            configDrawer(0);
+            __delay_ms(1000);
+            uartTransmitBlocking(drawerDown, 1);
+            __delay_ms(1000);
+            configDrawer(1);
+            __delay_ms(1000);
+            uartTransmitBlocking(drawerUp, 1);
+            __delay_ms(1000);
+            
+            __lcd_clear();
+            printf("Moving to");
+            __lcd_newline();
+            printf("drawer %i", sortedDrawerTable[i+1]);
+            temp = moveVertically(currentDrawer, nextDrawer);
+            currentDrawer = temp;
+            moveHorizontally(currentDrawer, nextDrawer);
+            __delay_ms(2000);
         }
     }
+    initArm(currentDrawer);
+    __lcd_clear();
+    printf("Initializing");
+    __lcd_newline();
+    printf("Arm");
+    __delay_ms(2000);
+    
+    
+    trapDoor(1);
+    __lcd_clear();
+    printf("Distributing to");
+    __lcd_newline();
+    printf("reservoir.");
+    __delay_ms(2000);
+    trapDoor(0);
     
     /* writeEEPROM(address, data);                Loop through and store data from the inputs, date and time
      * tick();                                    Start the timer

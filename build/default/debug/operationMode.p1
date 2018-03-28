@@ -6,18 +6,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _readEEPROM `(uc ~T0 @X0 0 ef1`uc ]
 "74 UART_PIC.h
 [v _uartTransmitBlocking `(v ~T0 @X0 0 ef2`*uc`uc ]
-"1833 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
-[s S65 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S65 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
-"1843
-[s S66 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S66 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
-"1832
-[u S64 `S65 1 `S66 1 ]
-[n S64 . . . ]
-"1854
-[v _TRISCbits `VS64 ~T0 @X0 0 e@3988 ]
-"1108
+"1220 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
+[s S47 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S47 . LATD0 LATD1 LATD2 LATD3 LATD4 LATD5 LATD6 LATD7 ]
+"1230
+[s S48 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S48 . LD0 LD1 LD2 LD3 LD4 LD5 LD6 LD7 ]
+"1219
+[u S46 `S47 1 `S48 1 ]
+[n S46 . . . ]
+"1241
+[v _LATDbits `VS46 ~T0 @X0 0 e@3980 ]
+[v F2882 `(v ~T0 @X0 1 tf1`ul ]
+"164 /Applications/microchip/xc8/v1.45/include/pic18.h
+[v __delay `JF2882 ~T0 @X0 0 e ]
+[p i __delay ]
+"1108 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
 [s S44 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S44 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
 "1118
@@ -28,10 +32,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S43 . . . ]
 "1129
 [v _LATCbits `VS43 ~T0 @X0 0 e@3979 ]
-[v F2882 `(v ~T0 @X0 1 tf1`ul ]
-"164 /Applications/microchip/xc8/v1.45/include/pic18.h
-[v __delay `JF2882 ~T0 @X0 0 e ]
-[p i __delay ]
+"1332
+[s S50 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S50 . LATE0 LATE1 LATE2 ]
+"1337
+[s S51 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S51 . LE0 LE1 LE2 ]
+"1331
+[u S49 `S50 1 `S51 1 ]
+[n S49 . . . ]
+"1343
+[v _LATEbits `VS49 ~T0 @X0 0 e@3981 ]
+"884
+[s S38 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S38 . LATA0 LATA1 LATA2 LATA3 LATA4 LATA5 LATA6 LATA7 ]
+"894
+[s S39 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S39 . LA0 LA1 LA2 LA3 LA4 LA5 LA6 LA7 ]
+"883
+[u S37 `S38 1 `S39 1 ]
+[n S37 . . . ]
+"905
+[v _LATAbits `VS37 ~T0 @X0 0 e@3977 ]
 "65 LCD.h
 [v _lcdInst `(v ~T0 @X0 0 ef1`uc ]
 "195 /Applications/microchip/xc8/v1.45/include/stdio.h
@@ -2817,19 +2839,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p x EBTRB=OFF ]
 [; ;operationMode.h: 19: void getUserInputs(unsigned int drawerTable[8], unsigned int dietTable[8], unsigned int foodTable[8]);
 [; ;operationMode.h: 20: void sortDrawerList(unsigned int drawerTable[8], unsigned int sortedDrawerTable[8]);
-[; ;operationMode.h: 21: void verticalStepper(unsigned int rotations, unsigned int direction);
-[; ;operationMode.h: 22: void horizontalStepper(unsigned int rotations, unsigned int direction);
-[; ;operationMode.h: 23: void drawerStepper(unsigned int direction);
-[; ;operationMode.h: 24: unsigned int moveVertically(unsigned int currentDrawer, unsigned int nextDrawer);
-[; ;operationMode.h: 25: void moveHorizontally(unsigned int currentDrawer, unsigned int nextDrawer);
-[; ;operationMode.h: 26: unsigned int detectTape(void);
-[; ;operationMode.h: 27: unsigned int configDrawer(unsigned int direction);
-[; ;operationMode.h: 28: unsigned int distributeRound(unsigned int count);
-[; ;operationMode.h: 29: unsigned int distributeFlat(unsigned int count);
-[; ;operationMode.h: 30: unsigned int distributeLong(unsigned int count);
-[; ;operationMode.h: 31: unsigned int checkCount(unsigned int pieceType);
-[; ;operationMode.h: 32: unsigned int trapDoor(unsigned int direction);
-[; ;operationMode.h: 33: void mainOperation(void);
+[; ;operationMode.h: 21: unsigned int findDrawerIndex(unsigned int drawerTable[8], unsigned int sortedDrawerValue);
+[; ;operationMode.h: 22: unsigned int getRoundPieces(unsigned int dietType, unsigned int foodType);
+[; ;operationMode.h: 23: unsigned int getFlatPieces(unsigned int dietType, unsigned int foodType);
+[; ;operationMode.h: 24: unsigned int getLongPieces(unsigned int dietType, unsigned int foodType);
+[; ;operationMode.h: 25: void verticalStepper(unsigned int rotations, unsigned int direction);
+[; ;operationMode.h: 26: void horizontalStepper(unsigned int rotations, unsigned int direction);
+[; ;operationMode.h: 27: void drawerStepper(unsigned int direction);
+[; ;operationMode.h: 28: unsigned int moveVertically(unsigned int currentDrawer, unsigned int nextDrawer);
+[; ;operationMode.h: 29: void moveHorizontally(unsigned int currentDrawer, unsigned int nextDrawer);
+[; ;operationMode.h: 30: void initArm(unsigned int currentDrawer);
+[; ;operationMode.h: 31: unsigned int detectTape(void);
+[; ;operationMode.h: 32: void configDrawer(unsigned int direction);
+[; ;operationMode.h: 33: void distributeRound(unsigned int count);
+[; ;operationMode.h: 34: void distributeFlat(unsigned int count);
+[; ;operationMode.h: 35: void distributeLong(unsigned int count);
+[; ;operationMode.h: 36: void distributePieces(unsigned int roundPieces, unsigned int flatPieces, unsigned int longPieces);
+[; ;operationMode.h: 37: unsigned int checkCount(unsigned int pieceType);
+[; ;operationMode.h: 38: void trapDoor(unsigned int direction);
+[; ;operationMode.h: 39: void mainOperation(void);
 [; ;UART_PIC.h: 42: typedef enum{
 [; ;UART_PIC.h: 43: UART_STATE_BUSY = 0x00,
 [; ;UART_PIC.h: 44: UART_STATE_READY = 0x01,
@@ -2956,122 +2984,183 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [; ;operationMode.c: 21: unsigned char drawerDown[1] = {'6'};
+"22
+[v _drawerOpen `uc ~T0 @X0 -> -> 1 `i `ux e ]
+[i _drawerOpen
+:U ..
+-> -> 55 `ui `uc
+..
+]
+[; ;operationMode.c: 22: unsigned char drawerOpen[1] = {'7'};
+"23
+[v _drawerClose `uc ~T0 @X0 -> -> 1 `i `ux e ]
+[i _drawerClose
+:U ..
+-> -> 56 `ui `uc
+..
+]
+[; ;operationMode.c: 23: unsigned char drawerClose[1] = {'8'};
 "25
+[v _inputs `*Cuc ~T0 @X0 -> 0 `x e ]
+[i _inputs
+:U ..
+:s 1C
+:s 2C
+:s 3C
+:s 4C
+:s 5C
+:s 6C
+:s 7C
+:s 8C
+:s 9C
+:s 10C
+:s 11C
+:s 12C
+:s 13C
+:s 14C
+:s 15C
+:s 16C
+:s 17C
+:s 18C
+..
+]
+[; ;operationMode.c: 25: const char* inputs[] = {"R", "F", "L", "RF", "RL", "FL", "RRF", "RRL", "RFF", "RLL", "RFL", "FFL", "FLL", "RRFL", "RFFL", "RFLL", "RLLL", "FLLL"};
+"26
+[v _foodInputs `*Cuc ~T0 @X0 -> 0 `x e ]
+[i _foodInputs
+:U ..
+:s 19C
+:s 20C
+:s 21C
+:s 22C
+:s 23C
+:s 24C
+:s 25C
+:s 26C
+:s 27C
+:s 28C
+:s 29C
+:s 30C
+:s 31C
+..
+]
+[; ;operationMode.c: 26: const char* foodInputs[] = {"1", "2", "3", "11", "12", "13", "21", "22", "111", "112", "121", "211", "1111"};
+"30
 [v _getUserInputs `(v ~T0 @X0 1 ef3`*ui`*ui`*ui ]
 {
-[; ;operationMode.c: 25: void getUserInputs(unsigned int drawerTable[8], unsigned int dietTable[8], unsigned int foodTable[8]){
+[; ;operationMode.c: 30: void getUserInputs(unsigned int drawerTable[8], unsigned int dietTable[8], unsigned int foodTable[8]){
 [e :U _getUserInputs ]
 [v _drawerTable `*ui ~T0 @X0 1 r1 ]
 [v _dietTable `*ui ~T0 @X0 1 r2 ]
 [v _foodTable `*ui ~T0 @X0 1 r3 ]
 [f ]
-"26
+"31
 [v _data `ui ~T0 @X0 1 a ]
-[; ;operationMode.c: 26: unsigned int data = 0;
+[; ;operationMode.c: 31: unsigned int data = 0;
 [e = _data -> -> 0 `i `ui ]
-"27
-[v _i `ui ~T0 @X0 1 a ]
-[; ;operationMode.c: 27: unsigned int i = 0;
-[e = _i -> -> 0 `i `ui ]
-"28
-[v _logNumber `ui ~T0 @X0 1 a ]
-[; ;operationMode.c: 28: unsigned int logNumber = 0;
-[e = _logNumber -> -> 0 `i `ui ]
-"29
-[v _n `ui ~T0 @X0 1 a ]
-[; ;operationMode.c: 29: unsigned int n = 0;
-[e = _n -> -> 0 `i `ui ]
-"30
-[v _count `ui ~T0 @X0 1 a ]
-[; ;operationMode.c: 30: unsigned int count = 0;
-[e = _count -> -> 0 `i `ui ]
-[; ;operationMode.c: 32: logNumber = readEEPROM(250);
 "32
-[e = _logNumber -> ( _readEEPROM (1 -> -> 250 `i `uc `ui ]
-[; ;operationMode.c: 34: if (logNumber == 0 || logNumber == 4){
+[v _i `ui ~T0 @X0 1 a ]
+[; ;operationMode.c: 32: unsigned int i = 0;
+[e = _i -> -> 0 `i `ui ]
+"33
+[v _logNumber `ui ~T0 @X0 1 a ]
+[; ;operationMode.c: 33: unsigned int logNumber = 0;
+[e = _logNumber -> -> 0 `i `ui ]
 "34
+[v _n `ui ~T0 @X0 1 a ]
+[; ;operationMode.c: 34: unsigned int n = 0;
+[e = _n -> -> 0 `i `ui ]
+"35
+[v _count `ui ~T0 @X0 1 a ]
+[; ;operationMode.c: 35: unsigned int count = 0;
+[e = _count -> -> 0 `i `ui ]
+[; ;operationMode.c: 37: logNumber = readEEPROM(250);
+"37
+[e = _logNumber -> ( _readEEPROM (1 -> -> 250 `i `uc `ui ]
+[; ;operationMode.c: 39: if (logNumber == 0 || logNumber == 4){
+"39
 [e $ ! || == _logNumber -> -> 0 `i `ui == _logNumber -> -> 4 `i `ui 268  ]
 {
-[; ;operationMode.c: 35: n = 0;
-"35
+[; ;operationMode.c: 40: n = 0;
+"40
 [e = _n -> -> 0 `i `ui ]
-"36
+"41
 }
-[; ;operationMode.c: 36: }
+[; ;operationMode.c: 41: }
 [e $U 269  ]
-"37
+"42
 [e :U 268 ]
-[; ;operationMode.c: 37: else{
+[; ;operationMode.c: 42: else{
 {
-[; ;operationMode.c: 38: n = (logNumber-1)*35;
-"38
+[; ;operationMode.c: 43: n = (logNumber-1)*35;
+"43
 [e = _n * - _logNumber -> -> 1 `i `ui -> -> 35 `i `ui ]
-"39
+"44
 }
 [e :U 269 ]
-[; ;operationMode.c: 39: }
-[; ;operationMode.c: 41: for (i=11; i<35; i+=3){
-"41
+[; ;operationMode.c: 44: }
+[; ;operationMode.c: 46: for (i=11; i<35; i+=3){
+"46
 {
 [e = _i -> -> 11 `i `ui ]
 [e $ < _i -> -> 35 `i `ui 270  ]
 [e $U 271  ]
 [e :U 270 ]
 {
-[; ;operationMode.c: 42: data = readEEPROM(i+n);
-"42
-[e = _data -> ( _readEEPROM (1 -> + _i _n `uc `ui ]
-[; ;operationMode.c: 43: drawerTable[count] = data;
-"43
-[e = *U + _drawerTable * -> _count `ux -> -> # *U _drawerTable `ui `ux _data ]
-[; ;operationMode.c: 44: data = readEEPROM(i+1+n);
-"44
-[e = _data -> ( _readEEPROM (1 -> + + _i -> -> 1 `i `ui _n `uc `ui ]
-[; ;operationMode.c: 45: dietTable[count] = data;
-"45
-[e = *U + _dietTable * -> _count `ux -> -> # *U _dietTable `ui `ux _data ]
-[; ;operationMode.c: 46: data = readEEPROM(i+2+n);
-"46
-[e = _data -> ( _readEEPROM (1 -> + + _i -> -> 2 `i `ui _n `uc `ui ]
-[; ;operationMode.c: 47: foodTable[count] = data;
+[; ;operationMode.c: 47: data = readEEPROM(i+n);
 "47
-[e = *U + _foodTable * -> _count `ux -> -> # *U _foodTable `ui `ux _data ]
-[; ;operationMode.c: 48: count += 1;
+[e = _data -> ( _readEEPROM (1 -> + _i _n `uc `ui ]
+[; ;operationMode.c: 48: drawerTable[count] = data;
 "48
-[e =+ _count -> -> 1 `i `ui ]
+[e = *U + _drawerTable * -> _count `ux -> -> # *U _drawerTable `ui `ux _data ]
+[; ;operationMode.c: 49: data = readEEPROM(i+1+n);
 "49
+[e = _data -> ( _readEEPROM (1 -> + + _i -> -> 1 `i `ui _n `uc `ui ]
+[; ;operationMode.c: 50: dietTable[count] = data;
+"50
+[e = *U + _dietTable * -> _count `ux -> -> # *U _dietTable `ui `ux _data ]
+[; ;operationMode.c: 51: data = readEEPROM(i+2+n);
+"51
+[e = _data -> ( _readEEPROM (1 -> + + _i -> -> 2 `i `ui _n `uc `ui ]
+[; ;operationMode.c: 52: foodTable[count] = data;
+"52
+[e = *U + _foodTable * -> _count `ux -> -> # *U _foodTable `ui `ux _data ]
+[; ;operationMode.c: 53: count += 1;
+"53
+[e =+ _count -> -> 1 `i `ui ]
+"54
 }
-"41
+"46
 [e =+ _i -> -> 3 `i `ui ]
 [e $ < _i -> -> 35 `i `ui 270  ]
 [e :U 271 ]
-"49
+"54
 }
-[; ;operationMode.c: 49: }
-[; ;operationMode.c: 50: }
-"50
+[; ;operationMode.c: 54: }
+[; ;operationMode.c: 55: }
+"55
 [e :UE 267 ]
 }
-"54
+"59
 [v _sortDrawerList `(v ~T0 @X0 1 ef2`*ui`*ui ]
 {
-[; ;operationMode.c: 54: void sortDrawerList(unsigned int drawerTable[8], unsigned int sortedDrawerTable[8]){
+[; ;operationMode.c: 59: void sortDrawerList(unsigned int drawerTable[8], unsigned int sortedDrawerTable[8]){
 [e :U _sortDrawerList ]
 [v _drawerTable `*ui ~T0 @X0 1 r1 ]
 [v _sortedDrawerTable `*ui ~T0 @X0 1 r2 ]
 [f ]
-"55
+"60
 [v _i `ui ~T0 @X0 1 a ]
-[; ;operationMode.c: 55: unsigned int i = 0;
+[; ;operationMode.c: 60: unsigned int i = 0;
 [e = _i -> -> 0 `i `ui ]
-"56
+"61
 [v _j `ui ~T0 @X0 1 a ]
-[; ;operationMode.c: 56: unsigned int j = 0;
+[; ;operationMode.c: 61: unsigned int j = 0;
 [e = _j -> -> 0 `i `ui ]
-[v F3072 `ui ~T0 @X0 -> 0 `x s ]
-[i F3072
+[v F3094 `ui ~T0 @X0 -> 0 `x s ]
+[i F3094
 :U ..
-"57
+"62
 -> -> 0 `i `ui
 -> -> 0 `i `ui
 -> -> 0 `i `ui
@@ -3079,16 +3168,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [v _sublist1 `ui ~T0 @X0 4  a ]
-[; ;operationMode.c: 57: unsigned int sublist1[] = {0,0,0,0};
-[e = _sublist1 F3072 ]
-"58
+[; ;operationMode.c: 62: unsigned int sublist1[] = {0,0,0,0};
+[e = _sublist1 F3094 ]
+"63
 [v _count1 `ui ~T0 @X0 1 a ]
-[; ;operationMode.c: 58: unsigned int count1 = 0;
+[; ;operationMode.c: 63: unsigned int count1 = 0;
 [e = _count1 -> -> 0 `i `ui ]
-[v F3075 `ui ~T0 @X0 -> 0 `x s ]
-[i F3075
+[v F3097 `ui ~T0 @X0 -> 0 `x s ]
+[i F3097
 :U ..
-"59
+"64
 -> -> 0 `i `ui
 -> -> 0 `i `ui
 -> -> 0 `i `ui
@@ -3096,16 +3185,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [v _sublist2 `ui ~T0 @X0 4  a ]
-[; ;operationMode.c: 59: unsigned int sublist2[] = {0,0,0,0};
-[e = _sublist2 F3075 ]
-"60
+[; ;operationMode.c: 64: unsigned int sublist2[] = {0,0,0,0};
+[e = _sublist2 F3097 ]
+"65
 [v _count2 `ui ~T0 @X0 1 a ]
-[; ;operationMode.c: 60: unsigned int count2 = 0;
+[; ;operationMode.c: 65: unsigned int count2 = 0;
 [e = _count2 -> -> 0 `i `ui ]
-[v F3078 `ui ~T0 @X0 -> 0 `x s ]
-[i F3078
+[v F3100 `ui ~T0 @X0 -> 0 `x s ]
+[i F3100
 :U ..
-"61
+"66
 -> -> 0 `i `ui
 -> -> 0 `i `ui
 -> -> 0 `i `ui
@@ -3113,16 +3202,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [v _sublist3 `ui ~T0 @X0 4  a ]
-[; ;operationMode.c: 61: unsigned int sublist3[] = {0,0,0,0};
-[e = _sublist3 F3078 ]
-"62
+[; ;operationMode.c: 66: unsigned int sublist3[] = {0,0,0,0};
+[e = _sublist3 F3100 ]
+"67
 [v _count3 `ui ~T0 @X0 1 a ]
-[; ;operationMode.c: 62: unsigned int count3 = 0;
+[; ;operationMode.c: 67: unsigned int count3 = 0;
 [e = _count3 -> -> 0 `i `ui ]
-[v F3081 `ui ~T0 @X0 -> 0 `x s ]
-[i F3081
+[v F3103 `ui ~T0 @X0 -> 0 `x s ]
+[i F3103
 :U ..
-"63
+"68
 -> -> 0 `i `ui
 -> -> 0 `i `ui
 -> -> 0 `i `ui
@@ -3130,1563 +3219,3448 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [v _sublist4 `ui ~T0 @X0 4  a ]
-[; ;operationMode.c: 63: unsigned int sublist4[] = {0,0,0,0};
-[e = _sublist4 F3081 ]
-"64
+[; ;operationMode.c: 68: unsigned int sublist4[] = {0,0,0,0};
+[e = _sublist4 F3103 ]
+"69
 [v _count4 `ui ~T0 @X0 1 a ]
-[; ;operationMode.c: 64: unsigned int count4 = 0;
+[; ;operationMode.c: 69: unsigned int count4 = 0;
 [e = _count4 -> -> 0 `i `ui ]
-"65
+"70
 [v _temp `ui ~T0 @X0 1 a ]
-[; ;operationMode.c: 65: unsigned int temp;
-[; ;operationMode.c: 67: for (i=0; i<8; i++){
-"67
+[; ;operationMode.c: 70: unsigned int temp;
+[; ;operationMode.c: 72: for (i=0; i<8; i++){
+"72
 {
 [e = _i -> -> 0 `i `ui ]
 [e $ < _i -> -> 8 `i `ui 274  ]
 [e $U 275  ]
 [e :U 274 ]
 {
-[; ;operationMode.c: 68: sortedDrawerTable[i] = drawerTable[i];
-"68
+[; ;operationMode.c: 73: sortedDrawerTable[i] = drawerTable[i];
+"73
 [e = *U + _sortedDrawerTable * -> _i `ux -> -> # *U _sortedDrawerTable `ui `ux *U + _drawerTable * -> _i `ux -> -> # *U _drawerTable `ui `ux ]
-"69
+"74
 }
-"67
+"72
 [e ++ _i -> -> 1 `i `ui ]
 [e $ < _i -> -> 8 `i `ui 274  ]
 [e :U 275 ]
-"69
+"74
 }
-[; ;operationMode.c: 69: }
-[; ;operationMode.c: 71: for(i=0; i<8; i++){
-"71
+[; ;operationMode.c: 74: }
+[; ;operationMode.c: 76: for(i=0; i<8; i++){
+"76
 {
 [e = _i -> -> 0 `i `ui ]
 [e $ < _i -> -> 8 `i `ui 277  ]
 [e $U 278  ]
 [e :U 277 ]
 {
-[; ;operationMode.c: 72: if (sortedDrawerTable[i] == 1 || sortedDrawerTable[i] == 2 || sortedDrawerTable[i] == 3 || sortedDrawerTable[i] == 4){
-"72
+[; ;operationMode.c: 77: if (sortedDrawerTable[i] == 1 || sortedDrawerTable[i] == 2 || sortedDrawerTable[i] == 3 || sortedDrawerTable[i] == 4){
+"77
 [e $ ! || || || == *U + _sortedDrawerTable * -> _i `ux -> -> # *U _sortedDrawerTable `ui `ux -> -> 1 `i `ui == *U + _sortedDrawerTable * -> _i `ux -> -> # *U _sortedDrawerTable `ui `ux -> -> 2 `i `ui == *U + _sortedDrawerTable * -> _i `ux -> -> # *U _sortedDrawerTable `ui `ux -> -> 3 `i `ui == *U + _sortedDrawerTable * -> _i `ux -> -> # *U _sortedDrawerTable `ui `ux -> -> 4 `i `ui 280  ]
 {
-[; ;operationMode.c: 73: sublist1[count1]=sortedDrawerTable[i];
-"73
+[; ;operationMode.c: 78: sublist1[count1]=sortedDrawerTable[i];
+"78
 [e = *U + &U _sublist1 * -> _count1 `ux -> -> # *U &U _sublist1 `ui `ux *U + _sortedDrawerTable * -> _i `ux -> -> # *U _sortedDrawerTable `ui `ux ]
-[; ;operationMode.c: 74: count1 += 1;
-"74
+[; ;operationMode.c: 79: count1 += 1;
+"79
 [e =+ _count1 -> -> 1 `i `ui ]
-"75
+"80
 }
-[; ;operationMode.c: 75: }
+[; ;operationMode.c: 80: }
 [e $U 281  ]
-"76
+"81
 [e :U 280 ]
-[; ;operationMode.c: 76: else if (sortedDrawerTable[i] == 5 || sortedDrawerTable[i] == 6 || sortedDrawerTable[i] == 7 || sortedDrawerTable[i] == 8){
+[; ;operationMode.c: 81: else if (sortedDrawerTable[i] == 5 || sortedDrawerTable[i] == 6 || sortedDrawerTable[i] == 7 || sortedDrawerTable[i] == 8){
 [e $ ! || || || == *U + _sortedDrawerTable * -> _i `ux -> -> # *U _sortedDrawerTable `ui `ux -> -> 5 `i `ui == *U + _sortedDrawerTable * -> _i `ux -> -> # *U _sortedDrawerTable `ui `ux -> -> 6 `i `ui == *U + _sortedDrawerTable * -> _i `ux -> -> # *U _sortedDrawerTable `ui `ux -> -> 7 `i `ui == *U + _sortedDrawerTable * -> _i `ux -> -> # *U _sortedDrawerTable `ui `ux -> -> 8 `i `ui 282  ]
 {
-[; ;operationMode.c: 77: sublist2[count2]=sortedDrawerTable[i];
-"77
+[; ;operationMode.c: 82: sublist2[count2]=sortedDrawerTable[i];
+"82
 [e = *U + &U _sublist2 * -> _count2 `ux -> -> # *U &U _sublist2 `ui `ux *U + _sortedDrawerTable * -> _i `ux -> -> # *U _sortedDrawerTable `ui `ux ]
-[; ;operationMode.c: 78: count2 += 1;
-"78
+[; ;operationMode.c: 83: count2 += 1;
+"83
 [e =+ _count2 -> -> 1 `i `ui ]
-"79
+"84
 }
-[; ;operationMode.c: 79: }
+[; ;operationMode.c: 84: }
 [e $U 283  ]
-"80
+"85
 [e :U 282 ]
-[; ;operationMode.c: 80: else if (sortedDrawerTable[i] == 9 || sortedDrawerTable[i] == 10 || sortedDrawerTable[i] == 11 || sortedDrawerTable[i] == 12){
+[; ;operationMode.c: 85: else if (sortedDrawerTable[i] == 9 || sortedDrawerTable[i] == 10 || sortedDrawerTable[i] == 11 || sortedDrawerTable[i] == 12){
 [e $ ! || || || == *U + _sortedDrawerTable * -> _i `ux -> -> # *U _sortedDrawerTable `ui `ux -> -> 9 `i `ui == *U + _sortedDrawerTable * -> _i `ux -> -> # *U _sortedDrawerTable `ui `ux -> -> 10 `i `ui == *U + _sortedDrawerTable * -> _i `ux -> -> # *U _sortedDrawerTable `ui `ux -> -> 11 `i `ui == *U + _sortedDrawerTable * -> _i `ux -> -> # *U _sortedDrawerTable `ui `ux -> -> 12 `i `ui 284  ]
 {
-[; ;operationMode.c: 81: sublist3[count3]=sortedDrawerTable[i];
-"81
+[; ;operationMode.c: 86: sublist3[count3]=sortedDrawerTable[i];
+"86
 [e = *U + &U _sublist3 * -> _count3 `ux -> -> # *U &U _sublist3 `ui `ux *U + _sortedDrawerTable * -> _i `ux -> -> # *U _sortedDrawerTable `ui `ux ]
-[; ;operationMode.c: 82: count3 += 1;
-"82
+[; ;operationMode.c: 87: count3 += 1;
+"87
 [e =+ _count3 -> -> 1 `i `ui ]
-"83
+"88
 }
-[; ;operationMode.c: 83: }
+[; ;operationMode.c: 88: }
 [e $U 285  ]
-"84
+"89
 [e :U 284 ]
-[; ;operationMode.c: 84: else if (sortedDrawerTable[i] == 13 || sortedDrawerTable[i] == 14 || sortedDrawerTable[i] == 15 || sortedDrawerTable[i] == 16){
+[; ;operationMode.c: 89: else if (sortedDrawerTable[i] == 13 || sortedDrawerTable[i] == 14 || sortedDrawerTable[i] == 15 || sortedDrawerTable[i] == 16){
 [e $ ! || || || == *U + _sortedDrawerTable * -> _i `ux -> -> # *U _sortedDrawerTable `ui `ux -> -> 13 `i `ui == *U + _sortedDrawerTable * -> _i `ux -> -> # *U _sortedDrawerTable `ui `ux -> -> 14 `i `ui == *U + _sortedDrawerTable * -> _i `ux -> -> # *U _sortedDrawerTable `ui `ux -> -> 15 `i `ui == *U + _sortedDrawerTable * -> _i `ux -> -> # *U _sortedDrawerTable `ui `ux -> -> 16 `i `ui 286  ]
 {
-[; ;operationMode.c: 85: sublist4[count4]=sortedDrawerTable[i];
-"85
+[; ;operationMode.c: 90: sublist4[count4]=sortedDrawerTable[i];
+"90
 [e = *U + &U _sublist4 * -> _count4 `ux -> -> # *U &U _sublist4 `ui `ux *U + _sortedDrawerTable * -> _i `ux -> -> # *U _sortedDrawerTable `ui `ux ]
-[; ;operationMode.c: 86: count4 += 1;
-"86
+[; ;operationMode.c: 91: count4 += 1;
+"91
 [e =+ _count4 -> -> 1 `i `ui ]
-"87
+"92
 }
 [e :U 286 ]
-"88
+"93
 [e :U 285 ]
 [e :U 283 ]
 [e :U 281 ]
 }
-"71
+"76
 [e ++ _i -> -> 1 `i `ui ]
 [e $ < _i -> -> 8 `i `ui 277  ]
 [e :U 278 ]
-"88
+"93
 }
-[; ;operationMode.c: 87: }
-[; ;operationMode.c: 88: }
-[; ;operationMode.c: 90: for (i=0; i<count1; i++){
-"90
+[; ;operationMode.c: 92: }
+[; ;operationMode.c: 93: }
+[; ;operationMode.c: 95: for (i=0; i<count1; i++){
+"95
 {
 [e = _i -> -> 0 `i `ui ]
 [e $U 290  ]
 [e :U 287 ]
 {
-[; ;operationMode.c: 91: for (j=0; j<count1; j++){
-"91
+[; ;operationMode.c: 96: for (j=0; j<count1; j++){
+"96
 {
 [e = _j -> -> 0 `i `ui ]
 [e $U 294  ]
 [e :U 291 ]
 {
-[; ;operationMode.c: 92: if (sublist1[j] > sublist1[i]){
-"92
+[; ;operationMode.c: 97: if (sublist1[j] > sublist1[i]){
+"97
 [e $ ! > *U + &U _sublist1 * -> _j `ux -> -> # *U &U _sublist1 `ui `ux *U + &U _sublist1 * -> _i `ux -> -> # *U &U _sublist1 `ui `ux 295  ]
 {
-[; ;operationMode.c: 93: temp = sublist1[i];
-"93
+[; ;operationMode.c: 98: temp = sublist1[i];
+"98
 [e = _temp *U + &U _sublist1 * -> _i `ux -> -> # *U &U _sublist1 `ui `ux ]
-[; ;operationMode.c: 94: sublist1[i] = sublist1[j];
-"94
+[; ;operationMode.c: 99: sublist1[i] = sublist1[j];
+"99
 [e = *U + &U _sublist1 * -> _i `ux -> -> # *U &U _sublist1 `ui `ux *U + &U _sublist1 * -> _j `ux -> -> # *U &U _sublist1 `ui `ux ]
-[; ;operationMode.c: 95: sublist1[j] = temp;
-"95
+[; ;operationMode.c: 100: sublist1[j] = temp;
+"100
 [e = *U + &U _sublist1 * -> _j `ux -> -> # *U &U _sublist1 `ui `ux _temp ]
-"96
+"101
 }
 [e :U 295 ]
-"97
+"102
 }
-"91
+"96
 [e ++ _j -> -> 1 `i `ui ]
 [e :U 294 ]
 [e $ < _j _count1 291  ]
 [e :U 292 ]
-"97
+"102
 }
-"98
+"103
 }
-"90
+"95
 [e ++ _i -> -> 1 `i `ui ]
 [e :U 290 ]
 [e $ < _i _count1 287  ]
 [e :U 288 ]
-"98
+"103
 }
-[; ;operationMode.c: 96: }
-[; ;operationMode.c: 97: }
-[; ;operationMode.c: 98: }
-[; ;operationMode.c: 100: for (i=0; i<count3; i++){
-"100
+[; ;operationMode.c: 101: }
+[; ;operationMode.c: 102: }
+[; ;operationMode.c: 103: }
+[; ;operationMode.c: 105: for (i=0; i<count3; i++){
+"105
 {
 [e = _i -> -> 0 `i `ui ]
 [e $U 299  ]
 [e :U 296 ]
 {
-[; ;operationMode.c: 101: for (j=0; j<count3; j++){
-"101
+[; ;operationMode.c: 106: for (j=0; j<count3; j++){
+"106
 {
 [e = _j -> -> 0 `i `ui ]
 [e $U 303  ]
 [e :U 300 ]
 {
-[; ;operationMode.c: 102: if (sublist3[j] > sublist3[i]){
-"102
+[; ;operationMode.c: 107: if (sublist3[j] > sublist3[i]){
+"107
 [e $ ! > *U + &U _sublist3 * -> _j `ux -> -> # *U &U _sublist3 `ui `ux *U + &U _sublist3 * -> _i `ux -> -> # *U &U _sublist3 `ui `ux 304  ]
 {
-[; ;operationMode.c: 103: temp = sublist3[i];
-"103
+[; ;operationMode.c: 108: temp = sublist3[i];
+"108
 [e = _temp *U + &U _sublist3 * -> _i `ux -> -> # *U &U _sublist3 `ui `ux ]
-[; ;operationMode.c: 104: sublist3[i] = sublist3[j];
-"104
+[; ;operationMode.c: 109: sublist3[i] = sublist3[j];
+"109
 [e = *U + &U _sublist3 * -> _i `ux -> -> # *U &U _sublist3 `ui `ux *U + &U _sublist3 * -> _j `ux -> -> # *U &U _sublist3 `ui `ux ]
-[; ;operationMode.c: 105: sublist3[j] = temp;
-"105
+[; ;operationMode.c: 110: sublist3[j] = temp;
+"110
 [e = *U + &U _sublist3 * -> _j `ux -> -> # *U &U _sublist3 `ui `ux _temp ]
-"106
+"111
 }
 [e :U 304 ]
-"107
+"112
 }
-"101
+"106
 [e ++ _j -> -> 1 `i `ui ]
 [e :U 303 ]
 [e $ < _j _count3 300  ]
 [e :U 301 ]
-"107
+"112
 }
-"108
+"113
 }
-"100
+"105
 [e ++ _i -> -> 1 `i `ui ]
 [e :U 299 ]
 [e $ < _i _count3 296  ]
 [e :U 297 ]
-"108
+"113
 }
-[; ;operationMode.c: 106: }
-[; ;operationMode.c: 107: }
-[; ;operationMode.c: 108: }
-[; ;operationMode.c: 110: for (i=0; i<count2; i++){
-"110
+[; ;operationMode.c: 111: }
+[; ;operationMode.c: 112: }
+[; ;operationMode.c: 113: }
+[; ;operationMode.c: 115: for (i=0; i<count2; i++){
+"115
 {
 [e = _i -> -> 0 `i `ui ]
 [e $U 308  ]
 [e :U 305 ]
 {
-[; ;operationMode.c: 111: for (j=0; j<count2; j++){
-"111
+[; ;operationMode.c: 116: for (j=0; j<count2; j++){
+"116
 {
 [e = _j -> -> 0 `i `ui ]
 [e $U 312  ]
 [e :U 309 ]
 {
-[; ;operationMode.c: 112: if (sublist2[j] < sublist2[i]){
-"112
+[; ;operationMode.c: 117: if (sublist2[j] < sublist2[i]){
+"117
 [e $ ! < *U + &U _sublist2 * -> _j `ux -> -> # *U &U _sublist2 `ui `ux *U + &U _sublist2 * -> _i `ux -> -> # *U &U _sublist2 `ui `ux 313  ]
 {
-[; ;operationMode.c: 113: temp = sublist2[i];
-"113
+[; ;operationMode.c: 118: temp = sublist2[i];
+"118
 [e = _temp *U + &U _sublist2 * -> _i `ux -> -> # *U &U _sublist2 `ui `ux ]
-[; ;operationMode.c: 114: sublist2[i] = sublist2[j];
-"114
+[; ;operationMode.c: 119: sublist2[i] = sublist2[j];
+"119
 [e = *U + &U _sublist2 * -> _i `ux -> -> # *U &U _sublist2 `ui `ux *U + &U _sublist2 * -> _j `ux -> -> # *U &U _sublist2 `ui `ux ]
-[; ;operationMode.c: 115: sublist2[j] = temp;
-"115
+[; ;operationMode.c: 120: sublist2[j] = temp;
+"120
 [e = *U + &U _sublist2 * -> _j `ux -> -> # *U &U _sublist2 `ui `ux _temp ]
-"116
+"121
 }
 [e :U 313 ]
-"117
+"122
 }
-"111
+"116
 [e ++ _j -> -> 1 `i `ui ]
 [e :U 312 ]
 [e $ < _j _count2 309  ]
 [e :U 310 ]
-"117
+"122
 }
-"118
+"123
 }
-"110
+"115
 [e ++ _i -> -> 1 `i `ui ]
 [e :U 308 ]
 [e $ < _i _count2 305  ]
 [e :U 306 ]
-"118
+"123
 }
-[; ;operationMode.c: 116: }
-[; ;operationMode.c: 117: }
-[; ;operationMode.c: 118: }
-[; ;operationMode.c: 120: for (i=0; i<count4; i++){
-"120
+[; ;operationMode.c: 121: }
+[; ;operationMode.c: 122: }
+[; ;operationMode.c: 123: }
+[; ;operationMode.c: 125: for (i=0; i<count4; i++){
+"125
 {
 [e = _i -> -> 0 `i `ui ]
 [e $U 317  ]
 [e :U 314 ]
 {
-[; ;operationMode.c: 121: for (j=0; j<count4; j++){
-"121
+[; ;operationMode.c: 126: for (j=0; j<count4; j++){
+"126
 {
 [e = _j -> -> 0 `i `ui ]
 [e $U 321  ]
 [e :U 318 ]
 {
-[; ;operationMode.c: 122: if (sublist4[j] < sublist4[i]){
-"122
+[; ;operationMode.c: 127: if (sublist4[j] < sublist4[i]){
+"127
 [e $ ! < *U + &U _sublist4 * -> _j `ux -> -> # *U &U _sublist4 `ui `ux *U + &U _sublist4 * -> _i `ux -> -> # *U &U _sublist4 `ui `ux 322  ]
 {
-[; ;operationMode.c: 123: temp = sublist4[i];
-"123
+[; ;operationMode.c: 128: temp = sublist4[i];
+"128
 [e = _temp *U + &U _sublist4 * -> _i `ux -> -> # *U &U _sublist4 `ui `ux ]
-[; ;operationMode.c: 124: sublist4[i] = sublist4[j];
-"124
+[; ;operationMode.c: 129: sublist4[i] = sublist4[j];
+"129
 [e = *U + &U _sublist4 * -> _i `ux -> -> # *U &U _sublist4 `ui `ux *U + &U _sublist4 * -> _j `ux -> -> # *U &U _sublist4 `ui `ux ]
-[; ;operationMode.c: 125: sublist4[j] = temp;
-"125
+[; ;operationMode.c: 130: sublist4[j] = temp;
+"130
 [e = *U + &U _sublist4 * -> _j `ux -> -> # *U &U _sublist4 `ui `ux _temp ]
-"126
+"131
 }
 [e :U 322 ]
-"127
+"132
 }
-"121
+"126
 [e ++ _j -> -> 1 `i `ui ]
 [e :U 321 ]
 [e $ < _j _count4 318  ]
 [e :U 319 ]
-"127
+"132
 }
-"128
+"133
 }
-"120
+"125
 [e ++ _i -> -> 1 `i `ui ]
 [e :U 317 ]
 [e $ < _i _count4 314  ]
 [e :U 315 ]
-"128
+"133
 }
-[; ;operationMode.c: 126: }
-[; ;operationMode.c: 127: }
-[; ;operationMode.c: 128: }
-[; ;operationMode.c: 130: if (sublist1[count1] == 1 || sublist1[count1] == 2){
-"130
-[e $ ! || == *U + &U _sublist1 * -> _count1 `ux -> -> # *U &U _sublist1 `ui `ux -> -> 1 `i `ui == *U + &U _sublist1 * -> _count1 `ux -> -> # *U &U _sublist1 `ui `ux -> -> 2 `i `ui 323  ]
+[; ;operationMode.c: 131: }
+[; ;operationMode.c: 132: }
+[; ;operationMode.c: 133: }
+[; ;operationMode.c: 135: if (sublist3[count3 - 1] == 10 || sublist3[count3 - 1] == 9){
+"135
+[e $ ! || == *U + &U _sublist3 * -> - _count3 -> -> 1 `i `ui `ux -> -> # *U &U _sublist3 `ui `ux -> -> 10 `i `ui == *U + &U _sublist3 * -> - _count3 -> -> 1 `i `ui `ux -> -> # *U &U _sublist3 `ui `ux -> -> 9 `i `ui 323  ]
 {
-[; ;operationMode.c: 131: for (i=0; i<count2; i++){
-"131
+[; ;operationMode.c: 136: for (i=0; i<count4; i++){
+"136
 {
 [e = _i -> -> 0 `i `ui ]
 [e $U 327  ]
 [e :U 324 ]
 {
-[; ;operationMode.c: 132: for (j=0; j<count2; j++){
-"132
+[; ;operationMode.c: 137: for (j=0; j<count4; j++){
+"137
 {
 [e = _j -> -> 0 `i `ui ]
 [e $U 331  ]
 [e :U 328 ]
 {
-[; ;operationMode.c: 133: if (sublist2[j] > sublist2[i]){
-"133
-[e $ ! > *U + &U _sublist2 * -> _j `ux -> -> # *U &U _sublist2 `ui `ux *U + &U _sublist2 * -> _i `ux -> -> # *U &U _sublist2 `ui `ux 332  ]
+[; ;operationMode.c: 138: if (sublist4[j] > sublist4[i]){
+"138
+[e $ ! > *U + &U _sublist4 * -> _j `ux -> -> # *U &U _sublist4 `ui `ux *U + &U _sublist4 * -> _i `ux -> -> # *U &U _sublist4 `ui `ux 332  ]
 {
-[; ;operationMode.c: 134: temp = sublist2[i];
-"134
-[e = _temp *U + &U _sublist2 * -> _i `ux -> -> # *U &U _sublist2 `ui `ux ]
-[; ;operationMode.c: 135: sublist2[i] = sublist2[j];
-"135
-[e = *U + &U _sublist2 * -> _i `ux -> -> # *U &U _sublist2 `ui `ux *U + &U _sublist2 * -> _j `ux -> -> # *U &U _sublist2 `ui `ux ]
-[; ;operationMode.c: 136: sublist2[j] = temp;
-"136
-[e = *U + &U _sublist2 * -> _j `ux -> -> # *U &U _sublist2 `ui `ux _temp ]
-"137
+[; ;operationMode.c: 139: temp = sublist4[i];
+"139
+[e = _temp *U + &U _sublist4 * -> _i `ux -> -> # *U &U _sublist4 `ui `ux ]
+[; ;operationMode.c: 140: sublist4[i] = sublist4[j];
+"140
+[e = *U + &U _sublist4 * -> _i `ux -> -> # *U &U _sublist4 `ui `ux *U + &U _sublist4 * -> _j `ux -> -> # *U &U _sublist4 `ui `ux ]
+[; ;operationMode.c: 141: sublist4[j] = temp;
+"141
+[e = *U + &U _sublist4 * -> _j `ux -> -> # *U &U _sublist4 `ui `ux _temp ]
+"142
 }
 [e :U 332 ]
-"138
+"143
 }
-"132
+"137
 [e ++ _j -> -> 1 `i `ui ]
 [e :U 331 ]
-[e $ < _j _count2 328  ]
+[e $ < _j _count4 328  ]
 [e :U 329 ]
-"138
+"143
 }
-"139
+"144
 }
-"131
+"136
 [e ++ _i -> -> 1 `i `ui ]
 [e :U 327 ]
-[e $ < _i _count2 324  ]
+[e $ < _i _count4 324  ]
 [e :U 325 ]
-"139
+"144
 }
-"140
+"145
 }
-[; ;operationMode.c: 137: }
-[; ;operationMode.c: 138: }
-[; ;operationMode.c: 139: }
-[; ;operationMode.c: 140: }
-[e $U 333  ]
-"142
 [e :U 323 ]
-[; ;operationMode.c: 142: else if (sublist2[count2] == 7 || sublist2[count2] == 8){
-[e $ ! || == *U + &U _sublist2 * -> _count2 `ux -> -> # *U &U _sublist2 `ui `ux -> -> 7 `i `ui == *U + &U _sublist2 * -> _count2 `ux -> -> # *U &U _sublist2 `ui `ux -> -> 8 `i `ui 334  ]
+[; ;operationMode.c: 142: }
+[; ;operationMode.c: 143: }
+[; ;operationMode.c: 144: }
+[; ;operationMode.c: 145: }
+[; ;operationMode.c: 147: if (sublist2[0] == 7 || sublist2[0] == 8){
+"147
+[e $ ! || == *U + &U _sublist2 * -> -> -> 0 `i `ui `ux -> -> # *U &U _sublist2 `ui `ux -> -> 7 `i `ui == *U + &U _sublist2 * -> -> -> 0 `i `ui `ux -> -> # *U &U _sublist2 `ui `ux -> -> 8 `i `ui 333  ]
 {
-[; ;operationMode.c: 143: for (i=0; i<count3; i++){
-"143
+[; ;operationMode.c: 148: for (i=0; i<count3; i++){
+"148
 {
 [e = _i -> -> 0 `i `ui ]
-[e $U 338  ]
-[e :U 335 ]
+[e $U 337  ]
+[e :U 334 ]
 {
-[; ;operationMode.c: 144: for (j=0; j<count3; j++){
-"144
+[; ;operationMode.c: 149: for (j=0; j<count3; j++){
+"149
 {
 [e = _j -> -> 0 `i `ui ]
-[e $U 342  ]
-[e :U 339 ]
+[e $U 341  ]
+[e :U 338 ]
 {
-[; ;operationMode.c: 145: if (sublist3[j] < sublist3[i]){
-"145
-[e $ ! < *U + &U _sublist3 * -> _j `ux -> -> # *U &U _sublist3 `ui `ux *U + &U _sublist3 * -> _i `ux -> -> # *U &U _sublist3 `ui `ux 343  ]
+[; ;operationMode.c: 150: if (sublist3[j] < sublist3[i]){
+"150
+[e $ ! < *U + &U _sublist3 * -> _j `ux -> -> # *U &U _sublist3 `ui `ux *U + &U _sublist3 * -> _i `ux -> -> # *U &U _sublist3 `ui `ux 342  ]
 {
-[; ;operationMode.c: 146: temp = sublist3[i];
-"146
+[; ;operationMode.c: 151: temp = sublist3[i];
+"151
 [e = _temp *U + &U _sublist3 * -> _i `ux -> -> # *U &U _sublist3 `ui `ux ]
-[; ;operationMode.c: 147: sublist3[i] = sublist3[j];
-"147
+[; ;operationMode.c: 152: sublist3[i] = sublist3[j];
+"152
 [e = *U + &U _sublist3 * -> _i `ux -> -> # *U &U _sublist3 `ui `ux *U + &U _sublist3 * -> _j `ux -> -> # *U &U _sublist3 `ui `ux ]
-[; ;operationMode.c: 148: sublist3[j] = temp;
-"148
+[; ;operationMode.c: 153: sublist3[j] = temp;
+"153
 [e = *U + &U _sublist3 * -> _j `ux -> -> # *U &U _sublist3 `ui `ux _temp ]
+"154
+}
+[e :U 342 ]
+"155
+}
 "149
+[e ++ _j -> -> 1 `i `ui ]
+[e :U 341 ]
+[e $ < _j _count3 338  ]
+[e :U 339 ]
+"155
+}
+"156
+}
+"148
+[e ++ _i -> -> 1 `i `ui ]
+[e :U 337 ]
+[e $ < _i _count3 334  ]
+[e :U 335 ]
+"156
+}
+"157
+}
+[e :U 333 ]
+[; ;operationMode.c: 154: }
+[; ;operationMode.c: 155: }
+[; ;operationMode.c: 156: }
+[; ;operationMode.c: 157: }
+[; ;operationMode.c: 159: if (sublist1[count1 - 1] == 1 || sublist1[count1 - 1] == 2){
+"159
+[e $ ! || == *U + &U _sublist1 * -> - _count1 -> -> 1 `i `ui `ux -> -> # *U &U _sublist1 `ui `ux -> -> 1 `i `ui == *U + &U _sublist1 * -> - _count1 -> -> 1 `i `ui `ux -> -> # *U &U _sublist1 `ui `ux -> -> 2 `i `ui 343  ]
+{
+[; ;operationMode.c: 160: for (i=0; i<count2; i++){
+"160
+{
+[e = _i -> -> 0 `i `ui ]
+[e $U 347  ]
+[e :U 344 ]
+{
+[; ;operationMode.c: 161: for (j=0; j<count2; j++){
+"161
+{
+[e = _j -> -> 0 `i `ui ]
+[e $U 351  ]
+[e :U 348 ]
+{
+[; ;operationMode.c: 162: if (sublist2[j] > sublist2[i]){
+"162
+[e $ ! > *U + &U _sublist2 * -> _j `ux -> -> # *U &U _sublist2 `ui `ux *U + &U _sublist2 * -> _i `ux -> -> # *U &U _sublist2 `ui `ux 352  ]
+{
+[; ;operationMode.c: 163: temp = sublist2[i];
+"163
+[e = _temp *U + &U _sublist2 * -> _i `ux -> -> # *U &U _sublist2 `ui `ux ]
+[; ;operationMode.c: 164: sublist2[i] = sublist2[j];
+"164
+[e = *U + &U _sublist2 * -> _i `ux -> -> # *U &U _sublist2 `ui `ux *U + &U _sublist2 * -> _j `ux -> -> # *U &U _sublist2 `ui `ux ]
+[; ;operationMode.c: 165: sublist2[j] = temp;
+"165
+[e = *U + &U _sublist2 * -> _j `ux -> -> # *U &U _sublist2 `ui `ux _temp ]
+"166
+}
+[e :U 352 ]
+"167
+}
+"161
+[e ++ _j -> -> 1 `i `ui ]
+[e :U 351 ]
+[e $ < _j _count2 348  ]
+[e :U 349 ]
+"167
+}
+"168
+}
+"160
+[e ++ _i -> -> 1 `i `ui ]
+[e :U 347 ]
+[e $ < _i _count2 344  ]
+[e :U 345 ]
+"168
+}
+"169
 }
 [e :U 343 ]
-"150
-}
-"144
-[e ++ _j -> -> 1 `i `ui ]
-[e :U 342 ]
-[e $ < _j _count3 339  ]
-[e :U 340 ]
-"150
-}
-"151
-}
-"143
-[e ++ _i -> -> 1 `i `ui ]
-[e :U 338 ]
-[e $ < _i _count3 335  ]
-[e :U 336 ]
-"151
-}
-"152
-}
-[; ;operationMode.c: 149: }
-[; ;operationMode.c: 150: }
-[; ;operationMode.c: 151: }
-[; ;operationMode.c: 152: }
-[e $U 344  ]
-"154
-[e :U 334 ]
-[; ;operationMode.c: 154: else if (sublist3[count3] == 10 || sublist3[count3] == 9){
-[e $ ! || == *U + &U _sublist3 * -> _count3 `ux -> -> # *U &U _sublist3 `ui `ux -> -> 10 `i `ui == *U + &U _sublist3 * -> _count3 `ux -> -> # *U &U _sublist3 `ui `ux -> -> 9 `i `ui 345  ]
-{
-[; ;operationMode.c: 155: for (i=0; i<count4; i++){
-"155
-{
-[e = _i -> -> 0 `i `ui ]
-[e $U 349  ]
-[e :U 346 ]
-{
-[; ;operationMode.c: 156: for (j=0; j<count4; j++){
-"156
-{
-[e = _j -> -> 0 `i `ui ]
-[e $U 353  ]
-[e :U 350 ]
-{
-[; ;operationMode.c: 157: if (sublist4[j] > sublist4[i]){
-"157
-[e $ ! > *U + &U _sublist4 * -> _j `ux -> -> # *U &U _sublist4 `ui `ux *U + &U _sublist4 * -> _i `ux -> -> # *U &U _sublist4 `ui `ux 354  ]
-{
-[; ;operationMode.c: 158: temp = sublist4[i];
-"158
-[e = _temp *U + &U _sublist4 * -> _i `ux -> -> # *U &U _sublist4 `ui `ux ]
-[; ;operationMode.c: 159: sublist4[i] = sublist4[j];
-"159
-[e = *U + &U _sublist4 * -> _i `ux -> -> # *U &U _sublist4 `ui `ux *U + &U _sublist4 * -> _j `ux -> -> # *U &U _sublist4 `ui `ux ]
-[; ;operationMode.c: 160: sublist4[j] = temp;
-"160
-[e = *U + &U _sublist4 * -> _j `ux -> -> # *U &U _sublist4 `ui `ux _temp ]
-"161
-}
-[e :U 354 ]
-"162
-}
-"156
-[e ++ _j -> -> 1 `i `ui ]
-[e :U 353 ]
-[e $ < _j _count4 350  ]
-[e :U 351 ]
-"162
-}
-"163
-}
-"155
-[e ++ _i -> -> 1 `i `ui ]
-[e :U 349 ]
-[e $ < _i _count4 346  ]
-[e :U 347 ]
-"163
-}
-"164
-}
-[e :U 345 ]
-"167
-[e :U 344 ]
-[e :U 333 ]
-[; ;operationMode.c: 161: }
-[; ;operationMode.c: 162: }
-[; ;operationMode.c: 163: }
-[; ;operationMode.c: 164: }
-[; ;operationMode.c: 167: for (i=0; i<count1; i++){
-{
-[e = _i -> -> 0 `i `ui ]
-[e $U 358  ]
-[e :U 355 ]
-{
-[; ;operationMode.c: 168: sortedDrawerTable[i] = sublist1[i];
-"168
-[e = *U + _sortedDrawerTable * -> _i `ux -> -> # *U _sortedDrawerTable `ui `ux *U + &U _sublist1 * -> _i `ux -> -> # *U &U _sublist1 `ui `ux ]
-"169
-}
-"167
-[e ++ _i -> -> 1 `i `ui ]
-[e :U 358 ]
-[e $ < _i _count1 355  ]
-[e :U 356 ]
-"169
-}
+[; ;operationMode.c: 166: }
+[; ;operationMode.c: 167: }
+[; ;operationMode.c: 168: }
 [; ;operationMode.c: 169: }
-[; ;operationMode.c: 170: for (i=0; i<count2; i++){
-"170
-{
-[e = _i -> -> 0 `i `ui ]
-[e $U 362  ]
-[e :U 359 ]
-{
-[; ;operationMode.c: 171: sortedDrawerTable[i+count1] = sublist2[i];
+[; ;operationMode.c: 171: for (i=0; i<count1; i++){
 "171
-[e = *U + _sortedDrawerTable * -> + _i _count1 `ux -> -> # *U _sortedDrawerTable `ui `ux *U + &U _sublist2 * -> _i `ux -> -> # *U &U _sublist2 `ui `ux ]
-"172
-}
-"170
-[e ++ _i -> -> 1 `i `ui ]
-[e :U 362 ]
-[e $ < _i _count2 359  ]
-[e :U 360 ]
-"172
-}
-[; ;operationMode.c: 172: }
-[; ;operationMode.c: 173: for (i=0; i<count3; i++){
-"173
 {
 [e = _i -> -> 0 `i `ui ]
-[e $U 366  ]
-[e :U 363 ]
+[e $U 356  ]
+[e :U 353 ]
 {
-[; ;operationMode.c: 174: sortedDrawerTable[i+count1+count2] = sublist3[i];
+[; ;operationMode.c: 172: sortedDrawerTable[i] = sublist1[i];
+"172
+[e = *U + _sortedDrawerTable * -> _i `ux -> -> # *U _sortedDrawerTable `ui `ux *U + &U _sublist1 * -> _i `ux -> -> # *U &U _sublist1 `ui `ux ]
+"173
+}
+"171
+[e ++ _i -> -> 1 `i `ui ]
+[e :U 356 ]
+[e $ < _i _count1 353  ]
+[e :U 354 ]
+"173
+}
+[; ;operationMode.c: 173: }
+[; ;operationMode.c: 174: for (i=0; i<count2; i++){
 "174
-[e = *U + _sortedDrawerTable * -> + + _i _count1 _count2 `ux -> -> # *U _sortedDrawerTable `ui `ux *U + &U _sublist3 * -> _i `ux -> -> # *U &U _sublist3 `ui `ux ]
-"175
-}
-"173
-[e ++ _i -> -> 1 `i `ui ]
-[e :U 366 ]
-[e $ < _i _count3 363  ]
-[e :U 364 ]
-"175
-}
-[; ;operationMode.c: 175: }
-[; ;operationMode.c: 176: for (i=0; i<count4; i++){
-"176
 {
 [e = _i -> -> 0 `i `ui ]
-[e $U 370  ]
-[e :U 367 ]
+[e $U 360  ]
+[e :U 357 ]
 {
-[; ;operationMode.c: 177: sortedDrawerTable[i+count1+count2+count3] = sublist4[i];
-"177
-[e = *U + _sortedDrawerTable * -> + + + _i _count1 _count2 _count3 `ux -> -> # *U _sortedDrawerTable `ui `ux *U + &U _sublist4 * -> _i `ux -> -> # *U &U _sublist4 `ui `ux ]
-"178
-}
+[; ;operationMode.c: 175: sortedDrawerTable[i+count1] = sublist2[i];
+"175
+[e = *U + _sortedDrawerTable * -> + _i _count1 `ux -> -> # *U _sortedDrawerTable `ui `ux *U + &U _sublist2 * -> _i `ux -> -> # *U &U _sublist2 `ui `ux ]
 "176
-[e ++ _i -> -> 1 `i `ui ]
-[e :U 370 ]
-[e $ < _i _count4 367  ]
-[e :U 368 ]
-"178
 }
-[; ;operationMode.c: 178: }
-[; ;operationMode.c: 179: }
+"174
+[e ++ _i -> -> 1 `i `ui ]
+[e :U 360 ]
+[e $ < _i _count2 357  ]
+[e :U 358 ]
+"176
+}
+[; ;operationMode.c: 176: }
+[; ;operationMode.c: 177: for (i=0; i<count3; i++){
+"177
+{
+[e = _i -> -> 0 `i `ui ]
+[e $U 364  ]
+[e :U 361 ]
+{
+[; ;operationMode.c: 178: sortedDrawerTable[i+count1+count2] = sublist3[i];
+"178
+[e = *U + _sortedDrawerTable * -> + + _i _count1 _count2 `ux -> -> # *U _sortedDrawerTable `ui `ux *U + &U _sublist3 * -> _i `ux -> -> # *U &U _sublist3 `ui `ux ]
 "179
+}
+"177
+[e ++ _i -> -> 1 `i `ui ]
+[e :U 364 ]
+[e $ < _i _count3 361  ]
+[e :U 362 ]
+"179
+}
+[; ;operationMode.c: 179: }
+[; ;operationMode.c: 180: for (i=0; i<count4; i++){
+"180
+{
+[e = _i -> -> 0 `i `ui ]
+[e $U 368  ]
+[e :U 365 ]
+{
+[; ;operationMode.c: 181: sortedDrawerTable[i+count1+count2+count3] = sublist4[i];
+"181
+[e = *U + _sortedDrawerTable * -> + + + _i _count1 _count2 _count3 `ux -> -> # *U _sortedDrawerTable `ui `ux *U + &U _sublist4 * -> _i `ux -> -> # *U &U _sublist4 `ui `ux ]
+"182
+}
+"180
+[e ++ _i -> -> 1 `i `ui ]
+[e :U 368 ]
+[e $ < _i _count4 365  ]
+[e :U 366 ]
+"182
+}
+[; ;operationMode.c: 182: }
+[; ;operationMode.c: 183: }
+"183
 [e :UE 273 ]
 }
-"183
+"187
+[v _findDrawerIndex `(ui ~T0 @X0 1 ef2`*ui`ui ]
+{
+[; ;operationMode.c: 187: unsigned int findDrawerIndex(unsigned int drawerTable[8], unsigned int sortedDrawerValue){
+[e :U _findDrawerIndex ]
+[v _drawerTable `*ui ~T0 @X0 1 r1 ]
+[v _sortedDrawerValue `ui ~T0 @X0 1 r2 ]
+[f ]
+"188
+[v _returnValue `ui ~T0 @X0 1 a ]
+[; ;operationMode.c: 188: unsigned int returnValue = 0;
+[e = _returnValue -> -> 0 `i `ui ]
+"189
+[v _i `ui ~T0 @X0 1 a ]
+[; ;operationMode.c: 189: unsigned int i = 0;
+[e = _i -> -> 0 `i `ui ]
+[; ;operationMode.c: 191: for (i=0; i<8; i++){
+"191
+{
+[e = _i -> -> 0 `i `ui ]
+[e $ < _i -> -> 8 `i `ui 370  ]
+[e $U 371  ]
+[e :U 370 ]
+{
+[; ;operationMode.c: 192: if(drawerTable[i] == sortedDrawerValue){
+"192
+[e $ ! == *U + _drawerTable * -> _i `ux -> -> # *U _drawerTable `ui `ux _sortedDrawerValue 373  ]
+{
+[; ;operationMode.c: 193: returnValue = i;
+"193
+[e = _returnValue _i ]
+"194
+}
+[e :U 373 ]
+"195
+}
+"191
+[e ++ _i -> -> 1 `i `ui ]
+[e $ < _i -> -> 8 `i `ui 370  ]
+[e :U 371 ]
+"195
+}
+[; ;operationMode.c: 194: }
+[; ;operationMode.c: 195: }
+[; ;operationMode.c: 196: return returnValue;
+"196
+[e ) _returnValue ]
+[e $UE 369  ]
+[; ;operationMode.c: 197: }
+"197
+[e :UE 369 ]
+}
+"200
+[v _getRoundPieces `(ui ~T0 @X0 1 ef2`ui`ui ]
+{
+[; ;operationMode.c: 200: unsigned int getRoundPieces(unsigned int dietType, unsigned int foodType){
+[e :U _getRoundPieces ]
+[v _dietType `ui ~T0 @X0 1 r1 ]
+[v _foodType `ui ~T0 @X0 1 r2 ]
+[f ]
+"201
+[v _returnValue `ui ~T0 @X0 1 a ]
+[; ;operationMode.c: 201: unsigned int returnValue = 0;
+[e = _returnValue -> -> 0 `i `ui ]
+[; ;operationMode.c: 203: switch(dietType){
+"203
+[e $U 376  ]
+{
+[; ;operationMode.c: 205: case 0:
+"205
+[e :U 377 ]
+[; ;operationMode.c: 206: if (foodType == 0){
+"206
+[e $ ! == _foodType -> -> 0 `i `ui 378  ]
+{
+[; ;operationMode.c: 207: returnValue = 1;
+"207
+[e = _returnValue -> -> 1 `i `ui ]
+"208
+}
+[; ;operationMode.c: 208: }
+[e $U 379  ]
+"209
+[e :U 378 ]
+[; ;operationMode.c: 209: else if (foodType == 1){
+[e $ ! == _foodType -> -> 1 `i `ui 380  ]
+{
+[; ;operationMode.c: 210: returnValue = 2;
+"210
+[e = _returnValue -> -> 2 `i `ui ]
+"211
+}
+[e :U 380 ]
+"212
+[e :U 379 ]
+[; ;operationMode.c: 211: }
+[; ;operationMode.c: 212: break;
+[e $U 375  ]
+[; ;operationMode.c: 214: case 3:
+"214
+[e :U 381 ]
+[; ;operationMode.c: 215: if (foodType == 3){
+"215
+[e $ ! == _foodType -> -> 3 `i `ui 382  ]
+{
+[; ;operationMode.c: 216: returnValue = 1;
+"216
+[e = _returnValue -> -> 1 `i `ui ]
+"217
+}
+[; ;operationMode.c: 217: }
+[e $U 383  ]
+"218
+[e :U 382 ]
+[; ;operationMode.c: 218: else if (foodType == 4){
+[e $ ! == _foodType -> -> 4 `i `ui 384  ]
+{
+[; ;operationMode.c: 219: returnValue = 1;
+"219
+[e = _returnValue -> -> 1 `i `ui ]
+"220
+}
+[; ;operationMode.c: 220: }
+[e $U 385  ]
+"221
+[e :U 384 ]
+[; ;operationMode.c: 221: else if (foodType == 6){
+[e $ ! == _foodType -> -> 6 `i `ui 386  ]
+{
+[; ;operationMode.c: 222: returnValue = 2;
+"222
+[e = _returnValue -> -> 2 `i `ui ]
+"223
+}
+[; ;operationMode.c: 223: }
+[e $U 387  ]
+"224
+[e :U 386 ]
+[; ;operationMode.c: 224: else if (foodType == 7){
+[e $ ! == _foodType -> -> 7 `i `ui 388  ]
+{
+[; ;operationMode.c: 225: returnValue = 2;
+"225
+[e = _returnValue -> -> 2 `i `ui ]
+"226
+}
+[e :U 388 ]
+"227
+[e :U 387 ]
+[e :U 385 ]
+[e :U 383 ]
+[; ;operationMode.c: 226: }
+[; ;operationMode.c: 227: break;
+[e $U 375  ]
+[; ;operationMode.c: 229: case 4:
+"229
+[e :U 389 ]
+[; ;operationMode.c: 230: if (foodType == 3){
+"230
+[e $ ! == _foodType -> -> 3 `i `ui 390  ]
+{
+[; ;operationMode.c: 231: returnValue = 1;
+"231
+[e = _returnValue -> -> 1 `i `ui ]
+"232
+}
+[; ;operationMode.c: 232: }
+[e $U 391  ]
+"233
+[e :U 390 ]
+[; ;operationMode.c: 233: else if (foodType == 4){
+[e $ ! == _foodType -> -> 4 `i `ui 392  ]
+{
+[; ;operationMode.c: 234: returnValue = 1;
+"234
+[e = _returnValue -> -> 1 `i `ui ]
+"235
+}
+[; ;operationMode.c: 235: }
+[e $U 393  ]
+"236
+[e :U 392 ]
+[; ;operationMode.c: 236: else if (foodType == 5){
+[e $ ! == _foodType -> -> 5 `i `ui 394  ]
+{
+[; ;operationMode.c: 237: returnValue = 1;
+"237
+[e = _returnValue -> -> 1 `i `ui ]
+"238
+}
+[; ;operationMode.c: 238: }
+[e $U 395  ]
+"239
+[e :U 394 ]
+[; ;operationMode.c: 239: else if (foodType == 6){
+[e $ ! == _foodType -> -> 6 `i `ui 396  ]
+{
+[; ;operationMode.c: 240: returnValue = 2;
+"240
+[e = _returnValue -> -> 2 `i `ui ]
+"241
+}
+[; ;operationMode.c: 241: }
+[e $U 397  ]
+"242
+[e :U 396 ]
+[; ;operationMode.c: 242: else if (foodType == 7){
+[e $ ! == _foodType -> -> 7 `i `ui 398  ]
+{
+[; ;operationMode.c: 243: returnValue = 2;
+"243
+[e = _returnValue -> -> 2 `i `ui ]
+"244
+}
+[e :U 398 ]
+"245
+[e :U 397 ]
+[e :U 395 ]
+[e :U 393 ]
+[e :U 391 ]
+[; ;operationMode.c: 244: }
+[; ;operationMode.c: 245: break;
+[e $U 375  ]
+[; ;operationMode.c: 247: case 6:
+"247
+[e :U 399 ]
+[; ;operationMode.c: 248: if (foodType == 8){
+"248
+[e $ ! == _foodType -> -> 8 `i `ui 400  ]
+{
+[; ;operationMode.c: 249: returnValue = 2;
+"249
+[e = _returnValue -> -> 2 `i `ui ]
+"250
+}
+[; ;operationMode.c: 250: }
+[e $U 401  ]
+"251
+[e :U 400 ]
+[; ;operationMode.c: 251: else if (foodType == 9){
+[e $ ! == _foodType -> -> 9 `i `ui 402  ]
+{
+[; ;operationMode.c: 252: returnValue = 2;
+"252
+[e = _returnValue -> -> 2 `i `ui ]
+"253
+}
+[e :U 402 ]
+"254
+[e :U 401 ]
+[; ;operationMode.c: 253: }
+[; ;operationMode.c: 254: break;
+[e $U 375  ]
+[; ;operationMode.c: 256: case 7:
+"256
+[e :U 403 ]
+[; ;operationMode.c: 257: if (foodType == 8){
+"257
+[e $ ! == _foodType -> -> 8 `i `ui 404  ]
+{
+[; ;operationMode.c: 258: returnValue = 2;
+"258
+[e = _returnValue -> -> 2 `i `ui ]
+"259
+}
+[; ;operationMode.c: 259: }
+[e $U 405  ]
+"260
+[e :U 404 ]
+[; ;operationMode.c: 260: else if (foodType == 9){
+[e $ ! == _foodType -> -> 9 `i `ui 406  ]
+{
+[; ;operationMode.c: 261: returnValue = 2;
+"261
+[e = _returnValue -> -> 2 `i `ui ]
+"262
+}
+[e :U 406 ]
+"263
+[e :U 405 ]
+[; ;operationMode.c: 262: }
+[; ;operationMode.c: 263: break;
+[e $U 375  ]
+[; ;operationMode.c: 265: case 8:
+"265
+[e :U 407 ]
+[; ;operationMode.c: 266: if (foodType == 8){
+"266
+[e $ ! == _foodType -> -> 8 `i `ui 408  ]
+{
+[; ;operationMode.c: 267: returnValue = 1;
+"267
+[e = _returnValue -> -> 1 `i `ui ]
+"268
+}
+[; ;operationMode.c: 268: }
+[e $U 409  ]
+"269
+[e :U 408 ]
+[; ;operationMode.c: 269: else if (foodType == 11){
+[e $ ! == _foodType -> -> 11 `i `ui 410  ]
+{
+[; ;operationMode.c: 270: returnValue = 2;
+"270
+[e = _returnValue -> -> 2 `i `ui ]
+"271
+}
+[e :U 410 ]
+"272
+[e :U 409 ]
+[; ;operationMode.c: 271: }
+[; ;operationMode.c: 272: break;
+[e $U 375  ]
+[; ;operationMode.c: 274: case 9:
+"274
+[e :U 411 ]
+[; ;operationMode.c: 275: if (foodType == 8){
+"275
+[e $ ! == _foodType -> -> 8 `i `ui 412  ]
+{
+[; ;operationMode.c: 276: returnValue = 1;
+"276
+[e = _returnValue -> -> 1 `i `ui ]
+"277
+}
+[; ;operationMode.c: 277: }
+[e $U 413  ]
+"278
+[e :U 412 ]
+[; ;operationMode.c: 278: else if (foodType == 9){
+[e $ ! == _foodType -> -> 9 `i `ui 414  ]
+{
+[; ;operationMode.c: 279: returnValue = 1;
+"279
+[e = _returnValue -> -> 1 `i `ui ]
+"280
+}
+[; ;operationMode.c: 280: }
+[e $U 415  ]
+"281
+[e :U 414 ]
+[; ;operationMode.c: 281: else if (foodType == 10){
+[e $ ! == _foodType -> -> 10 `i `ui 416  ]
+{
+[; ;operationMode.c: 282: returnValue = 1;
+"282
+[e = _returnValue -> -> 1 `i `ui ]
+"283
+}
+[; ;operationMode.c: 283: }
+[e $U 417  ]
+"284
+[e :U 416 ]
+[; ;operationMode.c: 284: else if (foodType == 11){
+[e $ ! == _foodType -> -> 11 `i `ui 418  ]
+{
+[; ;operationMode.c: 285: returnValue = 2;
+"285
+[e = _returnValue -> -> 2 `i `ui ]
+"286
+}
+[e :U 418 ]
+"287
+[e :U 417 ]
+[e :U 415 ]
+[e :U 413 ]
+[; ;operationMode.c: 286: }
+[; ;operationMode.c: 287: break;
+[e $U 375  ]
+[; ;operationMode.c: 289: case 10:
+"289
+[e :U 419 ]
+[; ;operationMode.c: 290: if (foodType == 8){
+"290
+[e $ ! == _foodType -> -> 8 `i `ui 420  ]
+{
+[; ;operationMode.c: 291: returnValue = 1;
+"291
+[e = _returnValue -> -> 1 `i `ui ]
+"292
+}
+[; ;operationMode.c: 292: }
+[e $U 421  ]
+"293
+[e :U 420 ]
+[; ;operationMode.c: 293: else if (foodType == 9){
+[e $ ! == _foodType -> -> 9 `i `ui 422  ]
+{
+[; ;operationMode.c: 294: returnValue = 1;
+"294
+[e = _returnValue -> -> 1 `i `ui ]
+"295
+}
+[; ;operationMode.c: 295: }
+[e $U 423  ]
+"296
+[e :U 422 ]
+[; ;operationMode.c: 296: else if (foodType == 10){
+[e $ ! == _foodType -> -> 10 `i `ui 424  ]
+{
+[; ;operationMode.c: 297: returnValue = 1;
+"297
+[e = _returnValue -> -> 1 `i `ui ]
+"298
+}
+[; ;operationMode.c: 298: }
+[e $U 425  ]
+"299
+[e :U 424 ]
+[; ;operationMode.c: 299: else if (foodType == 11){
+[e $ ! == _foodType -> -> 11 `i `ui 426  ]
+{
+[; ;operationMode.c: 300: returnValue = 2;
+"300
+[e = _returnValue -> -> 2 `i `ui ]
+"301
+}
+[e :U 426 ]
+"302
+[e :U 425 ]
+[e :U 423 ]
+[e :U 421 ]
+[; ;operationMode.c: 301: }
+[; ;operationMode.c: 302: break;
+[e $U 375  ]
+[; ;operationMode.c: 304: case 13:
+"304
+[e :U 427 ]
+[; ;operationMode.c: 305: if (foodType == 12){
+"305
+[e $ ! == _foodType -> -> 12 `i `ui 428  ]
+{
+[; ;operationMode.c: 306: returnValue = 2;
+"306
+[e = _returnValue -> -> 2 `i `ui ]
+"307
+}
+[e :U 428 ]
+[; ;operationMode.c: 307: }
+[; ;operationMode.c: 308: break;
+"308
+[e $U 375  ]
+[; ;operationMode.c: 310: case 14:
+"310
+[e :U 429 ]
+[; ;operationMode.c: 311: if (foodType == 12){
+"311
+[e $ ! == _foodType -> -> 12 `i `ui 430  ]
+{
+[; ;operationMode.c: 312: returnValue = 1;
+"312
+[e = _returnValue -> -> 1 `i `ui ]
+"313
+}
+[e :U 430 ]
+[; ;operationMode.c: 313: }
+[; ;operationMode.c: 314: break;
+"314
+[e $U 375  ]
+[; ;operationMode.c: 316: case 15:
+"316
+[e :U 431 ]
+[; ;operationMode.c: 317: if (foodType == 12){
+"317
+[e $ ! == _foodType -> -> 12 `i `ui 432  ]
+{
+[; ;operationMode.c: 318: returnValue = 1;
+"318
+[e = _returnValue -> -> 1 `i `ui ]
+"319
+}
+[e :U 432 ]
+[; ;operationMode.c: 319: }
+[; ;operationMode.c: 320: break;
+"320
+[e $U 375  ]
+[; ;operationMode.c: 322: case 16:
+"322
+[e :U 433 ]
+[; ;operationMode.c: 323: if (foodType == 12){
+"323
+[e $ ! == _foodType -> -> 12 `i `ui 434  ]
+{
+[; ;operationMode.c: 324: returnValue = 1;
+"324
+[e = _returnValue -> -> 1 `i `ui ]
+"325
+}
+[e :U 434 ]
+[; ;operationMode.c: 325: }
+[; ;operationMode.c: 326: break;
+"326
+[e $U 375  ]
+[; ;operationMode.c: 327: default:
+"327
+[e :U 435 ]
+[; ;operationMode.c: 328: returnValue = 0;
+"328
+[e = _returnValue -> -> 0 `i `ui ]
+[; ;operationMode.c: 329: break;
+"329
+[e $U 375  ]
+"330
+}
+[; ;operationMode.c: 330: }
+[e $U 375  ]
+"203
+[e :U 376 ]
+[e [\ _dietType , $ -> -> 0 `i `ui 377
+ , $ -> -> 3 `i `ui 381
+ , $ -> -> 4 `i `ui 389
+ , $ -> -> 6 `i `ui 399
+ , $ -> -> 7 `i `ui 403
+ , $ -> -> 8 `i `ui 407
+ , $ -> -> 9 `i `ui 411
+ , $ -> -> 10 `i `ui 419
+ , $ -> -> 13 `i `ui 427
+ , $ -> -> 14 `i `ui 429
+ , $ -> -> 15 `i `ui 431
+ , $ -> -> 16 `i `ui 433
+ 435 ]
+"330
+[e :U 375 ]
+[; ;operationMode.c: 331: return returnValue;
+"331
+[e ) _returnValue ]
+[e $UE 374  ]
+[; ;operationMode.c: 332: }
+"332
+[e :UE 374 ]
+}
+"336
+[v _getFlatPieces `(ui ~T0 @X0 1 ef2`ui`ui ]
+{
+[; ;operationMode.c: 336: unsigned int getFlatPieces(unsigned int dietType, unsigned int foodType){
+[e :U _getFlatPieces ]
+[v _dietType `ui ~T0 @X0 1 r1 ]
+[v _foodType `ui ~T0 @X0 1 r2 ]
+[f ]
+"337
+[v _returnValue `ui ~T0 @X0 1 a ]
+[; ;operationMode.c: 337: unsigned int returnValue = 0;
+[e = _returnValue -> -> 0 `i `ui ]
+[; ;operationMode.c: 339: switch(dietType){
+"339
+[e $U 438  ]
+{
+[; ;operationMode.c: 341: case 1:
+"341
+[e :U 439 ]
+[; ;operationMode.c: 342: if (foodType == 0){
+"342
+[e $ ! == _foodType -> -> 0 `i `ui 440  ]
+{
+[; ;operationMode.c: 343: returnValue = 1;
+"343
+[e = _returnValue -> -> 1 `i `ui ]
+"344
+}
+[; ;operationMode.c: 344: }
+[e $U 441  ]
+"345
+[e :U 440 ]
+[; ;operationMode.c: 345: else if (foodType == 1){
+[e $ ! == _foodType -> -> 1 `i `ui 442  ]
+{
+[; ;operationMode.c: 346: returnValue = 2;
+"346
+[e = _returnValue -> -> 2 `i `ui ]
+"347
+}
+[e :U 442 ]
+"348
+[e :U 441 ]
+[; ;operationMode.c: 347: }
+[; ;operationMode.c: 348: break;
+[e $U 437  ]
+[; ;operationMode.c: 350: case 3:
+"350
+[e :U 443 ]
+[; ;operationMode.c: 351: if (foodType == 3){
+"351
+[e $ ! == _foodType -> -> 3 `i `ui 444  ]
+{
+[; ;operationMode.c: 352: returnValue = 1;
+"352
+[e = _returnValue -> -> 1 `i `ui ]
+"353
+}
+[; ;operationMode.c: 353: }
+[e $U 445  ]
+"354
+[e :U 444 ]
+[; ;operationMode.c: 354: else if (foodType == 4){
+[e $ ! == _foodType -> -> 4 `i `ui 446  ]
+{
+[; ;operationMode.c: 355: returnValue = 2;
+"355
+[e = _returnValue -> -> 2 `i `ui ]
+"356
+}
+[; ;operationMode.c: 356: }
+[e $U 447  ]
+"357
+[e :U 446 ]
+[; ;operationMode.c: 357: else if (foodType == 6){
+[e $ ! == _foodType -> -> 6 `i `ui 448  ]
+{
+[; ;operationMode.c: 358: returnValue = 1;
+"358
+[e = _returnValue -> -> 1 `i `ui ]
+"359
+}
+[; ;operationMode.c: 359: }
+[e $U 449  ]
+"360
+[e :U 448 ]
+[; ;operationMode.c: 360: else if (foodType == 7){
+[e $ ! == _foodType -> -> 7 `i `ui 450  ]
+{
+[; ;operationMode.c: 361: returnValue = 2;
+"361
+[e = _returnValue -> -> 2 `i `ui ]
+"362
+}
+[e :U 450 ]
+"363
+[e :U 449 ]
+[e :U 447 ]
+[e :U 445 ]
+[; ;operationMode.c: 362: }
+[; ;operationMode.c: 363: break;
+[e $U 437  ]
+[; ;operationMode.c: 365: case 5:
+"365
+[e :U 451 ]
+[; ;operationMode.c: 366: if (foodType == 3){
+"366
+[e $ ! == _foodType -> -> 3 `i `ui 452  ]
+{
+[; ;operationMode.c: 367: returnValue = 1;
+"367
+[e = _returnValue -> -> 1 `i `ui ]
+"368
+}
+[; ;operationMode.c: 368: }
+[e $U 453  ]
+"369
+[e :U 452 ]
+[; ;operationMode.c: 369: else if (foodType == 4){
+[e $ ! == _foodType -> -> 4 `i `ui 454  ]
+{
+[; ;operationMode.c: 370: returnValue = 1;
+"370
+[e = _returnValue -> -> 1 `i `ui ]
+"371
+}
+[; ;operationMode.c: 371: }
+[e $U 455  ]
+"372
+[e :U 454 ]
+[; ;operationMode.c: 372: else if (foodType == 5){
+[e $ ! == _foodType -> -> 5 `i `ui 456  ]
+{
+[; ;operationMode.c: 373: returnValue = 1;
+"373
+[e = _returnValue -> -> 1 `i `ui ]
+"374
+}
+[; ;operationMode.c: 374: }
+[e $U 457  ]
+"375
+[e :U 456 ]
+[; ;operationMode.c: 375: else if (foodType == 6){
+[e $ ! == _foodType -> -> 6 `i `ui 458  ]
+{
+[; ;operationMode.c: 376: returnValue = 2;
+"376
+[e = _returnValue -> -> 2 `i `ui ]
+"377
+}
+[; ;operationMode.c: 377: }
+[e $U 459  ]
+"378
+[e :U 458 ]
+[; ;operationMode.c: 378: else if (foodType == 7){
+[e $ ! == _foodType -> -> 7 `i `ui 460  ]
+{
+[; ;operationMode.c: 379: returnValue = 2;
+"379
+[e = _returnValue -> -> 2 `i `ui ]
+"380
+}
+[e :U 460 ]
+"381
+[e :U 459 ]
+[e :U 457 ]
+[e :U 455 ]
+[e :U 453 ]
+[; ;operationMode.c: 380: }
+[; ;operationMode.c: 381: break;
+[e $U 437  ]
+[; ;operationMode.c: 383: case 6:
+"383
+[e :U 461 ]
+[; ;operationMode.c: 384: if (foodType == 8){
+"384
+[e $ ! == _foodType -> -> 8 `i `ui 462  ]
+{
+[; ;operationMode.c: 385: returnValue = 1;
+"385
+[e = _returnValue -> -> 1 `i `ui ]
+"386
+}
+[; ;operationMode.c: 386: }
+[e $U 463  ]
+"387
+[e :U 462 ]
+[; ;operationMode.c: 387: else if (foodType == 9){
+[e $ ! == _foodType -> -> 9 `i `ui 464  ]
+{
+[; ;operationMode.c: 388: returnValue = 2;
+"388
+[e = _returnValue -> -> 2 `i `ui ]
+"389
+}
+[e :U 464 ]
+"390
+[e :U 463 ]
+[; ;operationMode.c: 389: }
+[; ;operationMode.c: 390: break;
+[e $U 437  ]
+[; ;operationMode.c: 392: case 8:
+"392
+[e :U 465 ]
+[; ;operationMode.c: 393: if (foodType == 8){
+"393
+[e $ ! == _foodType -> -> 8 `i `ui 466  ]
+{
+[; ;operationMode.c: 394: returnValue = 2;
+"394
+[e = _returnValue -> -> 2 `i `ui ]
+"395
+}
+[; ;operationMode.c: 395: }
+[e $U 467  ]
+"396
+[e :U 466 ]
+[; ;operationMode.c: 396: else if (foodType == 11){
+[e $ ! == _foodType -> -> 11 `i `ui 468  ]
+{
+[; ;operationMode.c: 397: returnValue = 2;
+"397
+[e = _returnValue -> -> 2 `i `ui ]
+"398
+}
+[e :U 468 ]
+"399
+[e :U 467 ]
+[; ;operationMode.c: 398: }
+[; ;operationMode.c: 399: break;
+[e $U 437  ]
+[; ;operationMode.c: 401: case 10:
+"401
+[e :U 469 ]
+[; ;operationMode.c: 402: if (foodType == 8){
+"402
+[e $ ! == _foodType -> -> 8 `i `ui 470  ]
+{
+[; ;operationMode.c: 403: returnValue = 1;
+"403
+[e = _returnValue -> -> 1 `i `ui ]
+"404
+}
+[; ;operationMode.c: 404: }
+[e $U 471  ]
+"405
+[e :U 470 ]
+[; ;operationMode.c: 405: else if (foodType == 9){
+[e $ ! == _foodType -> -> 9 `i `ui 472  ]
+{
+[; ;operationMode.c: 406: returnValue = 1;
+"406
+[e = _returnValue -> -> 1 `i `ui ]
+"407
+}
+[; ;operationMode.c: 407: }
+[e $U 473  ]
+"408
+[e :U 472 ]
+[; ;operationMode.c: 408: else if (foodType == 10){
+[e $ ! == _foodType -> -> 10 `i `ui 474  ]
+{
+[; ;operationMode.c: 409: returnValue = 2;
+"409
+[e = _returnValue -> -> 2 `i `ui ]
+"410
+}
+[; ;operationMode.c: 410: }
+[e $U 475  ]
+"411
+[e :U 474 ]
+[; ;operationMode.c: 411: else if (foodType == 11){
+[e $ ! == _foodType -> -> 11 `i `ui 476  ]
+{
+[; ;operationMode.c: 412: returnValue = 1;
+"412
+[e = _returnValue -> -> 1 `i `ui ]
+"413
+}
+[e :U 476 ]
+"414
+[e :U 475 ]
+[e :U 473 ]
+[e :U 471 ]
+[; ;operationMode.c: 413: }
+[; ;operationMode.c: 414: break;
+[e $U 437  ]
+[; ;operationMode.c: 416: case 11:
+"416
+[e :U 477 ]
+[; ;operationMode.c: 417: if (foodType == 8){
+"417
+[e $ ! == _foodType -> -> 8 `i `ui 478  ]
+{
+[; ;operationMode.c: 418: returnValue = 2;
+"418
+[e = _returnValue -> -> 2 `i `ui ]
+"419
+}
+[; ;operationMode.c: 419: }
+[e $U 479  ]
+"420
+[e :U 478 ]
+[; ;operationMode.c: 420: else if (foodType == 9){
+[e $ ! == _foodType -> -> 9 `i `ui 480  ]
+{
+[; ;operationMode.c: 421: returnValue = 2;
+"421
+[e = _returnValue -> -> 2 `i `ui ]
+"422
+}
+[e :U 480 ]
+"423
+[e :U 479 ]
+[; ;operationMode.c: 422: }
+[; ;operationMode.c: 423: break;
+[e $U 437  ]
+[; ;operationMode.c: 425: case 12:
+"425
+[e :U 481 ]
+[; ;operationMode.c: 426: if (foodType == 8){
+"426
+[e $ ! == _foodType -> -> 8 `i `ui 482  ]
+{
+[; ;operationMode.c: 427: returnValue = 1;
+"427
+[e = _returnValue -> -> 1 `i `ui ]
+"428
+}
+[; ;operationMode.c: 428: }
+[e $U 483  ]
+"429
+[e :U 482 ]
+[; ;operationMode.c: 429: else if (foodType == 9){
+[e $ ! == _foodType -> -> 9 `i `ui 484  ]
+{
+[; ;operationMode.c: 430: returnValue = 1;
+"430
+[e = _returnValue -> -> 1 `i `ui ]
+"431
+}
+[; ;operationMode.c: 431: }
+[e $U 485  ]
+"432
+[e :U 484 ]
+[; ;operationMode.c: 432: else if (foodType == 10){
+[e $ ! == _foodType -> -> 10 `i `ui 486  ]
+{
+[; ;operationMode.c: 433: returnValue = 1;
+"433
+[e = _returnValue -> -> 1 `i `ui ]
+"434
+}
+[; ;operationMode.c: 434: }
+[e $U 487  ]
+"435
+[e :U 486 ]
+[; ;operationMode.c: 435: else if (foodType == 11){
+[e $ ! == _foodType -> -> 11 `i `ui 488  ]
+{
+[; ;operationMode.c: 436: returnValue = 2;
+"436
+[e = _returnValue -> -> 2 `i `ui ]
+"437
+}
+[e :U 488 ]
+"438
+[e :U 487 ]
+[e :U 485 ]
+[e :U 483 ]
+[; ;operationMode.c: 437: }
+[; ;operationMode.c: 438: break;
+[e $U 437  ]
+[; ;operationMode.c: 440: case 13:
+"440
+[e :U 489 ]
+[; ;operationMode.c: 441: if (foodType == 12){
+"441
+[e $ ! == _foodType -> -> 12 `i `ui 490  ]
+{
+[; ;operationMode.c: 442: returnValue = 1;
+"442
+[e = _returnValue -> -> 1 `i `ui ]
+"443
+}
+[e :U 490 ]
+[; ;operationMode.c: 443: }
+[; ;operationMode.c: 444: break;
+"444
+[e $U 437  ]
+[; ;operationMode.c: 446: case 14:
+"446
+[e :U 491 ]
+[; ;operationMode.c: 447: if (foodType == 12){
+"447
+[e $ ! == _foodType -> -> 12 `i `ui 492  ]
+{
+[; ;operationMode.c: 448: returnValue = 2;
+"448
+[e = _returnValue -> -> 2 `i `ui ]
+"449
+}
+[e :U 492 ]
+[; ;operationMode.c: 449: }
+[; ;operationMode.c: 450: break;
+"450
+[e $U 437  ]
+[; ;operationMode.c: 452: case 15:
+"452
+[e :U 493 ]
+[; ;operationMode.c: 453: if (foodType == 12){
+"453
+[e $ ! == _foodType -> -> 12 `i `ui 494  ]
+{
+[; ;operationMode.c: 454: returnValue = 1;
+"454
+[e = _returnValue -> -> 1 `i `ui ]
+"455
+}
+[e :U 494 ]
+[; ;operationMode.c: 455: }
+[; ;operationMode.c: 456: break;
+"456
+[e $U 437  ]
+[; ;operationMode.c: 458: case 17:
+"458
+[e :U 495 ]
+[; ;operationMode.c: 459: if (foodType == 12){
+"459
+[e $ ! == _foodType -> -> 12 `i `ui 496  ]
+{
+[; ;operationMode.c: 460: returnValue = 1;
+"460
+[e = _returnValue -> -> 1 `i `ui ]
+"461
+}
+[e :U 496 ]
+[; ;operationMode.c: 461: }
+[; ;operationMode.c: 462: break;
+"462
+[e $U 437  ]
+[; ;operationMode.c: 463: default:
+"463
+[e :U 497 ]
+[; ;operationMode.c: 464: returnValue = 0;
+"464
+[e = _returnValue -> -> 0 `i `ui ]
+[; ;operationMode.c: 465: break;
+"465
+[e $U 437  ]
+"466
+}
+[; ;operationMode.c: 466: }
+[e $U 437  ]
+"339
+[e :U 438 ]
+[e [\ _dietType , $ -> -> 1 `i `ui 439
+ , $ -> -> 3 `i `ui 443
+ , $ -> -> 5 `i `ui 451
+ , $ -> -> 6 `i `ui 461
+ , $ -> -> 8 `i `ui 465
+ , $ -> -> 10 `i `ui 469
+ , $ -> -> 11 `i `ui 477
+ , $ -> -> 12 `i `ui 481
+ , $ -> -> 13 `i `ui 489
+ , $ -> -> 14 `i `ui 491
+ , $ -> -> 15 `i `ui 493
+ , $ -> -> 17 `i `ui 495
+ 497 ]
+"466
+[e :U 437 ]
+[; ;operationMode.c: 467: return returnValue;
+"467
+[e ) _returnValue ]
+[e $UE 436  ]
+[; ;operationMode.c: 468: }
+"468
+[e :UE 436 ]
+}
+"472
+[v _getLongPieces `(ui ~T0 @X0 1 ef2`ui`ui ]
+{
+[; ;operationMode.c: 472: unsigned int getLongPieces(unsigned int dietType, unsigned int foodType){
+[e :U _getLongPieces ]
+[v _dietType `ui ~T0 @X0 1 r1 ]
+[v _foodType `ui ~T0 @X0 1 r2 ]
+[f ]
+"473
+[v _returnValue `ui ~T0 @X0 1 a ]
+[; ;operationMode.c: 473: unsigned int returnValue = 0;
+[e = _returnValue -> -> 0 `i `ui ]
+[; ;operationMode.c: 474: switch(dietType){
+"474
+[e $U 500  ]
+{
+[; ;operationMode.c: 476: case 2:
+"476
+[e :U 501 ]
+[; ;operationMode.c: 477: if (foodType == 0){
+"477
+[e $ ! == _foodType -> -> 0 `i `ui 502  ]
+{
+[; ;operationMode.c: 478: returnValue = 1;
+"478
+[e = _returnValue -> -> 1 `i `ui ]
+"479
+}
+[; ;operationMode.c: 479: }
+[e $U 503  ]
+"480
+[e :U 502 ]
+[; ;operationMode.c: 480: else if (foodType == 1){
+[e $ ! == _foodType -> -> 1 `i `ui 504  ]
+{
+[; ;operationMode.c: 481: returnValue = 2;
+"481
+[e = _returnValue -> -> 2 `i `ui ]
+"482
+}
+[; ;operationMode.c: 482: }
+[e $U 505  ]
+"483
+[e :U 504 ]
+[; ;operationMode.c: 483: else if (foodType == 2){
+[e $ ! == _foodType -> -> 2 `i `ui 506  ]
+{
+[; ;operationMode.c: 484: returnValue = 3;
+"484
+[e = _returnValue -> -> 3 `i `ui ]
+"485
+}
+[e :U 506 ]
+"486
+[e :U 505 ]
+[e :U 503 ]
+[; ;operationMode.c: 485: }
+[; ;operationMode.c: 486: break;
+[e $U 499  ]
+[; ;operationMode.c: 488: case 4:
+"488
+[e :U 507 ]
+[; ;operationMode.c: 489: if (foodType == 3){
+"489
+[e $ ! == _foodType -> -> 3 `i `ui 508  ]
+{
+[; ;operationMode.c: 490: returnValue = 1;
+"490
+[e = _returnValue -> -> 1 `i `ui ]
+"491
+}
+[; ;operationMode.c: 491: }
+[e $U 509  ]
+"492
+[e :U 508 ]
+[; ;operationMode.c: 492: else if (foodType == 4){
+[e $ ! == _foodType -> -> 4 `i `ui 510  ]
+{
+[; ;operationMode.c: 493: returnValue = 2;
+"493
+[e = _returnValue -> -> 2 `i `ui ]
+"494
+}
+[; ;operationMode.c: 494: }
+[e $U 511  ]
+"495
+[e :U 510 ]
+[; ;operationMode.c: 495: else if (foodType == 5){
+[e $ ! == _foodType -> -> 5 `i `ui 512  ]
+{
+[; ;operationMode.c: 496: returnValue = 3;
+"496
+[e = _returnValue -> -> 3 `i `ui ]
+"497
+}
+[; ;operationMode.c: 497: }
+[e $U 513  ]
+"498
+[e :U 512 ]
+[; ;operationMode.c: 498: else if (foodType == 6){
+[e $ ! == _foodType -> -> 6 `i `ui 514  ]
+{
+[; ;operationMode.c: 499: returnValue = 1;
+"499
+[e = _returnValue -> -> 1 `i `ui ]
+"500
+}
+[; ;operationMode.c: 500: }
+[e $U 515  ]
+"501
+[e :U 514 ]
+[; ;operationMode.c: 501: else if (foodType == 7){
+[e $ ! == _foodType -> -> 7 `i `ui 516  ]
+{
+[; ;operationMode.c: 502: returnValue = 2;
+"502
+[e = _returnValue -> -> 2 `i `ui ]
+"503
+}
+[e :U 516 ]
+"504
+[e :U 515 ]
+[e :U 513 ]
+[e :U 511 ]
+[e :U 509 ]
+[; ;operationMode.c: 503: }
+[; ;operationMode.c: 504: break;
+[e $U 499  ]
+[; ;operationMode.c: 506: case 5:
+"506
+[e :U 517 ]
+[; ;operationMode.c: 507: if (foodType == 3){
+"507
+[e $ ! == _foodType -> -> 3 `i `ui 518  ]
+{
+[; ;operationMode.c: 508: returnValue = 1;
+"508
+[e = _returnValue -> -> 1 `i `ui ]
+"509
+}
+[; ;operationMode.c: 509: }
+[e $U 519  ]
+"510
+[e :U 518 ]
+[; ;operationMode.c: 510: else if (foodType == 4){
+[e $ ! == _foodType -> -> 4 `i `ui 520  ]
+{
+[; ;operationMode.c: 511: returnValue = 2;
+"511
+[e = _returnValue -> -> 2 `i `ui ]
+"512
+}
+[; ;operationMode.c: 512: }
+[e $U 521  ]
+"513
+[e :U 520 ]
+[; ;operationMode.c: 513: else if (foodType == 5){
+[e $ ! == _foodType -> -> 5 `i `ui 522  ]
+{
+[; ;operationMode.c: 514: returnValue = 3;
+"514
+[e = _returnValue -> -> 3 `i `ui ]
+"515
+}
+[; ;operationMode.c: 515: }
+[e $U 523  ]
+"516
+[e :U 522 ]
+[; ;operationMode.c: 516: else if (foodType == 6){
+[e $ ! == _foodType -> -> 6 `i `ui 524  ]
+{
+[; ;operationMode.c: 517: returnValue = 1;
+"517
+[e = _returnValue -> -> 1 `i `ui ]
+"518
+}
+[; ;operationMode.c: 518: }
+[e $U 525  ]
+"519
+[e :U 524 ]
+[; ;operationMode.c: 519: else if (foodType == 7){
+[e $ ! == _foodType -> -> 7 `i `ui 526  ]
+{
+[; ;operationMode.c: 520: returnValue = 2;
+"520
+[e = _returnValue -> -> 2 `i `ui ]
+"521
+}
+[e :U 526 ]
+"522
+[e :U 525 ]
+[e :U 523 ]
+[e :U 521 ]
+[e :U 519 ]
+[; ;operationMode.c: 521: }
+[; ;operationMode.c: 522: break;
+[e $U 499  ]
+[; ;operationMode.c: 524: case 7:
+"524
+[e :U 527 ]
+[; ;operationMode.c: 525: if (foodType == 8){
+"525
+[e $ ! == _foodType -> -> 8 `i `ui 528  ]
+{
+[; ;operationMode.c: 526: returnValue = 1;
+"526
+[e = _returnValue -> -> 1 `i `ui ]
+"527
+}
+[; ;operationMode.c: 527: }
+[e $U 529  ]
+"528
+[e :U 528 ]
+[; ;operationMode.c: 528: else if (foodType == 9){
+[e $ ! == _foodType -> -> 9 `i `ui 530  ]
+{
+[; ;operationMode.c: 529: returnValue = 2;
+"529
+[e = _returnValue -> -> 2 `i `ui ]
+"530
+}
+[e :U 530 ]
+"531
+[e :U 529 ]
+[; ;operationMode.c: 530: }
+[; ;operationMode.c: 531: break;
+[e $U 499  ]
+[; ;operationMode.c: 533: case 9:
+"533
+[e :U 531 ]
+[; ;operationMode.c: 534: if (foodType == 8){
+"534
+[e $ ! == _foodType -> -> 8 `i `ui 532  ]
+{
+[; ;operationMode.c: 535: returnValue = 2;
+"535
+[e = _returnValue -> -> 2 `i `ui ]
+"536
+}
+[; ;operationMode.c: 536: }
+[e $U 533  ]
+"537
+[e :U 532 ]
+[; ;operationMode.c: 537: else if (foodType == 9){
+[e $ ! == _foodType -> -> 9 `i `ui 534  ]
+{
+[; ;operationMode.c: 538: returnValue = 3;
+"538
+[e = _returnValue -> -> 3 `i `ui ]
+"539
+}
+[; ;operationMode.c: 539: }
+[e $U 535  ]
+"540
+[e :U 534 ]
+[; ;operationMode.c: 540: else if (foodType == 10){
+[e $ ! == _foodType -> -> 10 `i `ui 536  ]
+{
+[; ;operationMode.c: 541: returnValue = 3;
+"541
+[e = _returnValue -> -> 3 `i `ui ]
+"542
+}
+[; ;operationMode.c: 542: }
+[e $U 537  ]
+"543
+[e :U 536 ]
+[; ;operationMode.c: 543: else if (foodType == 11){
+[e $ ! == _foodType -> -> 11 `i `ui 538  ]
+{
+[; ;operationMode.c: 544: returnValue = 2;
+"544
+[e = _returnValue -> -> 2 `i `ui ]
+"545
+}
+[e :U 538 ]
+"546
+[e :U 537 ]
+[e :U 535 ]
+[e :U 533 ]
+[; ;operationMode.c: 545: }
+[; ;operationMode.c: 546: break;
+[e $U 499  ]
+[; ;operationMode.c: 548: case 10:
+"548
+[e :U 539 ]
+[; ;operationMode.c: 549: if (foodType == 8){
+"549
+[e $ ! == _foodType -> -> 8 `i `ui 540  ]
+{
+[; ;operationMode.c: 550: returnValue = 1;
+"550
+[e = _returnValue -> -> 1 `i `ui ]
+"551
+}
+[; ;operationMode.c: 551: }
+[e $U 541  ]
+"552
+[e :U 540 ]
+[; ;operationMode.c: 552: else if (foodType == 9){
+[e $ ! == _foodType -> -> 9 `i `ui 542  ]
+{
+[; ;operationMode.c: 553: returnValue = 2;
+"553
+[e = _returnValue -> -> 2 `i `ui ]
+"554
+}
+[; ;operationMode.c: 554: }
+[e $U 543  ]
+"555
+[e :U 542 ]
+[; ;operationMode.c: 555: else if (foodType == 10){
+[e $ ! == _foodType -> -> 10 `i `ui 544  ]
+{
+[; ;operationMode.c: 556: returnValue = 1;
+"556
+[e = _returnValue -> -> 1 `i `ui ]
+"557
+}
+[; ;operationMode.c: 557: }
+[e $U 545  ]
+"558
+[e :U 544 ]
+[; ;operationMode.c: 558: else if (foodType == 11){
+[e $ ! == _foodType -> -> 11 `i `ui 546  ]
+{
+[; ;operationMode.c: 559: returnValue = 1;
+"559
+[e = _returnValue -> -> 1 `i `ui ]
+"560
+}
+[e :U 546 ]
+"561
+[e :U 545 ]
+[e :U 543 ]
+[e :U 541 ]
+[; ;operationMode.c: 560: }
+[; ;operationMode.c: 561: break;
+[e $U 499  ]
+[; ;operationMode.c: 563: case 11:
+"563
+[e :U 547 ]
+[; ;operationMode.c: 564: if (foodType == 8){
+"564
+[e $ ! == _foodType -> -> 8 `i `ui 548  ]
+{
+[; ;operationMode.c: 565: returnValue = 1;
+"565
+[e = _returnValue -> -> 1 `i `ui ]
+"566
+}
+[; ;operationMode.c: 566: }
+[e $U 549  ]
+"567
+[e :U 548 ]
+[; ;operationMode.c: 567: else if (foodType == 9){
+[e $ ! == _foodType -> -> 9 `i `ui 550  ]
+{
+[; ;operationMode.c: 568: returnValue = 2;
+"568
+[e = _returnValue -> -> 2 `i `ui ]
+"569
+}
+[e :U 550 ]
+"570
+[e :U 549 ]
+[; ;operationMode.c: 569: }
+[; ;operationMode.c: 570: break;
+[e $U 499  ]
+[; ;operationMode.c: 572: case 12:
+"572
+[e :U 551 ]
+[; ;operationMode.c: 573: if (foodType == 8){
+"573
+[e $ ! == _foodType -> -> 8 `i `ui 552  ]
+{
+[; ;operationMode.c: 574: returnValue = 2;
+"574
+[e = _returnValue -> -> 2 `i `ui ]
+"575
+}
+[; ;operationMode.c: 575: }
+[e $U 553  ]
+"576
+[e :U 552 ]
+[; ;operationMode.c: 576: else if (foodType == 9){
+[e $ ! == _foodType -> -> 9 `i `ui 554  ]
+{
+[; ;operationMode.c: 577: returnValue = 3;
+"577
+[e = _returnValue -> -> 3 `i `ui ]
+"578
+}
+[; ;operationMode.c: 578: }
+[e $U 555  ]
+"579
+[e :U 554 ]
+[; ;operationMode.c: 579: else if (foodType == 10){
+[e $ ! == _foodType -> -> 10 `i `ui 556  ]
+{
+[; ;operationMode.c: 580: returnValue = 3;
+"580
+[e = _returnValue -> -> 3 `i `ui ]
+"581
+}
+[; ;operationMode.c: 581: }
+[e $U 557  ]
+"582
+[e :U 556 ]
+[; ;operationMode.c: 582: else if (foodType == 11){
+[e $ ! == _foodType -> -> 11 `i `ui 558  ]
+{
+[; ;operationMode.c: 583: returnValue = 2;
+"583
+[e = _returnValue -> -> 2 `i `ui ]
+"584
+}
+[e :U 558 ]
+"585
+[e :U 557 ]
+[e :U 555 ]
+[e :U 553 ]
+[; ;operationMode.c: 584: }
+[; ;operationMode.c: 585: break;
+[e $U 499  ]
+[; ;operationMode.c: 587: case 13:
+"587
+[e :U 559 ]
+[; ;operationMode.c: 588: if (foodType == 12){
+"588
+[e $ ! == _foodType -> -> 12 `i `ui 560  ]
+{
+[; ;operationMode.c: 589: returnValue = 1;
+"589
+[e = _returnValue -> -> 1 `i `ui ]
+"590
+}
+[e :U 560 ]
+[; ;operationMode.c: 590: }
+[; ;operationMode.c: 591: break;
+"591
+[e $U 499  ]
+[; ;operationMode.c: 593: case 14:
+"593
+[e :U 561 ]
+[; ;operationMode.c: 594: if (foodType == 12){
+"594
+[e $ ! == _foodType -> -> 12 `i `ui 562  ]
+{
+[; ;operationMode.c: 595: returnValue = 1;
+"595
+[e = _returnValue -> -> 1 `i `ui ]
+"596
+}
+[e :U 562 ]
+[; ;operationMode.c: 596: }
+[; ;operationMode.c: 597: break;
+"597
+[e $U 499  ]
+[; ;operationMode.c: 599: case 15:
+"599
+[e :U 563 ]
+[; ;operationMode.c: 600: if (foodType == 12){
+"600
+[e $ ! == _foodType -> -> 12 `i `ui 564  ]
+{
+[; ;operationMode.c: 601: returnValue = 2;
+"601
+[e = _returnValue -> -> 2 `i `ui ]
+"602
+}
+[e :U 564 ]
+[; ;operationMode.c: 602: }
+[; ;operationMode.c: 603: break;
+"603
+[e $U 499  ]
+[; ;operationMode.c: 605: case 16:
+"605
+[e :U 565 ]
+[; ;operationMode.c: 606: if (foodType == 12){
+"606
+[e $ ! == _foodType -> -> 12 `i `ui 566  ]
+{
+[; ;operationMode.c: 607: returnValue = 3;
+"607
+[e = _returnValue -> -> 3 `i `ui ]
+"608
+}
+[e :U 566 ]
+[; ;operationMode.c: 608: }
+[; ;operationMode.c: 609: break;
+"609
+[e $U 499  ]
+[; ;operationMode.c: 611: case 17:
+"611
+[e :U 567 ]
+[; ;operationMode.c: 612: if (foodType == 12){
+"612
+[e $ ! == _foodType -> -> 12 `i `ui 568  ]
+{
+[; ;operationMode.c: 613: returnValue = 3;
+"613
+[e = _returnValue -> -> 3 `i `ui ]
+"614
+}
+[e :U 568 ]
+[; ;operationMode.c: 614: }
+[; ;operationMode.c: 615: break;
+"615
+[e $U 499  ]
+[; ;operationMode.c: 616: default:
+"616
+[e :U 569 ]
+[; ;operationMode.c: 617: returnValue = 0;
+"617
+[e = _returnValue -> -> 0 `i `ui ]
+[; ;operationMode.c: 618: break;
+"618
+[e $U 499  ]
+"619
+}
+[; ;operationMode.c: 619: }
+[e $U 499  ]
+"474
+[e :U 500 ]
+[e [\ _dietType , $ -> -> 2 `i `ui 501
+ , $ -> -> 4 `i `ui 507
+ , $ -> -> 5 `i `ui 517
+ , $ -> -> 7 `i `ui 527
+ , $ -> -> 9 `i `ui 531
+ , $ -> -> 10 `i `ui 539
+ , $ -> -> 11 `i `ui 547
+ , $ -> -> 12 `i `ui 551
+ , $ -> -> 13 `i `ui 559
+ , $ -> -> 14 `i `ui 561
+ , $ -> -> 15 `i `ui 563
+ , $ -> -> 16 `i `ui 565
+ , $ -> -> 17 `i `ui 567
+ 569 ]
+"619
+[e :U 499 ]
+[; ;operationMode.c: 620: return returnValue;
+"620
+[e ) _returnValue ]
+[e $UE 498  ]
+[; ;operationMode.c: 621: }
+"621
+[e :UE 498 ]
+}
+"625
 [v _verticalStepper `(v ~T0 @X0 1 ef2`ui`ui ]
 {
-[; ;operationMode.c: 183: void verticalStepper(unsigned int rotations, unsigned int direction){
+[; ;operationMode.c: 625: void verticalStepper(unsigned int rotations, unsigned int direction){
 [e :U _verticalStepper ]
 [v _rotations `ui ~T0 @X0 1 r1 ]
 [v _direction `ui ~T0 @X0 1 r2 ]
 [f ]
-"186
+"628
 [v _i `ui ~T0 @X0 1 a ]
-[; ;operationMode.c: 186: unsigned int i = 0;
+[; ;operationMode.c: 628: unsigned int i = 0;
 [e = _i -> -> 0 `i `ui ]
-[; ;operationMode.c: 189: if (direction == 1){
-"189
-[e $ ! == _direction -> -> 1 `i `ui 372  ]
+[; ;operationMode.c: 631: if (direction == 1){
+"631
+[e $ ! == _direction -> -> 1 `i `ui 571  ]
 {
-[; ;operationMode.c: 190: for (i=0; i<rotations; i++){
-"190
+[; ;operationMode.c: 632: for (i=0; i<rotations; i++){
+"632
 {
 [e = _i -> -> 0 `i `ui ]
-[e $U 376  ]
-[e :U 373 ]
+[e $U 575  ]
+[e :U 572 ]
 {
-[; ;operationMode.c: 191: uartTransmitBlocking(rowUp, 1);
-"191
+[; ;operationMode.c: 633: uartTransmitBlocking(rowUp, 1);
+"633
 [e ( _uartTransmitBlocking (2 , &U _rowUp -> -> 1 `i `uc ]
-"192
+"634
 }
-"190
+"632
 [e ++ _i -> -> 1 `i `ui ]
-[e :U 376 ]
-[e $ < _i _rotations 373  ]
-[e :U 374 ]
-"192
+[e :U 575 ]
+[e $ < _i _rotations 572  ]
+[e :U 573 ]
+"634
 }
-"193
+"635
 }
-[; ;operationMode.c: 192: }
-[; ;operationMode.c: 193: }
-[e $U 377  ]
-"196
-[e :U 372 ]
-[; ;operationMode.c: 196: else if (direction == 0){
-[e $ ! == _direction -> -> 0 `i `ui 378  ]
+[; ;operationMode.c: 634: }
+[; ;operationMode.c: 635: }
+[e $U 576  ]
+"638
+[e :U 571 ]
+[; ;operationMode.c: 638: else if (direction == 0){
+[e $ ! == _direction -> -> 0 `i `ui 577  ]
 {
-[; ;operationMode.c: 197: for (i=0; i<rotations; i++){
-"197
+[; ;operationMode.c: 639: for (i=0; i<rotations; i++){
+"639
 {
 [e = _i -> -> 0 `i `ui ]
-[e $U 382  ]
-[e :U 379 ]
+[e $U 581  ]
+[e :U 578 ]
 {
-[; ;operationMode.c: 198: uartTransmitBlocking(rowDown, 1);
-"198
+[; ;operationMode.c: 640: uartTransmitBlocking(rowDown, 1);
+"640
 [e ( _uartTransmitBlocking (2 , &U _rowDown -> -> 1 `i `uc ]
-"199
+"641
 }
-"197
+"639
 [e ++ _i -> -> 1 `i `ui ]
-[e :U 382 ]
-[e $ < _i _rotations 379  ]
-[e :U 380 ]
-"199
+[e :U 581 ]
+[e $ < _i _rotations 578  ]
+[e :U 579 ]
+"641
 }
-"200
+"642
 }
-[e :U 378 ]
-"201
-[e :U 377 ]
-[; ;operationMode.c: 199: }
-[; ;operationMode.c: 200: }
-[; ;operationMode.c: 201: }
-[e :UE 371 ]
+[e :U 577 ]
+"643
+[e :U 576 ]
+[; ;operationMode.c: 641: }
+[; ;operationMode.c: 642: }
+[; ;operationMode.c: 643: }
+[e :UE 570 ]
 }
-"204
+"646
 [v _horizontalStepper `(v ~T0 @X0 1 ef2`ui`ui ]
 {
-[; ;operationMode.c: 204: void horizontalStepper(unsigned int rotations, unsigned int direction){
+[; ;operationMode.c: 646: void horizontalStepper(unsigned int rotations, unsigned int direction){
 [e :U _horizontalStepper ]
 [v _rotations `ui ~T0 @X0 1 r1 ]
 [v _direction `ui ~T0 @X0 1 r2 ]
 [f ]
-"207
+"649
 [v _i `ui ~T0 @X0 1 a ]
-[; ;operationMode.c: 207: unsigned int i = 0;
+[; ;operationMode.c: 649: unsigned int i = 0;
 [e = _i -> -> 0 `i `ui ]
-[; ;operationMode.c: 210: if (direction == 1){
-"210
-[e $ ! == _direction -> -> 1 `i `ui 384  ]
+[; ;operationMode.c: 652: if (direction == 1){
+"652
+[e $ ! == _direction -> -> 1 `i `ui 583  ]
 {
-[; ;operationMode.c: 211: for (i=0; i<rotations; i++){
-"211
+[; ;operationMode.c: 653: for (i=0; i<rotations; i++){
+"653
 {
 [e = _i -> -> 0 `i `ui ]
-[e $U 388  ]
-[e :U 385 ]
+[e $U 587  ]
+[e :U 584 ]
 {
-[; ;operationMode.c: 212: uartTransmitBlocking(columnLeft, 1);
-"212
+[; ;operationMode.c: 654: uartTransmitBlocking(columnLeft, 1);
+"654
 [e ( _uartTransmitBlocking (2 , &U _columnLeft -> -> 1 `i `uc ]
-"213
+"655
 }
-"211
+"653
 [e ++ _i -> -> 1 `i `ui ]
-[e :U 388 ]
-[e $ < _i _rotations 385  ]
-[e :U 386 ]
-"213
+[e :U 587 ]
+[e $ < _i _rotations 584  ]
+[e :U 585 ]
+"655
 }
-"214
+"656
 }
-[; ;operationMode.c: 213: }
-[; ;operationMode.c: 214: }
-[e $U 389  ]
-"216
-[e :U 384 ]
-[; ;operationMode.c: 216: else if (direction == 0){
-[e $ ! == _direction -> -> 0 `i `ui 390  ]
+[; ;operationMode.c: 655: }
+[; ;operationMode.c: 656: }
+[e $U 588  ]
+"658
+[e :U 583 ]
+[; ;operationMode.c: 658: else if (direction == 0){
+[e $ ! == _direction -> -> 0 `i `ui 589  ]
 {
-[; ;operationMode.c: 217: for (i=0; i<rotations; i++){
-"217
+[; ;operationMode.c: 659: for (i=0; i<rotations; i++){
+"659
 {
 [e = _i -> -> 0 `i `ui ]
-[e $U 394  ]
-[e :U 391 ]
+[e $U 593  ]
+[e :U 590 ]
 {
-[; ;operationMode.c: 218: uartTransmitBlocking(columnRight, 1);
-"218
+[; ;operationMode.c: 660: uartTransmitBlocking(columnRight, 1);
+"660
 [e ( _uartTransmitBlocking (2 , &U _columnRight -> -> 1 `i `uc ]
-"219
+"661
 }
-"217
+"659
 [e ++ _i -> -> 1 `i `ui ]
-[e :U 394 ]
-[e $ < _i _rotations 391  ]
-[e :U 392 ]
-"219
+[e :U 593 ]
+[e $ < _i _rotations 590  ]
+[e :U 591 ]
+"661
 }
-"220
+"662
 }
-[e :U 390 ]
-"221
-[e :U 389 ]
-[; ;operationMode.c: 219: }
-[; ;operationMode.c: 220: }
-[; ;operationMode.c: 221: }
-[e :UE 383 ]
+[e :U 589 ]
+"663
+[e :U 588 ]
+[; ;operationMode.c: 661: }
+[; ;operationMode.c: 662: }
+[; ;operationMode.c: 663: }
+[e :UE 582 ]
 }
-"224
+"666
 [v _drawerStepper `(v ~T0 @X0 1 ef1`ui ]
 {
-[; ;operationMode.c: 224: void drawerStepper(unsigned int direction){
+[; ;operationMode.c: 666: void drawerStepper(unsigned int direction){
 [e :U _drawerStepper ]
 [v _direction `ui ~T0 @X0 1 r1 ]
 [f ]
-[; ;operationMode.c: 227: if (direction == 1){
-"227
-[e $ ! == _direction -> -> 1 `i `ui 396  ]
+[; ;operationMode.c: 669: if (direction == 1){
+"669
+[e $ ! == _direction -> -> 1 `i `ui 595  ]
 {
-[; ;operationMode.c: 228: uartTransmitBlocking(drawerUp, 1);
-"228
+[; ;operationMode.c: 670: uartTransmitBlocking(drawerUp, 1);
+"670
 [e ( _uartTransmitBlocking (2 , &U _drawerUp -> -> 1 `i `uc ]
-"229
+"671
 }
-[; ;operationMode.c: 229: }
-[e $U 397  ]
-"231
-[e :U 396 ]
-[; ;operationMode.c: 231: else if (direction == 0){
-[e $ ! == _direction -> -> 0 `i `ui 398  ]
+[; ;operationMode.c: 671: }
+[e $U 596  ]
+"673
+[e :U 595 ]
+[; ;operationMode.c: 673: else if (direction == 0){
+[e $ ! == _direction -> -> 0 `i `ui 597  ]
 {
-[; ;operationMode.c: 232: uartTransmitBlocking(drawerDown, 1);
-"232
+[; ;operationMode.c: 674: uartTransmitBlocking(drawerDown, 1);
+"674
 [e ( _uartTransmitBlocking (2 , &U _drawerDown -> -> 1 `i `uc ]
-"233
+"675
 }
-[e :U 398 ]
-"235
-[e :U 397 ]
-[; ;operationMode.c: 233: }
-[; ;operationMode.c: 235: }
-[e :UE 395 ]
+[e :U 597 ]
+"677
+[e :U 596 ]
+[; ;operationMode.c: 675: }
+[; ;operationMode.c: 677: }
+[e :UE 594 ]
 }
-"239
+"681
 [v _moveVertically `(ui ~T0 @X0 1 ef2`ui`ui ]
 {
-[; ;operationMode.c: 239: unsigned int moveVertically(unsigned int currentDrawer, unsigned int nextDrawer){
+[; ;operationMode.c: 681: unsigned int moveVertically(unsigned int currentDrawer, unsigned int nextDrawer){
 [e :U _moveVertically ]
 [v _currentDrawer `ui ~T0 @X0 1 r1 ]
 [v _nextDrawer `ui ~T0 @X0 1 r2 ]
 [f ]
-[; ;operationMode.c: 241: if (currentDrawer != 0 && nextDrawer != 0 && nextDrawer > currentDrawer){
-"241
-[e $ ! && && != _currentDrawer -> -> 0 `i `ui != _nextDrawer -> -> 0 `i `ui > _nextDrawer _currentDrawer 400  ]
+[; ;operationMode.c: 683: if (currentDrawer != 0 && nextDrawer != 0 && nextDrawer > currentDrawer){
+"683
+[e $ ! && && != _currentDrawer -> -> 0 `i `ui != _nextDrawer -> -> 0 `i `ui > _nextDrawer _currentDrawer 599  ]
 {
-[; ;operationMode.c: 242: if (currentDrawer == 1 || currentDrawer == 2 || currentDrawer == 3 || currentDrawer == 4){
-"242
-[e $ ! || || || == _currentDrawer -> -> 1 `i `ui == _currentDrawer -> -> 2 `i `ui == _currentDrawer -> -> 3 `i `ui == _currentDrawer -> -> 4 `i `ui 401  ]
+[; ;operationMode.c: 684: if (currentDrawer == 1 || currentDrawer == 2 || currentDrawer == 3 || currentDrawer == 4){
+"684
+[e $ ! || || || == _currentDrawer -> -> 1 `i `ui == _currentDrawer -> -> 2 `i `ui == _currentDrawer -> -> 3 `i `ui == _currentDrawer -> -> 4 `i `ui 600  ]
 {
-[; ;operationMode.c: 243: if (nextDrawer == 5 || nextDrawer == 6 || nextDrawer == 7 || nextDrawer == 8){
-"243
-[e $ ! || || || == _nextDrawer -> -> 5 `i `ui == _nextDrawer -> -> 6 `i `ui == _nextDrawer -> -> 7 `i `ui == _nextDrawer -> -> 8 `i `ui 402  ]
+[; ;operationMode.c: 685: if (nextDrawer == 5 || nextDrawer == 6 || nextDrawer == 7 || nextDrawer == 8){
+"685
+[e $ ! || || || == _nextDrawer -> -> 5 `i `ui == _nextDrawer -> -> 6 `i `ui == _nextDrawer -> -> 7 `i `ui == _nextDrawer -> -> 8 `i `ui 601  ]
 {
-[; ;operationMode.c: 244: verticalStepper(1, 0);
-"244
+[; ;operationMode.c: 686: verticalStepper(1, 0);
+"686
 [e ( _verticalStepper (2 , -> -> 1 `i `ui -> -> 0 `i `ui ]
-[; ;operationMode.c: 245: return (currentDrawer + 4);
-"245
+[; ;operationMode.c: 687: return (currentDrawer + 4);
+"687
 [e ) + _currentDrawer -> -> 4 `i `ui ]
-[e $UE 399  ]
-"246
+[e $UE 598  ]
+"688
 }
-[; ;operationMode.c: 246: }
-[e $U 403  ]
-"247
-[e :U 402 ]
-[; ;operationMode.c: 247: else if (nextDrawer == 9 || nextDrawer == 10 || nextDrawer == 11 || nextDrawer == 12){
-[e $ ! || || || == _nextDrawer -> -> 9 `i `ui == _nextDrawer -> -> 10 `i `ui == _nextDrawer -> -> 11 `i `ui == _nextDrawer -> -> 12 `i `ui 404  ]
+[; ;operationMode.c: 688: }
+[e $U 602  ]
+"689
+[e :U 601 ]
+[; ;operationMode.c: 689: else if (nextDrawer == 9 || nextDrawer == 10 || nextDrawer == 11 || nextDrawer == 12){
+[e $ ! || || || == _nextDrawer -> -> 9 `i `ui == _nextDrawer -> -> 10 `i `ui == _nextDrawer -> -> 11 `i `ui == _nextDrawer -> -> 12 `i `ui 603  ]
 {
-[; ;operationMode.c: 248: verticalStepper(2, 0);
-"248
+[; ;operationMode.c: 690: verticalStepper(2, 0);
+"690
 [e ( _verticalStepper (2 , -> -> 2 `i `ui -> -> 0 `i `ui ]
-[; ;operationMode.c: 249: return (currentDrawer + 8);
-"249
+[; ;operationMode.c: 691: return (currentDrawer + 8);
+"691
 [e ) + _currentDrawer -> -> 8 `i `ui ]
-[e $UE 399  ]
-"250
+[e $UE 598  ]
+"692
 }
-[; ;operationMode.c: 250: }
-[e $U 405  ]
-"251
-[e :U 404 ]
-[; ;operationMode.c: 251: else if (nextDrawer == 13 || nextDrawer == 14 || nextDrawer == 15 || nextDrawer == 16){
-[e $ ! || || || == _nextDrawer -> -> 13 `i `ui == _nextDrawer -> -> 14 `i `ui == _nextDrawer -> -> 15 `i `ui == _nextDrawer -> -> 16 `i `ui 406  ]
+[; ;operationMode.c: 692: }
+[e $U 604  ]
+"693
+[e :U 603 ]
+[; ;operationMode.c: 693: else if (nextDrawer == 13 || nextDrawer == 14 || nextDrawer == 15 || nextDrawer == 16){
+[e $ ! || || || == _nextDrawer -> -> 13 `i `ui == _nextDrawer -> -> 14 `i `ui == _nextDrawer -> -> 15 `i `ui == _nextDrawer -> -> 16 `i `ui 605  ]
 {
-[; ;operationMode.c: 252: verticalStepper(3, 0);
-"252
+[; ;operationMode.c: 694: verticalStepper(3, 0);
+"694
 [e ( _verticalStepper (2 , -> -> 3 `i `ui -> -> 0 `i `ui ]
-[; ;operationMode.c: 253: return (currentDrawer + 12);
-"253
+[; ;operationMode.c: 695: return (currentDrawer + 12);
+"695
 [e ) + _currentDrawer -> -> 12 `i `ui ]
-[e $UE 399  ]
-"254
+[e $UE 598  ]
+"696
 }
-[e :U 406 ]
-"255
-[e :U 405 ]
-[e :U 403 ]
+[e :U 605 ]
+"697
+[e :U 604 ]
+[e :U 602 ]
 }
-[; ;operationMode.c: 254: }
-[; ;operationMode.c: 255: }
-[e $U 407  ]
-"256
-[e :U 401 ]
-[; ;operationMode.c: 256: else if (currentDrawer == 5 || currentDrawer == 6 || currentDrawer == 7 || currentDrawer == 8){
-[e $ ! || || || == _currentDrawer -> -> 5 `i `ui == _currentDrawer -> -> 6 `i `ui == _currentDrawer -> -> 7 `i `ui == _currentDrawer -> -> 8 `i `ui 408  ]
+[; ;operationMode.c: 696: }
+[; ;operationMode.c: 697: }
+[e $U 606  ]
+"698
+[e :U 600 ]
+[; ;operationMode.c: 698: else if (currentDrawer == 5 || currentDrawer == 6 || currentDrawer == 7 || currentDrawer == 8){
+[e $ ! || || || == _currentDrawer -> -> 5 `i `ui == _currentDrawer -> -> 6 `i `ui == _currentDrawer -> -> 7 `i `ui == _currentDrawer -> -> 8 `i `ui 607  ]
 {
-[; ;operationMode.c: 257: if (nextDrawer == 9 || nextDrawer == 10 || nextDrawer == 11 || nextDrawer == 12){
-"257
-[e $ ! || || || == _nextDrawer -> -> 9 `i `ui == _nextDrawer -> -> 10 `i `ui == _nextDrawer -> -> 11 `i `ui == _nextDrawer -> -> 12 `i `ui 409  ]
+[; ;operationMode.c: 699: if (nextDrawer == 9 || nextDrawer == 10 || nextDrawer == 11 || nextDrawer == 12){
+"699
+[e $ ! || || || == _nextDrawer -> -> 9 `i `ui == _nextDrawer -> -> 10 `i `ui == _nextDrawer -> -> 11 `i `ui == _nextDrawer -> -> 12 `i `ui 608  ]
 {
-[; ;operationMode.c: 258: verticalStepper(1, 0);
-"258
+[; ;operationMode.c: 700: verticalStepper(1, 0);
+"700
 [e ( _verticalStepper (2 , -> -> 1 `i `ui -> -> 0 `i `ui ]
-[; ;operationMode.c: 259: return (currentDrawer + 4);
-"259
+[; ;operationMode.c: 701: return (currentDrawer + 4);
+"701
 [e ) + _currentDrawer -> -> 4 `i `ui ]
-[e $UE 399  ]
-"260
+[e $UE 598  ]
+"702
 }
-[; ;operationMode.c: 260: }
-[e $U 410  ]
-"261
-[e :U 409 ]
-[; ;operationMode.c: 261: else if (nextDrawer == 13 || nextDrawer == 14 || nextDrawer == 15 || nextDrawer == 16){
-[e $ ! || || || == _nextDrawer -> -> 13 `i `ui == _nextDrawer -> -> 14 `i `ui == _nextDrawer -> -> 15 `i `ui == _nextDrawer -> -> 16 `i `ui 411  ]
+[; ;operationMode.c: 702: }
+[e $U 609  ]
+"703
+[e :U 608 ]
+[; ;operationMode.c: 703: else if (nextDrawer == 13 || nextDrawer == 14 || nextDrawer == 15 || nextDrawer == 16){
+[e $ ! || || || == _nextDrawer -> -> 13 `i `ui == _nextDrawer -> -> 14 `i `ui == _nextDrawer -> -> 15 `i `ui == _nextDrawer -> -> 16 `i `ui 610  ]
 {
-[; ;operationMode.c: 262: verticalStepper(2, 0);
-"262
+[; ;operationMode.c: 704: verticalStepper(2, 0);
+"704
 [e ( _verticalStepper (2 , -> -> 2 `i `ui -> -> 0 `i `ui ]
-[; ;operationMode.c: 263: return (currentDrawer + 8);
-"263
+[; ;operationMode.c: 705: return (currentDrawer + 8);
+"705
 [e ) + _currentDrawer -> -> 8 `i `ui ]
-[e $UE 399  ]
-"264
+[e $UE 598  ]
+"706
 }
-[e :U 411 ]
-"265
-[e :U 410 ]
+[e :U 610 ]
+"707
+[e :U 609 ]
 }
-[; ;operationMode.c: 264: }
-[; ;operationMode.c: 265: }
-[e $U 412  ]
-"266
-[e :U 408 ]
-[; ;operationMode.c: 266: else if (currentDrawer == 9 || currentDrawer == 10 || currentDrawer == 11 || currentDrawer == 12){
-[e $ ! || || || == _currentDrawer -> -> 9 `i `ui == _currentDrawer -> -> 10 `i `ui == _currentDrawer -> -> 11 `i `ui == _currentDrawer -> -> 12 `i `ui 413  ]
+[; ;operationMode.c: 706: }
+[; ;operationMode.c: 707: }
+[e $U 611  ]
+"708
+[e :U 607 ]
+[; ;operationMode.c: 708: else if (currentDrawer == 9 || currentDrawer == 10 || currentDrawer == 11 || currentDrawer == 12){
+[e $ ! || || || == _currentDrawer -> -> 9 `i `ui == _currentDrawer -> -> 10 `i `ui == _currentDrawer -> -> 11 `i `ui == _currentDrawer -> -> 12 `i `ui 612  ]
 {
-[; ;operationMode.c: 267: if (nextDrawer == 13 || nextDrawer == 14 || nextDrawer == 15 || nextDrawer == 16){
-"267
-[e $ ! || || || == _nextDrawer -> -> 13 `i `ui == _nextDrawer -> -> 14 `i `ui == _nextDrawer -> -> 15 `i `ui == _nextDrawer -> -> 16 `i `ui 414  ]
+[; ;operationMode.c: 709: if (nextDrawer == 13 || nextDrawer == 14 || nextDrawer == 15 || nextDrawer == 16){
+"709
+[e $ ! || || || == _nextDrawer -> -> 13 `i `ui == _nextDrawer -> -> 14 `i `ui == _nextDrawer -> -> 15 `i `ui == _nextDrawer -> -> 16 `i `ui 613  ]
 {
-[; ;operationMode.c: 268: verticalStepper(1, 0);
-"268
+[; ;operationMode.c: 710: verticalStepper(1, 0);
+"710
 [e ( _verticalStepper (2 , -> -> 1 `i `ui -> -> 0 `i `ui ]
-[; ;operationMode.c: 269: return (currentDrawer + 4);
-"269
+[; ;operationMode.c: 711: return (currentDrawer + 4);
+"711
 [e ) + _currentDrawer -> -> 4 `i `ui ]
-[e $UE 399  ]
-"270
+[e $UE 598  ]
+"712
 }
-[e :U 414 ]
-"271
+[e :U 613 ]
+"713
 }
-[e :U 413 ]
-"272
-[e :U 412 ]
-[e :U 407 ]
+[e :U 612 ]
+"714
+[e :U 611 ]
+[e :U 606 ]
 }
-[; ;operationMode.c: 270: }
-[; ;operationMode.c: 271: }
-[; ;operationMode.c: 272: }
-[e $U 415  ]
-"273
-[e :U 400 ]
-[; ;operationMode.c: 273: else{
+[; ;operationMode.c: 712: }
+[; ;operationMode.c: 713: }
+[; ;operationMode.c: 714: }
+[e $U 614  ]
+"715
+[e :U 599 ]
+[; ;operationMode.c: 715: else{
 {
-[; ;operationMode.c: 274: return currentDrawer;
-"274
+[; ;operationMode.c: 716: return currentDrawer;
+"716
 [e ) _currentDrawer ]
-[e $UE 399  ]
-"275
+[e $UE 598  ]
+"717
 }
-[e :U 415 ]
-[; ;operationMode.c: 275: }
-[; ;operationMode.c: 276: }
-"276
-[e :UE 399 ]
+[e :U 614 ]
+[; ;operationMode.c: 717: }
+[; ;operationMode.c: 718: }
+"718
+[e :UE 598 ]
 }
-"280
+"722
 [v _moveHorizontally `(v ~T0 @X0 1 ef2`ui`ui ]
 {
-[; ;operationMode.c: 280: void moveHorizontally(unsigned int currentDrawer, unsigned int nextDrawer){
+[; ;operationMode.c: 722: void moveHorizontally(unsigned int currentDrawer, unsigned int nextDrawer){
 [e :U _moveHorizontally ]
 [v _currentDrawer `ui ~T0 @X0 1 r1 ]
 [v _nextDrawer `ui ~T0 @X0 1 r2 ]
 [f ]
-[; ;operationMode.c: 281: if (currentDrawer != 0 && nextDrawer != 0){
-"281
-[e $ ! && != _currentDrawer -> -> 0 `i `ui != _nextDrawer -> -> 0 `i `ui 417  ]
+[; ;operationMode.c: 723: if (currentDrawer != 0 && nextDrawer != 0){
+"723
+[e $ ! && != _currentDrawer -> -> 0 `i `ui != _nextDrawer -> -> 0 `i `ui 616  ]
 {
-[; ;operationMode.c: 283: if (currentDrawer < nextDrawer){
-"283
-[e $ ! < _currentDrawer _nextDrawer 418  ]
+[; ;operationMode.c: 725: if (currentDrawer < nextDrawer){
+"725
+[e $ ! < _currentDrawer _nextDrawer 617  ]
 {
-[; ;operationMode.c: 284: if ((nextDrawer - currentDrawer) == 1){
-"284
-[e $ ! == - _nextDrawer _currentDrawer -> -> 1 `i `ui 419  ]
+[; ;operationMode.c: 726: if ((nextDrawer - currentDrawer) == 1){
+"726
+[e $ ! == - _nextDrawer _currentDrawer -> -> 1 `i `ui 618  ]
 {
-[; ;operationMode.c: 285: horizontalStepper(1, 0);
-"285
+[; ;operationMode.c: 727: horizontalStepper(1, 0);
+"727
 [e ( _horizontalStepper (2 , -> -> 1 `i `ui -> -> 0 `i `ui ]
-"286
+"728
 }
-[; ;operationMode.c: 286: }
-[e $U 420  ]
-"287
-[e :U 419 ]
-[; ;operationMode.c: 287: else if ((nextDrawer - currentDrawer) == 2){
-[e $ ! == - _nextDrawer _currentDrawer -> -> 2 `i `ui 421  ]
+[; ;operationMode.c: 728: }
+[e $U 619  ]
+"729
+[e :U 618 ]
+[; ;operationMode.c: 729: else if ((nextDrawer - currentDrawer) == 2){
+[e $ ! == - _nextDrawer _currentDrawer -> -> 2 `i `ui 620  ]
 {
-[; ;operationMode.c: 288: horizontalStepper(2, 0);
-"288
+[; ;operationMode.c: 730: horizontalStepper(2, 0);
+"730
 [e ( _horizontalStepper (2 , -> -> 2 `i `ui -> -> 0 `i `ui ]
-"289
+"731
 }
-[; ;operationMode.c: 289: }
-[e $U 422  ]
-"290
-[e :U 421 ]
-[; ;operationMode.c: 290: else if ((nextDrawer - currentDrawer) == 3){
-[e $ ! == - _nextDrawer _currentDrawer -> -> 3 `i `ui 423  ]
+[; ;operationMode.c: 731: }
+[e $U 621  ]
+"732
+[e :U 620 ]
+[; ;operationMode.c: 732: else if ((nextDrawer - currentDrawer) == 3){
+[e $ ! == - _nextDrawer _currentDrawer -> -> 3 `i `ui 622  ]
 {
-[; ;operationMode.c: 291: horizontalStepper(3, 0);
-"291
+[; ;operationMode.c: 733: horizontalStepper(3, 0);
+"733
 [e ( _horizontalStepper (2 , -> -> 3 `i `ui -> -> 0 `i `ui ]
-"292
+"734
 }
-[e :U 423 ]
-"293
-[e :U 422 ]
-[e :U 420 ]
+[e :U 622 ]
+"735
+[e :U 621 ]
+[e :U 619 ]
 }
-[; ;operationMode.c: 292: }
-[; ;operationMode.c: 293: }
-[e $U 424  ]
-"295
-[e :U 418 ]
-[; ;operationMode.c: 295: else if (currentDrawer > nextDrawer){
-[e $ ! > _currentDrawer _nextDrawer 425  ]
+[; ;operationMode.c: 734: }
+[; ;operationMode.c: 735: }
+[e $U 623  ]
+"737
+[e :U 617 ]
+[; ;operationMode.c: 737: else if (currentDrawer > nextDrawer){
+[e $ ! > _currentDrawer _nextDrawer 624  ]
 {
-[; ;operationMode.c: 296: if ((currentDrawer - nextDrawer) == 1){
-"296
-[e $ ! == - _currentDrawer _nextDrawer -> -> 1 `i `ui 426  ]
+[; ;operationMode.c: 738: if ((currentDrawer - nextDrawer) == 1){
+"738
+[e $ ! == - _currentDrawer _nextDrawer -> -> 1 `i `ui 625  ]
 {
-[; ;operationMode.c: 297: horizontalStepper(1, 1);
-"297
+[; ;operationMode.c: 739: horizontalStepper(1, 1);
+"739
 [e ( _horizontalStepper (2 , -> -> 1 `i `ui -> -> 1 `i `ui ]
-"298
+"740
 }
-[; ;operationMode.c: 298: }
-[e $U 427  ]
-"299
-[e :U 426 ]
-[; ;operationMode.c: 299: else if ((currentDrawer - nextDrawer) == 2){
-[e $ ! == - _currentDrawer _nextDrawer -> -> 2 `i `ui 428  ]
+[; ;operationMode.c: 740: }
+[e $U 626  ]
+"741
+[e :U 625 ]
+[; ;operationMode.c: 741: else if ((currentDrawer - nextDrawer) == 2){
+[e $ ! == - _currentDrawer _nextDrawer -> -> 2 `i `ui 627  ]
 {
-[; ;operationMode.c: 300: horizontalStepper(2, 1);
-"300
+[; ;operationMode.c: 742: horizontalStepper(2, 1);
+"742
 [e ( _horizontalStepper (2 , -> -> 2 `i `ui -> -> 1 `i `ui ]
-"301
+"743
 }
-[; ;operationMode.c: 301: }
-[e $U 429  ]
-"302
-[e :U 428 ]
-[; ;operationMode.c: 302: else if ((currentDrawer - nextDrawer) == 3){
-[e $ ! == - _currentDrawer _nextDrawer -> -> 3 `i `ui 430  ]
+[; ;operationMode.c: 743: }
+[e $U 628  ]
+"744
+[e :U 627 ]
+[; ;operationMode.c: 744: else if ((currentDrawer - nextDrawer) == 3){
+[e $ ! == - _currentDrawer _nextDrawer -> -> 3 `i `ui 629  ]
 {
-[; ;operationMode.c: 303: horizontalStepper(3, 1);
-"303
+[; ;operationMode.c: 745: horizontalStepper(3, 1);
+"745
 [e ( _horizontalStepper (2 , -> -> 3 `i `ui -> -> 1 `i `ui ]
-"304
+"746
 }
-[e :U 430 ]
-"305
-[e :U 429 ]
-[e :U 427 ]
+[e :U 629 ]
+"747
+[e :U 628 ]
+[e :U 626 ]
 }
-[e :U 425 ]
-"306
-[e :U 424 ]
+[e :U 624 ]
+"748
+[e :U 623 ]
 }
-[e :U 417 ]
-[; ;operationMode.c: 304: }
-[; ;operationMode.c: 305: }
-[; ;operationMode.c: 306: }
-[; ;operationMode.c: 307: }
-"307
-[e :UE 416 ]
+[e :U 616 ]
+[; ;operationMode.c: 746: }
+[; ;operationMode.c: 747: }
+[; ;operationMode.c: 748: }
+[; ;operationMode.c: 749: }
+"749
+[e :UE 615 ]
 }
-"311
+"752
+[v _initArm `(v ~T0 @X0 1 ef1`ui ]
+{
+[; ;operationMode.c: 752: void initArm(unsigned int currentDrawer){
+[e :U _initArm ]
+[v _currentDrawer `ui ~T0 @X0 1 r1 ]
+[f ]
+[; ;operationMode.c: 753: if (currentDrawer != 0){
+"753
+[e $ ! != _currentDrawer -> -> 0 `i `ui 631  ]
+{
+[; ;operationMode.c: 754: if (currentDrawer == 1 || currentDrawer == 2 || currentDrawer == 3 || currentDrawer == 4){
+"754
+[e $ ! || || || == _currentDrawer -> -> 1 `i `ui == _currentDrawer -> -> 2 `i `ui == _currentDrawer -> -> 3 `i `ui == _currentDrawer -> -> 4 `i `ui 632  ]
+{
+[; ;operationMode.c: 755: if (currentDrawer == 4){
+"755
+[e $ ! == _currentDrawer -> -> 4 `i `ui 633  ]
+{
+[; ;operationMode.c: 756: horizontalStepper(3, 1);
+"756
+[e ( _horizontalStepper (2 , -> -> 3 `i `ui -> -> 1 `i `ui ]
+"757
+}
+[; ;operationMode.c: 757: }
+[e $U 634  ]
+"758
+[e :U 633 ]
+[; ;operationMode.c: 758: else if (currentDrawer == 3){
+[e $ ! == _currentDrawer -> -> 3 `i `ui 635  ]
+{
+[; ;operationMode.c: 759: horizontalStepper(2, 1);
+"759
+[e ( _horizontalStepper (2 , -> -> 2 `i `ui -> -> 1 `i `ui ]
+"760
+}
+[; ;operationMode.c: 760: }
+[e $U 636  ]
+"761
+[e :U 635 ]
+[; ;operationMode.c: 761: else if (currentDrawer == 2){
+[e $ ! == _currentDrawer -> -> 2 `i `ui 637  ]
+{
+[; ;operationMode.c: 762: horizontalStepper(1, 1);
+"762
+[e ( _horizontalStepper (2 , -> -> 1 `i `ui -> -> 1 `i `ui ]
+"763
+}
+[e :U 637 ]
+"764
+[e :U 636 ]
+[e :U 634 ]
+}
+[; ;operationMode.c: 763: }
+[; ;operationMode.c: 764: }
+[e $U 638  ]
+"765
+[e :U 632 ]
+[; ;operationMode.c: 765: else if (currentDrawer == 5 || currentDrawer == 6 || currentDrawer == 7 || currentDrawer == 8){
+[e $ ! || || || == _currentDrawer -> -> 5 `i `ui == _currentDrawer -> -> 6 `i `ui == _currentDrawer -> -> 7 `i `ui == _currentDrawer -> -> 8 `i `ui 639  ]
+{
+[; ;operationMode.c: 766: verticalStepper(1, 1);
+"766
+[e ( _verticalStepper (2 , -> -> 1 `i `ui -> -> 1 `i `ui ]
+[; ;operationMode.c: 767: if (currentDrawer == 8){
+"767
+[e $ ! == _currentDrawer -> -> 8 `i `ui 640  ]
+{
+[; ;operationMode.c: 768: horizontalStepper(3, 1);
+"768
+[e ( _horizontalStepper (2 , -> -> 3 `i `ui -> -> 1 `i `ui ]
+"769
+}
+[; ;operationMode.c: 769: }
+[e $U 641  ]
+"770
+[e :U 640 ]
+[; ;operationMode.c: 770: else if (currentDrawer == 7){
+[e $ ! == _currentDrawer -> -> 7 `i `ui 642  ]
+{
+[; ;operationMode.c: 771: horizontalStepper(2, 1);
+"771
+[e ( _horizontalStepper (2 , -> -> 2 `i `ui -> -> 1 `i `ui ]
+"772
+}
+[; ;operationMode.c: 772: }
+[e $U 643  ]
+"773
+[e :U 642 ]
+[; ;operationMode.c: 773: else if (currentDrawer == 6){
+[e $ ! == _currentDrawer -> -> 6 `i `ui 644  ]
+{
+[; ;operationMode.c: 774: horizontalStepper(1, 1);
+"774
+[e ( _horizontalStepper (2 , -> -> 1 `i `ui -> -> 1 `i `ui ]
+"775
+}
+[e :U 644 ]
+"776
+[e :U 643 ]
+[e :U 641 ]
+}
+[; ;operationMode.c: 775: }
+[; ;operationMode.c: 776: }
+[e $U 645  ]
+"777
+[e :U 639 ]
+[; ;operationMode.c: 777: else if (currentDrawer == 9 || currentDrawer == 10 || currentDrawer == 11 || currentDrawer == 12){
+[e $ ! || || || == _currentDrawer -> -> 9 `i `ui == _currentDrawer -> -> 10 `i `ui == _currentDrawer -> -> 11 `i `ui == _currentDrawer -> -> 12 `i `ui 646  ]
+{
+[; ;operationMode.c: 778: verticalStepper(2, 1);
+"778
+[e ( _verticalStepper (2 , -> -> 2 `i `ui -> -> 1 `i `ui ]
+[; ;operationMode.c: 779: if (currentDrawer == 12){
+"779
+[e $ ! == _currentDrawer -> -> 12 `i `ui 647  ]
+{
+[; ;operationMode.c: 780: horizontalStepper(3, 1);
+"780
+[e ( _horizontalStepper (2 , -> -> 3 `i `ui -> -> 1 `i `ui ]
+"781
+}
+[; ;operationMode.c: 781: }
+[e $U 648  ]
+"782
+[e :U 647 ]
+[; ;operationMode.c: 782: else if (currentDrawer == 11){
+[e $ ! == _currentDrawer -> -> 11 `i `ui 649  ]
+{
+[; ;operationMode.c: 783: horizontalStepper(2, 1);
+"783
+[e ( _horizontalStepper (2 , -> -> 2 `i `ui -> -> 1 `i `ui ]
+"784
+}
+[; ;operationMode.c: 784: }
+[e $U 650  ]
+"785
+[e :U 649 ]
+[; ;operationMode.c: 785: else if (currentDrawer == 10){
+[e $ ! == _currentDrawer -> -> 10 `i `ui 651  ]
+{
+[; ;operationMode.c: 786: horizontalStepper(1, 1);
+"786
+[e ( _horizontalStepper (2 , -> -> 1 `i `ui -> -> 1 `i `ui ]
+"787
+}
+[e :U 651 ]
+"788
+[e :U 650 ]
+[e :U 648 ]
+}
+[; ;operationMode.c: 787: }
+[; ;operationMode.c: 788: }
+[e $U 652  ]
+"789
+[e :U 646 ]
+[; ;operationMode.c: 789: else if (currentDrawer == 13 || currentDrawer == 14 || currentDrawer == 15 || currentDrawer == 16){
+[e $ ! || || || == _currentDrawer -> -> 13 `i `ui == _currentDrawer -> -> 14 `i `ui == _currentDrawer -> -> 15 `i `ui == _currentDrawer -> -> 16 `i `ui 653  ]
+{
+[; ;operationMode.c: 790: verticalStepper(3, 1);
+"790
+[e ( _verticalStepper (2 , -> -> 3 `i `ui -> -> 1 `i `ui ]
+[; ;operationMode.c: 791: if (currentDrawer == 16){
+"791
+[e $ ! == _currentDrawer -> -> 16 `i `ui 654  ]
+{
+[; ;operationMode.c: 792: horizontalStepper(3, 1);
+"792
+[e ( _horizontalStepper (2 , -> -> 3 `i `ui -> -> 1 `i `ui ]
+"793
+}
+[; ;operationMode.c: 793: }
+[e $U 655  ]
+"794
+[e :U 654 ]
+[; ;operationMode.c: 794: else if (currentDrawer == 15){
+[e $ ! == _currentDrawer -> -> 15 `i `ui 656  ]
+{
+[; ;operationMode.c: 795: horizontalStepper(2, 1);
+"795
+[e ( _horizontalStepper (2 , -> -> 2 `i `ui -> -> 1 `i `ui ]
+"796
+}
+[; ;operationMode.c: 796: }
+[e $U 657  ]
+"797
+[e :U 656 ]
+[; ;operationMode.c: 797: else if (currentDrawer == 14){
+[e $ ! == _currentDrawer -> -> 14 `i `ui 658  ]
+{
+[; ;operationMode.c: 798: horizontalStepper(1, 1);
+"798
+[e ( _horizontalStepper (2 , -> -> 1 `i `ui -> -> 1 `i `ui ]
+"799
+}
+[e :U 658 ]
+"800
+[e :U 657 ]
+[e :U 655 ]
+}
+[e :U 653 ]
+"801
+[e :U 652 ]
+[e :U 645 ]
+[e :U 638 ]
+}
+[e :U 631 ]
+[; ;operationMode.c: 799: }
+[; ;operationMode.c: 800: }
+[; ;operationMode.c: 801: }
+[; ;operationMode.c: 802: }
+"802
+[e :UE 630 ]
+}
+"806
 [v _detectTape `(ui ~T0 @X0 1 ef ]
 {
-[; ;operationMode.c: 311: unsigned int detectTape(void){
+[; ;operationMode.c: 806: unsigned int detectTape(void){
 [e :U _detectTape ]
 [f ]
-[; ;operationMode.c: 313: return 1;
-"313
+[; ;operationMode.c: 808: return 1;
+"808
 [e ) -> -> 1 `i `ui ]
-[e $UE 431  ]
-[; ;operationMode.c: 314: }
-"314
-[e :UE 431 ]
+[e $UE 659  ]
+[; ;operationMode.c: 809: }
+"809
+[e :UE 659 ]
 }
-"317
-[v _configDrawer `(ui ~T0 @X0 1 ef1`ui ]
+"812
+[v _configDrawer `(v ~T0 @X0 1 ef1`ui ]
 {
-[; ;operationMode.c: 317: unsigned int configDrawer(unsigned int direction){
+[; ;operationMode.c: 812: void configDrawer(unsigned int direction){
 [e :U _configDrawer ]
 [v _direction `ui ~T0 @X0 1 r1 ]
 [f ]
-[; ;operationMode.c: 320: return 1;
-"320
-[e ) -> -> 1 `i `ui ]
-[e $UE 432  ]
-[; ;operationMode.c: 321: }
-"321
-[e :UE 432 ]
-}
-"324
-[v _distributeRound `(ui ~T0 @X0 1 ef1`ui ]
+[; ;operationMode.c: 816: if (direction == 1){
+"816
+[e $ ! == _direction -> -> 1 `i `ui 661  ]
 {
-[; ;operationMode.c: 324: unsigned int distributeRound(unsigned int count){
+[; ;operationMode.c: 817: uartTransmitBlocking(drawerOpen, 1);
+"817
+[e ( _uartTransmitBlocking (2 , &U _drawerOpen -> -> 1 `i `uc ]
+"818
+}
+[; ;operationMode.c: 818: }
+[e $U 662  ]
+"820
+[e :U 661 ]
+[; ;operationMode.c: 820: else if (direction == 0){
+[e $ ! == _direction -> -> 0 `i `ui 663  ]
+{
+[; ;operationMode.c: 821: uartTransmitBlocking(drawerClose, 1);
+"821
+[e ( _uartTransmitBlocking (2 , &U _drawerClose -> -> 1 `i `uc ]
+"822
+}
+[e :U 663 ]
+"823
+[e :U 662 ]
+[; ;operationMode.c: 822: }
+[; ;operationMode.c: 823: }
+[e :UE 660 ]
+}
+"826
+[v _distributeRound `(v ~T0 @X0 1 ef1`ui ]
+{
+[; ;operationMode.c: 826: void distributeRound(unsigned int count){
 [e :U _distributeRound ]
 [v _count `ui ~T0 @X0 1 r1 ]
 [f ]
-"328
+"830
 [v _i `ui ~T0 @X0 1 a ]
-[; ;operationMode.c: 328: unsigned int i = 0;
+[; ;operationMode.c: 830: unsigned int i = 0;
 [e = _i -> -> 0 `i `ui ]
-[; ;operationMode.c: 330: TRISCbits.TRISC5 = 0;
-"330
-[e = . . _TRISCbits 0 5 -> -> 0 `i `uc ]
-[; ;operationMode.c: 331: TRISCbits.TRISC6 = 0;
-"331
-[e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
-[; ;operationMode.c: 332: TRISCbits.TRISC7 = 0;
-"332
-[e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
-[; ;operationMode.c: 333: TRISCbits.TRISC0 = 0;
-"333
-[e = . . _TRISCbits 0 0 -> -> 0 `i `uc ]
-[; ;operationMode.c: 334: LATCbits.LATC5 = 0;
-"334
-[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
-[; ;operationMode.c: 335: LATCbits.LATC6 = 0;
-"335
-[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
-[; ;operationMode.c: 336: LATCbits.LATC7 = 0;
-"336
-[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
-[; ;operationMode.c: 337: LATCbits.LATC0 = 0;
-"337
-[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
-[; ;operationMode.c: 339: for (i=0; i<count; i++){
-"339
+[; ;operationMode.c: 832: for (i=0; i<count*523; i++){
+"832
 {
 [e = _i -> -> 0 `i `ui ]
-[e $U 437  ]
-[e :U 434 ]
+[e $U 668  ]
+[e :U 665 ]
 {
-[; ;operationMode.c: 340: LATCbits.LATC5 = 1;
-"340
-[e = . . _LATCbits 0 5 -> -> 1 `i `uc ]
-[; ;operationMode.c: 341: LATCbits.LATC6 = 0;
-"341
-[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
-[; ;operationMode.c: 342: LATCbits.LATC7 = 0;
-"342
-[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
-[; ;operationMode.c: 343: LATCbits.LATC0 = 0;
-"343
-[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
-[; ;operationMode.c: 344: _delay((unsigned long)((2)*(40000000/4000.0)));
-"344
+[; ;operationMode.c: 833: LATDbits.LATD4 = 0;
+"833
+[e = . . _LATDbits 0 4 -> -> 0 `i `uc ]
+[; ;operationMode.c: 834: LATDbits.LATD5 = 0;
+"834
+[e = . . _LATDbits 0 5 -> -> 0 `i `uc ]
+[; ;operationMode.c: 835: LATDbits.LATD6 = 1;
+"835
+[e = . . _LATDbits 0 6 -> -> 1 `i `uc ]
+[; ;operationMode.c: 836: LATDbits.LATD7 = 0;
+"836
+[e = . . _LATDbits 0 7 -> -> 0 `i `uc ]
+[; ;operationMode.c: 837: _delay((unsigned long)((2)*(40000000/4000.0)));
+"837
 [e ( __delay (1 -> * -> -> 2 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;operationMode.c: 345: LATCbits.LATC5 = 0;
-"345
-[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
-[; ;operationMode.c: 346: LATCbits.LATC6 = 1;
-"346
-[e = . . _LATCbits 0 6 -> -> 1 `i `uc ]
-[; ;operationMode.c: 347: LATCbits.LATC7 = 0;
-"347
-[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
-[; ;operationMode.c: 348: LATCbits.LATC0 = 0;
-"348
-[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
-[; ;operationMode.c: 349: _delay((unsigned long)((2)*(40000000/4000.0)));
-"349
+[; ;operationMode.c: 838: LATDbits.LATD4 = 0;
+"838
+[e = . . _LATDbits 0 4 -> -> 0 `i `uc ]
+[; ;operationMode.c: 839: LATDbits.LATD5 = 1;
+"839
+[e = . . _LATDbits 0 5 -> -> 1 `i `uc ]
+[; ;operationMode.c: 840: LATDbits.LATD6 = 0;
+"840
+[e = . . _LATDbits 0 6 -> -> 0 `i `uc ]
+[; ;operationMode.c: 841: LATDbits.LATD7 = 0;
+"841
+[e = . . _LATDbits 0 7 -> -> 0 `i `uc ]
+[; ;operationMode.c: 842: _delay((unsigned long)((2)*(40000000/4000.0)));
+"842
 [e ( __delay (1 -> * -> -> 2 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;operationMode.c: 350: LATCbits.LATC5 = 0;
-"350
-[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
-[; ;operationMode.c: 351: LATCbits.LATC6 = 0;
-"351
-[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
-[; ;operationMode.c: 352: LATCbits.LATC7 = 1;
-"352
-[e = . . _LATCbits 0 7 -> -> 1 `i `uc ]
-[; ;operationMode.c: 353: LATCbits.LATC0 = 0;
-"353
-[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
-[; ;operationMode.c: 354: _delay((unsigned long)((2)*(40000000/4000.0)));
-"354
+[; ;operationMode.c: 843: LATDbits.LATD4 = 1;
+"843
+[e = . . _LATDbits 0 4 -> -> 1 `i `uc ]
+[; ;operationMode.c: 844: LATDbits.LATD5 = 0;
+"844
+[e = . . _LATDbits 0 5 -> -> 0 `i `uc ]
+[; ;operationMode.c: 845: LATDbits.LATD6 = 0;
+"845
+[e = . . _LATDbits 0 6 -> -> 0 `i `uc ]
+[; ;operationMode.c: 846: LATDbits.LATD7 = 0;
+"846
+[e = . . _LATDbits 0 7 -> -> 0 `i `uc ]
+[; ;operationMode.c: 847: _delay((unsigned long)((2)*(40000000/4000.0)));
+"847
 [e ( __delay (1 -> * -> -> 2 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;operationMode.c: 355: LATCbits.LATC5 = 0;
-"355
-[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
-[; ;operationMode.c: 356: LATCbits.LATC6 = 0;
-"356
-[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
-[; ;operationMode.c: 357: LATCbits.LATC7 = 0;
-"357
-[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
-[; ;operationMode.c: 358: LATCbits.LATC0 = 1;
-"358
-[e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
-[; ;operationMode.c: 359: _delay((unsigned long)((2)*(40000000/4000.0)));
-"359
+[; ;operationMode.c: 848: LATDbits.LATD4 = 0;
+"848
+[e = . . _LATDbits 0 4 -> -> 0 `i `uc ]
+[; ;operationMode.c: 849: LATDbits.LATD5 = 0;
+"849
+[e = . . _LATDbits 0 5 -> -> 0 `i `uc ]
+[; ;operationMode.c: 850: LATDbits.LATD6 = 0;
+"850
+[e = . . _LATDbits 0 6 -> -> 0 `i `uc ]
+[; ;operationMode.c: 851: LATDbits.LATD7 = 1;
+"851
+[e = . . _LATDbits 0 7 -> -> 1 `i `uc ]
+[; ;operationMode.c: 852: _delay((unsigned long)((2)*(40000000/4000.0)));
+"852
 [e ( __delay (1 -> * -> -> 2 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-"360
+"853
 }
-"339
+"832
 [e ++ _i -> -> 1 `i `ui ]
-[e :U 437 ]
-[e $ < _i _count 434  ]
-[e :U 435 ]
-"360
+[e :U 668 ]
+[e $ < _i * _count -> -> 523 `i `ui 665  ]
+[e :U 666 ]
+"853
 }
-[; ;operationMode.c: 360: }
-[; ;operationMode.c: 362: return 1;
-"362
-[e ) -> -> 1 `i `ui ]
-[e $UE 433  ]
-[; ;operationMode.c: 363: }
-"363
-[e :UE 433 ]
+[; ;operationMode.c: 853: }
+[; ;operationMode.c: 855: LATDbits.LATD4 = 0;
+"855
+[e = . . _LATDbits 0 4 -> -> 0 `i `uc ]
+[; ;operationMode.c: 856: LATDbits.LATD5 = 0;
+"856
+[e = . . _LATDbits 0 5 -> -> 0 `i `uc ]
+[; ;operationMode.c: 857: LATDbits.LATD6 = 0;
+"857
+[e = . . _LATDbits 0 6 -> -> 0 `i `uc ]
+[; ;operationMode.c: 858: LATDbits.LATD7 = 0;
+"858
+[e = . . _LATDbits 0 7 -> -> 0 `i `uc ]
+[; ;operationMode.c: 859: }
+"859
+[e :UE 664 ]
 }
-"366
-[v _distributeFlat `(ui ~T0 @X0 1 ef1`ui ]
+"862
+[v _distributeFlat `(v ~T0 @X0 1 ef1`ui ]
 {
-[; ;operationMode.c: 366: unsigned int distributeFlat(unsigned int count){
+[; ;operationMode.c: 862: void distributeFlat(unsigned int count){
 [e :U _distributeFlat ]
 [v _count `ui ~T0 @X0 1 r1 ]
 [f ]
-"370
+"866
 [v _i `ui ~T0 @X0 1 a ]
-[; ;operationMode.c: 370: unsigned int i = 0;
+[; ;operationMode.c: 866: unsigned int i = 0;
 [e = _i -> -> 0 `i `ui ]
-[; ;operationMode.c: 372: TRISCbits.TRISC5 = 0;
-"372
-[e = . . _TRISCbits 0 5 -> -> 0 `i `uc ]
-[; ;operationMode.c: 373: TRISCbits.TRISC6 = 0;
-"373
-[e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
-[; ;operationMode.c: 374: TRISCbits.TRISC7 = 0;
-"374
-[e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
-[; ;operationMode.c: 375: TRISCbits.TRISC0 = 0;
-"375
-[e = . . _TRISCbits 0 0 -> -> 0 `i `uc ]
-[; ;operationMode.c: 376: LATCbits.LATC5 = 0;
-"376
-[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
-[; ;operationMode.c: 377: LATCbits.LATC6 = 0;
-"377
-[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
-[; ;operationMode.c: 378: LATCbits.LATC7 = 0;
-"378
-[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
-[; ;operationMode.c: 379: LATCbits.LATC0 = 0;
-"379
-[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
-[; ;operationMode.c: 381: for (i=0; i<count; i++){
-"381
+[; ;operationMode.c: 868: for (i=0; i<count*523; i++){
+"868
 {
 [e = _i -> -> 0 `i `ui ]
-[e $U 442  ]
-[e :U 439 ]
+[e $U 673  ]
+[e :U 670 ]
 {
-[; ;operationMode.c: 382: LATCbits.LATC5 = 1;
-"382
-[e = . . _LATCbits 0 5 -> -> 1 `i `uc ]
-[; ;operationMode.c: 383: LATCbits.LATC6 = 0;
-"383
-[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
-[; ;operationMode.c: 384: LATCbits.LATC7 = 0;
-"384
-[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
-[; ;operationMode.c: 385: LATCbits.LATC0 = 0;
-"385
-[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
-[; ;operationMode.c: 386: _delay((unsigned long)((2)*(40000000/4000.0)));
-"386
+[; ;operationMode.c: 869: LATDbits.LATD0 = 1;
+"869
+[e = . . _LATDbits 0 0 -> -> 1 `i `uc ]
+[; ;operationMode.c: 870: LATDbits.LATD1 = 0;
+"870
+[e = . . _LATDbits 0 1 -> -> 0 `i `uc ]
+[; ;operationMode.c: 871: LATDbits.LATD2 = 0;
+"871
+[e = . . _LATDbits 0 2 -> -> 0 `i `uc ]
+[; ;operationMode.c: 872: LATDbits.LATD3 = 0;
+"872
+[e = . . _LATDbits 0 3 -> -> 0 `i `uc ]
+[; ;operationMode.c: 873: _delay((unsigned long)((2)*(40000000/4000.0)));
+"873
 [e ( __delay (1 -> * -> -> 2 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;operationMode.c: 387: LATCbits.LATC5 = 0;
-"387
-[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
-[; ;operationMode.c: 388: LATCbits.LATC6 = 1;
-"388
-[e = . . _LATCbits 0 6 -> -> 1 `i `uc ]
-[; ;operationMode.c: 389: LATCbits.LATC7 = 0;
-"389
-[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
-[; ;operationMode.c: 390: LATCbits.LATC0 = 0;
-"390
-[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
-[; ;operationMode.c: 391: _delay((unsigned long)((2)*(40000000/4000.0)));
-"391
+[; ;operationMode.c: 874: LATDbits.LATD0 = 0;
+"874
+[e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
+[; ;operationMode.c: 875: LATDbits.LATD1 = 1;
+"875
+[e = . . _LATDbits 0 1 -> -> 1 `i `uc ]
+[; ;operationMode.c: 876: LATDbits.LATD2 = 0;
+"876
+[e = . . _LATDbits 0 2 -> -> 0 `i `uc ]
+[; ;operationMode.c: 877: LATDbits.LATD3 = 0;
+"877
+[e = . . _LATDbits 0 3 -> -> 0 `i `uc ]
+[; ;operationMode.c: 878: _delay((unsigned long)((2)*(40000000/4000.0)));
+"878
 [e ( __delay (1 -> * -> -> 2 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;operationMode.c: 392: LATCbits.LATC5 = 0;
-"392
-[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
-[; ;operationMode.c: 393: LATCbits.LATC6 = 0;
-"393
-[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
-[; ;operationMode.c: 394: LATCbits.LATC7 = 1;
-"394
-[e = . . _LATCbits 0 7 -> -> 1 `i `uc ]
-[; ;operationMode.c: 395: LATCbits.LATC0 = 0;
-"395
-[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
-[; ;operationMode.c: 396: _delay((unsigned long)((2)*(40000000/4000.0)));
-"396
+[; ;operationMode.c: 879: LATDbits.LATD0 = 0;
+"879
+[e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
+[; ;operationMode.c: 880: LATDbits.LATD1 = 0;
+"880
+[e = . . _LATDbits 0 1 -> -> 0 `i `uc ]
+[; ;operationMode.c: 881: LATDbits.LATD2 = 1;
+"881
+[e = . . _LATDbits 0 2 -> -> 1 `i `uc ]
+[; ;operationMode.c: 882: LATDbits.LATD3 = 0;
+"882
+[e = . . _LATDbits 0 3 -> -> 0 `i `uc ]
+[; ;operationMode.c: 883: _delay((unsigned long)((2)*(40000000/4000.0)));
+"883
 [e ( __delay (1 -> * -> -> 2 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;operationMode.c: 397: LATCbits.LATC5 = 0;
-"397
-[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
-[; ;operationMode.c: 398: LATCbits.LATC6 = 0;
-"398
-[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
-[; ;operationMode.c: 399: LATCbits.LATC7 = 0;
-"399
-[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
-[; ;operationMode.c: 400: LATCbits.LATC0 = 1;
-"400
-[e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
-[; ;operationMode.c: 401: _delay((unsigned long)((2)*(40000000/4000.0)));
-"401
+[; ;operationMode.c: 884: LATDbits.LATD0 = 0;
+"884
+[e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
+[; ;operationMode.c: 885: LATDbits.LATD1 = 0;
+"885
+[e = . . _LATDbits 0 1 -> -> 0 `i `uc ]
+[; ;operationMode.c: 886: LATDbits.LATD2 = 0;
+"886
+[e = . . _LATDbits 0 2 -> -> 0 `i `uc ]
+[; ;operationMode.c: 887: LATDbits.LATD3 = 1;
+"887
+[e = . . _LATDbits 0 3 -> -> 1 `i `uc ]
+[; ;operationMode.c: 888: _delay((unsigned long)((2)*(40000000/4000.0)));
+"888
 [e ( __delay (1 -> * -> -> 2 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-"402
+"889
 }
-"381
+"868
 [e ++ _i -> -> 1 `i `ui ]
-[e :U 442 ]
-[e $ < _i _count 439  ]
-[e :U 440 ]
-"402
+[e :U 673 ]
+[e $ < _i * _count -> -> 523 `i `ui 670  ]
+[e :U 671 ]
+"889
 }
-[; ;operationMode.c: 402: }
-[; ;operationMode.c: 403: return 1;
-"403
-[e ) -> -> 1 `i `ui ]
-[e $UE 438  ]
-[; ;operationMode.c: 404: }
-"404
-[e :UE 438 ]
+[; ;operationMode.c: 889: }
+[; ;operationMode.c: 891: LATDbits.LATD0 = 0;
+"891
+[e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
+[; ;operationMode.c: 892: LATDbits.LATD1 = 0;
+"892
+[e = . . _LATDbits 0 1 -> -> 0 `i `uc ]
+[; ;operationMode.c: 893: LATDbits.LATD2 = 0;
+"893
+[e = . . _LATDbits 0 2 -> -> 0 `i `uc ]
+[; ;operationMode.c: 894: LATDbits.LATD3 = 0;
+"894
+[e = . . _LATDbits 0 3 -> -> 0 `i `uc ]
+[; ;operationMode.c: 895: }
+"895
+[e :UE 669 ]
 }
-"407
-[v _distributeLong `(ui ~T0 @X0 1 ef1`ui ]
+"898
+[v _distributeLong `(v ~T0 @X0 1 ef1`ui ]
 {
-[; ;operationMode.c: 407: unsigned int distributeLong(unsigned int count){
+[; ;operationMode.c: 898: void distributeLong(unsigned int count){
 [e :U _distributeLong ]
 [v _count `ui ~T0 @X0 1 r1 ]
 [f ]
-"411
+"902
 [v _i `ui ~T0 @X0 1 a ]
-[; ;operationMode.c: 411: unsigned int i = 0;
+[; ;operationMode.c: 902: unsigned int i = 0;
 [e = _i -> -> 0 `i `ui ]
-[; ;operationMode.c: 413: TRISCbits.TRISC5 = 0;
-"413
-[e = . . _TRISCbits 0 5 -> -> 0 `i `uc ]
-[; ;operationMode.c: 414: TRISCbits.TRISC6 = 0;
-"414
-[e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
-[; ;operationMode.c: 415: TRISCbits.TRISC7 = 0;
-"415
-[e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
-[; ;operationMode.c: 416: TRISCbits.TRISC0 = 0;
-"416
-[e = . . _TRISCbits 0 0 -> -> 0 `i `uc ]
-[; ;operationMode.c: 417: LATCbits.LATC5 = 0;
-"417
-[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
-[; ;operationMode.c: 418: LATCbits.LATC6 = 0;
-"418
-[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
-[; ;operationMode.c: 419: LATCbits.LATC7 = 0;
-"419
-[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
-[; ;operationMode.c: 420: LATCbits.LATC0 = 0;
-"420
-[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
-[; ;operationMode.c: 422: for (i=0; i<count; i++){
-"422
+[; ;operationMode.c: 904: for (i=0; i<count*523; i++){
+"904
 {
 [e = _i -> -> 0 `i `ui ]
-[e $U 447  ]
-[e :U 444 ]
+[e $U 678  ]
+[e :U 675 ]
 {
-[; ;operationMode.c: 423: LATCbits.LATC5 = 1;
-"423
-[e = . . _LATCbits 0 5 -> -> 1 `i `uc ]
-[; ;operationMode.c: 424: LATCbits.LATC6 = 0;
-"424
-[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
-[; ;operationMode.c: 425: LATCbits.LATC7 = 0;
-"425
-[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
-[; ;operationMode.c: 426: LATCbits.LATC0 = 0;
-"426
+[; ;operationMode.c: 905: LATCbits.LATC0 = 0;
+"905
 [e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
-[; ;operationMode.c: 427: _delay((unsigned long)((2)*(40000000/4000.0)));
-"427
+[; ;operationMode.c: 906: LATCbits.LATC1 = 0;
+"906
+[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
+[; ;operationMode.c: 907: LATCbits.LATC2 = 1;
+"907
+[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
+[; ;operationMode.c: 908: LATEbits.LATE2 = 0;
+"908
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;operationMode.c: 909: _delay((unsigned long)((2)*(40000000/4000.0)));
+"909
 [e ( __delay (1 -> * -> -> 2 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;operationMode.c: 428: LATCbits.LATC5 = 0;
-"428
-[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
-[; ;operationMode.c: 429: LATCbits.LATC6 = 1;
-"429
-[e = . . _LATCbits 0 6 -> -> 1 `i `uc ]
-[; ;operationMode.c: 430: LATCbits.LATC7 = 0;
-"430
-[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
-[; ;operationMode.c: 431: LATCbits.LATC0 = 0;
-"431
+[; ;operationMode.c: 910: LATCbits.LATC0 = 0;
+"910
 [e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
-[; ;operationMode.c: 432: _delay((unsigned long)((2)*(40000000/4000.0)));
-"432
+[; ;operationMode.c: 911: LATCbits.LATC1 = 1;
+"911
+[e = . . _LATCbits 0 1 -> -> 1 `i `uc ]
+[; ;operationMode.c: 912: LATCbits.LATC2 = 0;
+"912
+[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
+[; ;operationMode.c: 913: LATEbits.LATE2 = 0;
+"913
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;operationMode.c: 914: _delay((unsigned long)((2)*(40000000/4000.0)));
+"914
 [e ( __delay (1 -> * -> -> 2 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;operationMode.c: 433: LATCbits.LATC5 = 0;
-"433
-[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
-[; ;operationMode.c: 434: LATCbits.LATC6 = 0;
-"434
-[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
-[; ;operationMode.c: 435: LATCbits.LATC7 = 1;
-"435
-[e = . . _LATCbits 0 7 -> -> 1 `i `uc ]
-[; ;operationMode.c: 436: LATCbits.LATC0 = 0;
-"436
-[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
-[; ;operationMode.c: 437: _delay((unsigned long)((2)*(40000000/4000.0)));
-"437
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;operationMode.c: 438: LATCbits.LATC5 = 0;
-"438
-[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
-[; ;operationMode.c: 439: LATCbits.LATC6 = 0;
-"439
-[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
-[; ;operationMode.c: 440: LATCbits.LATC7 = 0;
-"440
-[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
-[; ;operationMode.c: 441: LATCbits.LATC0 = 1;
-"441
+[; ;operationMode.c: 915: LATCbits.LATC0 = 1;
+"915
 [e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
-[; ;operationMode.c: 442: _delay((unsigned long)((2)*(40000000/4000.0)));
-"442
+[; ;operationMode.c: 916: LATCbits.LATC1 = 0;
+"916
+[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
+[; ;operationMode.c: 917: LATCbits.LATC2 = 0;
+"917
+[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
+[; ;operationMode.c: 918: LATEbits.LATE2 = 0;
+"918
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;operationMode.c: 919: _delay((unsigned long)((2)*(40000000/4000.0)));
+"919
 [e ( __delay (1 -> * -> -> 2 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-"443
+[; ;operationMode.c: 920: LATCbits.LATC0 = 0;
+"920
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+[; ;operationMode.c: 921: LATCbits.LATC1 = 0;
+"921
+[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
+[; ;operationMode.c: 922: LATCbits.LATC2 = 0;
+"922
+[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
+[; ;operationMode.c: 923: LATEbits.LATE2 = 1;
+"923
+[e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
+[; ;operationMode.c: 924: _delay((unsigned long)((2)*(40000000/4000.0)));
+"924
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+"925
 }
-"422
+"904
 [e ++ _i -> -> 1 `i `ui ]
-[e :U 447 ]
-[e $ < _i _count 444  ]
-[e :U 445 ]
-"443
+[e :U 678 ]
+[e $ < _i * _count -> -> 523 `i `ui 675  ]
+[e :U 676 ]
+"925
 }
-[; ;operationMode.c: 443: }
-[; ;operationMode.c: 444: return 1;
-"444
-[e ) -> -> 1 `i `ui ]
-[e $UE 443  ]
-[; ;operationMode.c: 445: }
-"445
-[e :UE 443 ]
+[; ;operationMode.c: 925: }
+[; ;operationMode.c: 927: LATCbits.LATC0 = 0;
+"927
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+[; ;operationMode.c: 928: LATCbits.LATC1 = 0;
+"928
+[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
+[; ;operationMode.c: 929: LATCbits.LATC2 = 0;
+"929
+[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
+[; ;operationMode.c: 930: LATEbits.LATE2 = 0;
+"930
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;operationMode.c: 931: }
+"931
+[e :UE 674 ]
 }
-"448
+"935
+[v _distributePieces `(v ~T0 @X0 1 ef3`ui`ui`ui ]
+{
+[; ;operationMode.c: 935: void distributePieces(unsigned int roundPieces, unsigned int flatPieces, unsigned int longPieces){
+[e :U _distributePieces ]
+[v _roundPieces `ui ~T0 @X0 1 r1 ]
+[v _flatPieces `ui ~T0 @X0 1 r2 ]
+[v _longPieces `ui ~T0 @X0 1 r3 ]
+[f ]
+[; ;operationMode.c: 936: switch(roundPieces){
+"936
+[e $U 681  ]
+{
+[; ;operationMode.c: 937: case 1:
+"937
+[e :U 682 ]
+[; ;operationMode.c: 938: distributeRound(1);
+"938
+[e ( _distributeRound (1 -> -> 1 `i `ui ]
+[; ;operationMode.c: 939: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"939
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 940: break;
+"940
+[e $U 680  ]
+[; ;operationMode.c: 941: case 2:
+"941
+[e :U 683 ]
+[; ;operationMode.c: 942: distributeRound(2);
+"942
+[e ( _distributeRound (1 -> -> 2 `i `ui ]
+[; ;operationMode.c: 943: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"943
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 944: break;
+"944
+[e $U 680  ]
+[; ;operationMode.c: 945: default:
+"945
+[e :U 684 ]
+[; ;operationMode.c: 946: break;
+"946
+[e $U 680  ]
+"947
+}
+[; ;operationMode.c: 947: }
+[e $U 680  ]
+"936
+[e :U 681 ]
+[e [\ _roundPieces , $ -> -> 1 `i `ui 682
+ , $ -> -> 2 `i `ui 683
+ 684 ]
+"947
+[e :U 680 ]
+[; ;operationMode.c: 948: switch(flatPieces){
+"948
+[e $U 686  ]
+{
+[; ;operationMode.c: 949: case 1:
+"949
+[e :U 687 ]
+[; ;operationMode.c: 950: distributeFlat(1);
+"950
+[e ( _distributeFlat (1 -> -> 1 `i `ui ]
+[; ;operationMode.c: 951: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"951
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 952: break;
+"952
+[e $U 685  ]
+[; ;operationMode.c: 953: case 2:
+"953
+[e :U 688 ]
+[; ;operationMode.c: 954: distributeFlat(2);
+"954
+[e ( _distributeFlat (1 -> -> 2 `i `ui ]
+[; ;operationMode.c: 955: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"955
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 956: break;
+"956
+[e $U 685  ]
+[; ;operationMode.c: 957: default:
+"957
+[e :U 689 ]
+[; ;operationMode.c: 958: break;
+"958
+[e $U 685  ]
+"959
+}
+[; ;operationMode.c: 959: }
+[e $U 685  ]
+"948
+[e :U 686 ]
+[e [\ _flatPieces , $ -> -> 1 `i `ui 687
+ , $ -> -> 2 `i `ui 688
+ 689 ]
+"959
+[e :U 685 ]
+[; ;operationMode.c: 960: switch(longPieces){
+"960
+[e $U 691  ]
+{
+[; ;operationMode.c: 961: case 1:
+"961
+[e :U 692 ]
+[; ;operationMode.c: 962: distributeLong(1);
+"962
+[e ( _distributeLong (1 -> -> 1 `i `ui ]
+[; ;operationMode.c: 963: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"963
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 964: break;
+"964
+[e $U 690  ]
+[; ;operationMode.c: 965: case 2:
+"965
+[e :U 693 ]
+[; ;operationMode.c: 966: distributeLong(2);
+"966
+[e ( _distributeLong (1 -> -> 2 `i `ui ]
+[; ;operationMode.c: 967: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"967
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 968: break;
+"968
+[e $U 690  ]
+[; ;operationMode.c: 969: case 3:
+"969
+[e :U 694 ]
+[; ;operationMode.c: 970: distributeLong(3);
+"970
+[e ( _distributeLong (1 -> -> 3 `i `ui ]
+[; ;operationMode.c: 971: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"971
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 972: break;
+"972
+[e $U 690  ]
+[; ;operationMode.c: 973: default:
+"973
+[e :U 695 ]
+[; ;operationMode.c: 974: break;
+"974
+[e $U 690  ]
+"975
+}
+[; ;operationMode.c: 975: }
+[e $U 690  ]
+"960
+[e :U 691 ]
+[e [\ _longPieces , $ -> -> 1 `i `ui 692
+ , $ -> -> 2 `i `ui 693
+ , $ -> -> 3 `i `ui 694
+ 695 ]
+"975
+[e :U 690 ]
+[; ;operationMode.c: 976: }
+"976
+[e :UE 679 ]
+}
+"980
 [v _checkCount `(ui ~T0 @X0 1 ef1`ui ]
 {
-[; ;operationMode.c: 448: unsigned int checkCount(unsigned int pieceType){
+[; ;operationMode.c: 980: unsigned int checkCount(unsigned int pieceType){
 [e :U _checkCount ]
 [v _pieceType `ui ~T0 @X0 1 r1 ]
 [f ]
-[; ;operationMode.c: 450: return 1;
-"450
+[; ;operationMode.c: 982: return 1;
+"982
 [e ) -> -> 1 `i `ui ]
-[e $UE 448  ]
-[; ;operationMode.c: 451: }
-"451
-[e :UE 448 ]
+[e $UE 696  ]
+[; ;operationMode.c: 983: }
+"983
+[e :UE 696 ]
 }
-"454
-[v _trapDoor `(ui ~T0 @X0 1 ef1`ui ]
+"987
+[v _trapDoor `(v ~T0 @X0 1 ef1`ui ]
 {
-[; ;operationMode.c: 454: unsigned int trapDoor(unsigned int direction){
+[; ;operationMode.c: 987: void trapDoor(unsigned int direction){
 [e :U _trapDoor ]
 [v _direction `ui ~T0 @X0 1 r1 ]
 [f ]
-[; ;operationMode.c: 459: TRISCbits.TRISC5 = 0;
-"459
-[e = . . _TRISCbits 0 5 -> -> 0 `i `uc ]
-[; ;operationMode.c: 460: TRISCbits.TRISC6 = 0;
-"460
-[e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
-[; ;operationMode.c: 461: TRISCbits.TRISC7 = 0;
-"461
-[e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
-[; ;operationMode.c: 463: LATCbits.LATC5 = 1;
-"463
-[e = . . _LATCbits 0 5 -> -> 1 `i `uc ]
-[; ;operationMode.c: 464: LATCbits.LATC6 = 1;
-"464
-[e = . . _LATCbits 0 6 -> -> 1 `i `uc ]
-[; ;operationMode.c: 465: LATCbits.LATC7 = 1;
-"465
-[e = . . _LATCbits 0 7 -> -> 1 `i `uc ]
-[; ;operationMode.c: 467: if (direction == 1){
-"467
-[e $ ! == _direction -> -> 1 `i `ui 450  ]
+"992
+[v _i `ui ~T0 @X0 1 a ]
+[; ;operationMode.c: 992: unsigned int i = 0;
+[e = _i -> -> 0 `i `ui ]
+[; ;operationMode.c: 995: if (direction == 1){
+"995
+[e $ ! == _direction -> -> 1 `i `ui 698  ]
 {
-[; ;operationMode.c: 468: LATCbits.LATC5 = 1;
-"468
-[e = . . _LATCbits 0 5 -> -> 1 `i `uc ]
-[; ;operationMode.c: 469: LATCbits.LATC6 = 0;
-"469
-[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
-[; ;operationMode.c: 470: _delay((unsigned long)((1000)*(40000000/4000.0)));
-"470
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;operationMode.c: 471: LATCbits.LATC5 = 1;
-"471
-[e = . . _LATCbits 0 5 -> -> 1 `i `uc ]
-[; ;operationMode.c: 472: LATCbits.LATC6 = 1;
-"472
-[e = . . _LATCbits 0 6 -> -> 1 `i `uc ]
-[; ;operationMode.c: 473: _delay((unsigned long)((1)*(40000000/4000.0)));
-"473
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;operationMode.c: 474: LATCbits.LATC5 = 0;
-"474
-[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
-[; ;operationMode.c: 475: LATCbits.LATC6 = 0;
-"475
-[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
-"476
+[; ;operationMode.c: 996: LATAbits.LATA4 = 1;
+"996
+[e = . . _LATAbits 0 4 -> -> 1 `i `uc ]
+[; ;operationMode.c: 997: LATAbits.LATA5 = 0;
+"997
+[e = . . _LATAbits 0 5 -> -> 0 `i `uc ]
+[; ;operationMode.c: 998: LATEbits.LATE1 = 1;
+"998
+[e = . . _LATEbits 0 1 -> -> 1 `i `uc ]
+[; ;operationMode.c: 999: _delay((unsigned long)((500)*(40000000/4000.0)));
+"999
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+"1000
 }
-[; ;operationMode.c: 476: }
-[e $U 451  ]
-"477
-[e :U 450 ]
-[; ;operationMode.c: 477: else if (direction == 0){
-[e $ ! == _direction -> -> 0 `i `ui 452  ]
+[; ;operationMode.c: 1000: }
+[e $U 699  ]
+"1003
+[e :U 698 ]
+[; ;operationMode.c: 1003: else if (direction == 1){
+[e $ ! == _direction -> -> 1 `i `ui 700  ]
 {
-[; ;operationMode.c: 478: LATCbits.LATC5 = 0;
-"478
-[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
-[; ;operationMode.c: 479: LATCbits.LATC6 = 1;
-"479
-[e = . . _LATCbits 0 6 -> -> 1 `i `uc ]
-[; ;operationMode.c: 480: _delay((unsigned long)((1000)*(40000000/4000.0)));
-"480
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;operationMode.c: 481: LATCbits.LATC5 = 1;
-"481
-[e = . . _LATCbits 0 5 -> -> 1 `i `uc ]
-[; ;operationMode.c: 482: LATCbits.LATC6 = 1;
-"482
-[e = . . _LATCbits 0 6 -> -> 1 `i `uc ]
-[; ;operationMode.c: 483: _delay((unsigned long)((1)*(40000000/4000.0)));
-"483
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;operationMode.c: 484: LATCbits.LATC5 = 0;
-"484
-[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
-[; ;operationMode.c: 485: LATCbits.LATC6 = 0;
-"485
-[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
-"486
+[; ;operationMode.c: 1004: LATAbits.LATA4 = 0;
+"1004
+[e = . . _LATAbits 0 4 -> -> 0 `i `uc ]
+[; ;operationMode.c: 1005: LATAbits.LATA5 = 1;
+"1005
+[e = . . _LATAbits 0 5 -> -> 1 `i `uc ]
+[; ;operationMode.c: 1006: LATEbits.LATE1 = 1;
+"1006
+[e = . . _LATEbits 0 1 -> -> 1 `i `uc ]
+[; ;operationMode.c: 1007: _delay((unsigned long)((500)*(40000000/4000.0)));
+"1007
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+"1008
 }
-[e :U 452 ]
-"488
-[e :U 451 ]
-[; ;operationMode.c: 486: }
-[; ;operationMode.c: 488: return 1;
-[e ) -> -> 1 `i `ui ]
-[e $UE 449  ]
-[; ;operationMode.c: 489: }
-"489
-[e :UE 449 ]
+[e :U 700 ]
+"1010
+[e :U 699 ]
+[; ;operationMode.c: 1008: }
+[; ;operationMode.c: 1010: LATAbits.LATA4 = 0;
+[e = . . _LATAbits 0 4 -> -> 0 `i `uc ]
+[; ;operationMode.c: 1011: LATAbits.LATA5 = 0;
+"1011
+[e = . . _LATAbits 0 5 -> -> 0 `i `uc ]
+[; ;operationMode.c: 1012: LATEbits.LATE1 = 0;
+"1012
+[e = . . _LATEbits 0 1 -> -> 0 `i `uc ]
+[; ;operationMode.c: 1013: }
+"1013
+[e :UE 697 ]
 }
-"492
+"1016
 [v _mainOperation `(v ~T0 @X0 1 ef ]
 {
-[; ;operationMode.c: 492: void mainOperation(void){
+[; ;operationMode.c: 1016: void mainOperation(void){
 [e :U _mainOperation ]
 [f ]
-"493
+"1017
 [v _i `ui ~T0 @X0 1 a ]
-[; ;operationMode.c: 493: unsigned int i = 0;
+[; ;operationMode.c: 1017: unsigned int i = 0;
 [e = _i -> -> 0 `i `ui ]
-"494
+"1018
 [v _currentDrawer `ui ~T0 @X0 1 a ]
-[; ;operationMode.c: 494: unsigned int currentDrawer = 0;
+[; ;operationMode.c: 1018: unsigned int currentDrawer = 0;
 [e = _currentDrawer -> -> 0 `i `ui ]
-"495
+"1019
 [v _temp `ui ~T0 @X0 1 a ]
-[; ;operationMode.c: 495: unsigned int temp = 0;
+[; ;operationMode.c: 1019: unsigned int temp = 0;
 [e = _temp -> -> 0 `i `ui ]
-"496
+"1020
 [v _nextDrawer `ui ~T0 @X0 1 a ]
-[; ;operationMode.c: 496: unsigned int nextDrawer = 0;
+[; ;operationMode.c: 1020: unsigned int nextDrawer = 0;
 [e = _nextDrawer -> -> 0 `i `ui ]
-[v F3127 `ui ~T0 @X0 -> 8 `i s ]
-[i F3127
+"1021
+[v _trueValue `ui ~T0 @X0 1 a ]
+[; ;operationMode.c: 1021: unsigned int trueValue = 0;
+[e = _trueValue -> -> 0 `i `ui ]
+"1022
+[v _roundPieces `ui ~T0 @X0 1 a ]
+[; ;operationMode.c: 1022: unsigned int roundPieces = 0;
+[e = _roundPieces -> -> 0 `i `ui ]
+"1023
+[v _flatPieces `ui ~T0 @X0 1 a ]
+[; ;operationMode.c: 1023: unsigned int flatPieces = 0;
+[e = _flatPieces -> -> 0 `i `ui ]
+"1024
+[v _longPieces `ui ~T0 @X0 1 a ]
+[; ;operationMode.c: 1024: unsigned int longPieces = 0;
+[e = _longPieces -> -> 0 `i `ui ]
+[v F3176 `ui ~T0 @X0 -> 8 `i s ]
+[i F3176
 :U ..
-"498
+"1026
 -> -> 0 `i `ui
 -> -> 0 `i `ui
 -> -> 0 `i `ui
@@ -4698,12 +6672,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [v _drawerTable `ui ~T0 @X0 -> 8 `i a ]
-[; ;operationMode.c: 498: unsigned int drawerTable[8] = {0,0,0,0,0,0,0,0};
-[e = _drawerTable F3127 ]
-[v F3129 `ui ~T0 @X0 -> 8 `i s ]
-[i F3129
+[; ;operationMode.c: 1026: unsigned int drawerTable[8] = {0,0,0,0,0,0,0,0};
+[e = _drawerTable F3176 ]
+[v F3178 `ui ~T0 @X0 -> 8 `i s ]
+[i F3178
 :U ..
-"499
+"1027
 -> -> 0 `i `ui
 -> -> 0 `i `ui
 -> -> 0 `i `ui
@@ -4715,12 +6689,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [v _sortedDrawerTable `ui ~T0 @X0 -> 8 `i a ]
-[; ;operationMode.c: 499: unsigned int sortedDrawerTable[8] = {0,0,0,0,0,0,0,0};
-[e = _sortedDrawerTable F3129 ]
-[v F3131 `ui ~T0 @X0 -> 8 `i s ]
-[i F3131
+[; ;operationMode.c: 1027: unsigned int sortedDrawerTable[8] = {0,0,0,0,0,0,0,0};
+[e = _sortedDrawerTable F3178 ]
+[v F3180 `ui ~T0 @X0 -> 8 `i s ]
+[i F3180
 :U ..
-"500
+"1028
 -> -> 0 `i `ui
 -> -> 0 `i `ui
 -> -> 0 `i `ui
@@ -4732,12 +6706,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [v _dietTable `ui ~T0 @X0 -> 8 `i a ]
-[; ;operationMode.c: 500: unsigned int dietTable[8] = {0,0,0,0,0,0,0,0};
-[e = _dietTable F3131 ]
-[v F3133 `ui ~T0 @X0 -> 8 `i s ]
-[i F3133
+[; ;operationMode.c: 1028: unsigned int dietTable[8] = {0,0,0,0,0,0,0,0};
+[e = _dietTable F3180 ]
+[v F3182 `ui ~T0 @X0 -> 8 `i s ]
+[i F3182
 :U ..
-"501
+"1029
 -> -> 0 `i `ui
 -> -> 0 `i `ui
 -> -> 0 `i `ui
@@ -4749,68 +6723,277 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [v _foodTable `ui ~T0 @X0 -> 8 `i a ]
-[; ;operationMode.c: 501: unsigned int foodTable[8] = {0,0,0,0,0,0,0,0};
-[e = _foodTable F3133 ]
-[; ;operationMode.c: 504: currentDrawer = 1;
-"504
+[; ;operationMode.c: 1029: unsigned int foodTable[8] = {0,0,0,0,0,0,0,0};
+[e = _foodTable F3182 ]
+[; ;operationMode.c: 1032: currentDrawer = 1;
+"1032
 [e = _currentDrawer -> -> 1 `i `ui ]
-[; ;operationMode.c: 506: getUserInputs(drawerTable, dietTable, foodTable);
-"506
+[; ;operationMode.c: 1034: getUserInputs(drawerTable, dietTable, foodTable);
+"1034
 [e ( _getUserInputs (3 , , &U _drawerTable &U _dietTable &U _foodTable ]
-[; ;operationMode.c: 507: sortDrawerList(drawerTable, sortedDrawerTable);
-"507
+[; ;operationMode.c: 1035: sortDrawerList(drawerTable, sortedDrawerTable);
+"1035
 [e ( _sortDrawerList (2 , &U _drawerTable &U _sortedDrawerTable ]
-[; ;operationMode.c: 509: for (i=0; i<8; i++){
-"509
+[; ;operationMode.c: 1037: for (i=0; i<8; i++){
+"1037
 {
 [e = _i -> -> 0 `i `ui ]
-[e $ < _i -> -> 8 `i `ui 454  ]
-[e $U 455  ]
-[e :U 454 ]
+[e $ < _i -> -> 8 `i `ui 702  ]
+[e $U 703  ]
+[e :U 702 ]
 {
-[; ;operationMode.c: 510: if (sortedDrawerTable[i] != 0){
-"510
-[e $ ! != *U + &U _sortedDrawerTable * -> _i `ux -> -> # *U &U _sortedDrawerTable `ui `ux -> -> 0 `i `ui 457  ]
+[; ;operationMode.c: 1038: if (sortedDrawerTable[i] != 0){
+"1038
+[e $ ! != *U + &U _sortedDrawerTable * -> _i `ux -> -> # *U &U _sortedDrawerTable `ui `ux -> -> 0 `i `ui 705  ]
 {
-[; ;operationMode.c: 511: currentDrawer = sortedDrawerTable[i];
-"511
+[; ;operationMode.c: 1039: currentDrawer = sortedDrawerTable[i];
+"1039
 [e = _currentDrawer *U + &U _sortedDrawerTable * -> _i `ux -> -> # *U &U _sortedDrawerTable `ui `ux ]
-[; ;operationMode.c: 512: nextDrawer = sortedDrawerTable[i+1];
-"512
+[; ;operationMode.c: 1040: nextDrawer = sortedDrawerTable[i+1];
+"1040
 [e = _nextDrawer *U + &U _sortedDrawerTable * -> + _i -> -> 1 `i `ui `ux -> -> # *U &U _sortedDrawerTable `ui `ux ]
-[; ;operationMode.c: 513: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"513
+[; ;operationMode.c: 1042: if (currentDrawer != 1 && i == 0){
+"1042
+[e $ ! && != _currentDrawer -> -> 1 `i `ui == _i -> -> 0 `i `ui 706  ]
+{
+[; ;operationMode.c: 1043: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"1043
 [e ( _lcdInst (1 -> -> 1 `i `uc ]
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;operationMode.c: 514: printf("Moving to");
-"514
-[e ( _printf :s 1C ]
-[; ;operationMode.c: 515: lcdInst(0xC0);;
-"515
+[; ;operationMode.c: 1044: printf("Moving to");
+"1044
+[e ( _printf :s 32C ]
+[; ;operationMode.c: 1045: lcdInst(0xC0);;
+"1045
 [e ( _lcdInst (1 -> -> 192 `i `uc ]
-[; ;operationMode.c: 516: printf("drawer %i", sortedDrawerTable[i]);
-"516
-[e ( _printf , (. :s 2C *U + &U _sortedDrawerTable * -> _i `ux -> -> # *U &U _sortedDrawerTable `ui `ux ]
-[; ;operationMode.c: 517: _delay((unsigned long)((1000)*(40000000/4000.0)));
-"517
+[; ;operationMode.c: 1046: printf("drawer %i", sortedDrawerTable[i]);
+"1046
+[e ( _printf , (. :s 33C *U + &U _sortedDrawerTable * -> _i `ux -> -> # *U &U _sortedDrawerTable `ui `ux ]
+[; ;operationMode.c: 1047: temp = moveVertically(currentDrawer, nextDrawer);
+"1047
+[e = _temp ( _moveVertically (2 , _currentDrawer _nextDrawer ]
+[; ;operationMode.c: 1048: currentDrawer = temp;
+"1048
+[e = _currentDrawer _temp ]
+[; ;operationMode.c: 1049: moveHorizontally(currentDrawer, nextDrawer);
+"1049
+[e ( _moveHorizontally (2 , _currentDrawer _nextDrawer ]
+[; ;operationMode.c: 1050: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"1050
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+"1051
+}
+[e :U 706 ]
+[; ;operationMode.c: 1051: }
+[; ;operationMode.c: 1053: uartTransmitBlocking(drawerDown, 1);
+"1053
+[e ( _uartTransmitBlocking (2 , &U _drawerDown -> -> 1 `i `uc ]
+[; ;operationMode.c: 1054: _delay((unsigned long)((1000)*(40000000/4000.0)));
+"1054
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-"522
+[; ;operationMode.c: 1055: configDrawer(0);
+"1055
+[e ( _configDrawer (1 -> -> 0 `i `ui ]
+[; ;operationMode.c: 1056: _delay((unsigned long)((1000)*(40000000/4000.0)));
+"1056
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 1057: uartTransmitBlocking(drawerUp, 1);
+"1057
+[e ( _uartTransmitBlocking (2 , &U _drawerUp -> -> 1 `i `uc ]
+[; ;operationMode.c: 1058: _delay((unsigned long)((1000)*(40000000/4000.0)));
+"1058
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 1059: configDrawer(1);
+"1059
+[e ( _configDrawer (1 -> -> 1 `i `ui ]
+[; ;operationMode.c: 1060: _delay((unsigned long)((1000)*(40000000/4000.0)));
+"1060
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 1062: trueValue = findDrawerIndex(drawerTable, sortedDrawerTable[i]);
+"1062
+[e = _trueValue ( _findDrawerIndex (2 , &U _drawerTable *U + &U _sortedDrawerTable * -> _i `ux -> -> # *U &U _sortedDrawerTable `ui `ux ]
+[; ;operationMode.c: 1063: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"1063
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 1064: printf("Diet: %s", inputs[dietTable[trueValue]]);
+"1064
+[e ( _printf , (. :s 34C *U + &U _inputs * -> *U + &U _dietTable * -> _trueValue `ux -> -> # *U &U _dietTable `ui `ux `ux -> -> # *U &U _inputs `ui `ux ]
+[; ;operationMode.c: 1065: lcdInst(0xC0);;
+"1065
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;operationMode.c: 1066: printf("Food: %s", foodInputs[foodTable[trueValue]]);
+"1066
+[e ( _printf , (. :s 35C *U + &U _foodInputs * -> *U + &U _foodTable * -> _trueValue `ux -> -> # *U &U _foodTable `ui `ux `ux -> -> # *U &U _foodInputs `ui `ux ]
+[; ;operationMode.c: 1067: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"1067
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 1068: roundPieces = getRoundPieces(dietTable[trueValue], foodTable[trueValue]);
+"1068
+[e = _roundPieces ( _getRoundPieces (2 , *U + &U _dietTable * -> _trueValue `ux -> -> # *U &U _dietTable `ui `ux *U + &U _foodTable * -> _trueValue `ux -> -> # *U &U _foodTable `ui `ux ]
+[; ;operationMode.c: 1069: flatPieces = getFlatPieces(dietTable[trueValue], foodTable[trueValue]);
+"1069
+[e = _flatPieces ( _getFlatPieces (2 , *U + &U _dietTable * -> _trueValue `ux -> -> # *U &U _dietTable `ui `ux *U + &U _foodTable * -> _trueValue `ux -> -> # *U &U _foodTable `ui `ux ]
+[; ;operationMode.c: 1070: longPieces = getLongPieces(dietTable[trueValue], foodTable[trueValue]);
+"1070
+[e = _longPieces ( _getLongPieces (2 , *U + &U _dietTable * -> _trueValue `ux -> -> # *U &U _dietTable `ui `ux *U + &U _foodTable * -> _trueValue `ux -> -> # *U &U _foodTable `ui `ux ]
+[; ;operationMode.c: 1071: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"1071
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 1072: printf("R:%i F:%i L:%i", roundPieces, flatPieces, longPieces);
+"1072
+[e ( _printf , , , (. :s 36C _roundPieces _flatPieces _longPieces ]
+[; ;operationMode.c: 1073: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"1073
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 1074: distributePieces(roundPieces, flatPieces, longPieces);
+"1074
+[e ( _distributePieces (3 , , _roundPieces _flatPieces _longPieces ]
+[; ;operationMode.c: 1075: _delay((unsigned long)((5000)*(40000000/4000.0)));
+"1075
+[e ( __delay (1 -> * -> -> 5000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 1077: configDrawer(0);
+"1077
+[e ( _configDrawer (1 -> -> 0 `i `ui ]
+[; ;operationMode.c: 1078: _delay((unsigned long)((1000)*(40000000/4000.0)));
+"1078
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 1079: uartTransmitBlocking(drawerDown, 1);
+"1079
+[e ( _uartTransmitBlocking (2 , &U _drawerDown -> -> 1 `i `uc ]
+[; ;operationMode.c: 1080: _delay((unsigned long)((1000)*(40000000/4000.0)));
+"1080
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 1081: configDrawer(1);
+"1081
+[e ( _configDrawer (1 -> -> 1 `i `ui ]
+[; ;operationMode.c: 1082: _delay((unsigned long)((1000)*(40000000/4000.0)));
+"1082
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 1084: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"1084
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 1085: printf("Moving to");
+"1085
+[e ( _printf :s 37C ]
+[; ;operationMode.c: 1086: lcdInst(0xC0);;
+"1086
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;operationMode.c: 1087: printf("drawer %i", sortedDrawerTable[i+1]);
+"1087
+[e ( _printf , (. :s 38C *U + &U _sortedDrawerTable * -> + _i -> -> 1 `i `ui `ux -> -> # *U &U _sortedDrawerTable `ui `ux ]
+[; ;operationMode.c: 1088: temp = moveVertically(currentDrawer, nextDrawer);
+"1088
+[e = _temp ( _moveVertically (2 , _currentDrawer _nextDrawer ]
+[; ;operationMode.c: 1089: currentDrawer = temp;
+"1089
+[e = _currentDrawer _temp ]
+[; ;operationMode.c: 1090: moveHorizontally(currentDrawer, nextDrawer);
+"1090
+[e ( _moveHorizontally (2 , _currentDrawer _nextDrawer ]
+[; ;operationMode.c: 1091: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"1091
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+"1092
 }
-[e :U 457 ]
-"523
+[e :U 705 ]
+"1093
 }
-"509
+"1037
 [e ++ _i -> -> 1 `i `ui ]
-[e $ < _i -> -> 8 `i `ui 454  ]
-[e :U 455 ]
-"523
+[e $ < _i -> -> 8 `i `ui 702  ]
+[e :U 703 ]
+"1093
 }
-[; ;operationMode.c: 522: }
-[; ;operationMode.c: 523: }
-[; ;operationMode.c: 548: }
-"548
-[e :UE 453 ]
+[; ;operationMode.c: 1092: }
+[; ;operationMode.c: 1093: }
+[; ;operationMode.c: 1094: initArm(currentDrawer);
+"1094
+[e ( _initArm (1 _currentDrawer ]
+[; ;operationMode.c: 1095: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"1095
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 1096: printf("Initializing");
+"1096
+[e ( _printf :s 39C ]
+[; ;operationMode.c: 1097: lcdInst(0xC0);;
+"1097
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;operationMode.c: 1098: printf("Arm");
+"1098
+[e ( _printf :s 40C ]
+[; ;operationMode.c: 1099: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"1099
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 1102: trapDoor(1);
+"1102
+[e ( _trapDoor (1 -> -> 1 `i `ui ]
+[; ;operationMode.c: 1103: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"1103
+[e ( _lcdInst (1 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 1104: printf("Distributing to");
+"1104
+[e ( _printf :s 41C ]
+[; ;operationMode.c: 1105: lcdInst(0xC0);;
+"1105
+[e ( _lcdInst (1 -> -> 192 `i `uc ]
+[; ;operationMode.c: 1106: printf("reservoir.");
+"1106
+[e ( _printf :s 42C ]
+[; ;operationMode.c: 1107: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"1107
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
+[; ;operationMode.c: 1108: trapDoor(0);
+"1108
+[e ( _trapDoor (1 -> -> 0 `i `ui ]
+[; ;operationMode.c: 1133: }
+"1133
+[e :UE 701 ]
 }
-[p f _printf 8388736 ]
-[a 1C 77 111 118 105 110 103 32 116 111 0 ]
-[a 2C 100 114 97 119 101 114 32 37 105 0 ]
+[p f _printf 8650880 ]
+[a 34C 68 105 101 116 58 32 37 115 0 ]
+[a 35C 70 111 111 100 58 32 37 115 0 ]
+[a 32C 77 111 118 105 110 103 32 116 111 0 ]
+[a 37C 77 111 118 105 110 103 32 116 111 0 ]
+[a 41C 68 105 115 116 114 105 98 117 116 105 110 103 32 116 111 0 ]
+[a 40C 65 114 109 0 ]
+[a 36C 82 58 37 105 32 70 58 37 105 32 76 58 37 105 0 ]
+[a 33C 100 114 97 119 101 114 32 37 105 0 ]
+[a 38C 100 114 97 119 101 114 32 37 105 0 ]
+[a 39C 73 110 105 116 105 97 108 105 122 105 110 103 0 ]
+[a 1C 82 0 ]
+[a 8C 82 82 76 0 ]
+[a 5C 82 76 0 ]
+[a 10C 82 76 76 0 ]
+[a 17C 82 76 76 76 0 ]
+[a 18C 70 76 76 76 0 ]
+[a 16C 82 70 76 76 0 ]
+[a 13C 70 76 76 0 ]
+[a 14C 82 82 70 76 0 ]
+[a 11C 82 70 76 0 ]
+[a 15C 82 70 70 76 0 ]
+[a 12C 70 70 76 0 ]
+[a 6C 70 76 0 ]
+[a 3C 76 0 ]
+[a 7C 82 82 70 0 ]
+[a 4C 82 70 0 ]
+[a 9C 82 70 70 0 ]
+[a 2C 70 0 ]
+[a 24C 49 51 0 ]
+[a 21C 51 0 ]
+[a 26C 50 50 0 ]
+[a 28C 49 49 50 0 ]
+[a 23C 49 50 0 ]
+[a 20C 50 0 ]
+[a 29C 49 50 49 0 ]
+[a 25C 50 49 0 ]
+[a 30C 50 49 49 0 ]
+[a 31C 49 49 49 49 0 ]
+[a 27C 49 49 49 0 ]
+[a 22C 49 49 0 ]
+[a 19C 49 0 ]
+[a 42C 114 101 115 101 114 118 111 105 114 46 0 ]

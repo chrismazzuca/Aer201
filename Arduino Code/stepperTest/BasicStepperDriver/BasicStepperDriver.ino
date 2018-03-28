@@ -54,12 +54,12 @@ void loop() {
     for (int x=0; x<3; x++){
       digitalWrite(5, HIGH);
       delay(1);
-      stepper.rotate(400);
+      stepper.rotate(400);//right
       digitalWrite(5, LOW);
       delay(1000);
       digitalWrite(12, HIGH);
       delay(1);
-      stepper2.rotate(1800);
+      stepper2.rotate(1800);//down
       digitalWrite(12, LOW);
       delay(1000);
     }

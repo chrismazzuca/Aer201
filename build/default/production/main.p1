@@ -39,13 +39,101 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 "80 UART_PIC.h
 [v _UART_Init `(v ~T0 @X0 0 ef1`l ]
+"2055 /Applications/microchip/xc8/v1.45/include/pic18f4620.h
+[s S71 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S71 . TRISD0 TRISD1 TRISD2 TRISD3 TRISD4 TRISD5 TRISD6 TRISD7 ]
+"2065
+[s S72 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S72 . RD0 RD1 RD2 RD3 RD4 RD5 RD6 RD7 ]
+"2054
+[u S70 `S71 1 `S72 1 ]
+[n S70 . . . ]
+"2076
+[v _TRISDbits `VS70 ~T0 @X0 0 e@3989 ]
+"1833
+[s S65 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S65 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
+"1843
+[s S66 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S66 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
+"1832
+[u S64 `S65 1 `S66 1 ]
+[n S64 . . . ]
+"1854
+[v _TRISCbits `VS64 ~T0 @X0 0 e@3988 ]
+"2277
+[s S77 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S77 . TRISE0 TRISE1 TRISE2 . PSPMODE IBOV OBF IBF ]
+"2287
+[s S78 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S78 . RE0 RE1 RE2 RE3 ]
+"2276
+[u S76 `S77 1 `S78 1 ]
+[n S76 . . . ]
+"2294
+[v _TRISEbits `VS76 ~T0 @X0 0 e@3990 ]
+"1389
+[s S53 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S53 . TRISA0 TRISA1 TRISA2 TRISA3 TRISA4 TRISA5 TRISA6 TRISA7 ]
+"1399
+[s S54 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S54 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
+"1388
+[u S52 `S53 1 `S54 1 ]
+[n S52 . . . ]
+"1410
+[v _TRISAbits `VS52 ~T0 @X0 0 e@3986 ]
+"1332
+[s S50 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S50 . LATE0 LATE1 LATE2 ]
+"1337
+[s S51 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S51 . LE0 LE1 LE2 ]
+"1331
+[u S49 `S50 1 `S51 1 ]
+[n S49 . . . ]
+"1343
+[v _LATEbits `VS49 ~T0 @X0 0 e@3981 ]
+"1108
+[s S44 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S44 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
+"1118
+[s S45 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S45 . LC0 LC1 LC2 LC3 LC4 LC5 LC6 LC7 ]
+"1107
+[u S43 `S44 1 `S45 1 ]
+[n S43 . . . ]
+"1129
+[v _LATCbits `VS43 ~T0 @X0 0 e@3979 ]
+"1220
+[s S47 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S47 . LATD0 LATD1 LATD2 LATD3 LATD4 LATD5 LATD6 LATD7 ]
+"1230
+[s S48 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S48 . LD0 LD1 LD2 LD3 LD4 LD5 LD6 LD7 ]
+"1219
+[u S46 `S47 1 `S48 1 ]
+[n S46 . . . ]
+"1241
+[v _LATDbits `VS46 ~T0 @X0 0 e@3980 ]
+"884
+[s S38 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S38 . LATA0 LATA1 LATA2 LATA3 LATA4 LATA5 LATA6 LATA7 ]
+"894
+[s S39 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S39 . LA0 LA1 LA2 LA3 LA4 LA5 LA6 LA7 ]
+"883
+[u S37 `S38 1 `S39 1 ]
+[n S37 . . . ]
+"905
+[v _LATAbits `VS37 ~T0 @X0 0 e@3977 ]
 "15 EEPROMstorage.h
 [v _readEEPROM `(uc ~T0 @X0 0 ef1`uc ]
 "16
 [v _initEEPROM `(v ~T0 @X0 0 ef ]
 "38 standbyMode.h
 [v _standbyMode `(ui ~T0 @X0 0 ef ]
-"37 operationMode.h
+"39 operationMode.h
 [v _mainOperation `(v ~T0 @X0 0 ef ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
@@ -2857,14 +2945,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;operationMode.h: 27: void drawerStepper(unsigned int direction);
 [; ;operationMode.h: 28: unsigned int moveVertically(unsigned int currentDrawer, unsigned int nextDrawer);
 [; ;operationMode.h: 29: void moveHorizontally(unsigned int currentDrawer, unsigned int nextDrawer);
-[; ;operationMode.h: 30: unsigned int detectTape(void);
-[; ;operationMode.h: 31: unsigned int configDrawer(unsigned int direction);
-[; ;operationMode.h: 32: unsigned int distributeRound(unsigned int count);
-[; ;operationMode.h: 33: unsigned int distributeFlat(unsigned int count);
-[; ;operationMode.h: 34: unsigned int distributeLong(unsigned int count);
-[; ;operationMode.h: 35: unsigned int checkCount(unsigned int pieceType);
-[; ;operationMode.h: 36: unsigned int trapDoor(unsigned int direction);
-[; ;operationMode.h: 37: void mainOperation(void);
+[; ;operationMode.h: 30: void initArm(unsigned int currentDrawer);
+[; ;operationMode.h: 31: unsigned int detectTape(void);
+[; ;operationMode.h: 32: void configDrawer(unsigned int direction);
+[; ;operationMode.h: 33: void distributeRound(unsigned int count);
+[; ;operationMode.h: 34: void distributeFlat(unsigned int count);
+[; ;operationMode.h: 35: void distributeLong(unsigned int count);
+[; ;operationMode.h: 36: void distributePieces(unsigned int roundPieces, unsigned int flatPieces, unsigned int longPieces);
+[; ;operationMode.h: 37: unsigned int checkCount(unsigned int pieceType);
+[; ;operationMode.h: 38: void trapDoor(unsigned int direction);
+[; ;operationMode.h: 39: void mainOperation(void);
 [; ;EEPROMstorage.h: 14: void writeEEPROM(unsigned char address, unsigned char data);
 [; ;EEPROMstorage.h: 15: unsigned char readEEPROM(unsigned char address);
 [; ;EEPROMstorage.h: 16: void initEEPROM(void);
@@ -3004,68 +3094,164 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 50: UART_Init(9600);
 "50
 [e ( _UART_Init (1 -> -> 9600 `i `l ]
-"54
-[v _operationMode `ui ~T0 @X0 1 a ]
-[; ;main.c: 54: unsigned int operationMode = 0;
-[e = _operationMode -> -> 0 `i `ui ]
-"55
-[v _i `ui ~T0 @X0 1 a ]
-[; ;main.c: 55: unsigned int i = 0;
-[e = _i -> -> 0 `i `ui ]
-"56
-[v _l `ui ~T0 @X0 1 a ]
-[; ;main.c: 56: unsigned int l = 0;
-[e = _l -> -> 0 `i `ui ]
-"73
-[v _checkEEPROM `ui ~T0 @X0 1 a ]
-[; ;main.c: 73: unsigned int checkEEPROM = 0;
-[e = _checkEEPROM -> -> 0 `i `ui ]
-[; ;main.c: 75: checkEEPROM = readEEPROM(251);
 "75
-[e = _checkEEPROM -> ( _readEEPROM (1 -> -> 251 `i `uc `ui ]
-[; ;main.c: 77: if (checkEEPROM == 255){
+[v _operationMode `ui ~T0 @X0 1 a ]
+[; ;main.c: 75: unsigned int operationMode = 0;
+[e = _operationMode -> -> 0 `i `ui ]
+"76
+[v _i `ui ~T0 @X0 1 a ]
+[; ;main.c: 76: unsigned int i = 0;
+[e = _i -> -> 0 `i `ui ]
 "77
+[v _l `ui ~T0 @X0 1 a ]
+[; ;main.c: 77: unsigned int l = 0;
+[e = _l -> -> 0 `i `ui ]
+[; ;main.c: 79: TRISDbits.TRISD0 = 0;
+"79
+[e = . . _TRISDbits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 80: TRISDbits.TRISD1 = 0;
+"80
+[e = . . _TRISDbits 0 1 -> -> 0 `i `uc ]
+[; ;main.c: 81: TRISDbits.TRISD2 = 0;
+"81
+[e = . . _TRISDbits 0 2 -> -> 0 `i `uc ]
+[; ;main.c: 82: TRISDbits.TRISD3 = 0;
+"82
+[e = . . _TRISDbits 0 3 -> -> 0 `i `uc ]
+[; ;main.c: 83: TRISDbits.TRISD4 = 0;
+"83
+[e = . . _TRISDbits 0 4 -> -> 0 `i `uc ]
+[; ;main.c: 84: TRISDbits.TRISD5 = 0;
+"84
+[e = . . _TRISDbits 0 5 -> -> 0 `i `uc ]
+[; ;main.c: 85: TRISDbits.TRISD6 = 0;
+"85
+[e = . . _TRISDbits 0 6 -> -> 0 `i `uc ]
+[; ;main.c: 86: TRISDbits.TRISD7 = 0;
+"86
+[e = . . _TRISDbits 0 7 -> -> 0 `i `uc ]
+[; ;main.c: 87: TRISCbits.TRISC2 = 0;
+"87
+[e = . . _TRISCbits 0 2 -> -> 0 `i `uc ]
+[; ;main.c: 88: TRISCbits.TRISC1 = 0;
+"88
+[e = . . _TRISCbits 0 1 -> -> 0 `i `uc ]
+[; ;main.c: 89: TRISCbits.TRISC0 = 0;
+"89
+[e = . . _TRISCbits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 90: TRISEbits.TRISE2 = 0;
+"90
+[e = . . _TRISEbits 0 2 -> -> 0 `i `uc ]
+[; ;main.c: 91: TRISAbits.TRISA4 = 0;
+"91
+[e = . . _TRISAbits 0 4 -> -> 0 `i `uc ]
+[; ;main.c: 92: TRISAbits.TRISA5 = 0;
+"92
+[e = . . _TRISAbits 0 5 -> -> 0 `i `uc ]
+[; ;main.c: 93: TRISEbits.TRISE0 = 0;
+"93
+[e = . . _TRISEbits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 94: TRISEbits.TRISE1 = 0;
+"94
+[e = . . _TRISEbits 0 1 -> -> 0 `i `uc ]
+[; ;main.c: 95: LATEbits.LATE2 = 0;
+"95
+[e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
+[; ;main.c: 96: LATCbits.LATC2 = 0;
+"96
+[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
+[; ;main.c: 97: LATCbits.LATC1 = 0;
+"97
+[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
+[; ;main.c: 98: LATCbits.LATC0 = 0;
+"98
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 99: LATDbits.LATD3 = 0;
+"99
+[e = . . _LATDbits 0 3 -> -> 0 `i `uc ]
+[; ;main.c: 100: LATDbits.LATD2 = 0;
+"100
+[e = . . _LATDbits 0 2 -> -> 0 `i `uc ]
+[; ;main.c: 101: LATDbits.LATD1 = 0;
+"101
+[e = . . _LATDbits 0 1 -> -> 0 `i `uc ]
+[; ;main.c: 102: LATDbits.LATD0 = 0;
+"102
+[e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 103: LATDbits.LATD4 = 0;
+"103
+[e = . . _LATDbits 0 4 -> -> 0 `i `uc ]
+[; ;main.c: 104: LATDbits.LATD5 = 0;
+"104
+[e = . . _LATDbits 0 5 -> -> 0 `i `uc ]
+[; ;main.c: 105: LATDbits.LATD6 = 0;
+"105
+[e = . . _LATDbits 0 6 -> -> 0 `i `uc ]
+[; ;main.c: 106: LATDbits.LATD7 = 0;
+"106
+[e = . . _LATDbits 0 7 -> -> 0 `i `uc ]
+[; ;main.c: 107: LATEbits.LATE1 = 0;
+"107
+[e = . . _LATEbits 0 1 -> -> 0 `i `uc ]
+[; ;main.c: 108: LATEbits.LATE0 = 0;
+"108
+[e = . . _LATEbits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 109: LATAbits.LATA4 = 0;
+"109
+[e = . . _LATAbits 0 4 -> -> 0 `i `uc ]
+[; ;main.c: 110: LATAbits.LATA5 = 0;
+"110
+[e = . . _LATAbits 0 5 -> -> 0 `i `uc ]
+"175
+[v _checkEEPROM `ui ~T0 @X0 1 a ]
+[; ;main.c: 175: unsigned int checkEEPROM = 0;
+[e = _checkEEPROM -> -> 0 `i `ui ]
+[; ;main.c: 177: checkEEPROM = readEEPROM(251);
+"177
+[e = _checkEEPROM -> ( _readEEPROM (1 -> -> 251 `i `uc `ui ]
+[; ;main.c: 179: if (checkEEPROM == 255){
+"179
 [e $ ! == _checkEEPROM -> -> 255 `i `ui 268  ]
 {
-[; ;main.c: 78: initEEPROM();
-"78
+[; ;main.c: 180: initEEPROM();
+"180
 [e ( _initEEPROM ..  ]
-[; ;main.c: 79: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
-"79
+[; ;main.c: 181: lcdInst(0x01);_delay((unsigned long)((15)*(40000000/4000.0)));;
+"181
 [e ( _lcdInst (1 -> -> 1 `i `uc ]
 [e ( __delay (1 -> * -> -> 15 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-[; ;main.c: 80: printf("Clearing EEPROM");
-"80
+[; ;main.c: 182: printf("Clearing EEPROM");
+"182
 [e ( _printf :s 2C ]
-[; ;main.c: 81: _delay((unsigned long)((2000)*(40000000/4000.0)));
-"81
+[; ;main.c: 183: _delay((unsigned long)((2000)*(40000000/4000.0)));
+"183
 [e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 40000000 `l `d .4000.0 `ul ]
-"82
+"184
 }
 [e :U 268 ]
-[; ;main.c: 82: }
-[; ;main.c: 85: operationMode = standbyMode();
-"85
+[; ;main.c: 184: }
+[; ;main.c: 187: operationMode = standbyMode();
+"187
 [e = _operationMode ( _standbyMode ..  ]
-[; ;main.c: 87: if (operationMode == 1){
-"87
+[; ;main.c: 189: if (operationMode == 1){
+"189
 [e $ ! == _operationMode -> -> 1 `i `ui 269  ]
 {
-[; ;main.c: 88: mainOperation();
-"88
+[; ;main.c: 190: mainOperation();
+"190
 [e ( _mainOperation ..  ]
-"89
+"191
 }
 [e :U 269 ]
-[; ;main.c: 89: }
-[; ;main.c: 91: firstIteration += 1;
-"91
+[; ;main.c: 191: }
+[; ;main.c: 193: firstIteration += 1;
+"193
 [e =+ _firstIteration -> -> 1 `i `ui ]
-[; ;main.c: 92: return;
-"92
+[; ;main.c: 194: return;
+"194
 [e $UE 267  ]
-[; ;main.c: 93: }
-"93
+[; ;main.c: 195: }
+"195
 [e :UE 267 ]
 }
 [p f _printf 8388608 ]
